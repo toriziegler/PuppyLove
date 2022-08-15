@@ -14,7 +14,7 @@ In this post-pandemic world where we are all a little more remote and further di
 # Features and Functionality
  * Accounts - submission of breed information, photos, and medical records to pet profiles
  * Map of dogs/shelters in your area
- * Chat bot 
- * Networking - emails/chat functionality
+ * Ask Willy the Golden Retriever chat bot
+ * Networking - contact information / direct messaging functionality
  * Social events hosted by Puppy Love
  * Groomers
