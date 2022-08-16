@@ -8,6 +8,12 @@
 
 The purpose of Puppy Love is to find the perfect match for your fur baby.
 
+## Design
+* [API design](docs/apis.md)
+* [Data model](docs/data-model.md)
+* [GHI](docs/ghi.md)
+* [Integrations](docs/integrations.md)
+
 # Target Market
 In this post-pandemic world where we are all a little more remote and further disconnected, we are trying to connect our furry friends and their owners. This social network is for dog owners who are seeking friends or compatible breeding options for their dogs. Owners will be able to find dogs in their area and search through specific breeds compatible to their own pet based on personality types.
 
