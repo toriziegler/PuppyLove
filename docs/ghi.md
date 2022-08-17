@@ -1,5 +1,5 @@
-# Graphical Human Interface
-
+# Graphical Human Interface 
+    Contains descriptions of the different screens and how they work with links to low-fidelity drawings
 ## Home Page
 
 The home page is the main page that users will see upon first visiting the Puppy Love Web Site. It will have a prompt to sign up for the website.
@@ -25,3 +25,4 @@ The direct messaging and matches page is used for the Web Site users to view wha
 The search page is for finding new matches. Users will be able to view a minimized version of a dog's profile and can expand it to view the full screen page. Users can click the green checkmark to add the dog to their potential matches or click the red x to deny the dog and see the next profile.
 
 ![search](wireframes/search.png)
+
