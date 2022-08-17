@@ -11,3 +11,12 @@ Google’s Geolocation API automatically populates a user’s location based on 
 
 - **Instagram Basic Display API**
 Help users import photos, videos, and information from their Instagram accounts into their dating app profile using Instagram’s Basic Display API. This HTTP-based API is ideal for dating apps, because it gives singles a sneak peek into a user's life outside of dating. Note: This API is not intended to help users login to a dating app using their Instagram username/password. To authenticate users for login, use Facebook Login.
+
+
+- **ChatBotAI** 
+(chatbotAI 0.3.1.3) (https://pypi.org/project/chatbotAI/)
+Python chatbot AI that helps in creating a python based chatbot with minimal coding. This provides both bots AI and chat handler and also allows easy integration of REST API's and python function calls which makes it unique and more powerful in functionality. This AI provides numerous features like learn, memory, conditional switch, topic-based conversation handling, etc.
+
+
+- **Pexels**
+Give your users access to entire photo and video library without leaving your app or website. It’s free and seamlessly integrates with just a few lines of code. Get started and immediately receive your unique API key.
