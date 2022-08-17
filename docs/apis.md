@@ -56,7 +56,7 @@ Output:
   "picture_url": string "optional"
 }
 ```
- #the above retreives all accounts#
+ *the above retreives all accounts*
 
  * **Method**: `GET`
 * **Path**: /api/account/<int:pk>
@@ -85,7 +85,7 @@ Output:
   "picture_url": string "optional"
 }
 ```
- #the above retreives a specific account# 
+ *the above retreives a specific account* 
 
 ## Update Account
 
