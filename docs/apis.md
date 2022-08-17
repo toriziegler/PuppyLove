@@ -1,6 +1,7 @@
 # APIs
   will contain the documentation for the APIs that you think you'll need to make the project work
 
+# Create New Account
 * **Method**: `POST`
 * **Path**: /api/account
 
@@ -29,8 +30,9 @@ Output:
 }
 ```
 
+# Get All Account 
 * **Method**: `GET`
-* **Path**: /api/account
+* **Path**: /api/account/ 
 
 Input:
 
@@ -58,6 +60,7 @@ Output:
 ```
  *the above retreives all accounts*
 
+# Get Single Account
  * **Method**: `GET`
 * **Path**: /api/account/<int:pk>
 
@@ -121,7 +124,7 @@ Output:
 from the user via a form on the landing page. this information is sent to the database and given a new database_id.
 
 
-## Create a new Message
+## Create new Message
 
 * **Method**: `POST`
 * **Path**: /api/<int:pk>/message/<int:pk>
@@ -144,7 +147,7 @@ Output:
   "body": string
 }
 ```
-## Get a new Message
+## Get a Message
 
 * **Method**: `get` 
 * **Path**: /api/<int:pk>/message/<int:pk>
@@ -168,7 +171,7 @@ Output:
 }
 ```
 
-## Get all new Message
+## Get all Messages
 
 * **Method**: `get` 
 * **Path**: /api/<int:pk>/message/
