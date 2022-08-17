@@ -2,12 +2,6 @@
     will contain a description of the domain or database schema with the properties that you'll collect with their data types
 
 
-# Location
-
-| Name | Type | Unique | Optional |
-|-|-|-|-|
-| city | string | no | no |
-| state | reference to State entity | no | no |
 
 
 # Dog Information
