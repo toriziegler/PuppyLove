@@ -27,7 +27,4 @@
 | picture_url | string | no | yes |
 | Description | string | no | yes |
 
-## Group
 
-
-## 
