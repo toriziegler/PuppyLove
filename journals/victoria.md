@@ -1,0 +1,2 @@
+# August 19, 2022
+Today the team collaborated on setting up our MVP and stretch goals. We updated our Excalidraw group notes and discussed ubiquitous language for our project and the microservices we will implement.  We created our docker-compose file.
