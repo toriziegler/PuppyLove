@@ -13,6 +13,7 @@ services:
         environment:
             - POSTGRES_MULTIPLE_DATABASES=postgresdata,
             - POSTGRES_PASSWORD=inthenameofdog
+            - POSTGRES_USER=DrPepper 
         ports:
             - 15432:5432
     mongo:
@@ -31,7 +32,7 @@ services:
         volumes:
             - ./monolith:/app
         environment:
-            DATABASE_URL: postgresql://user-name:password@postgres/db-name
+            DATABASE_URL: postgresql://DrPepper:inthenameofdog@postgres:5432/postgresdata
             WAIT_HOSTS: postgres:5432
     ghi:
         image: node:lts-bullseye
@@ -42,7 +43,7 @@ services:
         ports:
             - "3000:3000"
         environment:
-            HOST_OS: ${OS}
+            HOST_OS: win
             NODE_ENV: development
             HOST: "0.0.0.0"
             REACT_APP_DJANGO_SERVICE: http://localhost:8080
