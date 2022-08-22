@@ -1,5 +1,7 @@
 
 from django.db import models
+from puppylove.settings import MEDIA_ROOT
+
 # from phonenumber_field.modelfields import PhoneNumberField
 
 # Create your models here.
@@ -8,7 +10,7 @@ class Dog (models.Model):
     name = models.CharField(max_length=200)
     age = models.SmallIntegerField()
     breed = models.CharField(max_length=100)
-    # picture = models.ImageField(upload_to=None, height_field=None, width_field=None, max_length=None)
+    picture = models.ImageField(upload_to=MEDIA_ROOT, null=True, blank=True, height_field=None, width_field=None)
     description = models.TextField(max_length=1000)
     # documentation = models.FileField()
 

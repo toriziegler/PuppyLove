@@ -99,7 +99,7 @@ Input:
 
 ```json
 {
-    "name": string,
+  "name": string,
   "age": number,
   "zip": number,
   "owner_name": string,
@@ -111,7 +111,7 @@ Output:
 
 ```json
 {
-    "id": number,
+  "id": number,
   "name": string,
   "age": number,
   "zip": number,
@@ -143,7 +143,7 @@ Output:
 
 ```json
 {
-    "id": number,
+  "id": number,
   "body": string
 }
 ```
@@ -166,7 +166,7 @@ Output:
 
 ```json
 {
-    "id": number,
+  "id": number,
   "body": string
 }
 ```
@@ -189,7 +189,7 @@ Output:
 
 ```json
 {
-    "id": number,
+  "id": number,
   "body": string
 }
 ```
