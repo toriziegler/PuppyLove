@@ -25,12 +25,12 @@ services:
             MONGO_INITDB_ROOT_PASSWORD: password
     monolith:
         build:
-            context: ./monolith
+            context: ./monolith/api
             dockerfile: ./Dockerfile.dev
         ports:
             - "8080:8000"
         volumes:
-            - ./monolith:/app
+            - ./monolith/api:/app
         environment:
             DATABASE_URL: postgresql://DrPepper:inthenameofdog@postgres:5432/postgresdata
             WAIT_HOSTS: postgres:5432
