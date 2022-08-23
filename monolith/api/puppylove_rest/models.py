@@ -7,14 +7,6 @@ from cloudinary.models import CloudinaryField
 
 # Create your models here.
 
-class Dog (models.Model):
-    name = models.CharField(max_length=200)
-    age = models.SmallIntegerField()
-    breed = models.CharField(max_length=100)
-    picture = models.ImageField(upload_to=MEDIA_ROOT, null=True, blank=True, height_field=None, width_field=None)
-    description = models.TextField(max_length=1000)
-    # documentation = models.FileField()
-
 class State(models.Model):
     """
     The State model represents a US state with its name
@@ -34,8 +26,6 @@ class State(models.Model):
 class Meta:
     ordering = ("abbreviation",)  # Default ordering for State
 
-
-
 class Owner (models.Model):
     name = models.CharField(max_length=200)
     email = models.EmailField()
@@ -43,5 +33,18 @@ class Owner (models.Model):
     description = models.TextField(max_length=1000)
     state = models.ForeignKey(State, related_name="+", on_delete=models.PROTECT)
 
+
+class Dog (models.Model):
+    name = models.CharField(max_length=200)
+    age = models.SmallIntegerField()
+    breed = models.CharField(max_length=100)
+    picture = models.ImageField(upload_to=MEDIA_ROOT, null=True, blank=True, height_field=None, width_field=None)
+    description = models.TextField(max_length=1000)
+    # documentation = models.FileField()
+    owner = models.ForeignKey(Owner, related_name="owner", on_delete=models.CASCADE)
+
+
+
 class Photo(models.Model):
     image = CloudinaryField('image')
+
