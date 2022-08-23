@@ -1,6 +1,7 @@
 
 from django.db import models
 from puppylove.settings import MEDIA_ROOT
+from cloudinary.models import CloudinaryField
 
 # from phonenumber_field.modelfields import PhoneNumberField
 
@@ -42,3 +43,5 @@ class Owner (models.Model):
     description = models.TextField(max_length=1000)
     state = models.ForeignKey(State, related_name="+", on_delete=models.PROTECT)
 
+class Photo(models.Model):
+    image = CloudinaryField('image')

@@ -24,3 +24,4 @@ urllib3==1.26.9
 whitenoise==5.3.0
 django-phonenumber-field==6.3.0
 pillow==9.2.0
+cloudinary==1.29.0
