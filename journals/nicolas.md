@@ -1,0 +1,2 @@
+## Aug 22, 2022
+Today we as group worked on creating the models we are going to use for the MVP of the project. It was easy as we've been doing this for many projects. We wanted to figure out how to use the "phone number field" for our model, but we weren't sure how to do so. We just kept the normal way we do it and we eventually figure how to use it. Also, we implemented the ImageField which at this point let us upload an image and see it locally on our database and django admin, but we will have to figure it out on how to do it dynamic so everyone can see it.
