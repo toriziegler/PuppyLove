@@ -1,4 +1,3 @@
-
 from django.db import models
 from puppylove.settings import MEDIA_ROOT
 from cloudinary.models import CloudinaryField
@@ -19,7 +18,7 @@ class State(models.Model):
     name = models.CharField(max_length=40)
     abbreviation = models.CharField(max_length=2, unique=True)
 
-    def __str__(self):
+    def str(self):
         return f"{self.abbreviation}"
 
 class Meta:
@@ -32,15 +31,21 @@ class Owner (models.Model):
     description = models.TextField(max_length=1000)
     state = models.ForeignKey(State, related_name="+", on_delete=models.PROTECT)
 
+    def str(self):
+        return f"{self.name}"
+
 
 class Dog (models.Model):
     name = models.CharField(max_length=200)
-    age = models.SmallIntegerField()
-    breed = models.CharField(max_length=100)
-    picture = models.ImageField(upload_to=MEDIA_ROOT, null=True, blank=True, height_field=None, width_field=None)
-    description = models.TextField(max_length=1000)
-    # documentation = models.FileField()
-    owner = models.ForeignKey(Owner, related_name="owner", on_delete=models.CASCADE)
+    age = models.SmallIntegerField(null=True, blank=True)
+    breed = models.CharField(max_length=100, default="mix")
+    # picture = models.ImageField(upload_to=MEDIA_ROOT, null=True, blank=True, height_field=None, width_field=None)
+    description = models.TextField(max_length=1000, null=True, blank=True)
+    # documentation = models.FileField(null=True, blank=True)
+    owner = models.ForeignKey(Owner, related_name="owner", on_delete=models.CASCADE, null=False)
+
+    def str(self):
+        return f"{self.name}"
 
 
 

@@ -10,8 +10,9 @@ class OwnerEncoder(ModelEncoder):
         "email",
         "phone",
         "description",
-        "state",
     ]
+    def get_extra_data(self, o):
+        return {"state": o.state.abbreviation}
 
 
 class DogEncoder(ModelEncoder):
