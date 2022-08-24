@@ -25,3 +25,5 @@ whitenoise==5.3.0
 django-phonenumber-field==6.3.0
 pillow==9.2.0
 cloudinary==1.29.0
+boto3==1.24.58
+django-storages==1.13.1

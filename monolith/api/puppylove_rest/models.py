@@ -41,7 +41,7 @@ class Dog (models.Model):
     picture = models.ImageField(upload_to=MEDIA_ROOT, null=True, blank=True, height_field=None, width_field=None)
     description = models.TextField(max_length=1000)
     # documentation = models.FileField()
-    owner = models.ForeignKey(Owner, related_name="owner", on_delete=models.CASCADE)
+    owner = models.ForeignKey(Owner, related_name="owner", on_delete=models.CASCADE, null=True)
 
 
 
