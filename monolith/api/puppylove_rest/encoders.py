@@ -21,7 +21,6 @@ class DogEncoder(ModelEncoder):
         "name",
         "age",
         "breed",
-        "picture",
         "description",
         "id",
         "owner"
