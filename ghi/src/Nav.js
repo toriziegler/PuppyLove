@@ -1,5 +1,38 @@
 import { NavLink } from 'react-router-dom';
-import React from 'react'
+import React from 'react';
+import { render } from "react-dom";
+
+const footerStyle = {
+  backgroundColor: "",
+  fontSize: "20px",
+  color: "white",
+  borderTop: "1px solid #E7E7E7",
+  textAlign: "center",
+  padding: "20px",
+  position: "fixed",
+  left: "0",
+  bottom: "0",
+  height: "60px",
+  width: "100%",
+};
+
+const phantomStyle = {
+  display: "block",
+  padding: "20px",
+  height: "60px",
+  width: "100%"
+};
+
+function Footer({ children }) {
+    return (
+      <div>
+        <div style={phantomStyle} />
+        <div style={footerStyle}>{children}</div>
+      </div>
+    );
+  }
+  
+  
 
 function Nav() {
   return (
@@ -16,14 +49,15 @@ function Nav() {
             <li className="nav-item">
                 <NavLink className="nav-link active" aria-current="page" to="/">Home</NavLink>
             </li>
-            {/* <li className="nav-item">
-                <NavLink className="nav-link" to="/manufacturers">Manufacturers list</NavLink>
+            <li className="nav-item">
+                <NavLink className="nav-link" to="/profile">Profile</NavLink>
             </li>
-            <li>
-                <NavLink className="nav-link" to="/manufacturers/new">Add Manufacturer</NavLink>
-            </li> */}
-
           </ul>
+          <div>
+        <Footer>
+            <span>© Copyright 2022 Puppy Love, LLC. All Rights Reserved</span>
+        </Footer>
+        </div>,
         </div>
       </div>
     </nav>
