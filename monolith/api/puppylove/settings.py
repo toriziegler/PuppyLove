@@ -78,7 +78,6 @@ INSTALLED_APPS = [
     # 'phonenumber_field',
     # 'puppylove_rest.apps.PuppyloveRestConfig',
     # 'storages',
-
 ]
 
 MIDDLEWARE = [
