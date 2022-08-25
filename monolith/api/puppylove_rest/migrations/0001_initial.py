@@ -51,16 +51,10 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('name', models.CharField(max_length=200)),
-<<<<<<< HEAD
-                ('age', models.SmallIntegerField(blank=True, null=True)),
-                ('breed', models.CharField(default='mix', max_length=100)),
-                ('description', models.TextField(blank=True, max_length=1000, null=True)),
-=======
                 ('age', models.SmallIntegerField()),
                 ('breed', models.CharField(max_length=100)),
                 ('picture', models.ImageField(blank=True, null=True, upload_to='media/')),
                 ('description', models.TextField(max_length=1000)),
->>>>>>> main
                 ('owner', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='owner', to='puppylove_rest.owner')),
             ],
         ),

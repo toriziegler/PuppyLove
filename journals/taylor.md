@@ -30,3 +30,15 @@ Things to look into more ( PILLOW & Cloudinary )
 At the beginning of the day I though we would be able to use Cloudinary but that turned out not to be the case. I created a view and a template to test this out to see if it was a viable solution. When the rest of the group pulled my code from gitlab they were not able to see the same picture data that I had in my volume because volumes are not committed along with other data. 
 
 This makes sense. As Danial put it, media and file date is extremely large and can mess up databases when they are put into them. Because of this, we will need to make dummy data for the data we are able to hard code and have that auto-run on start-up. Any persisting data, like pictures, will need to be stored on a service such as AWS 
+
+## Aug 24, 2022
+
+Today we were able to set the correct permissions for AWS bucket to make it public. This allowed us all to upload photos. We currently are able to use a form and the admin to add these photos to the bucket. We do not have the React set up to handle the uploading of photos but are getting closer to that. We are able to display photos using react. 
+
+one issue we are trying to think through is, "how do we ensure we are filtering the correct photo from the one uploaded."
+  - We can attach the photos to both the user and the dog item and filter this way
+
+  - the dynamic way would be to save the file name as a uuid or something and use that to become the file name. Then use that to call that item. 
+
+
+## Aug 25, 2022 (Friday)
