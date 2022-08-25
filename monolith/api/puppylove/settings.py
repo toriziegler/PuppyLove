@@ -12,10 +12,45 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from pathlib import Path
+import os
+from .keys import ACCESS_KEY_ID, SECRET_ACCESS_KEY, STORAGE_BUCKET_NAME, LOCATION, CLOUDname, APIkey, APIsecret
 
+<<<<<<< HEAD
+=======
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
+
+# need to make these global and move keys
+cloudinary.config( 
+  cloud_name = CLOUDname, 
+  api_key = APIkey, 
+  api_secret = APIsecret 
+)
+
+>>>>>>> main
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+#aws set-up
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'media/store'),
+]
+
+AWS_ACCESS_KEY_ID = ACCESS_KEY_ID
+AWS_SECRET_ACCESS_KEY = SECRET_ACCESS_KEY
+AWS_STORAGE_BUCKET_NAME = STORAGE_BUCKET_NAME
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+
+AWS_S3_OBJECT_PARAMETERS = {
+    'CacheControl': 'max-age=86400',
+}
+
+AWS_LOCATION = LOCATION
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+STATIC_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
+
+DEFAULT_FILE_STORAGE = 'puppylove.storage_backends.MediaStorage'  # <-- here is where we reference it
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
@@ -39,7 +74,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+<<<<<<< HEAD
     'puppylove_rest.apps.PuppyloveRestConfig'
+=======
+    'phonenumber_field',
+    'puppylove_rest.apps.PuppyloveRestConfig',
+    'storages',
+>>>>>>> main
 
 
 ]
@@ -67,12 +108,20 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:8080",
 ]
 
+<<<<<<< HEAD
+=======
+CORS_ALLOW_CREDENTIALS = True
+
+>>>>>>> main
 CSRF_COOKIE_SECURE = True
 
 CSRF_COOKIE_HTTPONLY = True
 
+<<<<<<< HEAD
 CORS_ALLOW_CREDENTIALS = True
 
+=======
+>>>>>>> main
 DJWTO_MODE = "TWO-COOKIES"
 DJWTO_ACCESS_TOKEN_LIFETIME = None
 

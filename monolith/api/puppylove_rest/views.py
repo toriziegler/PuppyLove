@@ -5,6 +5,14 @@ from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 from django.views.decorators.http import require_http_methods
 import json
+from django.contrib.auth.decorators import login_required
+from django.views.generic.edit import CreateView
+from django.urls import reverse_lazy
+import logging
+from botocore.exceptions import ClientError
+
+
+from .models import AWSPhoto
 
 # Create your views here.
 
@@ -29,6 +37,8 @@ def api_dogs(request):
             content = json.loads(request.body)
             owner_id = content["owner"]
             owner = Owner.objects.get(id=owner_id)
+            print(owner_id, "SECONDLINE")
+            print(owner, "thIIIIIRDLINE")
             content["owner"] = owner
             dog = Dog.objects.create(**content)
             return JsonResponse(
@@ -99,3 +109,17 @@ def api_states(request):
             )
             response.status_code = 400
             return response
+
+class AWSPhotoCreateView(CreateView):
+    model = AWSPhoto
+    template_name= "photos/upload.html"
+    
+    fields = ['upload', ]
+    success_url = reverse_lazy('index')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        photos = AWSPhoto.objects.all()
+        context['Photos'] = photos
+        return context
+
