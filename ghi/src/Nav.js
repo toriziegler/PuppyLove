@@ -57,7 +57,7 @@ function Nav() {
         <Footer>
             <span>© Copyright 2022 Puppy Love, LLC. All Rights Reserved</span>
         </Footer>
-        </div>,
+        </div>
         </div>
       </div>
     </nav>
