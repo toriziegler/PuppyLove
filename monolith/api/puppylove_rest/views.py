@@ -123,3 +123,58 @@ class AWSPhotoCreateView(CreateView):
         context['Photos'] = photos
         return context
 
+
+@csrf_exempt
+@require_http_methods(["DELETE", "GET", "PUT"])
+def api_show_delete_update_dog(request, pk):
+    if request.method == "GET":
+        try:
+            dog = Dog.objects.get(id=pk)
+            return JsonResponse(
+                dog,
+                encoder=DogEncoder,
+                safe=False
+            )
+        except Dog.DoesNotExist:
+            response = JsonResponse({"message": "This dog does not exist"})
+            response.status_code = 404
+            return response
+
+    elif request.method == "DELETE": 
+        try:
+            service = Dog.objects.get(id=pk)
+            service.delete()
+            return JsonResponse(
+                service,
+                encoder=DogEncoder,
+                safe=False,
+            )
+        except Dog.DoesNotExist:
+            return JsonResponse({"message": "Does not exist"})
+
+
+    else:  # PUT
+        try:
+            content = json.loads(request.body)
+            dog = Dog.objects.get(id=pk)
+
+            props = [
+        "name", "age", "breed", "description", "owner"
+        ]
+            for prop in props:
+                if prop in content:
+                    setattr(dog, prop, content[prop])
+            dog.save()
+            return JsonResponse(
+                dog,
+                encoder=DogEncoder,
+                safe=False,
+            )
+        except Dog.DoesNotExist:
+            response = JsonResponse({"message": "Does not exist"})
+            response.status_code = 404
+            return response
+
+
+    
+    
