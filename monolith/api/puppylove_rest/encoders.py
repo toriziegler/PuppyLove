@@ -1,6 +1,6 @@
 from common.json import ModelEncoder
 
-from .models import Dog, Owner
+from .models import Dog, Owner, State
 
 
 class OwnerEncoder(ModelEncoder):
@@ -9,6 +9,7 @@ class OwnerEncoder(ModelEncoder):
         "name",
         "email",
         "phone",
+        "id",
         "description",
     ]
     def get_extra_data(self, o):
@@ -29,3 +30,13 @@ class DogEncoder(ModelEncoder):
         "owner" : OwnerEncoder()
     }
 
+class StateEncoder(ModelEncoder):
+    model = State
+    properties = [
+        "name",
+        "abbreviation",
+        "id",
+    ]
+    encoders = {
+        "owner" : OwnerEncoder()
+    }
