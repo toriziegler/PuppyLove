@@ -80,6 +80,8 @@ INSTALLED_APPS = [
     # 'storages',
 ]
 
+#these need to be commented out for the site to work, we will look into it further as we move on. 
+
 MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
     "corsheaders.middleware.CorsMiddleware",

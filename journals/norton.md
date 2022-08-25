@@ -7,7 +7,7 @@ What we today?
 -I added the rest of the request methods for the dog Views. Our next goal is to get all 50 states and their abbreviations to the data base so we don't have to manually enter the states every time we create an owner.
 
  Potential blockers?
-1. none
+1. Strange bug was found at the end of the day were we have to comment of certain part of the setting to get the browser to function, but also it seems to be affecting the admin page for our site in the browser.
 
 # August 23, 2022
 What we today?
