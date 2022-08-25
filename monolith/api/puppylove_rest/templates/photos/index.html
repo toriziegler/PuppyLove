@@ -7,6 +7,7 @@
     <title>Cloudinary</title>
 </head>
 <body>
+    <img src="https://puppy-love-assets.s3.amazonaws.com/media/Willie_image.webp" alt="Willie Da Dog"/>
     {% csrf_token %}
     {% for photo in photos %}
         <img src="{{ photo.image.url }}" style="width: 300px;">

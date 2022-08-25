@@ -63,6 +63,9 @@ class Profile extends React.Component {
               }}
             >
             <div>
+                <div>
+                <img src="https://puppy-love-assets.s3.amazonaws.com/media/Willie_image.webp" alt="Willie Da Dog" height={200} width={200}/>
+                </div>
             <h1>Profile</h1>
             <table className="table table-success table-striped">
                 <thead>
