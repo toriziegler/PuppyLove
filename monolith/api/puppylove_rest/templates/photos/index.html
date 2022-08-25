@@ -7,7 +7,6 @@
     <title>Cloudinary</title>
 </head>
 <body>
-    {% csrf_token %}
     {% for photo in photos %}
         <img src="{{ photo.image.url }}" style="width: 300px;">
     {% endfor %}

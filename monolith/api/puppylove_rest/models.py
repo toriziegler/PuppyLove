@@ -21,8 +21,8 @@ class State(models.Model):
     def str(self):
         return f"{self.abbreviation}"
 
-class Meta:
-    ordering = ("abbreviation",)  # Default ordering for State
+    class Meta:
+        ordering = ("abbreviation",)  # Default ordering for State
 
 class Owner (models.Model):
     name = models.CharField(max_length=200)

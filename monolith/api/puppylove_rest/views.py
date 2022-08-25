@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Photo, Dog, Owner, State
+from .models import Photo, Dog, Owner, State, AWSPhoto
 from .encoders import DogEncoder, OwnerEncoder, StateEncoder
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
@@ -12,7 +12,6 @@ import logging
 from botocore.exceptions import ClientError
 
 
-from .models import AWSPhoto
 
 # Create your views here.
 
@@ -69,9 +68,7 @@ def api_owners(request):
             state_id = content["state"]
             state = State.objects.get(id=state_id)
             content["state"] = state
-            print("CONTENNTTTT", content)
             owner = Owner.objects.create(**content)
-            print("ONWERRRRRRRRRR", owner)
             return JsonResponse(
                 owner,
                 encoder=OwnerEncoder,
