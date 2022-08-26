@@ -52,3 +52,6 @@ class Dog (models.Model):
 class Photo(models.Model):
     image = CloudinaryField('image')
 
+class AWSPhoto(models.Model):
+    uploaded_at = models.DateTimeField(auto_now_add=True)
+    upload = models.FileField()

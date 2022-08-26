@@ -12,6 +12,10 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from pathlib import Path
+import os
+from .keys import ACCESS_KEY_ID, SECRET_ACCESS_KEY, STORAGE_BUCKET_NAME, LOCATION, CLOUDname, APIkey, APIsecret
+
+
 
 import cloudinary
 import cloudinary.uploader
@@ -19,14 +23,34 @@ import cloudinary.api
 
 # need to make these global and move keys
 cloudinary.config( 
-  cloud_name = "puppy-love-api", 
-  api_key = "935115688382825", 
-  api_secret = "3_jy4PvZpB8hPWVxTB1NRJjTueQ" 
+  cloud_name = CLOUDname, 
+  api_key = APIkey, 
+  api_secret = APIsecret 
 )
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+#aws set-up
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'media/store'),
+]
+
+AWS_ACCESS_KEY_ID = ACCESS_KEY_ID
+AWS_SECRET_ACCESS_KEY = SECRET_ACCESS_KEY
+AWS_STORAGE_BUCKET_NAME = STORAGE_BUCKET_NAME
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+
+AWS_S3_OBJECT_PARAMETERS = {
+    'CacheControl': 'max-age=86400',
+}
+
+AWS_LOCATION = LOCATION
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+STATIC_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
+
+DEFAULT_FILE_STORAGE = 'puppylove.storage_backends.MediaStorage'  # <-- here is where we reference it
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
@@ -50,11 +74,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
     'puppylove_rest.apps.PuppyloveRestConfig'
-
-
+    # 'phonenumber_field',
+    # 'puppylove_rest.apps.PuppyloveRestConfig',
+    # 'storages',
 ]
+
+#these need to be commented out for the site to work, we will look into it further as we move on. 
 
 MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -79,11 +105,16 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:8080",
 ]
 
+
+
 CORS_ALLOW_CREDENTIALS = True
+
 
 CSRF_COOKIE_SECURE = True
 
 CSRF_COOKIE_HTTPONLY = True
+
+CORS_ALLOW_CREDENTIALS = True
 
 DJWTO_MODE = "TWO-COOKIES"
 DJWTO_ACCESS_TOKEN_LIFETIME = None
@@ -105,8 +136,6 @@ TEMPLATES = [
         },
     },
 ]
-
-WSGI_APPLICATION = 'puppylove.wsgi.application'
 
 
 # Database
