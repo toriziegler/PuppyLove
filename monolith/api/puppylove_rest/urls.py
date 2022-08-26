@@ -1,6 +1,6 @@
 from django.urls import path
 
-from .views import api_dogs, api_owners, api_states, index, api_show_delete_update_dog
+from .views import api_dogs, api_owners, api_states, index, api_show_delete_update_dog, api_owner_show_update_delete
 
 from .views import api_dogs, index, AWSPhotoCreateView
 
@@ -17,6 +17,7 @@ urlpatterns = [
         api_show_delete_update_dog,
         name="show_delete_update_dog"
     ),
+     path("owners/<int:pk>/", api_owner_show_update_delete, name="api_owner_show_update_delete")
 
     ]
 
