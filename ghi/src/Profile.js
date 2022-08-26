@@ -63,6 +63,12 @@ class Profile extends React.Component {
               }}
             >
             <div>
+            <form onSubmit={this.handleSubmit} id="create-account-form">
+                <input onChange={this.handleChangeName} value={this.state.name} placeholder="Name" 
+                required type="text" name="name" id="name" className="form-control" />
+              <p className="card-text">Sign your puppy up today!</p>
+              <button className="btn btn-primary">Sign Up</button>
+              </form>
             <h1>Profile</h1>
             <table className="table table-success table-striped">
                 <thead>
