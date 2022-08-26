@@ -20,7 +20,7 @@ const phantomStyle = {
   display: "block",
   padding: "20px",
   height: "60px",
-  width: "100%"
+  width: "100%",
 };
 
 function Footer({ children }) {
@@ -52,12 +52,18 @@ function Nav() {
             <li className="nav-item">
                 <NavLink className="nav-link" to="/profile">Profile</NavLink>
             </li>
+            <li className="nav-item">
+                <NavLink className="nav-link" to="/login">Log in</NavLink>
+            </li>
+            <li className="nav-item">
+                <NavLink className="nav-link" to="/signup">SignUp</NavLink>
+            </li>
           </ul>
           <div>
         <Footer>
             <span>© Copyright 2022 Puppy Love, LLC. All Rights Reserved</span>
         </Footer>
-        </div>,
+        </div>
         </div>
       </div>
     </nav>

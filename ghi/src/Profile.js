@@ -8,16 +8,9 @@ class Profile extends React.Component {
 
         };
         // this.handleUpdate = this.handleUpdate.bind(this);
+        this.handleChangeName = this.handleChangeName.bind(this);
     }
 
-    // async componentDidMount() {
-    //     const URL = 'http://localhost:8080/api/appointments/'
-    //     const response = await fetch(URL);
-    //     if (response.ok) {
-    //         const data = await response.json();
-    //         this.setState({ appointments: data.appointments.filter(each => each.completed === false) });
-    //     }
-    // }
 
 //     async handleUpdate(event,appointment) {
 //         event.preventDefault();
@@ -47,6 +40,10 @@ class Profile extends React.Component {
 //             console.log("appointment completed")
 //     }
 // }
+handleChangeName(event) {
+    const value = event.target.value;
+    this.setState({ name: value });
+  }
 
     render() {
         return (

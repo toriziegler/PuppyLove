@@ -13,3 +13,6 @@ footer sticky. I centered the sign up box. I created a profile page to display t
 
 # August 24
 I worked with Taylor to get images sent to our AWS.
+
+# August 25
+Worked on making the SignUp Page and Login Page. Working on creating the messaging system.
