@@ -42,3 +42,7 @@ one issue we are trying to think through is, "how do we ensure we are filtering 
 
 
 ## Aug 25, 2022 (Friday)
+
+Today I changed gears. We realized that the Owner should be it's own Microservice, similar to how the inventory and sales departments were implemented. I spent most of today with Nicholas trying to get a new docker-compose to work correctly.
+
+once that was able to run we ran through all the code that contained that information in the monolith and moved it to the new Django project for our accounts microservice. We will try to implement a poller next week so we can get the monolith up and running again with the information accurately pulling from the accounts microservice. We had to comment out a bunch of code in order to get monolith back to a good state. We will be able to test our code this way for the poller but uncommenting what we need will be hard. 

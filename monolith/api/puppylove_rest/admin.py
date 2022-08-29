@@ -1,19 +1,11 @@
-from django.contrib import admin
-from .models import Dog, State, Owner, Photo
-# Register your models here.
+# from django.contrib import admin
+# from .models import Dog, AWSPhoto
+# # Register your models here.
 
-@admin.register(Dog)
-class DogAdmin(admin.ModelAdmin):
-    pass
+# @admin.register(Dog)
+# class DogAdmin(admin.ModelAdmin):
+#     pass
 
-@admin.register(State)
-class StateAdmin(admin.ModelAdmin):
-    pass
-
-@admin.register(Owner)
-class OwnerAdmin(admin.ModelAdmin):
-    pass
-
-@admin.register(Photo)
-class PhotoAdmin(admin.ModelAdmin):
-    pass
+# @admin.register(AWSPhoto)
+# class AWSPhotoAdmin(admin.ModelAdmin):
+#     pass
