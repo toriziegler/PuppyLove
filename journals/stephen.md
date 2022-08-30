@@ -13,3 +13,7 @@ footer sticky. I centered the sign up box. I created a profile page to display t
 
 # August 24
 I worked with Taylor to get images sent to our AWS.
+
+# August 25
+Worked with Norton on more react stuff.
+Creating sign up and log in pages
