@@ -63,12 +63,6 @@ class Profile extends React.Component {
               }}
             >
             <div>
-            <form onSubmit={this.handleSubmit} id="create-account-form">
-                <input onChange={this.handleChangeName} value={this.state.name} placeholder="Name" 
-                required type="text" name="name" id="name" className="form-control" />
-              <p className="card-text">Sign your puppy up today!</p>
-              <button className="btn btn-primary">Sign Up</button>
-              </form>
             <h1>Profile</h1>
             <table className="table table-success table-striped">
                 <thead>
@@ -93,26 +87,14 @@ class Profile extends React.Component {
                         <th>Gender</th>
                         <th>Insert Gender</th>
                     </tr>
-                    <tr>
-                        <th>Links to papers</th>
-                        <th>Insert your dog records</th>
-                    </tr>
                 </thead>
                 </table>
-                <h2>Contact Info</h2>
+                <h2>Pictures</h2>
                 <table className="table table-success table-striped">
                 <thead>
                     <tr>
-                        <th>Email</th>
-                        <th>Insert Email</th>
-                    </tr>
-                    <tr>
-                        <th>Phone Number</th>
-                        <th>Insert Number</th>
-                    </tr>
-                    <tr>
-                        <th>Located At</th>
-                        <th>Insert Location</th>
+                        <th>Pictures</th>
+                        <th><button>Upload your pictures</button></th>
                     </tr>
                 </thead>
             <tbody>
