@@ -35,6 +35,7 @@ def api_dogs(request):
     else:
         try:
             content = json.loads(request.body)
+            print(content, "FIRSTLINE")
             owner_id = content["owner"]
             owner = Owner.objects.get(id=owner_id)
             content["owner"] = owner
