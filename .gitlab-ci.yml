@@ -1,0 +1,50 @@
+stages:
+  - test  # Run tests first
+  - build  # Run build after tests
+  - deploy  # Run deploy after build
+
+services:
+  - postgres: 14.2-bullseye
+
+variables:
+  POSTGRES_PASSWORD: test
+  DATABASE_URL: postgresql://postgres:test@postgres:5432/postgres
+
+## TESTING
+monolith-api-unit-test-job:
+  image: python:3-bullseye
+  stage: test
+  script:
+    - cd monolith/api
+    - pip install -r requirements.txt
+    - export DATABASE_URL
+    - python manage.py migrate  # Migrate the database
+    - python manage.py test  # Run the tests
+
+lint-project-job:
+  image: python:3-bullseye
+  stage: test
+  script:
+    - pip install flake8
+    - flake8 monolith  # Run flake8 on project ot check for code quality
+
+## BUILDING
+ghi-front-end-build-job:
+  stage: build
+  image: node:lts-bullseye
+  needs:
+    - monolith-api-unit-test-job   # These two must succeed for build-job to run
+    - lint-project-job  
+  script:
+    - cd ghi
+    - npm install
+    - npm run build   # Build the React application
+
+monolith-api-back-end-build-job:
+  stage: build
+  image: docker:20.10.16
+  services:
+    - docker:20.10.16-dind
+  script:
+    - cd monolith/api
+    - docker build -t 

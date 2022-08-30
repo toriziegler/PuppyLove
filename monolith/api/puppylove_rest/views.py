@@ -83,29 +83,15 @@ def api_owners(request):
 
 
 @csrf_exempt
-@require_http_methods(["GET", "POST"])
+@require_http_methods(["GET"])
 def api_states(request):
     if request.method == "GET":
-        states = State.objects.all()
-        return JsonResponse(
-            {"states": states},
-            encoder=StateEncoder,
-        )
-    else:
-        try:
-            content = json.loads(request.body)
-            state = State.objects.create(**content)
-            return JsonResponse(
-                state,
-                encoder=StateEncoder,
-                safe=False,
-            )
-        except:
-            response = JsonResponse(
-                {"message": "Could not create the State"}
-            )
-            response.status_code = 400
-            return response
+        states = State.objects.all().order_by('name')
+        state_list = []
+        for state in states:
+            state_dict = {"name": state.name, "abbreviation": state.abbreviation}
+            state_list.append(state_dict)
+        return JsonResponse({"states": state_list})
 
 class AWSPhotoCreateView(CreateView):
     model = AWSPhoto

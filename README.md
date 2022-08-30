@@ -32,4 +32,6 @@ This social network is for dog owners who are seeking compatible playmates for t
     - Videochat
     - Groomers
 
- 
+
+# Starting the App
+  - python manage.py loaddata puppylove/data.json
