@@ -68,7 +68,7 @@ def api_owners(request):
             content = json.loads(request.body)
             state_id = content["state"]
             state = State.objects.get(id=state_id)
-            content["owner"] = state
+            content["state"] = state
             print("CONTENNTTTT", content)
             owners = Owner.objects.create(**content)
             print("ONWERRRRRRRRRR", owners)
