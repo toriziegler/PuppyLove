@@ -64,6 +64,15 @@ services:
             DATABASE_URL: postgresql://accounts:password@postgres:5432/accounts
             WAIT_HOSTS: postgres:5432
             WAIT_TIMEOUT: 240
+            AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
+            AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
+            AWS_STORAGE_BUCKET_NAME: ${AWS_STORAGE_BUCKET_NAME}
+            AWS_S3_CUSTOM_DOMAIN: ${AWS_S3_CUSTOM_DOMAIN}
+            AWS_LOCATION: ${AWS_LOCATION}
+            STATICFILES_STORAGE: ${STATICFILES_STORAGE}
+            STATIC_URL: ${STATIC_URL}
+            DEFAULT_FILE_STORAGE: ${DEFAULT_FILE_STORAGE}
+            AWS_Cache: ${AWS_Cache}
     puppylove-poller:
         build:
             context: ./monolith/poll
