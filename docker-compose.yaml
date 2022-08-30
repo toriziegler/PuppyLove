@@ -32,7 +32,7 @@ services:
             #DJWTO_SIGNING_KEY: ${DJWTO_SIGNING_KEY}
             AWS_Cache: ${AWS_Cache}
         ports:
-            - "8000:8000"
+            - "8080:8000"
         volumes:
             - ./monolith/api:/app
         depends_on:
@@ -50,32 +50,32 @@ services:
             NODE_ENV: development
             HOST: "0.0.0.0"
             REACT_APP_DJANGO_SERVICE: http://localhost:8080
-    account-api:
-        build:
-            context: ./accounts_microservice
-            dockerfile: ./Dockerfile.dev
-        ports:
-            - "8100:8000"
-        volumes:
-            - ./accounts_microservice:/app
-        depends_on:
-            - postgres
-        environment:
-            DATABASE_URL: postgresql://accounts:password@postgres:5432/accounts
-            WAIT_HOSTS: postgres:5432
-            WAIT_TIMEOUT: 240
-    puppylove-poller:
-        build:
-            context: ./monolith/poll
-            dockerfile: ./Dockerfile.dev
-        volumes:
-            - ./monolith/poll:/app
-            - ./monolith/poll/puppylove:/app/puppylove
-            - ./monolith/poll/puppylove_rest:/app/puppylove_rest
-        depends_on:
-            - postgres
-            - monolith
-        environment:
-            DATABASE_URL: postgresql://monolith:password@postgres:5432/monolith
-            WAIT_HOSTS: postgres:5432,monolith:8000
-            WAIT_TIMEOUT: 240
+    # account-api:
+    #     build:
+    #         context: ./accounts_microservice
+    #         dockerfile: ./Dockerfile.dev
+    #     ports:
+    #         - "8100:8000"
+    #     volumes:
+    #         - ./accounts_microservice:/app
+    #     depends_on:
+    #         - postgres
+    #     environment:
+    #         DATABASE_URL: postgresql://accounts:password@postgres:5432/accounts
+    #         WAIT_HOSTS: postgres:5432
+    #         WAIT_TIMEOUT: 240
+    # puppylove-poller:
+    #     build:
+    #         context: ./monolith/poll
+    #         dockerfile: ./Dockerfile.dev
+    #     volumes:
+    #         - ./monolith/poll:/app
+    #         - ./monolith/poll/puppylove:/app/puppylove
+    #         - ./monolith/poll/puppylove_rest:/app/puppylove_rest
+    #     depends_on:
+    #         - postgres
+    #         - monolith
+    #     environment:
+    #         DATABASE_URL: postgresql://monolith:password@postgres:5432/monolith
+    #         WAIT_HOSTS: postgres:5432,monolith:8000
+    #         WAIT_TIMEOUT: 240
