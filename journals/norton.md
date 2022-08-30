@@ -1,5 +1,16 @@
 
-August 24, 2022
+# August 25, 2022
+What we today?
+- Met with team
+- I worked with Stephen a little on the front end React for the login pages.
+- I tried to finish up the Owner views, how ever we all seem to be running into issues
+
+
+ Potential blockers?
+1. The over views are mostly functional, but for some reason the PUT method is not updating the data despite giving a 200 code. Also I can no longer create an owner from insomnia.
+2. They teams seems be hitting a wall, but everyone is in good spirits. I like these guys. 
+
+# August 24, 2022
 What we today?
 - Met with team
 - we grouped programmed together in groups of two and three. I worked with Victoria and Nicolas

@@ -37,8 +37,6 @@ def api_dogs(request):
             content = json.loads(request.body)
             owner_id = content["owner"]
             owner = Owner.objects.get(id=owner_id)
-            print(owner_id, "SECONDLINE")
-            print(owner, "thIIIIIRDLINE")
             content["owner"] = owner
             dog = Dog.objects.create(**content)
             return JsonResponse(
@@ -54,6 +52,7 @@ def api_dogs(request):
             return response
 
 
+
 @csrf_exempt
 @require_http_methods(["GET", "POST"])
 def api_owners(request):
@@ -63,17 +62,18 @@ def api_owners(request):
             {"owners": owners},
             encoder=OwnerEncoder,
         )
-    else:
+    
+    else: #POST
         try:
             content = json.loads(request.body)
             state_id = content["state"]
             state = State.objects.get(id=state_id)
-            content["state"] = state
+            content["owner"] = state
             print("CONTENNTTTT", content)
-            owner = Owner.objects.create(**content)
-            print("ONWERRRRRRRRRR", owner)
+            owners = Owner.objects.create(**content)
+            print("ONWERRRRRRRRRR", owners)
             return JsonResponse(
-                owner,
+                owners,
                 encoder=OwnerEncoder,
                 safe=False,
             )
@@ -85,6 +85,52 @@ def api_owners(request):
             return response
 
 
+@csrf_exempt
+@require_http_methods(["GET", "PUT", "DELETE"])
+def api_owner_show_update_delete(request, pk):
+    if request.method == "GET":
+        owner = Owner.objects.get(id=pk)
+        return JsonResponse(
+            {"owner": owner},
+            encoder=OwnerEncoder,
+        )
+    elif request.method == "DELETE": 
+        try:
+            owner = Owner.objects.get(id=pk)
+            owner.delete()
+            return JsonResponse(
+                owner,
+                encoder=OwnerEncoder,
+                safe=False,
+            )
+        except Owner.DoesNotExist:
+            return JsonResponse({"message": "This owner does not exist"})
+
+    else:  # PUT
+        try:
+            content = json.loads(request.body)
+            owner = Owner.objects.get(id=pk)
+
+            props = [
+        "name", "email", "phone", "description", "state"
+        ]
+            for prop in props:
+                if prop in content:
+                    setattr(owner, prop, content[prop])
+            owner.save()
+            return JsonResponse(
+                owner,
+                encoder=OwnerEncoder,
+                safe=False,
+            )
+
+        except Owner.DoesNotExist:
+            response = JsonResponse({"message": "Does not exist"})
+            response.status_code = 404
+            return response
+    
+
+    
 @csrf_exempt
 @require_http_methods(["GET", "POST"])
 def api_states(request):
@@ -142,10 +188,10 @@ def api_show_delete_update_dog(request, pk):
 
     elif request.method == "DELETE": 
         try:
-            service = Dog.objects.get(id=pk)
-            service.delete()
+            dog = Dog.objects.get(id=pk)
+            dog.delete()
             return JsonResponse(
-                service,
+                dog,
                 encoder=DogEncoder,
                 safe=False,
             )
@@ -159,7 +205,7 @@ def api_show_delete_update_dog(request, pk):
             dog = Dog.objects.get(id=pk)
 
             props = [
-        "name", "age", "breed", "description", "owner"
+        "name", "age", "breed", "description", "owners"
         ]
             for prop in props:
                 if prop in content:
