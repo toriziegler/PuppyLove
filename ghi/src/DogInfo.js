@@ -1,5 +1,4 @@
 import React from 'react';
-import { Navigate, Link } from 'react-router-dom';
 
 class DogInfo extends React.Component{
     constructor(props){
