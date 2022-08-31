@@ -2,8 +2,10 @@
 Today I worked on:
 
 * .gitlab-ci.yml
+* monolith poller
+* postgres
 
-    Continued work on CI file now that docker-compose is functioning correctly. 
+    Continued work on CI file now that docker-compose is functioning correctly. Paused production for now because we do not have unit tests created and our back end is not complete for me to add the correct paths. I will continue working on CI once we complete back end and are ready to move on to front end. I worked with Taylor and Stephen to get the poller.py functioning, there was a ModuleNotFound error "No Module named 'puppylove.settings'" which we had set at the top of the poller. We were able to fix this by adjusting the docker-compose for the poller, the context was using the incorrect path and the AWS information needed to be added as well. Taylor and I realized that our project is currently working locally on our computers with db.sqlite3 and we need to convert everything to use postgres instead. That will be the focus of our research and programming tomorrow.
 
 # August 29, 2022
 Today I worked on:

@@ -34,4 +34,4 @@ This social network is for dog owners who are seeking compatible playmates for t
 
 
 # Starting the App
-  - python manage.py loaddata puppylove/data.json
+  - in the monolith-api container, bash, python manage.py loaddata data.json 
