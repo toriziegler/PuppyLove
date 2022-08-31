@@ -1,41 +1,32 @@
-# from common.json import ModelEncoder
+from common.json import ModelEncoder
 
-# from .models import Dog
-
-
-# class OwnerVOEncoder(ModelEncoder):
-#     model = OwnerVO
-#     properties = [
-#         "name",
-#         "email",
-#         "phone",
-#         "id",
-#         "description",
-#         "state"
-#     ]
+from .models import Dog, OwnerVO
 
 
-# class DogEncoder(ModelEncoder):
-#     model = Dog
-#     properties = [
-#         "name",
-#         "age",
-#         "breed",
-#         "description",
-#         "id",
-#         "owner"
-#     ]
-#     encoders = {
-#         "owner" : OwnerVOEncoder()
-#     }
+class OwnerVOEncoder(ModelEncoder):
+    model = OwnerVO
+    properties = [
+        "name",
+        "email",
+        "phone",
+        "id",
+        "description",
+        "account_number",
+        "state"
+    ]
 
-# class StateEncoder(ModelEncoder):
-#     model = State
-#     properties = [
-#         "name",
-#         "abbreviation",
-#         "id",
-#     ]
-#     encoders = {
-#         "owner" : OwnerEncoder()
-#     }
+
+class DogEncoder(ModelEncoder):
+    model = Dog
+    properties = [
+        "name",
+        "age",
+        "breed",
+        "description",
+        "id",
+        "owner"
+    ]
+    encoders = {
+        "owner" : OwnerVOEncoder()
+    }
+
