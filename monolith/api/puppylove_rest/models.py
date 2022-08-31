@@ -19,7 +19,7 @@ class State(models.Model):
     abbreviation = models.CharField(max_length=2, unique=True)
 
     def str(self):
-        return f"{self.abbreviation}"
+        return f"{self.name}"
 
 class Meta:
     ordering = ("abbreviation",)  # Default ordering for State

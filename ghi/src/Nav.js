@@ -52,12 +52,21 @@ function Nav() {
             <li className="nav-item">
                 <NavLink className="nav-link" to="/profile">Profile</NavLink>
             </li>
+            <li className="nav-item">
+                <NavLink className="nav-link" to="/signup">Sign up</NavLink>
+            </li>
+            <li className="nav-item">
+                <NavLink className="nav-link" to="/login">Login</NavLink>
+            </li>
+            <li className="nav-item">
+                <NavLink className="nav-link" to="/message">Message</NavLink>
+            </li>
           </ul>
           <div>
         <Footer>
             <span>© Copyright 2022 Puppy Love, LLC. All Rights Reserved</span>
         </Footer>
-        </div>,
+        </div>
         </div>
       </div>
     </nav>

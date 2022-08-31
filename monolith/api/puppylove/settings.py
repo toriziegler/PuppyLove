@@ -74,10 +74,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'puppylove_rest.apps.PuppyloveRestConfig',
-    'storages',
+    'puppylove_rest.apps.PuppyloveRestConfig'
 
+    
+    'storages',
 ]
+
+#these need to be commented out for the site to work, we will look into it further as we move on. 
 
 MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
