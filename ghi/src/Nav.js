@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import React from 'react';
-import { render } from "react-dom";
+
 
 const footerStyle = {
   backgroundColor: "",
@@ -63,6 +63,9 @@ function Nav() {
             </li>
             <li className="nav-item">
                 <NavLink className="nav-link" to="/doginfo">Dog Information</NavLink>
+            </li>
+            <li className="nav-item">
+                <NavLink className="nav-link" to="/ownerinfo">Owner Information</NavLink>
             </li>
             
           </ul>
