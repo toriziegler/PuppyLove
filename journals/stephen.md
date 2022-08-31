@@ -17,3 +17,9 @@ I worked with Taylor to get images sent to our AWS.
 # August 25
 Worked with Norton on more react stuff.
 Creating sign up and log in pages
+
+# August 29
+Worked on debugging the yaml file with Taylor and Victoria.
+
+# August 30
+Worked on debugging poller with Taylor and Victoria

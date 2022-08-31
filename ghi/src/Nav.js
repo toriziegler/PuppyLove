@@ -61,6 +61,10 @@ function Nav() {
             <li className="nav-item">
                 <NavLink className="nav-link" to="/message">Message</NavLink>
             </li>
+            <li className="nav-item">
+                <NavLink className="nav-link" to="/doginfo">Dog Information</NavLink>
+            </li>
+            
           </ul>
           <div>
         <Footer>
