@@ -1,3 +1,14 @@
+# August 29, 2022
+What we today?
+- Met with team
+- Did our morning Scrum meeting 
+- We started strong. We thought we all knew what needed to be done, but as we began everything started to fall apart today. 
+-Nicolas, Stephen, and myself were struggling with the authentication. We have the react pages made, but we do not know how to connect them to the backend. However, that doesn't really matter because the backend is not done because the Dogs views are connected to the owner view, which was removed to make accounts it's own microservice with a poller to fine other local owners. We also are having trouble putting together the data base to hold all the state data that we need to create a user. We may need to think of a work around to needing the states data .
+
+ Potential blockers?
+1. everything mentioned above
+
+
 
 # August 29, 2022
 What we today?
