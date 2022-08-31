@@ -110,20 +110,12 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:8080",
 ]
 
-<<<<<<< HEAD
-=======
 CORS_ALLOW_CREDENTIALS = True
 
->>>>>>> main
 CSRF_COOKIE_SECURE = True
 
 CSRF_COOKIE_HTTPONLY = True
 
-<<<<<<< HEAD
-CORS_ALLOW_CREDENTIALS = True
-
-=======
->>>>>>> main
 DJWTO_MODE = "TWO-COOKIES"
 DJWTO_ACCESS_TOKEN_LIFETIME = None
 
