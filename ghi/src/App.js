@@ -23,6 +23,7 @@ function App(props) {
         <Routes path="signup">
           <Route path="signup" element={<SignUp />}/>
         </Routes>
+
     </BrowserRouter>
   );
 }

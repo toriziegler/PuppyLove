@@ -58,7 +58,7 @@ class MainPage extends React.Component {
               <div className="form-floating mb-3">
               <form onSubmit={this.handleSubmit} id="create-account-form">
                 <input onChange={this.handleChangeZip} value={this.state.zip} placeholder="Zip" required type="text" name="zip" id="zip" className="form-control" />
-              <p className="card-text">Sign your puppy up today!</p>
+              <p className="card-text">Sign your pup up today!</p>
               <button className="btn btn-primary">Sign Up</button>
               </form>
               </div>

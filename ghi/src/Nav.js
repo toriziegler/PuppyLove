@@ -56,7 +56,10 @@ function Nav() {
                 <NavLink className="nav-link" to="/login">Log in</NavLink>
             </li>
             <li className="nav-item">
-                <NavLink className="nav-link" to="/signup">SignUp</NavLink>
+                <NavLink className="nav-link" to="/signup">Sign up</NavLink>
+            </li>
+            <li className="nav-item">
+                <NavLink className="nav-link" to="/message">Message</NavLink>
             </li>
           </ul>
           <div>
