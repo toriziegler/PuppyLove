@@ -32,4 +32,6 @@ This social network is for dog owners who are seeking compatible playmates for t
     - Videochat
     - Groomers
 
- 
+
+# Starting the App
+  - in the monolith-api container, bash, python manage.py loaddata data.json 

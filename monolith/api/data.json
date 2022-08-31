@@ -406,5 +406,44 @@
             "name": "Wyoming",
             "abbreviation": "WY"
         }
+    },
+    {
+        "model": "auth.permission",
+        "fields": {
+            "name": "Can add state",
+            "content_type": 4,
+            "codename": "add_state"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "fields": {
+            "name": "Can change state",
+            "content_type": 4,
+            "codename": "change_state"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "fields": {
+            "name": "Can delete state",
+            "content_type": 4,
+            "codename": "delete_state"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "fields": {
+            "name": "Can view state",
+            "content_type": 4,
+            "codename": "view_state"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "fields": {
+            "app_label": "puppylove_rest",
+            "model": "state"
+        }
     }
 ]

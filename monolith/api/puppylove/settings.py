@@ -18,7 +18,7 @@ from .keys import ACCESS_KEY_ID, SECRET_ACCESS_KEY, STORAGE_BUCKET_NAME, LOCATIO
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-#aws set-up
+# aws set-up
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'media/store'),
 ]
@@ -36,7 +36,8 @@ AWS_LOCATION = LOCATION
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 STATIC_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
 
-DEFAULT_FILE_STORAGE = 'puppylove.storage_backends.MediaStorage'  # <-- here is where we reference it
+# <-- here is where we reference it
+DEFAULT_FILE_STORAGE = 'puppylove.storage_backends.MediaStorage'
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
