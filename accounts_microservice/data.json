@@ -1,6 +1,6 @@
 [
     {
-        "model": "puppylove_rest.state",
+        "model": "accounts.state",
         "pk": 1,
         "fields": {
             "name": "Alabama",
@@ -8,7 +8,7 @@
         }
     },
     {
-        "model": "puppylove_rest.state",
+        "model": "accounts.state",
         "pk": 2,
         "fields": {
             "name": "Alaska",
@@ -16,7 +16,7 @@
         }
     },
     {
-        "model": "puppylove_rest.state",
+        "model": "accounts.state",
         "pk": 3,
         "fields": {
             "name": "Arizona",
@@ -24,7 +24,7 @@
         }
     },
     {
-        "model": "puppylove_rest.state",
+        "model": "accounts.state",
         "pk": 4,
         "fields": {
             "name": "Arkansas",
@@ -32,7 +32,7 @@
         }
     },
     {
-        "model": "puppylove_rest.state",
+        "model": "accounts.state",
         "pk": 5,
         "fields": {
             "name": "California",
@@ -40,7 +40,7 @@
         }
     },
     {
-        "model": "puppylove_rest.state",
+        "model": "accounts.state",
         "pk": 6,
         "fields": {
             "name": "Colorado",
@@ -48,7 +48,7 @@
         }
     },
     {
-        "model": "puppylove_rest.state",
+        "model": "accounts.state",
         "pk": 7,
         "fields": {
             "name": "Connecticut",
@@ -56,7 +56,7 @@
         }
     },
     {
-        "model": "puppylove_rest.state",
+        "model": "accounts.state",
         "pk": 8,
         "fields": {
             "name": "Delaware",
@@ -64,7 +64,7 @@
         }
     },
     {
-        "model": "puppylove_rest.state",
+        "model": "accounts.state",
         "pk": 9,
         "fields": {
             "name": "District of Columbia",
@@ -72,7 +72,7 @@
         }
     },
     {
-        "model": "puppylove_rest.state",
+        "model": "accounts.state",
         "pk": 10,
         "fields": {
             "name": "Florida",
@@ -80,7 +80,7 @@
         }
     },
     {
-        "model": "puppylove_rest.state",
+        "model": "accounts.state",
         "pk": 11,
         "fields": {
             "name": "Georgia",
@@ -88,7 +88,7 @@
         }
     },
     {
-        "model": "puppylove_rest.state",
+        "model": "accounts.state",
         "pk": 12,
         "fields": {
             "name": "Hawaii",
@@ -96,7 +96,7 @@
         }
     },
     {
-        "model": "puppylove_rest.state",
+        "model": "accounts.state",
         "pk": 13,
         "fields": {
             "name": "Idaho",
@@ -104,7 +104,7 @@
         }
     },
     {
-        "model": "puppylove_rest.state",
+        "model": "accounts.state",
         "pk": 14,
         "fields": {
             "name": "Illinois",
@@ -112,7 +112,7 @@
         }
     },
     {
-        "model": "puppylove_rest.state",
+        "model": "accounts.state",
         "pk": 15,
         "fields": {
             "name": "Indiana",
@@ -120,7 +120,7 @@
         }
     },
     {
-        "model": "puppylove_rest.state",
+        "model": "accounts.state",
         "pk": 16,
         "fields": {
             "name": "Iowa",
@@ -128,7 +128,7 @@
         }
     },
     {
-        "model": "puppylove_rest.state",
+        "model": "accounts.state",
         "pk": 17,
         "fields": {
             "name": "Kansas",
@@ -136,7 +136,7 @@
         }
     },
     {
-        "model": "puppylove_rest.state",
+        "model": "accounts.state",
         "pk": 18,
         "fields": {
             "name": "Kentucky",
@@ -144,7 +144,7 @@
         }
     },
     {
-        "model": "puppylove_rest.state",
+        "model": "accounts.state",
         "pk": 19,
         "fields": {
             "name": "Louisiana",
@@ -152,7 +152,7 @@
         }
     },
     {
-        "model": "puppylove_rest.state",
+        "model": "accounts.state",
         "pk": 20,
         "fields": {
             "name": "Maine",
@@ -160,7 +160,7 @@
         }
     },
     {
-        "model": "puppylove_rest.state",
+        "model": "accounts.state",
         "pk": 21,
         "fields": {
             "name": "Montana",
@@ -168,7 +168,7 @@
         }
     },
     {
-        "model": "puppylove_rest.state",
+        "model": "accounts.state",
         "pk": 22,
         "fields": {
             "name": "Nebraska",
@@ -176,7 +176,7 @@
         }
     },
     {
-        "model": "puppylove_rest.state",
+        "model": "accounts.state",
         "pk": 23,
         "fields": {
             "name": "Nevada",
@@ -184,7 +184,7 @@
         }
     },
     {
-        "model": "puppylove_rest.state",
+        "model": "accounts.state",
         "pk": 24,
         "fields": {
             "name": "New Hampshire",
@@ -192,7 +192,7 @@
         }
     },
     {
-        "model": "puppylove_rest.state",
+        "model": "accounts.state",
         "pk": 25,
         "fields": {
             "name": "New Jersey",
@@ -200,7 +200,7 @@
         }
     },
     {
-        "model": "puppylove_rest.state",
+        "model": "accounts.state",
         "pk": 26,
         "fields": {
             "name": "New Mexico",
@@ -208,7 +208,7 @@
         }
     },
     {
-        "model": "puppylove_rest.state",
+        "model": "accounts.state",
         "pk": 27,
         "fields": {
             "name": "New York",
@@ -216,7 +216,7 @@
         }
     },
     {
-        "model": "puppylove_rest.state",
+        "model": "accounts.state",
         "pk": 28,
         "fields": {
             "name": "North Carolina",
@@ -224,7 +224,7 @@
         }
     },
     {
-        "model": "puppylove_rest.state",
+        "model": "accounts.state",
         "pk": 29,
         "fields": {
             "name": "North Dakota",
@@ -232,7 +232,7 @@
         }
     },
     {
-        "model": "puppylove_rest.state",
+        "model": "accounts.state",
         "pk": 30,
         "fields": {
             "name": "Ohio",
@@ -240,7 +240,7 @@
         }
     },
     {
-        "model": "puppylove_rest.state",
+        "model": "accounts.state",
         "pk": 31,
         "fields": {
             "name": "Oklahoma",
@@ -248,7 +248,7 @@
         }
     },
     {
-        "model": "puppylove_rest.state",
+        "model": "accounts.state",
         "pk": 32,
         "fields": {
             "name": "Oregon",
@@ -256,7 +256,7 @@
         }
     },
     {
-        "model": "puppylove_rest.state",
+        "model": "accounts.state",
         "pk": 33,
         "fields": {
             "name": "Maryland",
@@ -264,7 +264,7 @@
         }
     },
     {
-        "model": "puppylove_rest.state",
+        "model": "accounts.state",
         "pk": 34,
         "fields": {
             "name": "Massachusetts",
@@ -272,7 +272,7 @@
         }
     },
     {
-        "model": "puppylove_rest.state",
+        "model": "accounts.state",
         "pk": 35,
         "fields": {
             "name": "Michigan",
@@ -280,7 +280,7 @@
         }
     },
     {
-        "model": "puppylove_rest.state",
+        "model": "accounts.state",
         "pk": 36,
         "fields": {
             "name": "Minnesota",
@@ -288,7 +288,7 @@
         }
     },
     {
-        "model": "puppylove_rest.state",
+        "model": "accounts.state",
         "pk": 37,
         "fields": {
             "name": "Mississippi",
@@ -296,7 +296,7 @@
         }
     },
     {
-        "model": "puppylove_rest.state",
+        "model": "accounts.state",
         "pk": 38,
         "fields": {
             "name": "Missouri",
@@ -304,7 +304,7 @@
         }
     },
     {
-        "model": "puppylove_rest.state",
+        "model": "accounts.state",
         "pk": 39,
         "fields": {
             "name": "Pennsylvania",
@@ -312,7 +312,7 @@
         }
     },
     {
-        "model": "puppylove_rest.state",
+        "model": "accounts.state",
         "pk": 40,
         "fields": {
             "name": "Rhode Island",
@@ -320,7 +320,7 @@
         }
     },
     {
-        "model": "puppylove_rest.state",
+        "model": "accounts.state",
         "pk": 41,
         "fields": {
             "name": "South Carolina",
@@ -328,7 +328,7 @@
         }
     },
     {
-        "model": "puppylove_rest.state",
+        "model": "accounts.state",
         "pk": 42,
         "fields": {
             "name": "South Dakota",
@@ -336,7 +336,7 @@
         }
     },
     {
-        "model": "puppylove_rest.state",
+        "model": "accounts.state",
         "pk": 43,
         "fields": {
             "name": "Tennessee",
@@ -344,7 +344,7 @@
         }
     },
     {
-        "model": "puppylove_rest.state",
+        "model": "accounts.state",
         "pk": 44,
         "fields": {
             "name": "Texas",
@@ -352,7 +352,7 @@
         }
     },
     {
-        "model": "puppylove_rest.state",
+        "model": "accounts.state",
         "pk": 45,
         "fields": {
             "name": "Utah",
@@ -360,7 +360,7 @@
         }
     },
     {
-        "model": "puppylove_rest.state",
+        "model": "accounts.state",
         "pk": 46,
         "fields": {
             "name": "Vermont",
@@ -368,7 +368,7 @@
         }
     },
     {
-        "model": "puppylove_rest.state",
+        "model": "accounts.state",
         "pk": 47,
         "fields": {
             "name": "Virginia",
@@ -376,7 +376,7 @@
         }
     },
     {
-        "model": "puppylove_rest.state",
+        "model": "accounts.state",
         "pk": 48,
         "fields": {
             "name": "Washington",
@@ -384,7 +384,7 @@
         }
     },
     {
-        "model": "puppylove_rest.state",
+        "model": "accounts.state",
         "pk": 49,
         "fields": {
             "name": "West Virginia",
@@ -392,7 +392,7 @@
         }
     },
     {
-        "model": "puppylove_rest.state",
+        "model": "accounts.state",
         "pk": 50,
         "fields": {
             "name": "Wisconsin",
@@ -400,7 +400,7 @@
         }
     },
     {
-        "model": "puppylove_rest.state",
+        "model": "accounts.state",
         "pk": 51,
         "fields": {
             "name": "Wyoming",
@@ -442,7 +442,7 @@
     {
         "model": "contenttypes.contenttype",
         "fields": {
-            "app_label": "puppylove_rest",
+            "app_label": "accounts",
             "model": "state"
         }
     }

@@ -21,7 +21,7 @@ class OwnerInfo extends React.Component{
     }
 
     async componentDidMount() {
-        const URL = 'http://localhost:8090/api/states/'
+        const URL = 'http://localhost:8100/api/states/'
         const response = await fetch(URL);
         if (response.ok) {
             const data = await response.json();
@@ -34,7 +34,7 @@ class OwnerInfo extends React.Component{
         delete data.showPassword;
         delete data.verify_password;
 
-        const url = `${process.env.REACT_APP_API_HOST}/api/owners/`;
+        const url = 'http://localhost:8100/api/owners';
         const fetchConfig = {
             method: "POST",
             body: JSON.stringify(data),

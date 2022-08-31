@@ -11,8 +11,7 @@ beautifulsoup4==4.11.1
 bleach==5.0.0
 certifi==2021.10.8
 cffi==1.15.0
-boto3==1.24.62
-django-storages==1.13.1  
+pika==1.2.0
 colorama==0.4.4
 cryptography==36.0.2
 cycler==0.11.0
@@ -87,7 +86,8 @@ PySocks==1.7.1
 pytest==7.1.0
 python-dateutil==2.8.2
 pytz==2022.1
-
+boto3==1.24.62
+django-storages==1.13.1
  
 pyzmq==23.1.0
 qtconsole==5.3.1
@@ -122,7 +122,7 @@ wsproto==1.1.0
 black==22.3.0
 charset-normalizer==2.0.12
 click==8.1.2
-Django==4.0.3
+
 psycopg2==2.9.3
 requests==2.27.1
 whitenoise==5.3.0

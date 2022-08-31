@@ -1,8 +1,11 @@
 volumes:
     postgres-data:
         external: true
+    pg-admin:
+        external: true
 services:
     postgres:
+        image: postgres:14-bullseye
         build:
             context: ./relational-data
             dockerfile: ./Dockerfile.dev
@@ -10,6 +13,7 @@ services:
             - postgres-data:/var/lib/postgresql/data
         environment:
             POSTGRES_MULTIPLE_DATABASES: accounts, monolith
+            POSTGRES_USER: postgres
             POSTGRES_PASSWORD: test-databases
         ports:
             - 15432:5432
@@ -50,32 +54,50 @@ services:
             NODE_ENV: development
             HOST: "0.0.0.0"
             REACT_APP_DJANGO_SERVICE: http://localhost:8080
-    # account-api:
-    #     build:
-    #         context: ./accounts_microservice
-    #         dockerfile: ./Dockerfile.dev
-    #     ports:
-    #         - "8100:8000"
-    #     volumes:
-    #         - ./accounts_microservice:/app
-    #     depends_on:
-    #         - postgres
-    #     environment:
-    #         DATABASE_URL: postgresql://accounts:password@postgres:5432/accounts
-    #         WAIT_HOSTS: postgres:5432
-    #         WAIT_TIMEOUT: 240
-    # puppylove-poller:
-    #     build:
-    #         context: ./monolith/poll
-    #         dockerfile: ./Dockerfile.dev
-    #     volumes:
-    #         - ./monolith/poll:/app
-    #         - ./monolith/poll/puppylove:/app/puppylove
-    #         - ./monolith/poll/puppylove_rest:/app/puppylove_rest
-    #     depends_on:
-    #         - postgres
-    #         - monolith
-    #     environment:
-    #         DATABASE_URL: postgresql://monolith:password@postgres:5432/monolith
-    #         WAIT_HOSTS: postgres:5432,monolith:8000
-    #         WAIT_TIMEOUT: 240
+    account-api:
+        build:
+            context: ./accounts_microservice
+            dockerfile: ./Dockerfile.dev
+        ports:
+            - "8100:8000"
+        volumes:
+            - ./accounts_microservice:/app
+        depends_on:
+            - postgres
+        environment:
+            DATABASE_URL: postgres://accounts:password@postgres:5432/accounts
+            WAIT_HOSTS: postgres:5432
+            WAIT_TIMEOUT: 240
+            AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
+            AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
+            AWS_STORAGE_BUCKET_NAME: ${AWS_STORAGE_BUCKET_NAME}
+            AWS_S3_CUSTOM_DOMAIN: ${AWS_S3_CUSTOM_DOMAIN}
+            AWS_LOCATION: ${AWS_LOCATION}
+            STATICFILES_STORAGE: ${STATICFILES_STORAGE}
+            STATIC_URL: ${STATIC_URL}
+            DEFAULT_FILE_STORAGE: ${DEFAULT_FILE_STORAGE}
+            AWS_Cache: ${AWS_Cache}
+    puppylove-poller:
+        build:
+            context: ./monolith/poll
+            dockerfile: ./Dockerfile.dev
+        volumes:
+            - ./monolith/poll:/app
+            - ./monolith/api/puppylove:/app/puppylove
+            - ./monolith/api/puppylove_rest:/app/puppylove_rest
+        depends_on:
+            - postgres
+            - monolith
+        environment:
+            DATABASE_URL: postgres://monolith:password@postgres:5432/monolith
+            WAIT_HOSTS: postgres:5432,monolith:8000
+            WAIT_TIMEOUT: 240
+            AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
+            AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
+            AWS_STORAGE_BUCKET_NAME: ${AWS_STORAGE_BUCKET_NAME}
+            AWS_S3_CUSTOM_DOMAIN: ${AWS_S3_CUSTOM_DOMAIN}
+            AWS_LOCATION: ${AWS_LOCATION}
+            STATICFILES_STORAGE: ${STATICFILES_STORAGE}
+            STATIC_URL: ${STATIC_URL}
+            DEFAULT_FILE_STORAGE: ${DEFAULT_FILE_STORAGE}
+            AWS_Cache: ${AWS_Cache}

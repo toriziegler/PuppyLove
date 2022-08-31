@@ -6,8 +6,8 @@ import Nav from './Nav';
 import Profile from './Profile';
 import LoginForm from './LoginForm';
 import SignUp from './SignUp';
-import DogInfo from './DogInfo';
 import OwnerInfo from './OwnerInfo';
+import DogInfo from './DogInfo';
 
 function App(props) {
   return (
