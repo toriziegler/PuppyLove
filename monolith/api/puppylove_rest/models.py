@@ -14,15 +14,16 @@ class State(models.Model):
     State is a Value Object and, therefore, does not have a
     direct URL to view it.
     """
-
+    
+    id = models.PositiveIntegerField(primary_key=True)
     name = models.CharField(max_length=40)
     abbreviation = models.CharField(max_length=2, unique=True)
 
     def str(self):
-        return f"{self.abbreviation}"
+        return f"{self.name}"
 
-class Meta:
-    ordering = ("abbreviation",)  # Default ordering for State
+    class Meta:
+        ordering = ("abbreviation",)  # Default ordering for State
 
 class Owner (models.Model):
     name = models.CharField(max_length=200)
