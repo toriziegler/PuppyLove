@@ -42,6 +42,50 @@ def api_owners(request):
             response.status_code = 400
             return response
 
+@csrf_exempt
+@require_http_methods(["GET", "PUT", "DELETE"])
+def api_owner_show_update_delete(request, pk):
+    if request.method == "GET":
+        owner = Owner.objects.get(id=pk)
+        return JsonResponse(
+            {"owner": owner},
+            encoder=OwnerEncoder,
+        )
+    elif request.method == "DELETE": 
+        try:
+            owner = Owner.objects.get(id=pk)
+            owner.delete()
+            return JsonResponse(
+                owner,
+                encoder=OwnerEncoder,
+                safe=False,
+            )
+        except Owner.DoesNotExist:
+            return JsonResponse({"message": "This owner does not exist"})
+
+    else:  # PUT
+        try:
+            content = json.loads(request.body)
+            owner = Owner.objects.get(id=pk)
+
+            props = [
+        "name", "email", "phone", "description", "state"
+        ]
+            for prop in props:
+                if prop in content:
+                    setattr(owner, prop, content[prop])
+            owner.save()
+            return JsonResponse(
+                owner,
+                encoder=OwnerEncoder,
+                safe=False,
+            )
+
+        except Owner.DoesNotExist:
+            response = JsonResponse({"message": "Does not exist"})
+            response.status_code = 404
+            return response
+
 
 @csrf_exempt
 @require_http_methods(["GET", "POST"])
