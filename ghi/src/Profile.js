@@ -8,16 +8,9 @@ class Profile extends React.Component {
 
         };
         // this.handleUpdate = this.handleUpdate.bind(this);
+        this.handleChangeName = this.handleChangeName.bind(this);
     }
 
-    // async componentDidMount() {
-    //     const URL = 'http://localhost:8080/api/appointments/'
-    //     const response = await fetch(URL);
-    //     if (response.ok) {
-    //         const data = await response.json();
-    //         this.setState({ appointments: data.appointments.filter(each => each.completed === false) });
-    //     }
-    // }
 
 //     async handleUpdate(event,appointment) {
 //         event.preventDefault();
@@ -47,6 +40,10 @@ class Profile extends React.Component {
 //             console.log("appointment completed")
 //     }
 // }
+handleChangeName(event) {
+    const value = event.target.value;
+    this.setState({ name: value });
+  }
 
     render() {
         return (
@@ -90,26 +87,14 @@ class Profile extends React.Component {
                         <th>Gender</th>
                         <th>Insert Gender</th>
                     </tr>
-                    <tr>
-                        <th>Links to papers</th>
-                        <th>Insert your dog records</th>
-                    </tr>
                 </thead>
                 </table>
-                <h2>Contact Info</h2>
+                <h2>Pictures</h2>
                 <table className="table table-success table-striped">
                 <thead>
                     <tr>
-                        <th>Email</th>
-                        <th>Insert Email</th>
-                    </tr>
-                    <tr>
-                        <th>Phone Number</th>
-                        <th>Insert Number</th>
-                    </tr>
-                    <tr>
-                        <th>Located At</th>
-                        <th>Insert Location</th>
+                        <th>Pictures</th>
+                        <th><button>Upload your pictures</button></th>
                     </tr>
                 </thead>
             <tbody>

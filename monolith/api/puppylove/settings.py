@@ -20,7 +20,7 @@ import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-#aws set-up
+# aws set-up
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'media/store'),
 ]
@@ -65,6 +65,7 @@ INSTALLED_APPS = [
 
 ]
 
+
 MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
     "corsheaders.middleware.CorsMiddleware",
@@ -90,8 +91,8 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:8100",
 ]
 
-
 CORS_ALLOW_CREDENTIALS = True
+
 
 
 CSRF_COOKIE_SECURE = True

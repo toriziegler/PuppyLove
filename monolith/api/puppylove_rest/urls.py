@@ -9,4 +9,3 @@ urlpatterns = [
     path("dogs/", api_dogs, name="api_dogs"),
     path("upload/", AWSPhotoCreateView.as_view(), name="photo_form")
     ]
-
