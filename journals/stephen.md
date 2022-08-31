@@ -15,8 +15,18 @@ footer sticky. I centered the sign up box. I created a profile page to display t
 I worked with Taylor to get images sent to our AWS.
 
 # August 25
+Worked on making the SignUp Page and Login Page. Working on creating the messaging system.
 Worked with Norton on more react stuff.
 Creating sign up and log in pages
+
+# August 26
+stuff
+
+# August 27
+more stuff
+
+# August 28
+things
 
 # August 29
 Worked on debugging the yaml file with Taylor and Victoria.

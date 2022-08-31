@@ -6,7 +6,6 @@ import Nav from './Nav';
 import Profile from './Profile';
 import LoginForm from './LoginForm';
 import SignUp from './SignUp';
-import DogInfo from './DogInfo';
 function App(props) {
   return (
     <BrowserRouter>

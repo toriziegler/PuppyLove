@@ -1,10 +1,31 @@
+# August 29, 2022
+What we today?
+- Met with team
+- Did our morning Scrum meeting 
+- We started strong. We thought we all knew what needed to be done, but as we began everything started to fall apart today. 
+-Nicolas, Stephen, and myself were struggling with the authentication. We have the react pages made, but we do not know how to connect them to the backend. However, that doesn't really matter because the backend is not done because the Dogs views are connected to the owner view, which was removed to make accounts it's own microservice with a poller to fine other local owners. We also are having trouble putting together the data base to hold all the state data that we need to create a user. We may need to think of a work around to needing the states data .
+
+ Potential blockers?
+1. everything mentioned above
+
+
+
+# August 29, 2022
+What we today?
+- Met with team
+- Did our morning Scrum meeting 
+- I found the bugs in the Views and now all the methods are functioning 
+- We worked as a group to fix up our yaml file and our docker dev file, because our initial attempt was wrong. Thanks to the help of our instructors we were able to fix it and now our main blocker is done.
+
+ Potential blockers?
+1. We have been putting off all our merges since we have been working on different things. We decided to just start making our own working branches and will piece the project together later on. 
+
 
 # August 25, 2022
 What we today?
 - Met with team
 - I worked with Stephen a little on the front end React for the login pages.
 - I tried to finish up the Owner views, how ever we all seem to be running into issues
-
 
  Potential blockers?
 1. The over views are mostly functional, but for some reason the PUT method is not updating the data despite giving a 200 code. Also I can no longer create an owner from insomnia.

@@ -20,7 +20,7 @@ const phantomStyle = {
   display: "block",
   padding: "20px",
   height: "60px",
-  width: "100%"
+  width: "100%",
 };
 
 function Footer({ children }) {
@@ -53,10 +53,10 @@ function Nav() {
                 <NavLink className="nav-link" to="/profile">Profile</NavLink>
             </li>
             <li className="nav-item">
-                <NavLink className="nav-link" to="/signup">Sign up</NavLink>
+                <NavLink className="nav-link" to="/login">Log in</NavLink>
             </li>
             <li className="nav-item">
-                <NavLink className="nav-link" to="/login">Login</NavLink>
+                <NavLink className="nav-link" to="/signup">Sign up</NavLink>
             </li>
             <li className="nav-item">
                 <NavLink className="nav-link" to="/message">Message</NavLink>

@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Photo, Dog, Owner, State
+from .models import Photo, Dog, Owner, State, AWSPhoto
 from .encoders import DogEncoder, OwnerEncoder, StateEncoder
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
@@ -9,10 +9,7 @@ from django.contrib.auth.decorators import login_required
 from django.views.generic.edit import CreateView
 from django.urls import reverse_lazy
 import logging
-from botocore.exceptions import ClientError
 
-
-from .models import AWSPhoto
 
 # Create your views here.
 
@@ -35,6 +32,7 @@ def api_dogs(request):
     else:
         try:
             content = json.loads(request.body)
+            print(content, "FIRSTLINE")
             owner_id = content["owner"]
             owner = Owner.objects.get(id=owner_id)
             content["owner"] = owner
@@ -68,12 +66,11 @@ def api_owners(request):
             content = json.loads(request.body)
             state_id = content["state"]
             state = State.objects.get(id=state_id)
-            content["owner"] = state
+            content["state"] = state
+            owner = Owner.objects.create(**content)
             print("CONTENNTTTT", content)
-            owners = Owner.objects.create(**content)
-            print("ONWERRRRRRRRRR", owners)
             return JsonResponse(
-                owners,
+                owner,
                 encoder=OwnerEncoder,
                 safe=False,
             )
@@ -135,26 +132,12 @@ def api_owner_show_update_delete(request, pk):
 @require_http_methods(["GET", "POST"])
 def api_states(request):
     if request.method == "GET":
-        states = State.objects.all()
-        return JsonResponse(
-            {"states": states},
-            encoder=StateEncoder,
-        )
-    else:
-        try:
-            content = json.loads(request.body)
-            state = State.objects.create(**content)
-            return JsonResponse(
-                state,
-                encoder=StateEncoder,
-                safe=False,
-            )
-        except:
-            response = JsonResponse(
-                {"message": "Could not create the State"}
-            )
-            response.status_code = 400
-            return response
+        states = State.objects.all().order_by('name')
+        state_list = []
+        for state in states:
+            state_dict = {"name": state.name, "abbreviation": state.abbreviation}
+            state_list.append(state_dict)
+        return JsonResponse({"states": state_list})
 
 class AWSPhotoCreateView(CreateView):
     model = AWSPhoto

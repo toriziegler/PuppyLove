@@ -15,24 +15,10 @@ from pathlib import Path
 import os
 from .keys import ACCESS_KEY_ID, SECRET_ACCESS_KEY, STORAGE_BUCKET_NAME, LOCATION, CLOUDname, APIkey, APIsecret
 
-
-
-import cloudinary
-import cloudinary.uploader
-import cloudinary.api
-
-# need to make these global and move keys
-cloudinary.config( 
-  cloud_name = CLOUDname, 
-  api_key = APIkey, 
-  api_secret = APIsecret 
-)
-
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-#aws set-up
+# aws set-up
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'media/store'),
 ]
@@ -50,7 +36,8 @@ AWS_LOCATION = LOCATION
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 STATIC_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
 
-DEFAULT_FILE_STORAGE = 'puppylove.storage_backends.MediaStorage'  # <-- here is where we reference it
+# <-- here is where we reference it
+DEFAULT_FILE_STORAGE = 'puppylove.storage_backends.MediaStorage'
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
@@ -73,14 +60,18 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+<<<<<<< HEAD
     'django.contrib.staticfiles',
-    'puppylove_rest.apps.PuppyloveRestConfig'
-    # 'phonenumber_field',
-    # 'puppylove_rest.apps.PuppyloveRestConfig',
-    # 'storages',
-]
+    'phonenumber_field',
+    'puppylove_rest.apps.PuppyloveRestConfig',
+    'storages',
 
-#these need to be commented out for the site to work, we will look into it further as we move on. 
+
+=======
+    'puppylove_rest.apps.PuppyloveRestConfig',
+    'storages',
+>>>>>>> 2ad93526ae0a694b623e2f4d6142f54a601b24bb
+]
 
 MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -105,16 +96,11 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:8080",
 ]
 
-
-
 CORS_ALLOW_CREDENTIALS = True
-
 
 CSRF_COOKIE_SECURE = True
 
 CSRF_COOKIE_HTTPONLY = True
-
-CORS_ALLOW_CREDENTIALS = True
 
 DJWTO_MODE = "TWO-COOKIES"
 DJWTO_ACCESS_TOKEN_LIFETIME = None
