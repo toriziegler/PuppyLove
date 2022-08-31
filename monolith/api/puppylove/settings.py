@@ -61,10 +61,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'puppylove_rest.apps.PuppyloveRestConfig',
     'storages',
-
-
 ]
-
 
 MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -164,7 +161,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 MEDIA_ROOT = 'media/'
 
 # Default primary key field type
