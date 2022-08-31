@@ -1,3 +1,11 @@
+# August 31, 2022
+Today I worked on:
+
+* .gitlab-ci.yml
+* Heroku deployment
+
+    I realized our gitlab was under my name only rather than the group name. I got the gitlab project transferred to our group pawfessional programmers so we could use the correct URL for deployment. I continued building the deployment portion of the ci file and Heroku. 
+
 # August 30, 2022
 Today I worked on:
 
