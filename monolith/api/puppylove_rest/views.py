@@ -24,7 +24,7 @@ def api_dogs(request):
             content = json.loads(request.body)
             print(content, "FIRSTLINE")
             owner_id = content["owner"]
-            owner = Owner.objects.get(id=owner_id)
+            owner = OwnerVO.objects.get(id=owner_id)
             content["owner"] = owner
             dog = Dog.objects.create(**content)
             return JsonResponse(
