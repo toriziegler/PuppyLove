@@ -11,7 +11,8 @@ beautifulsoup4==4.11.1
 bleach==5.0.0
 certifi==2021.10.8
 cffi==1.15.0
-  
+boto3==1.24.62
+django-storages==1.13.1  
 colorama==0.4.4
 cryptography==36.0.2
 cycler==0.11.0

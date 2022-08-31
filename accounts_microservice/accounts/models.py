@@ -4,6 +4,7 @@ import uuid
 
 class State(models.Model):
     name = models.CharField(max_length=40)
+    id = models.PositiveIntegerField(primary_key=True)
     abbreviation = models.CharField(max_length=2, unique=True)
 
     def str(self):
@@ -13,7 +14,7 @@ class State(models.Model):
         ordering = ("abbreviation",)  # Default ordering for State
 
 
-class Owner (models.Model):
+class Owner(models.Model):
     name = models.CharField(max_length=200)
     email = models.EmailField()
     phone = models.PositiveSmallIntegerField(validators=[MaxValueValidator(9999999999)])

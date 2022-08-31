@@ -9,7 +9,6 @@ from django.contrib.auth.decorators import login_required
 from django.views.generic.edit import CreateView
 from django.urls import reverse_lazy
 import logging
-#from botocore.exceptions import ClientError
 
 
 from .models import AWSPhoto
@@ -30,9 +29,7 @@ def api_owners(request):
             state_id = content["state"]
             state = State.objects.get(id=state_id)
             content["state"] = state
-            print("CONTENNTTTT", content)
             owner = Owner.objects.create(**content)
-            print("ONWERRRRRRRRRR", owner)
             return JsonResponse(
                 owner,
                 encoder=OwnerEncoder,

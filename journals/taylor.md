@@ -46,3 +46,26 @@ one issue we are trying to think through is, "how do we ensure we are filtering 
 Today I changed gears. We realized that the Owner should be it's own Microservice, similar to how the inventory and sales departments were implemented. I spent most of today with Nicholas trying to get a new docker-compose to work correctly.
 
 once that was able to run we ran through all the code that contained that information in the monolith and moved it to the new Django project for our accounts microservice. We will try to implement a poller next week so we can get the monolith up and running again with the information accurately pulling from the accounts microservice. We had to comment out a bunch of code in order to get monolith back to a good state. We will be able to test our code this way for the poller but uncommenting what we need will be hard. 
+
+
+## Aug 29, 2022
+
+Today I was charged with completing the accounts microservice and fixing error in our docker compose yaml file. We were able to get the yaml file to where it needed to be but we still are having issues with the poller
+
+## Aug 30, 2022
+
+today we fixed issues with the poller but are still having issues with our backend server connecting to our django project. We spent most of the day researching how to connect postgres. This still does not seem to be working as the migrations are not happening. More will be needed on this tomorrow. 
+
+## Aug 31, 2022
+ able to set up database
+ DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'accounts',
+        'USER': 'postgres',
+        'PASSWORD': 'test123',
+        'HOST': 'localhost',
+        'PORT': '5432',
+    }
+}
+then ran >>> python manage.py migrate --run-syncdb

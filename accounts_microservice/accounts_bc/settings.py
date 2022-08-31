@@ -40,7 +40,7 @@ AWS_S3_OBJECT_PARAMETERS = {
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["localhost", "monolith"]
+ALLOWED_HOSTS = ["localhost", "monolith", 'account-api']
 
 
 # Application definition
@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'storages'
 ]
 
 MIDDLEWARE = [
@@ -69,7 +70,9 @@ MIDDLEWARE = [
 
 CSRF_TRUSTED_ORIGINS = [
     "http://localhost:3000",
+    "http://localhost:3001",
     "http://localhost:8080",
+    "http://localhost:8001",
     "http://localhost:8000",
     "http://localhost:8100",
 ]
