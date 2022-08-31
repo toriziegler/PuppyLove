@@ -1,6 +1,6 @@
 from django.urls import path
 
-from .views import api_dogs, api_owners, api_show_owner, api_states, index
+from .views import api_dogs, api_owners, api_states, index
 
 from .views import api_dogs, index, AWSPhotoCreateView
 

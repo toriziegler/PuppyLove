@@ -60,17 +60,9 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-<<<<<<< HEAD
     'django.contrib.staticfiles',
-    'phonenumber_field',
     'puppylove_rest.apps.PuppyloveRestConfig',
     'storages',
-
-
-=======
-    'puppylove_rest.apps.PuppyloveRestConfig',
-    'storages',
->>>>>>> 2ad93526ae0a694b623e2f4d6142f54a601b24bb
 ]
 
 MIDDLEWARE = [

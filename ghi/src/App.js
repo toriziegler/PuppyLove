@@ -6,6 +6,9 @@ import Nav from './Nav';
 import Profile from './Profile';
 import LoginForm from './LoginForm';
 import SignUp from './SignUp';
+import DogInfo from './DogInfo';
+import OwnerInfo from './OwnerInfo';
+
 function App(props) {
   return (
     <BrowserRouter>
@@ -24,6 +27,9 @@ function App(props) {
         </Routes>
         <Routes path="doginfo">
           <Route path="doginfo" element={<DogInfo />}/>
+        </Routes>
+        <Routes path="ownerinfo">
+          <Route path="ownerinfo" element={<OwnerInfo />}/>
         </Routes>
     </BrowserRouter>
   );
