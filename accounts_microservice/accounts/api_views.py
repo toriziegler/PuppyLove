@@ -9,6 +9,8 @@ from django.contrib.auth.decorators import login_required
 from django.views.generic.edit import CreateView
 from django.urls import reverse_lazy
 import logging
+from rest_framework.response import Response
+from rest_framework.decorators import api_view
 
 
 from .models import AWSPhoto
@@ -81,3 +83,15 @@ class AWSPhotoCreateView(CreateView):
         photos = AWSPhoto.objects.all()
         context['Photos'] = photos
         return context
+
+
+@csrf_exempt
+@api_view(['GET'])
+def getRoutes(request):
+    routes = [
+        'api/api2/token',
+        '/api/api2/token/refresh',
+        
+    ]
+
+    return Response(routes)
