@@ -64,6 +64,9 @@ function Nav() {
             <li className="nav-item">
                 <NavLink className="nav-link" to="/doginfo">Dog Information</NavLink>
             </li>
+            <li className="nav-item">
+                <NavLink className="nav-link" to="/ownerinfo">Owner Information</NavLink>
+            </li>
             
           </ul>
           <div>
