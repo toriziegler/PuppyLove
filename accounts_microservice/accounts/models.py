@@ -8,10 +8,10 @@ class State(models.Model):
     abbreviation = models.CharField(max_length=2, unique=True)
 
     def str(self):
-        return f"{self.abbreviation}"
+        return self.name
 
     class Meta:
-        ordering = ("abbreviation",)  # Default ordering for State
+        ordering = ("id",)  # Default ordering for State
 
 
 class Owner(models.Model):
