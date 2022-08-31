@@ -79,7 +79,7 @@ class MainPage extends React.Component {
                 <input onChange={this.handleChangeAge} value={this.state.age} placeholder="Age" required type="text" name="age" id="age" className="form-control" />
                 <input onChange={this.handleChangeGender} value={this.state.Gender} placeholder="Gender" required type="text" name="Gender" id="Gender" className="form-control" />
                 <input onChange={this.handleChangeZip} value={this.state.zip} placeholder="Zip" required type="text" name="zip" id="zip" className="form-control" />
-              <p className="card-text">Sign your puppy up today!</p>
+              <p className="card-text">Sign your pup up today!</p>
               <button className="btn btn-primary">Sign Up</button>
               </form>
               </div>

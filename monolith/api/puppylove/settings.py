@@ -15,17 +15,6 @@ from pathlib import Path
 import os
 from .keys import ACCESS_KEY_ID, SECRET_ACCESS_KEY, STORAGE_BUCKET_NAME, LOCATION, CLOUDname, APIkey, APIsecret
 
-import cloudinary
-import cloudinary.uploader
-import cloudinary.api
-
-# need to make these global and move keys
-cloudinary.config( 
-  cloud_name = CLOUDname, 
-  api_key = APIkey, 
-  api_secret = APIsecret 
-)
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -70,7 +59,6 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
     'puppylove_rest.apps.PuppyloveRestConfig',
     'storages',
 ]
@@ -98,14 +86,11 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:8080",
 ]
 
-
 CORS_ALLOW_CREDENTIALS = True
-
 
 CSRF_COOKIE_SECURE = True
 
 CSRF_COOKIE_HTTPONLY = True
-
 
 DJWTO_MODE = "TWO-COOKIES"
 DJWTO_ACCESS_TOKEN_LIFETIME = None
