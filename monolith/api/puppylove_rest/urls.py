@@ -1,5 +1,8 @@
 from django.urls import path
 
+from .views import api_dogs, api_owners
+
+from .views import AWSPhotoCreateView
 from .views import api_dogs, api_owner_show_VO, api_ownerVOs, AWSPhotoCreateView
 
 urlpatterns = [
