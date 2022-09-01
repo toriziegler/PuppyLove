@@ -4,7 +4,7 @@ stages:
   # - deploy  # Run deploy after build
 
 services:
-  - postgres: 14.2-bullseye
+  - postgres: '14.2-bullseye'
 
 variables:
   ACCOUNT_DATABASE_URL: postgres://accounts:password@postgres:5432/accounts
