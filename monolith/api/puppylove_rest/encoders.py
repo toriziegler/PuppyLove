@@ -27,6 +27,5 @@ class DogEncoder(ModelEncoder):
         "owner"
     ]
     encoders = {
-        "owner" : OwnerVOEncoder()
+        "owner": OwnerVOEncoder()
     }
-

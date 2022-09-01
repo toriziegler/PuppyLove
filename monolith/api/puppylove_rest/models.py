@@ -1,22 +1,20 @@
 from django.db import models
-from puppylove.settings import MEDIA_ROOT
 import uuid
-
 from django.core.validators import MaxValueValidator
-
-# from phonenumber_field.modelfields import PhoneNumberField
-
-
-
 
 
 class OwnerVO (models.Model):
     name = models.CharField(max_length=200)
     email = models.EmailField()
-    phone = models.PositiveSmallIntegerField(validators=[MaxValueValidator(9999999999)])
+    phone = models.BigIntegerField(validators=[MaxValueValidator(9999999999)])
     description = models.TextField(max_length=1000)
-    account_number = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    account_number = models.UUIDField(
+        primary_key=True,
+        default=uuid.uuid4,
+        editable=False
+    )
     state = models.CharField(max_length=2)
+
     def str(self):
         return f"{self.name}"
 
@@ -27,8 +25,12 @@ class Dog (models.Model):
     breed = models.CharField(max_length=100, default="mix")
     description = models.TextField(max_length=1000, null=True, blank=True)
     # documentation = models.FileField(null=True, blank=True)
-    owner = models.ForeignKey(OwnerVO, related_name="owner", on_delete=models.CASCADE, null=False)
-
+    owner = models.ForeignKey(
+        OwnerVO,
+        related_name="owner",
+        on_delete=models.CASCADE,
+        null=False
+    )
 
     def str(self):
         return f"{self.name}"
@@ -36,5 +38,9 @@ class Dog (models.Model):
 
 class AWSPhoto(models.Model):
     uploaded_at = models.DateTimeField(auto_now_add=True)
-    owner_id = models.ForeignKey(OwnerVO, related_name="photo", on_delete=models.PROTECT)
+    owner_id = models.ForeignKey(
+        OwnerVO,
+        related_name="photo",
+        on_delete=models.PROTECT
+    )
     upload = models.FileField()

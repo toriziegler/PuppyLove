@@ -11,6 +11,7 @@ django.setup()
 
 from puppylove_rest.models import OwnerVO
 
+
 def get_owners():
     response = requests.get("http://account-api:8000/api/owners/")
     content = json.loads(response.content)
@@ -18,12 +19,12 @@ def get_owners():
         OwnerVO.objects.update_or_create(
             import_href=owner['href'],
             defaults={
-            'name': owner['name'],
-            'email': owner['email'],
-            'phone': owner['phone'],
-            'description': owner['description'],
-            'account_number': owner['account_number'],
-            'state': owner['state']
+                'name': owner['name'],
+                'email': owner['email'],
+                'phone': owner['phone'],
+                'description': owner['description'],
+                'account_number': owner['account_number'],
+                'state': owner['state']
             }
         )
 

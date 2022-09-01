@@ -21,5 +21,3 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('puppylove_rest.urls'))
 ]
-
-

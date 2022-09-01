@@ -1,17 +1,11 @@
-from django.shortcuts import render
 from .models import AWSPhoto, Owner, State
 from .encoders import OwnerEncoder, StateEncoder
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 from django.views.decorators.http import require_http_methods
 import json
-from django.contrib.auth.decorators import login_required
 from django.views.generic.edit import CreateView
 from django.urls import reverse_lazy
-import logging
-
-
-from .models import AWSPhoto
 
 
 @csrf_exempt
@@ -35,12 +29,13 @@ def api_owners(request):
                 encoder=OwnerEncoder,
                 safe=False,
             )
-        except:
+        except Owner.DoesNotExist:
             response = JsonResponse(
                 {"message": "Could not create the Owner"}
             )
             response.status_code = 400
             return response
+
 
 @csrf_exempt
 @require_http_methods(["GET", "PUT", "DELETE"])
@@ -51,7 +46,7 @@ def api_owner_show_update_delete(request, pk):
             {"owner": owner},
             encoder=OwnerEncoder,
         )
-    elif request.method == "DELETE": 
+    elif request.method == "DELETE":
         try:
             owner = Owner.objects.get(id=pk)
             owner.delete()
@@ -69,8 +64,8 @@ def api_owner_show_update_delete(request, pk):
             owner = Owner.objects.get(id=pk)
 
             props = [
-        "name", "email", "phone", "description", "state"
-        ]
+                "name", "email", "phone", "description", "state"
+            ]
             for prop in props:
                 if prop in content:
                     setattr(owner, prop, content[prop])
@@ -105,7 +100,7 @@ def api_states(request):
                 encoder=StateEncoder,
                 safe=False,
             )
-        except:
+        except State.DoesNotExist:
             response = JsonResponse(
                 {"message": "Could not create the State"}
             )
@@ -115,8 +110,7 @@ def api_states(request):
 
 class AWSPhotoCreateView(CreateView):
     model = AWSPhoto
-    template_name= "photos/upload.html"
-    
+    template_name = "photos/upload.html"
     fields = ['upload', ]
     success_url = reverse_lazy('index')
 
