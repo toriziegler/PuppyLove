@@ -14,16 +14,16 @@ variables:
   POSTGRES_PASSWORD: test-databases
   WAIT_HOSTS: postgres:5432 
 
-# ## TESTING
-# monolith-api-unit-test-job:
-#   image: python:3-bullseye
-#   stage: test
-#   script:
-#     - cd monolith/api
-#     - pip install -r requirements.txt
-#     # - export MONOLITH_DATABASE_URL
-#     # - python manage.py migrate  # Migrate the database
-#     - python manage.py test  # Run the tests
+## TESTING
+monolith-api-unit-test-job:
+  image: python:3-bullseye
+  stage: test
+  script:
+    - cd monolith/api
+    - pip install -r requirements.txt
+    # - export MONOLITH_DATABASE_URL
+    # - python manage.py migrate  # Migrate the database
+    - python manage.py test  # Run the tests
 
 # account-api-unit-test-job:
 # image: python:3-bullseye
