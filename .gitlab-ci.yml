@@ -36,7 +36,7 @@ lint-project-job:
   stage: test
   script:
     - pip install flake8
-    - flake8 monolith  # Run flake8 on project ot check for code quality
+    - flake8 monolith  # Run flake8 on project to check for code quality
 
 ## BUILDING
 ghi-front-end-build-job:
@@ -99,7 +99,7 @@ monolith-poller-back-end-build-job:
   services:
     - docker:20.10.16-dind
   script:
-    - cd monolith/poller
+    - cd monolith/poll
     - docker build -t ${CI_REGISTRY_IMAGE}/monolith_poller:latest .  
     - docker tag ${CI_REGISTRY_IMAGE}/monolith_poller:latest ${CI_REGISTRY_IMAGE}/monolith_poller:$CI_JOB_ID  
     - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY 

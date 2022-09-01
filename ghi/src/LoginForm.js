@@ -44,9 +44,9 @@ class LoginForm extends React.Component {
     // }
     render(){
 
-        // if (this.props.token) {
-        //     return <Navigate to="/profile" />;
-        // }
+        if (this.props.token) {
+            return <Navigate to="/profile" />;
+        }
 
         return(
             <div className="App">
