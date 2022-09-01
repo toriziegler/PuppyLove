@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from .models import Photo, Dog, Owner, State, AWSPhoto
-from .encoders import DogEncoder, OwnerEncoder, StateEncoder
+from .models import Dog, AWSPhoto, OwnerVO
+from .encoders import DogEncoder, OwnerVOEncoder
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 from django.views.decorators.http import require_http_methods
@@ -8,18 +8,6 @@ import json
 from django.contrib.auth.decorators import login_required
 from django.views.generic.edit import CreateView
 from django.urls import reverse_lazy
-import logging
-from botocore.exceptions import ClientError
-
-
-
-# Create your views here.
-
-
-def index(request):
-    photos = Photo.objects.all()
-    ctx = {'photos': photos}
-    return render(request, 'photos/index.html', ctx)
 
 
 @csrf_exempt
@@ -34,10 +22,9 @@ def api_dogs(request):
     else:
         try:
             content = json.loads(request.body)
+            print(content, "FIRSTLINE")
             owner_id = content["owner"]
-            owner = Owner.objects.get(id=owner_id)
-            print(owner_id, "SECONDLINE")
-            print(owner, "thIIIIIRDLINE")
+            owner = OwnerVO.objects.get(id=owner_id)
             content["owner"] = owner
             dog = Dog.objects.create(**content)
             return JsonResponse(
@@ -51,47 +38,16 @@ def api_dogs(request):
             )
             response.status_code = 400
             return response
-
-
-@csrf_exempt
-@require_http_methods(["GET", "POST"])
-def api_owners(request):
-    if request.method == "GET":
-        owners = Owner.objects.all()
-        return JsonResponse(
-            {"owners": owners},
-            encoder=OwnerEncoder,
-        )
-    else:
-        try:
-            content = json.loads(request.body)
-            state_id = content["state"]
-            state = State.objects.get(id=state_id)
-            content["state"] = state
-            owner = Owner.objects.create(**content)
-            return JsonResponse(
-                owner,
-                encoder=OwnerEncoder,
-                safe=False,
-            )
-        except:
-            response = JsonResponse(
-                {"message": "Could not create the Owner"}
-            )
-            response.status_code = 400
-            return response
-
-
+            
 @csrf_exempt
 @require_http_methods(["GET"])
-def api_states(request):
+def api_owners(request):
     if request.method == "GET":
-        states = State.objects.all().order_by('name')
-        state_list = []
-        for state in states:
-            state_dict = {"name": state.name, "abbreviation": state.abbreviation}
-            state_list.append(state_dict)
-        return JsonResponse({"states": state_list})
+        owners = OwnerVO.objects.all()
+        return JsonResponse(
+            {"owners": owners},
+            encoder=OwnerVOEncoder,
+        )
 
 class AWSPhotoCreateView(CreateView):
     model = AWSPhoto
@@ -106,3 +62,58 @@ class AWSPhotoCreateView(CreateView):
         context['Photos'] = photos
         return context
 
+
+@csrf_exempt
+@require_http_methods(["DELETE", "GET", "PUT"])
+def api_show_delete_update_dog(request, pk):
+    if request.method == "GET":
+        try:
+            dog = Dog.objects.get(id=pk)
+            return JsonResponse(
+                dog,
+                encoder=DogEncoder,
+                safe=False
+            )
+        except Dog.DoesNotExist:
+            response = JsonResponse({"message": "This dog does not exist"})
+            response.status_code = 404
+            return response
+
+    elif request.method == "DELETE": 
+        try:
+            dog = Dog.objects.get(id=pk)
+            dog.delete()
+            return JsonResponse(
+                dog,
+                encoder=DogEncoder,
+                safe=False,
+            )
+        except Dog.DoesNotExist:
+            return JsonResponse({"message": "Does not exist"})
+
+
+    else:  # PUT
+        try:
+            content = json.loads(request.body)
+            dog = Dog.objects.get(id=pk)
+
+            props = [
+        "name", "age", "breed", "description", "owners"
+        ]
+            for prop in props:
+                if prop in content:
+                    setattr(dog, prop, content[prop])
+            dog.save()
+            return JsonResponse(
+                dog,
+                encoder=DogEncoder,
+                safe=False,
+            )
+        except Dog.DoesNotExist:
+            response = JsonResponse({"message": "Does not exist"})
+            response.status_code = 404
+            return response
+
+
+    
+    

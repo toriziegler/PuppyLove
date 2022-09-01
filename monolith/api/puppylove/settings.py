@@ -12,21 +12,10 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from pathlib import Path
+import dj_database_url
 import os
-from .keys import ACCESS_KEY_ID, SECRET_ACCESS_KEY, STORAGE_BUCKET_NAME, LOCATION, CLOUDname, APIkey, APIsecret
 
 
-
-import cloudinary
-import cloudinary.uploader
-import cloudinary.api
-
-# need to make these global and move keys
-cloudinary.config(
-    cloud_name=CLOUDname,
-    api_key=APIkey,
-    api_secret=APIsecret
-)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -36,21 +25,17 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'media/store'),
 ]
 
-AWS_ACCESS_KEY_ID = ACCESS_KEY_ID
-AWS_SECRET_ACCESS_KEY = SECRET_ACCESS_KEY
-AWS_STORAGE_BUCKET_NAME = STORAGE_BUCKET_NAME
-AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
+AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
+AWS_STORAGE_BUCKET_NAME = os.environ['AWS_STORAGE_BUCKET_NAME']
+AWS_S3_CUSTOM_DOMAIN = os.environ['AWS_S3_CUSTOM_DOMAIN']
+AWS_LOCATION = os.environ['AWS_LOCATION']
+STATICFILES_STORAGE = os.environ["STATICFILES_STORAGE"]
+STATIC_URL = os.environ["STATIC_URL"]
+DEFAULT_FILE_STORAGE = os.environ["DEFAULT_FILE_STORAGE"]
 
 AWS_S3_OBJECT_PARAMETERS = {
-    'CacheControl': 'max-age=86400',
-}
-
-AWS_LOCATION = LOCATION
-STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-STATIC_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
-
-# <-- here is where we reference it
-DEFAULT_FILE_STORAGE = 'puppylove.storage_backends.MediaStorage'
+'CacheControl': os.environ["AWS_Cache"]}
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
@@ -61,7 +46,7 @@ SECRET_KEY = 'django-insecure-ffoy=fz6$mb=a*!vtyltvzsw-3q0!=0*yw!y4tkzk1n+zue+)=
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["localhost", "puppylove"]
+ALLOWED_HOSTS = ["localhost", "puppylove", "account-api"]
 
 
 # Application definition
@@ -93,16 +78,19 @@ CSRF_TRUSTED_ORIGINS = [
     "http://localhost:3000",
     "http://localhost:8000",
     "http://localhost:8080",
+    "http://localhost:8100",
 ]
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "http://localhost:8000",
     "http://localhost:8080",
+    "http://localhost:8100",
 ]
 
-
 CORS_ALLOW_CREDENTIALS = True
+
+
 
 CSRF_COOKIE_SECURE = True
 
@@ -131,15 +119,12 @@ TEMPLATES = [
 ]
 
 
+
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+DATABASES = {}
+DATABASES["default"] = dj_database_url.config()
 
 
 # Password validation
@@ -166,7 +151,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'UTC'  
 
 USE_I18N = True
 
@@ -176,10 +161,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 MEDIA_ROOT = 'media/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+

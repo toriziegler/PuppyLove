@@ -9,6 +9,11 @@ monolith/puppylove/keys.py
 # C extensions
 *.so
 
+# migrations for every folder
+**/migrations/**
+!**/migrations
+!**/migrations/__init__.py 
+
 # Distribution / packaging
 .Python
 build/
@@ -165,4 +170,4 @@ cython_debug/
 # migrations for every folder
 **/migrations/**
 !**/migrations
-!**/migrations/__init__.py
+!**/migrations/__init__.py 

@@ -3,8 +3,10 @@ Today I worked on:
 
 * .gitlab-ci.yml
 * Heroku deployment
+* Team merging
+* Admin CSS
 
-    I realized our gitlab was under my name only rather than the group name. I got the gitlab project transferred to our group pawfessional programmers so we could use the correct URL for deployment. I continued building the deployment portion of the ci file and Heroku. 
+    I realized our gitlab was under my name only rather than the group name. I got the gitlab project transferred to our group pawfessional programmers so we could use the correct URL for deployment. I continued building the deployment portion of the ci file and Heroku. We were able to resolve our merging issues as a group! Andrew assisted us in getting our admin css to reload the Django css by using the python manage.py collectstatic command within both microservice containers and adding a forward slash in the settings for the static url so it is "/static/". I created test folders for each microservice and a unit test for testing the monolith views.
 
 # August 30, 2022
 Today I worked on:

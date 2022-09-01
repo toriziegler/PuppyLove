@@ -30,3 +30,42 @@ Things to look into more ( PILLOW & Cloudinary )
 At the beginning of the day I though we would be able to use Cloudinary but that turned out not to be the case. I created a view and a template to test this out to see if it was a viable solution. When the rest of the group pulled my code from gitlab they were not able to see the same picture data that I had in my volume because volumes are not committed along with other data. 
 
 This makes sense. As Danial put it, media and file date is extremely large and can mess up databases when they are put into them. Because of this, we will need to make dummy data for the data we are able to hard code and have that auto-run on start-up. Any persisting data, like pictures, will need to be stored on a service such as AWS 
+
+## Aug 24, 2022
+
+Today we were able to set the correct permissions for AWS bucket to make it public. This allowed us all to upload photos. We currently are able to use a form and the admin to add these photos to the bucket. We do not have the React set up to handle the uploading of photos but are getting closer to that. We are able to display photos using react. 
+
+one issue we are trying to think through is, "how do we ensure we are filtering the correct photo from the one uploaded."
+  - We can attach the photos to both the user and the dog item and filter this way
+
+  - the dynamic way would be to save the file name as a uuid or something and use that to become the file name. Then use that to call that item. 
+
+
+## Aug 25, 2022 (Friday)
+
+Today I changed gears. We realized that the Owner should be it's own Microservice, similar to how the inventory and sales departments were implemented. I spent most of today with Nicholas trying to get a new docker-compose to work correctly.
+
+once that was able to run we ran through all the code that contained that information in the monolith and moved it to the new Django project for our accounts microservice. We will try to implement a poller next week so we can get the monolith up and running again with the information accurately pulling from the accounts microservice. We had to comment out a bunch of code in order to get monolith back to a good state. We will be able to test our code this way for the poller but uncommenting what we need will be hard. 
+
+
+## Aug 29, 2022
+
+Today I was charged with completing the accounts microservice and fixing error in our docker compose yaml file. We were able to get the yaml file to where it needed to be but we still are having issues with the poller
+
+## Aug 30, 2022
+
+today we fixed issues with the poller but are still having issues with our backend server connecting to our django project. We spent most of the day researching how to connect postgres. This still does not seem to be working as the migrations are not happening. More will be needed on this tomorrow. 
+
+## Aug 31, 2022
+ able to set up database
+ DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'accounts',
+        'USER': 'postgres',
+        'PASSWORD': 'test123',
+        'HOST': 'localhost',
+        'PORT': '5432',
+    }
+}
+then ran >>> python manage.py migrate --run-syncdb
