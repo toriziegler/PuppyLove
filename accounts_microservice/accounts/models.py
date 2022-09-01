@@ -1,6 +1,8 @@
 from django.db import models
 from django.core.validators import MaxValueValidator
 import uuid
+from django.contrib.auth.models import User
+
 
 class State(models.Model):
     name = models.CharField(max_length=40)
@@ -30,3 +32,10 @@ class AWSPhoto(models.Model):
     uploaded_at = models.DateTimeField(auto_now_add=True)
     owner_id = models.ForeignKey(Owner, related_name="photo", on_delete=models.PROTECT)
     upload = models.FileField()
+
+# Create your models here.
+
+
+class Note(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    body = models.TextField()

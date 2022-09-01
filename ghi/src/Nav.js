@@ -1,6 +1,8 @@
 import { NavLink } from 'react-router-dom';
 import React from 'react';
 import { render } from "react-dom";
+import AuthContext from './context/AuthContext';
+import { useContext } from 'react';
 
 const footerStyle = {
   backgroundColor: "",
@@ -24,10 +26,12 @@ const phantomStyle = {
 };
 
 function Footer({ children }) {
+    // let {name} = useContext(AuthContext)
     return (
       <div>
-        <div style={phantomStyle} />
+        <div/>
         <div style={footerStyle}>{children}</div>
+        {/* <p>Hello {name}</p> */}
       </div>
     );
   }
@@ -64,6 +68,15 @@ function Nav() {
             <li className="nav-item">
                 <NavLink className="nav-link" to="/doginfo">Dog Information</NavLink>
             </li>
+            <li className="nav-item">
+                <NavLink className="nav-link" to="/ownerinfo">Owner Information</NavLink>
+            </li>
+            <li className="nav-item">
+                <NavLink className="nav-link" to="/private">Private Route</NavLink>
+            </li>
+            {/* <li className="nav-item">
+                <NavLink className="nav-link" to="/provider">AuthProvider</NavLink>
+            </li> */}
             
           </ul>
           <div>
