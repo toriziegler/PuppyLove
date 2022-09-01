@@ -14,7 +14,7 @@ class OwnerVO (models.Model):
     state = models.CharField(max_length=2, unique=True)
     name = models.CharField(max_length=200)
     email = models.EmailField()
-    phone = models.PositiveIntegerField()
+    phone = models.PositiveBigIntegerField()
     description = models.TextField(max_length=1000)
     def __str__(self):
         return f"{self.name}"
