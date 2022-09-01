@@ -16,7 +16,7 @@ class State(models.Model):
 class Owner(models.Model):
     name = models.CharField(max_length=200)
     email = models.EmailField()
-    phone = models.PositiveSmallIntegerField(validators=[MaxValueValidator(9999999999)])
+    phone = models.PositiveBigIntegerField(validators=[MaxValueValidator(9999999999)])
     description = models.TextField(max_length=1000)
     state = models.ForeignKey(State, related_name="+", on_delete=models.PROTECT)
 

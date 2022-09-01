@@ -61,10 +61,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'puppylove_rest.apps.PuppyloveRestConfig',
     'storages',
-
-
 ]
-
 
 MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
