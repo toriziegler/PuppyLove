@@ -124,8 +124,13 @@ TEMPLATES = [
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 DATABASES = {
-    "default": {
-        'ENGINE': 'django.db.backends.postgresql',
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'monolith',
+        'USER': 'postgres',
+        'PASSWORD': 'test-databases',
+        'HOST': '127.0.0.1',
+        'PORT': '5432',
     }
 }
 DATABASES["default"] = dj_database_url.config()
