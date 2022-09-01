@@ -9,9 +9,7 @@ class OwnerVOEncoder(ModelEncoder):
         "name",
         "email",
         "phone",
-        "id",
         "description",
-        "account_number",
         "state"
     ]
 
