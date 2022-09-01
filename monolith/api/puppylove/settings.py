@@ -123,8 +123,7 @@ TEMPLATES = [
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-DATABASES = {}
-DATABASES["default"] = dj_database_url.config()
+DATABASES = {"default": dj_database_url.config()}
 
 
 # Password validation
