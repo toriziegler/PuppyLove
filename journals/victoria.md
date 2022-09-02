@@ -3,7 +3,7 @@ Today I worked on:
 
 * .gitlab-ci.yml
 
-    I was finally able to get my lint test to run! I ran flake8 and fixed all of the errors in both of our microservices and got the pipeline to run successfully! I am now trying to get the monolith back end test running but have run into a few errors. First I needed to adjust our settings file aws keys to get methods because it was not pulling the information from .env, I saw this was a common error online and was able to resolve the issue by changing them. I ran into another error that my database was improperly configured and the engine was not defined correctly in my settings database, I resolved this by adding dj_database_url.config(default='postgres://user:pass@localhost/dbname') to the default for database. 
+    I was finally able to get my lint test to run! I ran flake8 and fixed all of the errors in both of our microservices and got the pipeline to run successfully! I am now trying to get the monolith back end test running but have run into a few errors. First I needed to adjust our settings file aws keys to get methods because it was not pulling the information from .env, I saw this was a common error online and was able to resolve the issue by changing them. I ran into another error that my database was improperly configured in my settings, I resolved this by setting the default as my postgres database and added dj_database_url.config(default='postgres://user:pass@localhost/dbname'). 
 
 # August 31, 2022
 Today I worked on:

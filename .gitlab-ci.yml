@@ -7,12 +7,9 @@ services:
   - postgres:14.2-bullseye
 
 variables:
-  ACCOUNT_DATABASE_URL: postgres://accounts:password@postgres:5432/accounts
-  MONOLITH_DATABASE_URL: postgres://monolith:password@postgres:5432/monolith
-  POSTGRES_MULTIPLE_DATABASES: accounts, monolith
-  POSTGRES_USER: postgres
-  POSTGRES_PASSWORD: test-databases
-  WAIT_HOSTS: postgres:5432 
+variables:
+  POSTGRES_PASSWORD: test
+  DATABASE_URL: postgresql://postgres:test@postgres:5432/postgres
 
 ## TESTING
 monolith-api-unit-test-job:
