@@ -115,3 +115,5 @@ def api_owner_show_VO(request, pk):
             {"owner": owner},
             encoder=OwnerVOEncoder,
         )
+
+# hello friends
