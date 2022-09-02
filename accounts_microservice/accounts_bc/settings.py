@@ -25,17 +25,17 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-%6@n+_r!&1q-sbq0efmk!hmg!4ehsj)kka60tw$81!#y4yd6sy'
 
 
-AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
-AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
-AWS_STORAGE_BUCKET_NAME = os.environ['AWS_STORAGE_BUCKET_NAME']
-AWS_S3_CUSTOM_DOMAIN = os.environ['AWS_S3_CUSTOM_DOMAIN']
-AWS_LOCATION = os.environ['AWS_LOCATION']
-STATICFILES_STORAGE = os.environ["STATICFILES_STORAGE"]
-STATIC_URL = os.environ["STATIC_URL"]
-DEFAULT_FILE_STORAGE = os.environ["DEFAULT_FILE_STORAGE"]
+AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
+AWS_S3_CUSTOM_DOMAIN = os.environ.get('AWS_S3_CUSTOM_DOMAIN')
+AWS_LOCATION = os.environ.get('AWS_LOCATION')
+STATICFILES_STORAGE = os.environ.get("STATICFILES_STORAGE")
+STATIC_URL = os.environ.get("STATIC_URL")
+DEFAULT_FILE_STORAGE = os.environ.get("DEFAULT_FILE_STORAGE")
 
 AWS_S3_OBJECT_PARAMETERS = {
-'CacheControl': os.environ["AWS_Cache"]}
+'CacheControl': os.environ.get("AWS_Cache")}
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -110,9 +110,7 @@ WSGI_APPLICATION = 'accounts_bc.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-DATABASES = {}
-DATABASES["default"] = dj_database_url.config()
-
+DATABASES = {'default': dj_database_url.config(default='postgres://user:pass@localhost/dbname')}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -154,3 +152,10 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Honor the 'X-Forwarded-Proto' header for request.is_secure()
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+# Static asset configuration
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+STATIC_ROOT = 'staticfiles'

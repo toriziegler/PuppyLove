@@ -15,8 +15,6 @@ from pathlib import Path
 import dj_database_url
 import os
 
-
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -76,14 +74,18 @@ MIDDLEWARE = [
 
 CSRF_TRUSTED_ORIGINS = [
     "http://localhost:3000",
-    "http://localhost:8000",
+    "http://localhost:3001",
     "http://localhost:8080",
+    "http://localhost:8001",
+    "http://localhost:8000",
     "http://localhost:8100",
 ]
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
+    "http://localhost:3001",
     "http://localhost:8000",
+    "http://localhost:8001",
     "http://localhost:8080",
     "http://localhost:8100",
 ]
