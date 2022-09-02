@@ -22,8 +22,8 @@ services:
             context: ./monolith/api
             dockerfile: ./Dockerfile.dev
         environment:
-            DATABASE_URL: postgres://hmbnonsudemscc:2283ee865127612e91f4bf91bf34ba7b23e08f577aaf054d535e3f42e61ed25c@ec2-52-204-157-26.compute-1.amazonaws.com:5432/d6uscrpjj5gkdl
-            WAIT_HOSTS: postgres:5432 
+            DATABASE_URL: postgres://monolith:password@postgres:5432/monolith
+            WAIT_HOSTS: postgres:5432
             WAIT_TIMEOUT: 180
             AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
             AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
@@ -65,7 +65,7 @@ services:
         depends_on:
             - postgres
         environment:
-            DATABASE_URL: postgres://bfjssqkyxccfcn:3495d0b976bf489ffe002c0b3928c3782ed975bee94b10300993561df216c026@ec2-3-219-52-220.compute-1.amazonaws.com:5432/dc37l3e1vdaf52
+            DATABASE_URL: postgres://accounts:password@postgres:5432/accounts
             WAIT_HOSTS: postgres:5432
             WAIT_TIMEOUT: 240
             AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
