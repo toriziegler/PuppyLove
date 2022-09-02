@@ -21,12 +21,12 @@ monolith-api-unit-test-job:
     - python manage.py test  # Run the tests
 
 account-api-unit-test-job:
-image: python:3-bullseye
-stage: test
-script:
-  - cd accounts_microservice
-  - pip install -r requirements.txt
-  - python manage.py test # Run the tests
+  image: python:3-bullseye
+  stage: test
+  script:
+    - cd accounts_microservice
+    - pip install -r requirements.txt
+    - python manage.py test # Run the tests
 
 lint-project-job:
   image: python:3-bullseye
