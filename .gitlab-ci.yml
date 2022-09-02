@@ -36,42 +36,42 @@ lint-project-job:
     - flake8 monolith accounts_microservice # Run flake8 on project ot check for code quality
 
 ## BUILDING
-ghi-front-end-build-job:
-  rules:
-      # Only run if pushing to the main branch
-      - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
-  stage: build
-  image: node:lts-bullseye
-  variables:
-    PUBLIC_URL: https://pawfessional-programmers.gitlab.io/puppy-love
-  needs:
-    - monolith-api-unit-test-job   # These three must succeed for build-job to run
-    - account-api-unit-test-job
-    - lint-project-job  
-  script:
-    - cd ghi
-    - npm install
-    - npm run build   # Build the React application
-    - cp build/index.html build/404.html  # Make this a SPA
-  artifacts:
-    paths:
-      - ghi/build/  # Save all of the files in the build path
-
-# monolith-api-back-end-build-job:
+# ghi-front-end-build-job:
 #   rules:
-#     # Only run if pushing to the main branch
-#     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+#       # Only run if pushing to the main branch
+#       - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
 #   stage: build
-#   image: docker:20.10.16
-#   services:
-#     - docker:20.10.16-dind
+#   image: node:lts-bullseye
+#   variables:
+#     PUBLIC_URL: https://pawfessional-programmers.gitlab.io/puppy-love
+#   needs:
+#     - monolith-api-unit-test-job   # These three must succeed for build-job to run
+#     - account-api-unit-test-job
+#     - lint-project-job  
 #   script:
-#     - cd monolith/api
-#     - docker build -t ${CI_REGISTRY_IMAGE}/monolith_api:latest .  # Builds the image
-#     - docker tag ${CI_REGISTRY_IMAGE}/monolith_api:latest ${CI_REGISTRY_IMAGE}/monolith_api:$CI_JOB_ID  # Gives the image a specific name
-#     - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY  # Authenticates with the GitLab image registry
-#     - docker push ${CI_REGISTRY_IMAGE}/monolith_api:$CI_JOB_ID  # Stores your image in the GitLab image registry w/ version from tag
-#     - docker push ${CI_REGISTRY_IMAGE}/monolith_api:latest  # Stores your image in the GitLab image registry with the name latest
+#     - cd ghi
+#     - npm install
+#     - npm run build   # Build the React application
+#     - cp build/index.html build/404.html  # Make this a SPA
+#   artifacts:
+#     paths:
+#       - ghi/build/  # Save all of the files in the build path
+
+monolith-api-back-end-build-job:
+  rules:
+    # Only run if pushing to the main branch
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+  stage: build
+  image: docker:20.10.16
+  services:
+    - docker:20.10.16-dind
+  script:
+    - cd monolith/api
+    - docker build -t ${CI_REGISTRY_IMAGE}/monolith_api:latest .  # Builds the image
+    - docker tag ${CI_REGISTRY_IMAGE}/monolith_api:latest ${CI_REGISTRY_IMAGE}/monolith_api:$CI_JOB_ID  # Gives the image a specific name
+    - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY  # Authenticates with the GitLab image registry
+    - docker push ${CI_REGISTRY_IMAGE}/monolith_api:$CI_JOB_ID  # Stores your image in the GitLab image registry w/ version from tag
+    - docker push ${CI_REGISTRY_IMAGE}/monolith_api:latest  # Stores your image in the GitLab image registry with the name latest
 
 # -api-back-end-build-job:
 #   rules:
