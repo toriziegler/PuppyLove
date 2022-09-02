@@ -73,7 +73,7 @@ monolith-api-back-end-build-job:
     - docker push ${CI_REGISTRY_IMAGE}/monolith_api:$CI_JOB_ID  # Stores your image in the GitLab image registry w/ version from tag
     - docker push ${CI_REGISTRY_IMAGE}/monolith_api:latest  # Stores your image in the GitLab image registry with the name latest
 
--api-back-end-build-job:
+account-api-back-end-build-job:
   rules:
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
   stage: build
