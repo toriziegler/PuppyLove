@@ -8,8 +8,8 @@ class OwnerEncoder(ModelEncoder):
         "name",
         "email",
         "phone",
-        "id",
         "description",
+        "id",
     ]
 
     def get_extra_data(self, o):

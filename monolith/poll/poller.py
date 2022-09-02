@@ -17,15 +17,13 @@ def get_owners():
     content = json.loads(response.content)
     for owner in content["owners"]:
         OwnerVO.objects.update_or_create(
-            import_href=owner["href"],
             defaults={
                 "name": owner["name"],
                 "email": owner["email"],
                 "phone": owner["phone"],
                 "description": owner["description"],
-                "account_number": owner["account_number"],
                 "state": owner["state"],
-            },
+            }
         )
 
 
