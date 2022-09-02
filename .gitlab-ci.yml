@@ -35,27 +35,27 @@ lint-project-job:
     - pip install flake8
     - flake8 monolith  # Run flake8 on project ot check for code quality
 
-# ## BUILDING
-# ghi-front-end-build-job:
-#   rules:
-#       # Only run if pushing to the main branch
-#       - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
-#   stage: build
-#   image: node:lts-bullseye
-#   variables:
-#     PUBLIC_URL: https://pawfessional-programmers.gitlab.io/puppy-love
-#   needs:
-#     - monolith-api-unit-test-job   # These three must succeed for build-job to run
-#     - account-api-unit-test-job
-#     - lint-project-job  
-#   script:
-#     - cd ghi
-#     - npm install
-#     - npm run build   # Build the React application
-#     - cp build/index.html build/404.html  # Make this a SPA
-#   artifacts:
-#     paths:
-#       - ghi/build/  # Save all of the files in the build path
+## BUILDING
+ghi-front-end-build-job:
+  rules:
+      # Only run if pushing to the main branch
+      - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+  stage: build
+  image: node:lts-bullseye
+  variables:
+    PUBLIC_URL: https://pawfessional-programmers.gitlab.io/puppy-love
+  needs:
+    - monolith-api-unit-test-job   # These three must succeed for build-job to run
+    - account-api-unit-test-job
+    - lint-project-job  
+  script:
+    - cd ghi
+    - npm install
+    - npm run build   # Build the React application
+    - cp build/index.html build/404.html  # Make this a SPA
+  artifacts:
+    paths:
+      - ghi/build/  # Save all of the files in the build path
 
 # monolith-api-back-end-build-job:
 #   rules:
