@@ -35,17 +35,6 @@ def api_dogs(request):
             return response
 
 
-@csrf_exempt
-@require_http_methods(["GET"])
-def api_owners(request):
-    if request.method == "GET":
-        owners = OwnerVO.objects.all()
-        return JsonResponse(
-            {"owners": owners},
-            encoder=OwnerVOEncoder,
-        )
-
-
 class AWSPhotoCreateView(CreateView):
     model = AWSPhoto
     template_name = "photos/upload.html"
