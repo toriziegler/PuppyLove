@@ -22,7 +22,6 @@ def api_dogs(request):
     else:
         try:
             content = json.loads(request.body)
-            print(content, "FIRSTLINE")
             owner_id = content["owner"]
             owner = OwnerVO.objects.get(id=owner_id)
             content["owner"] = owner
@@ -115,5 +114,24 @@ def api_show_delete_update_dog(request, pk):
             return response
 
 
+@csrf_exempt
+@require_http_methods("GET")
+def api_ownerVOs(request):
+    if request.method == "GET":
+        owners = OwnerVO.objects.all()
+        return JsonResponse(
+            {"owners": owners},
+            encoder=OwnerVOEncoder,
+        )
     
+
+@csrf_exempt
+@require_http_methods("GET")
+def api_owner_show_VO(request, pk):
+    if request.method == "GET":
+        owner = OwnerVO.objects.get(id=pk)
+        return JsonResponse(
+            {"owner": owner},
+            encoder=OwnerVOEncoder,
+        )    
     

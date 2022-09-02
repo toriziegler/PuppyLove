@@ -10,7 +10,7 @@ class OwnerInfo extends React.Component{
             phone:'', 
             description:'',
             state:'',
-            state:[],
+            states:[],
         };
         this.handleNameChange = this.handleNameChange.bind(this);
         this.handleEmailChange = this.handleEmailChange.bind(this);
@@ -25,22 +25,21 @@ class OwnerInfo extends React.Component{
         const response = await fetch(URL);
         if (response.ok) {
             const data = await response.json();
-            this.setState({ sales: data.sales });
+            this.setState({ states: data.states });
         }
     }
     async handleSubmit(event) {
         event.preventDefault();
         const data = { ...this.state };
-        delete data.showPassword;
-        delete data.verify_password;
+        delete data.states
+        console.log(data)
 
-        const url = 'http://localhost:8100/api/owners';
+        const url = 'http://localhost:8100/api/owners/';
         const fetchConfig = {
             method: "POST",
             body: JSON.stringify(data),
             headers: {
                 'Content-Type': 'application/json',
-                credentials: "include",
             },
         };
 
@@ -107,7 +106,7 @@ class OwnerInfo extends React.Component{
                     <div className="card-body">
                         <h1>Owner Information</h1>
                         <hr/>
-
+                        <form onSubmit={this.handleSubmit} id="create-owner-form">
                         <div className="form-floating mb-3">
                             <input onChange={this.handleNameChange} value={this.state.name} 
                             placeholder="Name" required type="text" name="name" 
@@ -134,10 +133,10 @@ class OwnerInfo extends React.Component{
                         <div className="mb-3">
                     <select onChange={this.handleStateChange} value={this.state.state} required name="state" id="state" className="form-select">
                         <option value="">Choose Your State</option>
-                            {this.state.state.map((location) => {
+                            {this.state.states.map((state) => {
                         return (
-                        <option key={location.id} value={location.id}>
-                            {location.name} 
+                        <option key={state.id} value={state.abbreviation}>
+                            {state.name} 
                         </option>
                             )
                         })}
@@ -145,6 +144,7 @@ class OwnerInfo extends React.Component{
                 </div>
                         <br></br>
                         <button className="btn btn-primary" type="submit">Submit</button>
+                        </form>
                     </div>
                 </div>
             </div>

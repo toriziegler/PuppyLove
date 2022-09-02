@@ -1,9 +1,13 @@
 from django.urls import path
-from .views import api_dogs, AWSPhotoCreateView, api_owners, api_show_delete_update_dog
 
+from .views import api_dogs, api_owners
+
+from .views import AWSPhotoCreateView
+from .views import api_dogs, api_owner_show_VO, api_ownerVOs, AWSPhotoCreateView
 
 urlpatterns = [
     path("dogs/", api_dogs, name="api_dogs"),
-    path("owners/", api_owners, name="api_owners"),
-    path("upload/", AWSPhotoCreateView.as_view(), name="photo_form")
+    path("upload/", AWSPhotoCreateView.as_view(), name="photo_form"),
+    path("ownerVOs/", api_ownerVOs, name="api_ownerVOs"),
+    path("ownerVOs/<int:pk>/", api_owner_show_VO, name="api_owner_show_VO"),
     ]
