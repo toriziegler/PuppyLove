@@ -30,9 +30,7 @@ def api_dogs(request):
                 safe=False,
             )
         except Dog.DoesNotExist:
-            response = JsonResponse(
-                {"message": "Could not create the Dog"}
-            )
+            response = JsonResponse({"message": "Could not create the Dog"})
             response.status_code = 400
             return response
 
@@ -51,13 +49,15 @@ def api_owners(request):
 class AWSPhotoCreateView(CreateView):
     model = AWSPhoto
     template_name = "photos/upload.html"
-    fields = ['upload', ]
-    success_url = reverse_lazy('index')
+    fields = [
+        "upload",
+    ]
+    success_url = reverse_lazy("index")
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         photos = AWSPhoto.objects.all()
-        context['Photos'] = photos
+        context["Photos"] = photos
         return context
 
 
@@ -67,11 +67,7 @@ def api_show_delete_update_dog(request, pk):
     if request.method == "GET":
         try:
             dog = Dog.objects.get(id=pk)
-            return JsonResponse(
-                dog,
-                encoder=DogEncoder,
-                safe=False
-            )
+            return JsonResponse(dog, encoder=DogEncoder, safe=False)
         except Dog.DoesNotExist:
             response = JsonResponse({"message": "This dog does not exist"})
             response.status_code = 404
@@ -94,9 +90,7 @@ def api_show_delete_update_dog(request, pk):
             content = json.loads(request.body)
             dog = Dog.objects.get(id=pk)
 
-            props = [
-                "name", "age", "breed", "description", "owners"
-            ]
+            props = ["name", "age", "breed", "description", "owners"]
             for prop in props:
                 if prop in content:
                     setattr(dog, prop, content[prop])

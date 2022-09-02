@@ -30,9 +30,7 @@ def api_owners(request):
                 safe=False,
             )
         except Owner.DoesNotExist:
-            response = JsonResponse(
-                {"message": "Could not create the Owner"}
-            )
+            response = JsonResponse({"message": "Could not create the Owner"})
             response.status_code = 400
             return response
 
@@ -63,9 +61,7 @@ def api_owner_show_update_delete(request, pk):
             content = json.loads(request.body)
             owner = Owner.objects.get(id=pk)
 
-            props = [
-                "name", "email", "phone", "description", "state"
-            ]
+            props = ["name", "email", "phone", "description", "state"]
             for prop in props:
                 if prop in content:
                     setattr(owner, prop, content[prop])
@@ -101,9 +97,7 @@ def api_states(request):
                 safe=False,
             )
         except State.DoesNotExist:
-            response = JsonResponse(
-                {"message": "Could not create the State"}
-            )
+            response = JsonResponse({"message": "Could not create the State"})
             response.status_code = 400
             return response
 
@@ -111,11 +105,13 @@ def api_states(request):
 class AWSPhotoCreateView(CreateView):
     model = AWSPhoto
     template_name = "photos/upload.html"
-    fields = ['upload', ]
-    success_url = reverse_lazy('index')
+    fields = [
+        "upload",
+    ]
+    success_url = reverse_lazy("index")
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         photos = AWSPhoto.objects.all()
-        context['Photos'] = photos
+        context["Photos"] = photos
         return context

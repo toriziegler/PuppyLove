@@ -18,12 +18,12 @@ class State(models.Model):
 class Owner(models.Model):
     name = models.CharField(max_length=200)
     email = models.EmailField()
-    phone = models.BigIntegerField(validators=[MaxValueValidator(9999999999)])
+    phone = models.PositiveBigIntegerField(
+        validators=[MaxValueValidator(9999999999)]
+    )
     description = models.TextField(max_length=1000)
     account_number = models.UUIDField(
-        primary_key=True,
-        default=uuid.uuid4,
-        editable=False
+        primary_key=True, default=uuid.uuid4, editable=False
     )
     state = models.ForeignKey(
         State,
@@ -38,8 +38,5 @@ class Owner(models.Model):
 class AWSPhoto(models.Model):
     uploaded_at = models.DateTimeField(auto_now_add=True)
     owner_id = models.ForeignKey(
-        Owner,
-        related_name="photo",
-        on_delete=models.PROTECT
-    )
+        Owner, related_name="photo", on_delete=models.PROTECT)
     upload = models.FileField()

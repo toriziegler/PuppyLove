@@ -1,5 +1,6 @@
 from django.contrib import admin
 from .models import Dog, AWSPhoto
+
 # Register your models here.
 
 

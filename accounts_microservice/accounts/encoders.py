@@ -23,6 +23,4 @@ class StateEncoder(ModelEncoder):
         "abbreviation",
         "id",
     ]
-    encoders = {
-        "owner": OwnerEncoder()
-    }
+    encoders = {"owner": OwnerEncoder()}

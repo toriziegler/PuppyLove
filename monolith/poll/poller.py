@@ -17,21 +17,21 @@ def get_owners():
     content = json.loads(response.content)
     for owner in content["owners"]:
         OwnerVO.objects.update_or_create(
-            import_href=owner['href'],
+            import_href=owner["href"],
             defaults={
-                'name': owner['name'],
-                'email': owner['email'],
-                'phone': owner['phone'],
-                'description': owner['description'],
-                'account_number': owner['account_number'],
-                'state': owner['state']
-            }
+                "name": owner["name"],
+                "email": owner["email"],
+                "phone": owner["phone"],
+                "description": owner["description"],
+                "account_number": owner["account_number"],
+                "state": owner["state"],
+            },
         )
 
 
 def poll():
     while True:
-        print('Owner poller polling for data')
+        print("Owner poller polling for data")
         try:
             get_owners()
             pass
