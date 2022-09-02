@@ -1,3 +1,19 @@
+# September 2, 2022
+Today I worked on:
+
+* Deployment!
+
+
+
+# September 1, 2022
+Today I worked on:
+
+* .gitlab-ci.yml
+* flake8
+* pipeline failures
+
+    I was finally able to get my lint test to run! I ran flake8 and fixed all of the errors in both of our microservices and got the pipeline to run successfully! I then tried to get the monolith back end test running but ran into a few errors. First I needed to adjust our settings file aws keys to get methods because it was not pulling the information from .env. I saw this was a common error online and was able to resolve the issue by changing them from brackets with variable names to get methods so if the variables returned "None" it would not throw an error. I ran into another error that my database was improperly configured in my settings. I resolved this by setting the default as my postgres database and added dj_database_url.config(default='postgres://user:pass@localhost/dbname'). Another error occurred for an operational error - connection refused, I fixed the docker compose database url's for both of the microservices now that I have the Heroku postgres database set up. Tests passed for linting, accounts, and monolith microservice!
+
 # August 31, 2022
 Today I worked on:
 

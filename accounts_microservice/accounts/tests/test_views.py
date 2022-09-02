@@ -1,8 +1,6 @@
-from django.http import JsonResponse
 from django.test import TestCase, Client
 from django.urls import reverse
-from ..encoders import StateEncoder, OwnerEncoder
-from ..models import State, Owner
+
 
 
 class TestStates(TestCase):

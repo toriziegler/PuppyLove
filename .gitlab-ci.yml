@@ -4,39 +4,36 @@ stages:
   - deploy  # Run deploy after build
 
 services:
-  - postgres: 14.2-bullseye
+  - postgres:14.2-bullseye
 
+variables:
 variables:
   POSTGRES_PASSWORD: test
   DATABASE_URL: postgresql://postgres:test@postgres:5432/postgres
 
-## TESTING
+# TESTING
 monolith-api-unit-test-job:
   image: python:3-bullseye
   stage: test
   script:
     - cd monolith/api
     - pip install -r requirements.txt
-    - export DATABASE_URL
-    - python manage.py migrate  # Migrate the database
     - python manage.py test  # Run the tests
 
-accounts-api-unit-test-job:
-image: python:3-bullseye
-stage: test
-script:
-  - cd accounts_microservice
-  - pip install -r requirements.txt
-  - export DATABASE_URL
-  - python manage.py migrate # Migrate the database
-  - python manage.py test # Run the tests
+account-api-unit-test-job:
+  image: python:3-bullseye
+  stage: test
+  script:
+    - cd accounts_microservice
+    - pip install -r requirements.txt
+    - python manage.py test # Run the tests
 
 lint-project-job:
   image: python:3-bullseye
   stage: test
   script:
     - pip install flake8
-    - flake8 monolith  # Run flake8 on project to check for code quality
+    - flake8 monolith accounts_microservice # Run flake8 on project to check for code quality
 
 ## BUILDING
 ghi-front-end-build-job:
@@ -49,7 +46,7 @@ ghi-front-end-build-job:
     PUBLIC_URL: https://pawfessional-programmers.gitlab.io/puppy-love
   needs:
     - monolith-api-unit-test-job   # These three must succeed for build-job to run
-    - accounts-api-unit-test-job
+    - account-api-unit-test-job
     - lint-project-job  
   script:
     - cd ghi
@@ -76,7 +73,7 @@ monolith-api-back-end-build-job:
     - docker push ${CI_REGISTRY_IMAGE}/monolith_api:$CI_JOB_ID  # Stores your image in the GitLab image registry w/ version from tag
     - docker push ${CI_REGISTRY_IMAGE}/monolith_api:latest  # Stores your image in the GitLab image registry with the name latest
 
-accounts-api-back-end-build-job:
+account-api-back-end-build-job:
   rules:
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
   stage: build
@@ -85,11 +82,11 @@ accounts-api-back-end-build-job:
     - docker:20.10.16-dind
   script:
     - cd accounts_microservice
-    - docker build -t ${CI_REGISTRY_IMAGE}/accounts:latest .  
-    - docker tag ${CI_REGISTRY_IMAGE}/accounts:latest ${CI_REGISTRY_IMAGE}/accounts:$CI_JOB_ID  
+    - docker build -t ${CI_REGISTRY_IMAGE}/account_api:latest .  
+    - docker tag ${CI_REGISTRY_IMAGE}/account_api:latest ${CI_REGISTRY_IMAGE}/account_api:$CI_JOB_ID  
     - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY 
-    - docker push ${CI_REGISTRY_IMAGE}/accounts:$CI_JOB_ID  
-    - docker push ${CI_REGISTRY_IMAGE}/accounts:latest  
+    - docker push ${CI_REGISTRY_IMAGE}/account_api:$CI_JOB_ID  
+    - docker push ${CI_REGISTRY_IMAGE}/account_api:latest  
 
 monolith-poller-back-end-build-job:
   rules:
@@ -99,7 +96,7 @@ monolith-poller-back-end-build-job:
   services:
     - docker:20.10.16-dind
   script:
-    - cd monolith/poll
+    - cd monolith/poller
     - docker build -t ${CI_REGISTRY_IMAGE}/monolith_poller:latest .  
     - docker tag ${CI_REGISTRY_IMAGE}/monolith_poller:latest ${CI_REGISTRY_IMAGE}/monolith_poller:$CI_JOB_ID  
     - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY 
@@ -124,20 +121,20 @@ deploy-monolith-api-image-job:
     - docker tag ${CI_REGISTRY_IMAGE}/monolith_api:latest registry.heroku.com/$HEROKU_MONOLITH_API_APP/web:latest
     - docker push registry.heroku.com/$HEROKU_MONOLITH_API_APP/web:latest
 
-deploy-accounts-api-image-job:
+deploy-account-api-image-job:
   rules:
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
   stage: deploy
   image: docker:20.10.16
   needs:
-    - accounts-api-back-end-build-job
+    - account-api-back-end-build-job
   services:
     - docker:20.10.16-dind
   script:
     - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY
     - docker login --username=_ --password=$HEROKU_API_KEY registry.heroku.com
-    - docker pull ${CI_REGISTRY_IMAGE}/accounts:latest
-    - docker tag ${CI_REGISTRY_IMAGE}/accounts:latest registry.heroku.com/$HEROKU_ACCOUNT_API_APP/web:latest
+    - docker pull ${CI_REGISTRY_IMAGE}/account_api:latest
+    - docker tag ${CI_REGISTRY_IMAGE}/account_api:latest registry.heroku.com/$HEROKU_ACCOUNT_API_APP/web:latest
     - docker push registry.heroku.com/$HEROKU_ACCOUNT_API_APP/web:latest
 
 deploy-monolith-poller-image-job:
@@ -171,11 +168,11 @@ release-monolith-api-image-job:
   script:
     - heroku container:release web --app $HEROKU_MONOLITH_API_APP
 
-release-accounts-api-image-job:
+release-account-api-image-job:
   stage: deploy
   image: node:10.17-alpine
   needs:
-    - deploy-accounts-api-image-job
+    - deploy-account-api-image-job
   rules:
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
   before_script:
