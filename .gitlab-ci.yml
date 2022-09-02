@@ -12,15 +12,15 @@ variables:
   DATABASE_URL: postgresql://postgres:test@postgres:5432/postgres
 
 ## TESTING
-monolith-api-unit-test-job:
-  image: python:3-bullseye
-  stage: test
-  script:
-    - cd monolith/api
-    - pip install -r requirements.txt
-    - export MONOLITH_DATABASE_URL
-    - python manage.py migrate  # Migrate the database
-    - python manage.py test  # Run the tests
+# monolith-api-unit-test-job:
+#   image: python:3-bullseye
+#   stage: test
+#   script:
+#     - cd monolith/api
+#     - pip install -r requirements.txt
+#     - export MONOLITH_DATABASE_URL
+#     - python manage.py migrate  # Migrate the database
+#     - python manage.py test  # Run the tests
 
 account-api-unit-test-job:
 image: python:3-bullseye
