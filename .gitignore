@@ -168,6 +168,6 @@ cython_debug/
 #.idea/
 
 # # migrations for every folder
-# **/migrations/**
-# !**/migrations
-# !**/migrations/__init__.py 
+**/migrations/**
+!**/migrations
+!**/migrations/__init__.py 
