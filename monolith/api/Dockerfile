@@ -5,6 +5,7 @@ WORKDIR /app
 # Copy the top-level files
 COPY requirements.txt requirements.txt
 COPY manage.py manage.py
+COPY poll poll
 
 # Copy the Django project and all Django apps
 COPY puppylove puppylove
