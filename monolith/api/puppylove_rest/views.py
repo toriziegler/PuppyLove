@@ -99,9 +99,9 @@ def api_show_delete_update_dog(request, pk):
 @require_http_methods("GET")
 def api_ownerVOs(request):
     if request.method == "GET":
-        ownerss = OwnerVO.objects.all()
+        owners = OwnerVO.objects.all()
         return JsonResponse(
-            {"owners": ownerss},
+            {"owners": owners},
             encoder=OwnerVOEncoder,
         )
 
