@@ -19,7 +19,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # aws set-up
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "media/store"),
+    os.path.join(BASE_DIR, "media/store/"),
 ]
 
 AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID")
