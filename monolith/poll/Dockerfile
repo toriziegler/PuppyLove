@@ -4,7 +4,7 @@ WORKDIR /app
 
 # Copy the top-level files
 COPY requirements.txt requirements.txt
-COPY manage.py manage.py
+COPY poller.py poller.py
 
 # Copy the Django project and all Django apps
 COPY puppylove puppylove
@@ -13,4 +13,4 @@ COPY common common
 COPY media media
 
 RUN pip install -r requirements.txt
-CMD python manage.py migrate && gunicorn django_project.wsgi --bind 0.0.0.0:$PORT --log-file -
+CMD python poller.py
