@@ -38,7 +38,7 @@ function Nav() {
   return (
     <nav className="navbar navbar-expand-lg navbar-light">
       <div className="container-fluid">
-        <NavLink className="navbar-brand" to="/puppylove/">Puppy Love</NavLink>
+        <NavLink className="navbar-brand" to="/puppy-love/">Puppy Love</NavLink>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
           data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
           aria-expanded="false" aria-label="Toggle navigation">
@@ -47,7 +47,7 @@ function Nav() {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <NavLink className="nav-link active" aria-current="page" to="/puppylove/">Home</NavLink>
+              <NavLink className="nav-link active" aria-current="page" to="/puppy-love/">Home</NavLink>
             </li>
             <li className="nav-item">
               <NavLink className="nav-link" to="/profile">Profile</NavLink>
