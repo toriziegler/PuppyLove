@@ -24,56 +24,56 @@ const phantomStyle = {
 };
 
 function Footer({ children }) {
-    return (
-      <div>
-        <div style={phantomStyle} />
-        <div style={footerStyle}>{children}</div>
-      </div>
-    );
-  }
-  
-  
+  return (
+    <div>
+      <div style={phantomStyle} />
+      <div style={footerStyle}>{children}</div>
+    </div>
+  );
+}
+
+
 
 function Nav() {
   return (
     <nav className="navbar navbar-expand-lg navbar-light">
       <div className="container-fluid">
-        <NavLink className="navbar-brand" to="/">Puppy Love</NavLink>
-        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" 
-        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" 
-        aria-expanded="false" aria-label="Toggle navigation">
+        <NavLink className="navbar-brand" to="/puppylove/">Puppy Love</NavLink>
+        <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+          aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-                <NavLink className="nav-link active" aria-current="page" to="/">Home</NavLink>
+              <NavLink className="nav-link active" aria-current="page" to="/puppylove/">Home</NavLink>
             </li>
             <li className="nav-item">
-                <NavLink className="nav-link" to="/profile">Profile</NavLink>
+              <NavLink className="nav-link" to="/profile">Profile</NavLink>
             </li>
             <li className="nav-item">
-                <NavLink className="nav-link" to="/login">Log in</NavLink>
+              <NavLink className="nav-link" to="/login">Log in</NavLink>
             </li>
             <li className="nav-item">
-                <NavLink className="nav-link" to="/signup">Sign up</NavLink>
+              <NavLink className="nav-link" to="/signup">Sign up</NavLink>
             </li>
             <li className="nav-item">
-                <NavLink className="nav-link" to="/message">Message</NavLink>
+              <NavLink className="nav-link" to="/message">Message</NavLink>
             </li>
             <li className="nav-item">
-                <NavLink className="nav-link" to="/doginfo">Dog Information</NavLink>
+              <NavLink className="nav-link" to="/doginfo">Dog Information</NavLink>
             </li>
             <li className="nav-item">
-                <NavLink className="nav-link" to="/ownerinfo">Owner Information</NavLink>
+              <NavLink className="nav-link" to="/ownerinfo">Owner Information</NavLink>
             </li>
-            
+
           </ul>
           <div>
-        <Footer>
-            <span>© Copyright 2022 Puppy Love, LLC. All Rights Reserved</span>
-        </Footer>
-        </div>
+            <Footer>
+              <span>© Copyright 2022 Puppy Love, LLC. All Rights Reserved</span>
+            </Footer>
+          </div>
         </div>
       </div>
     </nav>
