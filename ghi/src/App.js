@@ -13,24 +13,24 @@ function App(props) {
   return (
     <BrowserRouter>
       <Nav />
-        <Routes>
-          <Route path="/" element={<MainPage />} />
-        </Routes>
-        <Routes path="profile">
-          <Route path="profile" element={<Profile />} />
-        </Routes>
-        <Routes path="login">
-          <Route path="login" element={<LoginForm />}/>
-        </Routes>
-        <Routes path="signup">
-          <Route path="signup" element={<SignUp />}/>
-        </Routes>
-        <Routes path="doginfo">
-          <Route path="doginfo" element={<DogInfo />}/>
-        </Routes>
-        <Routes path="ownerinfo">
-          <Route path="ownerinfo" element={<OwnerInfo />}/>
-        </Routes>
+      <Routes>
+        <Route path="/puppylove/" element={<MainPage />} />
+      </Routes>
+      <Routes path="profile">
+        <Route path="profile" element={<Profile />} />
+      </Routes>
+      <Routes path="login">
+        <Route path="login" element={<LoginForm />} />
+      </Routes>
+      <Routes path="signup">
+        <Route path="signup" element={<SignUp />} />
+      </Routes>
+      <Routes path="doginfo">
+        <Route path="doginfo" element={<DogInfo />} />
+      </Routes>
+      <Routes path="ownerinfo">
+        <Route path="ownerinfo" element={<OwnerInfo />} />
+      </Routes>
     </BrowserRouter>
   );
 }
