@@ -10,4 +10,4 @@ urlpatterns = [
     path("upload/", AWSPhotoCreateView.as_view(), name="photo_form"),
     path("ownerVOs/", api_ownerVOs, name="api_ownerVOs"),
     path("ownerVOs/<int:pk>/", api_owner_show_VO, name="api_owner_show_VO"),
-    ]
+]

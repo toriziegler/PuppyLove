@@ -1,13 +1,14 @@
 from django.db import models
 from django.core.validators import MaxValueValidator
 
+
 class State(models.Model):
     name = models.CharField(max_length=40)
     id = models.PositiveIntegerField(primary_key=True)
     abbreviation = models.CharField(max_length=2, unique=True)
 
     def __str__(self):
-        return f'{self.name}, {self.abbreviation}'
+        return f"{self.name}, {self.abbreviation}"
 
     class Meta:
         ordering = ("id",)  # Default ordering for State

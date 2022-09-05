@@ -11,24 +11,25 @@ django.setup()
 
 from puppylove_rest.models import OwnerVO
 
+
 def get_owners():
     response = requests.get("http://account-api:8000/api/owners/")
     content = json.loads(response.content)
     for owner in content["owners"]:
         OwnerVO.objects.update_or_create(
             defaults={
-            'name': owner['name'],
-            'email': owner['email'],
-            'phone': owner['phone'],
-            'description': owner['description'],
-            'state': owner['state']
+                "name": owner["name"],
+                "email": owner["email"],
+                "phone": owner["phone"],
+                "description": owner["description"],
+                "state": owner["state"],
             }
         )
 
 
 def poll():
     while True:
-        print('Owner poller polling for data')
+        print("Owner poller polling for data")
         try:
             get_owners()
             pass
