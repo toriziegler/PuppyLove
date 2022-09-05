@@ -1,4 +1,7 @@
 import React from 'react';
+import React, { useState } from 'react';
+import AWS from 'aws-sdk'
+
 
 class Profile extends React.Component {
     constructor(props) {
@@ -10,6 +13,7 @@ class Profile extends React.Component {
         // this.handleUpdate = this.handleUpdate.bind(this);
         this.handleChangeName = this.handleChangeName.bind(this);
     }
+
 
 
     //     async handleUpdate(event,appointment) {
