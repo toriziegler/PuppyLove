@@ -59,6 +59,9 @@ function Nav() {
             <li className="nav-item">
               <NavLink className="nav-link" to="/ownerinfo">Owner Information</NavLink>
             </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/upload">Upload Photos</NavLink>
+            </li>
           </ul>
           <ul className="navbar-nav justify-content-right mb-2 mb-lg-0">
             <li className="nav-item">
