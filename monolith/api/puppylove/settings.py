@@ -33,6 +33,20 @@ STATIC_URL = os.environ["STATIC_URL"]
 DEFAULT_FILE_STORAGE = os.environ["DEFAULT_FILE_STORAGE"]
 
 AWS_S3_OBJECT_PARAMETERS = {"CacheControl": os.environ["AWS_Cache"]}
+[os.path.join(BASE_DIR, "media/store/"),
+ ]
+
+AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID")
+AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY")
+AWS_STORAGE_BUCKET_NAME = os.environ.get("AWS_STORAGE_BUCKET_NAME")
+AWS_S3_CUSTOM_DOMAIN = os.environ.get("AWS_S3_CUSTOM_DOMAIN")
+AWS_LOCATION = os.environ.get("AWS_LOCATION")
+STATICFILES_STORAGE = os.environ.get("STATICFILES_STORAGE")
+STATIC_URL = os.environ.get("STATIC_URL")
+DEFAULT_FILE_STORAGE = os.environ.get("DEFAULT_FILE_STORAGE")
+
+AWS_S3_OBJECT_PARAMETERS = {"CacheControl": os.environ.get("AWS_Cache")}
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
@@ -73,14 +87,18 @@ MIDDLEWARE = [
 
 CSRF_TRUSTED_ORIGINS = [
     "http://localhost:3000",
-    "http://localhost:8000",
+    "http://localhost:3001",
     "http://localhost:8080",
+    "http://localhost:8001",
+    "http://localhost:8000",
     "http://localhost:8100",
 ]
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
+    "http://localhost:3001",
     "http://localhost:8000",
+    "http://localhost:8001",
     "http://localhost:8080",
     "http://localhost:8100",
 ]
@@ -118,9 +136,9 @@ TEMPLATES = [
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-DATABASES = {}
-DATABASES["default"] = dj_database_url.config()
-
+DATABASES = {
+    "default": dj_database_url.config(default="postgres://user:pass@localhost/dbname")
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -163,3 +181,10 @@ MEDIA_ROOT = "/media/"
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+# Honor the 'X-Forwarded-Proto' header for request.is_secure()
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+
+# Static asset configuration
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+STATIC_ROOT = "staticfiles"

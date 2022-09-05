@@ -1,8 +1,6 @@
-from django.http import JsonResponse
 from django.test import TestCase, Client
 from django.urls import reverse
-from ..encoders import DogEncoder, OwnerVOEncoder
-from ..models import Dog, OwnerVO
+
 
 
 class TestDogs(TestCase):
@@ -15,5 +13,9 @@ class TestDogs(TestCase):
 class TestOwners(TestCase):
     def test_list_owners(self):
         client = Client()
+<<<<<<< HEAD
         response = client.get(reverse("api_owners"))
+=======
+        response = client.get(reverse("api_ownerVOs"))
+>>>>>>> daf3df8392dd79b88e37eb980360440ee3afd9c9
         self.assertEquals(response.status_code, 200)

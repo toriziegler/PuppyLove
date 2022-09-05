@@ -1,17 +1,11 @@
-from django.shortcuts import render
 from .models import AWSPhoto, Owner, State
 from .encoders import OwnerEncoder, StateEncoder
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 from django.views.decorators.http import require_http_methods
 import json
-from django.contrib.auth.decorators import login_required
 from django.views.generic.edit import CreateView
 from django.urls import reverse_lazy
-import logging
-
-
-from .models import AWSPhoto
 
 
 @csrf_exempt
@@ -27,15 +21,16 @@ def api_owners(request):
         try:
             content = json.loads(request.body)
             state_id = content["state"]
-            state = State.objects.get(id=state_id)
+            state = State.objects.get(abbreviation=state_id)
             content["state"] = state
+            print(state)
             owner = Owner.objects.create(**content)
             return JsonResponse(
                 owner,
                 encoder=OwnerEncoder,
                 safe=False,
             )
-        except:
+        except Owner.DoesNotExist:
             response = JsonResponse({"message": "Could not create the Owner"})
             response.status_code = 400
             return response
@@ -102,7 +97,7 @@ def api_states(request):
                 encoder=StateEncoder,
                 safe=False,
             )
-        except:
+        except State.DoesNotExist:
             response = JsonResponse({"message": "Could not create the State"})
             response.status_code = 400
             return response

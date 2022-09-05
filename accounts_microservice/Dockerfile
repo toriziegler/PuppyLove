@@ -5,12 +5,12 @@ WORKDIR /app
 # Copy the top-level files
 COPY requirements.txt requirements.txt
 COPY manage.py manage.py
+COPY data.json data.json
 
 # Copy the Django project and all Django apps
-COPY puppylove puppylove
-COPY puppylove_rest puppylove_rest
+COPY accounts accounts
+COPY accounts_bc accounts_bc
 COPY common common
-COPY media media
 
 RUN pip install -r requirements.txt
 CMD python manage.py migrate && gunicorn django_project.wsgi --bind 0.0.0.0:$PORT --log-file -

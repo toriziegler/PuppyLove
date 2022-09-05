@@ -1,11 +1,9 @@
-from django.shortcuts import render
 from .models import Dog, AWSPhoto, OwnerVO
 from .encoders import DogEncoder, OwnerVOEncoder
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 from django.views.decorators.http import require_http_methods
 import json
-from django.contrib.auth.decorators import login_required
 from django.views.generic.edit import CreateView
 from django.urls import reverse_lazy
 
@@ -31,27 +29,15 @@ def api_dogs(request):
                 encoder=DogEncoder,
                 safe=False,
             )
-        except:
+        except Dog.DoesNotExist:
             response = JsonResponse({"message": "Could not create the Dog"})
             response.status_code = 400
             return response
 
 
-@csrf_exempt
-@require_http_methods(["GET"])
-def api_owners(request):
-    if request.method == "GET":
-        owners = OwnerVO.objects.all()
-        return JsonResponse(
-            {"owners": owners},
-            encoder=OwnerVOEncoder,
-        )
-
-
 class AWSPhotoCreateView(CreateView):
     model = AWSPhoto
     template_name = "photos/upload.html"
-
     fields = [
         "upload",
     ]

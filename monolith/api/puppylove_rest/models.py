@@ -1,17 +1,11 @@
 from django.db import models
-from puppylove.settings import MEDIA_ROOT
-import uuid
-
-from django.core.validators import MaxValueValidator
-
-# from phonenumber_field.modelfields import PhoneNumberField
 
 
 class OwnerVO(models.Model):
     state = models.CharField(max_length=2, unique=True)
     name = models.CharField(max_length=200)
     email = models.EmailField()
-    phone = models.PositiveIntegerField()
+    phone = models.PositiveBigIntegerField()
     description = models.TextField(max_length=1000)
 
     def __str__(self):

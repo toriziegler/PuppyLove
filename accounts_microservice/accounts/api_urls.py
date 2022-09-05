@@ -1,5 +1,4 @@
 from django.urls import path
-
 from .api_views import api_owners, api_states, AWSPhotoCreateView
 
 

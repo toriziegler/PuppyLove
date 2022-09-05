@@ -31,9 +31,10 @@ class OwnerInfo extends React.Component {
     async handleSubmit(event) {
         event.preventDefault();
         const data = { ...this.state };
-        delete data.states;
+        delete data.states
+        console.log(data)
 
-        const url = 'http://localhost:8100/api/owners';
+        const url = 'http://localhost:8100/api/owners/';
         const fetchConfig = {
             method: "POST",
             body: JSON.stringify(data),
@@ -96,17 +97,11 @@ class OwnerInfo extends React.Component {
                             <div className="card-body">
                                 <h1>Owner Information</h1>
                                 <hr />
-                                <form onSubmit={this.handleSubmit} id="create-appointment-form">
+                                <form onSubmit={this.handleSubmit} id="create-owner-form">
                                     <div className="form-floating mb-3">
                                         <input onChange={this.handleNameChange} value={this.state.name}
                                             placeholder="Name" required type="text" name="name"
                                             id="name" />
-                                    </div>
-
-                                    <div className="form-floating mb-3">
-                                        <input onChange={this.handleEmailChange} value={this.state.email}
-                                            placeholder="Email" required type="email" name="email"
-                                            id="uemail" />
                                     </div>
 
                                     <div className="form-floating mb-3" >
@@ -138,7 +133,7 @@ class OwnerInfo extends React.Component {
                         </div>
                     </div>
                 </div>
-            </div>
+            </div >
         )
     }
 }
