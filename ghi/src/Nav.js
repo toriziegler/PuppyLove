@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import React from 'react';
-
+import logo from "./assets/images/willy.jpeg"
 
 const footerStyle = {
   backgroundColor: "",
@@ -38,6 +38,7 @@ function Nav() {
   return (
     <nav className="navbar navbar-expand-lg navbar-light">
       <div className="container-fluid">
+        <NavLink to="/" className='home-button' ><img className="logo" src={logo} alt="" width="80px" height="50px" /></NavLink>
         <NavLink className="navbar-brand" to="/">Puppy Love</NavLink>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
           data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
