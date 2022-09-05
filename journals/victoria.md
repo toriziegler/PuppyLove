@@ -3,7 +3,7 @@ Today I worked on:
 
 * Deployment!
 
-
+    Today the team pushed all recent changed to the main branch and tested out the CI pipeline - all code is up to date, passing unit tests and lint tests. 
 
 # September 1, 2022
 Today I worked on:
