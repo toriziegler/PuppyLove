@@ -65,3 +65,13 @@ was able to connect to the postgres database by putting this command in the dock
 Today was pretty good. Victoria was working on CI CD while Nico and Norton tried to tackle authentication using DjangoREST. Stephen and I started working on connecting the front end to the back-end. 
 
 We were able to set up the owner-information page to successfully submit new members to the backend. I was also able to fix the polling issue that we were having so we could make dog objects in the django admin using the ownerVO. I am feeling good going into friday that we will be able to finish our MVP in time. We are planning to meet for a few hours over the long weekend to get some more work done. 
+
+## Sep 2, 2022
+
+victoria was able to deploy our website! awesome news. Looks like we have to change the paths in settings for our default database location when we deploy. This change will only be made on our deployed branch. 
+
+I was able to help the team with a few errors today. 
+
+I have a feeling there will be more errors to come. I need to work on these parts moving forward. 
+      - fix the upload photo link on the front end.
+      
