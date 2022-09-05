@@ -3,7 +3,7 @@ Today I worked on:
 
 * Deployment!
 
-    Today the team pushed all recent changed to the main branch and tested out the CI pipeline - all code is up to date, passing unit tests and lint tests. 
+    Today the team pushed all recent changed to the main branch and tested out the CI pipeline - all code is up to date, passing unit tests and lint tests. I worked on getting the project fully deployed. I ran into some minor errors while building but was able to get the project fully deployed on heroku today and visit the public url page! 
 
 # September 1, 2022
 Today I worked on:

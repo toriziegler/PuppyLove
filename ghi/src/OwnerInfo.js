@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 class OwnerInfo extends React.Component {
     constructor(props) {
@@ -50,9 +49,12 @@ class OwnerInfo extends React.Component {
                 email: '',
                 phone: '',
                 description: '',
-                state: '',
             });
+        } else if (!response.ok) {
+            const message = ` An error: ${response.status} - ${response.statusText}`;
+            throw new Error(message);
         }
+
     }
 
     handleNameChange(event) {
@@ -104,6 +106,12 @@ class OwnerInfo extends React.Component {
                                             id="name" />
                                     </div>
 
+                                    <div className="form-floating mb-3">
+                                        <input onChange={this.handleEmailChange} value={this.state.email}
+                                            placeholder="Email" required type="email" name="email"
+                                            id="uemail" />
+                                    </div>
+
                                     <div className="form-floating mb-3" >
                                         <input onChange={this.handlePhoneChange} value={this.state.phone}
                                             placeholder="PhoneNumber" required type="text" name="phone"
@@ -120,20 +128,21 @@ class OwnerInfo extends React.Component {
                                             <option value="">Choose Your State</option>
                                             {this.state.states.map((state) => {
                                                 return (
-                                                    <option key={state.id} value={state.id}>
+                                                    <option key={state.id} value={state.abbreviation}>
                                                         {state.name}
                                                     </option>
                                                 )
                                             })}
                                         </select>
                                     </div>
+                                    <br></br>
                                     <button className="btn btn-primary" type="submit">Submit</button>
                                 </form>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div >
+            </div>
         )
     }
 }
