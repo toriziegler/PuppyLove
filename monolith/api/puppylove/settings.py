@@ -33,8 +33,9 @@ STATIC_URL = os.environ["STATIC_URL"]
 DEFAULT_FILE_STORAGE = os.environ["DEFAULT_FILE_STORAGE"]
 
 AWS_S3_OBJECT_PARAMETERS = {"CacheControl": os.environ["AWS_Cache"]}
-[os.path.join(BASE_DIR, "media/store/"),
- ]
+[
+    os.path.join(BASE_DIR, "media/store/"),
+]
 
 AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID")
 AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY")
