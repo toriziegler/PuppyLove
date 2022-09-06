@@ -1,31 +1,26 @@
-
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import React from 'react';
-import MainPage from './MainPage';
-import Nav from './Nav';
-import Profile from './Profile';
-import LoginForm from './LoginForm';
-import SignUp from './SignUp';
+import PrivateRoute from './utilis/PrivateRoute'
+import {AuthProvider} from './context/AuthContext'
+import HomePage from './pages/HomePage'
+import LoginPage from './pages/LoginPage'  
+import Header from './components/Header'
+
 function App(props) {
   return (
-    <BrowserRouter>
-      <Nav />
-        <Routes>
-          <Route path="/" element={<MainPage />} />
-        </Routes>
-        <Routes path="profile">
-          <Route path="profile" element={<Profile />} />
-        </Routes>
-        <Routes path="login">
-          <Route path="login" element={<LoginForm />}/>
-        </Routes>
-        <Routes path="signup">
-          <Route path="signup" element={<SignUp />}/>
-        </Routes>
-        <Routes path="doginfo">
-          <Route path="doginfo" element={<DogInfo />}/>
-        </Routes>
-    </BrowserRouter>
+    <div className='App'>
+      <BrowserRouter>
+        <AuthProvider>
+          <Header />
+            <Routes>
+              <Route exact path="/" element={<PrivateRoute />}>
+                <Route exact path="/" element={<HomePage />} />
+              </Route>
+              <Route path="/login/" element={<LoginPage />} />
+            </Routes>
+        </AuthProvider>
+      </BrowserRouter>
+    </div>
   );
 }
 export default App;
