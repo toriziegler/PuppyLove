@@ -23,20 +23,6 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "media/store"),
 ]
 
-AWS_ACCESS_KEY_ID = os.environ["AWS_ACCESS_KEY_ID"]
-AWS_SECRET_ACCESS_KEY = os.environ["AWS_SECRET_ACCESS_KEY"]
-AWS_STORAGE_BUCKET_NAME = os.environ["AWS_STORAGE_BUCKET_NAME"]
-AWS_S3_CUSTOM_DOMAIN = os.environ["AWS_S3_CUSTOM_DOMAIN"]
-AWS_LOCATION = os.environ["AWS_LOCATION"]
-STATICFILES_STORAGE = os.environ["STATICFILES_STORAGE"]
-STATIC_URL = os.environ["STATIC_URL"]
-DEFAULT_FILE_STORAGE = os.environ["DEFAULT_FILE_STORAGE"]
-
-AWS_S3_OBJECT_PARAMETERS = {"CacheControl": os.environ["AWS_Cache"]}
-[
-    os.path.join(BASE_DIR, "media/store/"),
-]
-
 AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID")
 AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY")
 AWS_STORAGE_BUCKET_NAME = os.environ.get("AWS_STORAGE_BUCKET_NAME")
@@ -46,7 +32,10 @@ STATICFILES_STORAGE = os.environ.get("STATICFILES_STORAGE")
 STATIC_URL = os.environ.get("STATIC_URL")
 DEFAULT_FILE_STORAGE = os.environ.get("DEFAULT_FILE_STORAGE")
 
-AWS_S3_OBJECT_PARAMETERS = {"CacheControl": os.environ.get("AWS_Cache")}
+AWS_S3_OBJECT_PARAMETERS = {"CacheControl": os.environ["AWS_Cache"]}
+[
+    os.path.join(BASE_DIR, "media/store/"),
+]
 
 
 # Quick-start development settings - unsuitable for production
