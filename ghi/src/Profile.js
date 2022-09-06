@@ -1,5 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
+const linkStyle = {
+    color: 'black',
+    textDecoration: "none"
+}
 class Profile extends React.Component {
     constructor(props) {
         super(props);
@@ -60,6 +65,8 @@ class Profile extends React.Component {
                     }}
                 >
                     <div>
+                        <p><Link style={linkStyle} to="/doginfo" className="mainlink">
+                            <button type="button">Edit your dog information</button></Link></p>
                         <div>
                             <img src="https://puppy-love-assets.s3.amazonaws.com/media/Willie_image.webp" alt="Willie Da Dog" height={200} width={200} />
                         </div>

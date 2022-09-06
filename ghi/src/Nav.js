@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import React from 'react';
-
+import logo from "./assets/images/willy.jpeg"
 
 const footerStyle = {
   backgroundColor: "",
@@ -38,6 +38,7 @@ function Nav() {
   return (
     <nav className="navbar navbar-expand-lg navbar-light">
       <div className="container-fluid">
+        <NavLink to="/puppy-love/" className='home-button' ><img className="logo" src={logo} alt="" width="80px" height="50px" /></NavLink>
         <NavLink className="navbar-brand" to="/puppy-love/">Puppy Love</NavLink>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
           data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -53,21 +54,19 @@ function Nav() {
               <NavLink className="nav-link" to="/profile">Profile</NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" to="/login">Log in</NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/signup">Sign up</NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/message">Message</NavLink>
-            </li>
-            <li className="nav-item">
               <NavLink className="nav-link" to="/doginfo">Dog Information</NavLink>
             </li>
             <li className="nav-item">
               <NavLink className="nav-link" to="/ownerinfo">Owner Information</NavLink>
             </li>
-
+          </ul>
+          <ul className="navbar-nav justify-content-right mb-2 mb-lg-0">
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/login">Log In</NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/signup">Sign up</NavLink>
+            </li>
           </ul>
           <div>
             <Footer>
