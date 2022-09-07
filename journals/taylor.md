@@ -75,3 +75,9 @@ I was able to help the team with a few errors today.
 I have a feeling there will be more errors to come. I need to work on these parts moving forward. 
       - fix the upload photo link on the front end.
       
+## Sep 6, 2022 
+
+today i started working on the photo upload from react to S3 database. I was able to get past the issues I was having by making the .env variables start with REACT_APP_. 
+since i was not doing this before, the variables were all showing up as undefined. 
+
+## Sep 7, 2022
