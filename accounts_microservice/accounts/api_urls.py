@@ -1,5 +1,6 @@
 from django.urls import path
-from .api_views import api_owners, api_states, AWSPhotoCreateView, getRoutes, MyTokenObtainPairView #getNotes
+from .api_views import api_owners, api_states, AWSPhotoCreateView
+from .api_views import getRoutes, MyTokenObtainPairView  # getNotes
 
 from rest_framework_simplejwt.views import (
     TokenRefreshView,
