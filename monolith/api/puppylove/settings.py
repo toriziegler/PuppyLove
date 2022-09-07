@@ -32,7 +32,7 @@ STATICFILES_STORAGE = os.environ.get("STATICFILES_STORAGE")
 STATIC_URL = os.environ.get("STATIC_URL")
 DEFAULT_FILE_STORAGE = os.environ.get("DEFAULT_FILE_STORAGE")
 
-AWS_S3_OBJECT_PARAMETERS = {"CacheControl": os.environ["AWS_Cache"]}
+AWS_S3_OBJECT_PARAMETERS = {"CacheControl": os.environ.get("AWS_Cache")}
 [
     os.path.join(BASE_DIR, "media/store/"),
 ]
