@@ -38,8 +38,7 @@ lint-project-job:
 ## BUILDING
 ghi-front-end-build-job:
   rules:
-      # Only run if pushing to the main branch
-      - if: ($CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH || $CI_COMMIT_BRANCH == "deploy")
+      - if: $CI_COMMIT_BRANCH == "deploy"
   stage: build
   image: node:lts-bullseye
   variables:
@@ -59,8 +58,7 @@ ghi-front-end-build-job:
 
 monolith-api-back-end-build-job:
   rules:
-    # Only run if pushing to the main branch
-    - if: ($CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH || $CI_COMMIT_BRANCH == "deploy")
+      - if: $CI_COMMIT_BRANCH == "deploy"
   stage: build
   image: docker:20.10.16
   services:
@@ -75,7 +73,7 @@ monolith-api-back-end-build-job:
 
 account-api-back-end-build-job:
   rules:
-    - if: ($CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH || $CI_COMMIT_BRANCH == "deploy")
+    - if: $CI_COMMIT_BRANCH == "deploy"
   stage: build
   image: docker:20.10.16
   services:
@@ -90,7 +88,7 @@ account-api-back-end-build-job:
 
 monolith-poller-back-end-build-job:
   rules:
-    - if: ($CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH || $CI_COMMIT_BRANCH == "deploy")
+    - if: $CI_COMMIT_BRANCH == "deploy"
   stage: build
   image: docker:20.10.16
   services:
@@ -107,7 +105,7 @@ monolith-poller-back-end-build-job:
 
 deploy-monolith-api-image-job:
   rules:
-    - if: ($CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH || $CI_COMMIT_BRANCH == "deploy")
+    - if: $CI_COMMIT_BRANCH == "deploy"
   stage: deploy
   image: docker:20.10.16
   needs:
@@ -123,7 +121,7 @@ deploy-monolith-api-image-job:
 
 deploy-account-api-image-job:
   rules:
-    - if: ($CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH || $CI_COMMIT_BRANCH == "deploy")
+    - if: $CI_COMMIT_BRANCH == "deploy"
   stage: deploy
   image: docker:20.10.16
   needs:
@@ -139,7 +137,7 @@ deploy-account-api-image-job:
 
 deploy-monolith-poller-image-job:
   rules:
-    - if: ($CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH || $CI_COMMIT_BRANCH == "deploy")
+    - if: $CI_COMMIT_BRANCH == "deploy"
   stage: deploy
   image: docker:20.10.16
   needs:
@@ -161,7 +159,7 @@ release-monolith-api-image-job:
   needs:
     - deploy-monolith-api-image-job
   rules:
-    - if: ($CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH || $CI_COMMIT_BRANCH == "deploy")
+    - if: $CI_COMMIT_BRANCH == "deploy"
   before_script:
     - apk add curl bash
     - curl https://cli-assets.heroku.com/install.sh | sh
@@ -174,7 +172,7 @@ release-account-api-image-job:
   needs:
     - deploy-account-api-image-job
   rules:
-    - if: ($CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH || $CI_COMMIT_BRANCH == "deploy")
+      - if: $CI_COMMIT_BRANCH == "deploy"
   before_script:
     - apk add curl bash
     - curl https://cli-assets.heroku.com/install.sh | sh
@@ -187,7 +185,7 @@ release-monolith-poller-image-job:
   needs:
     - deploy-monolith-poller-image-job
   rules:
-    - if: ($CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH || $CI_COMMIT_BRANCH == "deploy")
+      - if: $CI_COMMIT_BRANCH == "deploy"
   before_script:
     - apk add curl bash
     - curl https://cli-assets.heroku.com/install.sh | sh
@@ -197,7 +195,7 @@ release-monolith-poller-image-job:
 pages:
   stage: deploy
   rules:
-    - if: ($CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH || $CI_COMMIT_BRANCH == "deploy")
+    - if: $CI_COMMIT_BRANCH == "deploy"
   dependencies:
     - ghi-front-end-build-job
   needs:
