@@ -1,3 +1,8 @@
+# September 7, 2022
+Today I worked on:
+
+* Front-End/Back-End connections
+
 # September 6, 2022
 Today I worked on:
 
