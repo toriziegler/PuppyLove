@@ -8,17 +8,21 @@ class DogInfo extends React.Component {
             age: '',
             breed: '',
             description: '',
+            owners: [],
         };
         this.handleNameChange = this.handleNameChange.bind(this);
         this.handleAgeChange = this.handleAgeChange.bind(this);
         this.handleBreedChange = this.handleBreedChange.bind(this);
         this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
+        this.handleOwnerChange = this.handleOwnerChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     async handleSubmit(event) {
         event.preventDefault();
         const data = { ...this.state };
+        delete data.owners
+        console.log("CHECKING DATAAAAA", data)
 
         const url = 'http://localhost:8080/api/dogs/'
         const fetchConfig = {
@@ -30,13 +34,24 @@ class DogInfo extends React.Component {
         };
 
         const response = await fetch(url, fetchConfig);
+        console.log("RESPONSEEEEEEE", response)
         if (response.ok) {
             this.setState({
                 name: '',
                 age: '',
                 breed: '',
                 description: '',
+                owners: '',
             });
+        }
+    }
+
+    async componentDidMount() {
+        const URL = 'http://localhost:8080/api/ownerVOs/'
+        const response = await fetch(URL);
+        if (response.ok) {
+            const data = await response.json();
+            this.setState({ owners: data.owners });
         }
     }
 
@@ -55,6 +70,10 @@ class DogInfo extends React.Component {
     handleDescriptionChange(event) {
         const value = event.target.value;
         this.setState({ description: value });
+    }
+    handleOwnerChange(event) {
+        const value = event.target.value;
+        this.setState({ owner: value });
     }
 
     render() {
@@ -76,7 +95,7 @@ class DogInfo extends React.Component {
                             <div className="card-body">
                                 <h1>Dog Information</h1>
                                 <hr />
-                                <form onSubmit={this.handleSubmit} id="create-appointment-form">
+                                <form onSubmit={this.handleSubmit} id="create-dog-form">
                                     <div className="form-floating mb-3">
                                         <input onChange={this.handleNameChange} value={this.state.name}
                                             placeholder="Name" required type="text" name="name"
@@ -97,6 +116,19 @@ class DogInfo extends React.Component {
                                             placeholder="Description" required type="text" name="description"
                                             id="description" />
                                     </div>
+                                    <div className="mb-3">
+                                        <select onChange={this.handleOwnerChange} value={this.state.owner} required name="owner" id="owner" className="form-select">
+                                            <option value="">Choose Dog's Owner</option>
+                                            {this.state.owners.map((owner) => {
+                                                return (
+                                                    <option key={owner.id} value={owner.id}>
+                                                        {owner.name}
+                                                    </option>
+                                                )
+                                            })}
+                                        </select>
+                                    </div>
+                                    <br></br>
                                     <button className="btn btn-primary" type="submit">Submit</button>
                                 </form>
                             </div>
