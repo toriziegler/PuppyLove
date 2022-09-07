@@ -6,6 +6,8 @@ const AWSREGION = process.env.REACT_APP_REGION;
 const KEY_ID = process.env.REACT_APP_AWS_ACCESS_KEY_ID;
 const ACCESS_KEY = process.env.REACT_APP_AWS_SECRET_ACCESS_KEY;
 
+console.log(AWSREGION)
+console.log("bucket:", BUCKET_NAME)
 
 const S3_BUCKET = BUCKET_NAME;
 const REGION = AWSREGION;
@@ -36,7 +38,7 @@ const UploadImageToS3WithNativeSdk = () => {
             ACL: 'public-read',
             Body: file,
             Bucket: S3_BUCKET,
-            Key: file.name
+            Key: `media/${file.name}`
         };
 
         myBucket.putObject(params)
@@ -50,7 +52,7 @@ const UploadImageToS3WithNativeSdk = () => {
 
 
     return <div>
-        <div>Native SDK File Upload Progress is {progress}%</div>
+        <div>File Upload Progress is {progress}%</div>
         <input type="file" onChange={handleFileInput} />
         <button onClick={() => uploadFile(selectedFile)}> Upload to S3</button>
     </div>
