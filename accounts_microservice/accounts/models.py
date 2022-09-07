@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 
 class State(models.Model):
@@ -36,3 +37,8 @@ class AWSPhoto(models.Model):
         on_delete=models.PROTECT
     )
     upload = models.FileField()
+
+
+# class Note(models.Model):
+#     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+#     body = models.TextField()
