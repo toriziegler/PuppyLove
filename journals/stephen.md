@@ -27,3 +27,6 @@ Worked on debugging poller with Taylor and Victoria
 
 # August 31
 Created owner and dog front pages, changed things on the other pages.
+
+# September 1
+Worked on connecting the back end to front end with Taylor
