@@ -13,4 +13,4 @@ COPY accounts_bc accounts_bc
 COPY common common
 
 RUN pip install -r requirements.txt
-CMD python manage.py migrate && gunicorn django_project.wsgi --bind 0.0.0.0:$PORT --log-file -
+CMD python manage.py migrate && gunicorn accounts_bc.wsgi --bind 0.0.0.0:$PORT --log-file -
