@@ -1,6 +1,12 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink }from 'react-router-dom';
+import { Link } from 'react-router-dom'
 import React from 'react';
 import logo from "./assets/images/willy.jpeg"
+import { useContext } from 'react'
+import AuthContext from './AuthContext'
+
+
+
 
 const footerStyle = {
   backgroundColor: "",
@@ -35,8 +41,20 @@ function Footer({ children }) {
 
 
 function Nav() {
+  let {user, logoutUser} = useContext(AuthContext)
   return (
     <nav className="navbar navbar-expand-lg navbar-light">
+      <div>
+          <Link to="/puppy-love/" >Home</Link>
+          {user ? (
+               <p  onClick={logoutUser}>Logout</p>
+          ): (
+              <Link to="/login" >Login</Link>
+          )}
+         
+          {user &&   <p>Hello {user.username}</p>}
+         
+      </div>
       <div className="container-fluid">
         <NavLink to="/puppy-love/" className='home-button' ><img className="logo" src={logo} alt="" width="80px" height="50px" /></NavLink>
         <NavLink className="navbar-brand" to="/puppy-love/">Puppy Love</NavLink>
