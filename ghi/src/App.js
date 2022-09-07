@@ -14,7 +14,7 @@ function App(props) {
     <BrowserRouter>
       <Nav />
       <Routes>
-        <Route path="/" element={<MainPage />} />
+        <Route path="/puppy-love/" element={<MainPage />} />
       </Routes>
       <Routes path="profile">
         <Route path="profile" element={<Profile />} />

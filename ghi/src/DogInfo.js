@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class DogInfo extends React.Component {
     constructor(props) {
@@ -97,13 +98,14 @@ class DogInfo extends React.Component {
                                             placeholder="Description" required type="text" name="description"
                                             id="description" />
                                     </div>
-                                    <button className="btn btn-primary" type="submit">Submit</button>
+                                    <Link to="/profile" className="mainlink"><button className="btn btn-primary"
+                                        type="submit">Submit</button></Link>
                                 </form>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </div >
         )
     }
 }
