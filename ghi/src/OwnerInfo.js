@@ -49,12 +49,9 @@ class OwnerInfo extends React.Component {
                 email: '',
                 phone: '',
                 description: '',
+                state: '',
             });
-        } else if (!response.ok) {
-            const message = ` An error: ${response.status} - ${response.statusText}`;
-            throw new Error(message);
         }
-
     }
 
     handleNameChange(event) {
