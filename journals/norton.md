@@ -1,3 +1,15 @@
+# September 6, 2022
+
+What we today?
+
+- Met with team
+- Did our morning Scrum meeting
+- Not the best day. Victoria and I tried tying in the back in with the front end that Stephen created on react, but we were getting a strange error, "[eslint] Failed to load plugin 'jsx-a11y' declared in 'package.json » eslint-config-react-app': /app/node_modules/language-subtag-registry/data/json/registry.json: Unexpected end of JSON input". and we spent the majority of the day trying to figure it out. It turns out that one of my files was corrupted, and I had to delete the project on my pc, and download it off Gitlab. Victoria and I also found that we were working on old code trying to figure out how to get the states information to show on the sign-up page, but stephen had already handled it. So tomorrow we will make sure everyone has up to date code as soon as we begin.
+
+Potential blockers?
+
+1.
+
 # September 2, 2022
 
 What we today?
