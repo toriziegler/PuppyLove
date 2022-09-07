@@ -14,11 +14,8 @@ from puppylove_rest.models import OwnerVO
 
 def get_owners():
     response = requests.get("http://account-api:8000/api/owners/")
-    print(response)
     content = json.loads(response.content)
-    print(content)
     for owner in content["owners"]:
-        print(owner)
         OwnerVO.objects.update_or_create(
             defaults={
                 "name": owner["name"],

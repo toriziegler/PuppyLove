@@ -1,3 +1,10 @@
+# September 6, 2022
+Today I worked on:
+
+* Front-End/Back-End connections
+
+    Norton and I started to work on debugging the owner information page today, however we got stuck for a while on an error with his package-lock.json file. We ended up needing to delete his package-lock file, delete the node_modules folder, and run npm install again. Otherwise, I got the pipeline merge errors fixed for the main branch so everyone was able to pull my deployable product from the weekend. 
+
 # September 2, 2022
 Today I worked on:
 

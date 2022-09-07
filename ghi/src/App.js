@@ -8,6 +8,8 @@ import LoginForm from './LoginForm';
 import SignUp from './SignUp';
 import OwnerInfo from './OwnerInfo';
 import DogInfo from './DogInfo';
+import UploadImageToS3WithNativeSdk from './UploadImageToS3';
+
 
 function App(props) {
   return (
@@ -30,6 +32,9 @@ function App(props) {
       </Routes>
       <Routes path="ownerinfo">
         <Route path="ownerinfo" element={<OwnerInfo />} />
+      </Routes>
+      <Routes path="upload">
+        <Route path="upload" element={<UploadImageToS3WithNativeSdk />} />
       </Routes>
     </BrowserRouter>
   );
