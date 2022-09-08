@@ -16,35 +16,6 @@ class Profile extends React.Component {
         this.handleChangeName = this.handleChangeName.bind(this);
     }
 
-
-    //     async handleUpdate(event,appointment) {
-    //         event.preventDefault();
-
-    //         const appointmentIdArray = appointment.href.split("/");
-    //         const appID = appointmentIdArray[3];
-    //         const AppointmentUrl = `http://localhost:8080/api/appointments/${appID}/`;
-    //         const data = { 
-    //             "href": appointment.href,
-    //             "car_owner_name": appointment.car_owner_name,
-    //             "appointment_date": appointment.appointment_date,
-    //             "appointment_time": appointment.appointment_time,
-    //             "reason": appointment.reason,
-    //             "vin": appointment.vin,
-    //             "technician": appointment.technician.name,
-    //             "completed": true,
-    //             "Vip": String(appointment.Vip),}
-    //         const fetchConfig = {
-    //         method: "put",
-    //         headers: {
-    //             'Content-Type': 'application/json',
-    //         },
-    //         body: JSON.stringify(data),
-    //     };
-    //         const response = await fetch(AppointmentUrl, fetchConfig);
-    //         if (response.ok) {
-    //             console.log("appointment completed")
-    //     }
-    // }
     handleChangeName(event) {
         const value = event.target.value;
         this.setState({ name: value });

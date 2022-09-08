@@ -81,3 +81,8 @@ today i started working on the photo upload from react to S3 database. I was abl
 since i was not doing this before, the variables were all showing up as undefined. 
 
 ## Sep 7, 2022
+
+Today I was able to complete the react to s3 AWS photo bucket pipeline. I ran into a few errors along the way but was able to get it working following the amazon docs @ https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/http-400-bad-request.html. Now that We are able to upload photos and authorization is set up, we have two main issues ahead of us. 
+
+  - showing data in profiles: how will we get each USER's information to connect to their Owner profile and Dog profile? This is something we will need to plan out as a team
+  - connecting pictures to profiles: Now that we can upload photos, how can we save each user's information to a unique bucket folder? This will allow users to only have access to their particular photos which would be the most useful for a real world type application. 
