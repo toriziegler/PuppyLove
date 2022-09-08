@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Owner, State #Note
+from .models import Owner, State  # Note
 
 # Register your models here.
 

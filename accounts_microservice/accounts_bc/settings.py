@@ -129,6 +129,8 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:8100",
 ]
 
+CORS_ALLOW_CREDENTIALS = True
+
 ROOT_URLCONF = "accounts_bc.urls"
 
 TEMPLATES = [

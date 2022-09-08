@@ -7,13 +7,11 @@ import json
 from django.views.generic.edit import CreateView
 from django.urls import reverse_lazy
 from rest_framework.response import Response
-from rest_framework.decorators import api_view, permission_classes
+from rest_framework.decorators import api_view
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
-from rest_framework.permissions import IsAuthenticated
 
 # from .serializers import NoteSerializer
-
 
 
 @csrf_exempt
@@ -148,7 +146,7 @@ def getRoutes(request):
     routes = [
         'api/api2/token',
         '/api/api2/token/refresh',
-        
+
     ]
 
     return Response(routes)

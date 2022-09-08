@@ -5,7 +5,7 @@ from .models import Dog, OwnerVO
 
 class OwnerVOEncoder(ModelEncoder):
     model = OwnerVO
-    properties = ["name", "email", "phone", "description", "state"]
+    properties = ["name", "email", "phone", "description", "state", "id"]
 
 
 class DogEncoder(ModelEncoder):
