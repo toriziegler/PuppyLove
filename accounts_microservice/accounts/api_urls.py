@@ -1,6 +1,6 @@
 from django.urls import path
 
-from .api_views import api_owners, getRoutes, api_states, AWSPhotoCreateView, MyTokenObtainPairView, getNotes
+from .api_views import UserCreate, api_owners, getRoutes, api_states, AWSPhotoCreateView, MyTokenObtainPairView, getNotes
 
 from rest_framework_simplejwt.views import (
     TokenRefreshView,
@@ -14,6 +14,7 @@ urlpatterns = [
     path('token/', MyTokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('notes/', getNotes, name="getNotes"),
+    path('users/', UserCreate.as_view(), name="UserCreate"),
 
     
     ]
