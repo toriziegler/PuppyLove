@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import api_dogs, api_owner_show_VO, api_ownerVOs
+from .views import api_dogs, api_owner_show_VO, api_ownerVOs, api_owners_dogs
 from .views import AWSPhotoCreateView
 
 urlpatterns = [
@@ -7,4 +7,8 @@ urlpatterns = [
     path("upload/", AWSPhotoCreateView.as_view(), name="photo_form"),
     path("ownerVOs/", api_ownerVOs, name="api_ownerVOs"),
     path("ownerVOs/<int:pk>/", api_owner_show_VO, name="api_owner_show_VO"),
+    path(
+        "owners_dogs/<int:owner_id>/",
+        api_owners_dogs,
+        name="api_owners_dogs"),
 ]
