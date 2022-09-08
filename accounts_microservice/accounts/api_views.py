@@ -112,7 +112,6 @@ def api_states(request):
 class AWSPhotoCreateView(CreateView):
     model = AWSPhoto
     template_name = "photos/upload.html"
-
     fields = [
         "upload",
     ]

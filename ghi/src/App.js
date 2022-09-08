@@ -10,11 +10,7 @@ import OwnerInfo from './OwnerInfo';
 import DogInfo from './DogInfo';
 import UploadImageToS3WithNativeSdk from './UploadImageToS3';
 import PrivateRoute from './PrivateRoute'
-import {AuthProvider} from './AuthContext'
-
-
-
-
+import { AuthProvider } from './AuthContext'
 
 function App(props) {
   return (
@@ -22,17 +18,17 @@ function App(props) {
       <BrowserRouter>
         <AuthProvider>
           <Nav />
-            <Routes>
-              <Route exact path="/puppy-love/" element={<PrivateRoute />}>
-                <Route exact path="/puppy-love/" element={<MainPage />} />
-              </Route>
-              <Route path="profile" element={<Profile />} />
-              <Route path="signup" element={<SignUp />} />
-              <Route path="doginfo" element={<DogInfo />} />
-              <Route path="ownerinfo" element={<OwnerInfo />} />
-              <Route path="upload" element={<UploadImageToS3WithNativeSdk />} />
-              <Route path="/login/" element={<LoginForm />} />
-            </Routes>
+          <Routes>
+            <Route exact path="/puppy-love/" element={<PrivateRoute />}>
+              <Route exact path="/puppy-love/" element={<MainPage />} />
+            </Route>
+            <Route path="profile" element={<Profile />} />
+            <Route path="signup" element={<SignUp />} />
+            <Route path="doginfo" element={<DogInfo />} />
+            <Route path="ownerinfo" element={<OwnerInfo />} />
+            <Route path="upload" element={<UploadImageToS3WithNativeSdk />} />
+            <Route path="/login" element={<LoginForm />} />
+          </Routes>
         </AuthProvider>
       </BrowserRouter>
     </div>

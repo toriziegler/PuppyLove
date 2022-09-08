@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { Link } from 'react-router-dom';
 class OwnerInfo extends React.Component {
     constructor(props) {
         super(props)
@@ -132,8 +132,8 @@ class OwnerInfo extends React.Component {
                                             })}
                                         </select>
                                     </div>
-                                    <br></br>
-                                    <button className="btn btn-primary" type="submit">Submit</button>
+                                    <Link to="/profile" className="mainlink"><button className="btn btn-primary"
+                                        type="submit">Submit</button></Link>
                                 </form>
                             </div>
                         </div>

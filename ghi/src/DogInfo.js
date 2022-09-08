@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class DogInfo extends React.Component {
     constructor(props) {
@@ -116,6 +117,7 @@ class DogInfo extends React.Component {
                                             placeholder="Description" required type="text" name="description"
                                             id="description" />
                                     </div>
+
                                     <div className="mb-3">
                                         <select onChange={this.handleOwnerChange} value={this.state.owner} required name="owner" id="owner" className="form-select">
                                             <option value="">Choose Dog's Owner</option>
@@ -129,13 +131,14 @@ class DogInfo extends React.Component {
                                         </select>
                                     </div>
                                     <br></br>
-                                    <button className="btn btn-primary" type="submit">Submit</button>
+                                    <Link to="/profile" className="mainlink"><button className="btn btn-primary"
+                                        type="submit">Submit</button></Link>
                                 </form>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </div >
         )
     }
 }

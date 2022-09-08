@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-class SignUp extends React.Component{
-    constructor(props){
+class SignUp extends React.Component {
+    constructor(props) {
         super(props)
         this.state = {
             username: '',
@@ -32,20 +32,20 @@ class SignUp extends React.Component{
         };
 
         const response = await fetch(url, fetchConfig);
-        if(response.ok){
+        if (response.ok) {
             this.setState({
                 username: '',
                 password: '',
                 verify_password: '',
 
             });
-        } else if (!response.ok){
+        } else if (!response.ok) {
             const message = ` An error: ${response.status} - ${response.statusText}`;
             throw new Error(message);
-        }            
+        }
 
     }
-    
+
     handleUsernameChange(event) {
         const value = event.target.value;
         this.setState({ username: value });
@@ -61,7 +61,7 @@ class SignUp extends React.Component{
     }
 
 
-    
+
     render() {
         // if (this.state.redirect){
         //     return <Navigate to="/login"/>;
@@ -71,51 +71,53 @@ class SignUp extends React.Component{
         // }
         return (
             <div className="App">
-            <div
-              className="container-fluid d-flex align-items-center"
-              style={{
-                height: "100vh",
-                backgroundImage:
-                  "url(https://media.npr.org/assets/img/2021/08/06/dog-4415649-18eab39206426b985f7a5f69e3146a2cd1a56c0d-s800-c85.webp)",
-                backgroundPosition: "center",
-                backgroundSize: "cover",
-                backgroundRepeat: "no-repeat"
-              }}
-            >
-            <div className="signup" id="signuptop">
-                <div className="card mx-auto" style={{ width: "18rem" }}>
-                    <div className="card-body">
-                        <h1>Create an Account</h1>
-                        <hr/>
+                <div
+                    className="container-fluid d-flex align-items-center"
+                    style={{
+                        height: "100vh",
+                        backgroundImage:
+                            "url(https://media.npr.org/assets/img/2021/08/06/dog-4415649-18eab39206426b985f7a5f69e3146a2cd1a56c0d-s800-c85.webp)",
+                        backgroundPosition: "center",
+                        backgroundSize: "cover",
+                        backgroundRepeat: "no-repeat"
+                    }}
+                >
+                    <div className="signup" id="signuptop">
+                        <div className="card mx-auto" style={{ width: "18rem" }}>
+                            <div className="card-body">
+                                <h1>Create an Account</h1>
+                                <hr />
 
-                        <div className="form-floating mb-3">
-                            <input onChange={this.handleUsernameChange} value={this.state.username} 
-                            placeholder="Username" required type="text" name="username" 
-                            id="username" />
-                        </div>
-                        
-                        <div className="form-floating mb-3" >
-                            <input  value={this.state.password} onChange={this.handlePasswordChange}
-                                placeholder="Password" required type="text" name="password" 
-                                id="signuppassword" /> 
-                        </div>
+                                <div className="form-floating mb-3">
+                                    <input onChange={this.handleUsernameChange} value={this.state.username}
+                                        placeholder="Username" required type="text" name="username"
+                                        id="username" />
+                                </div>
 
-                        <div className="form-floating mb-3" >
-                            <input value={this.state.verify_password} onChange={this.handleVerify_PasswordChange}
-                                placeholder="Verify Password" required type="text" name="verify-password" 
-                                id="verify-password"  />
-                        </div>
+                                <div className="form-floating mb-3" >
+                                    <input value={this.state.password} onChange={this.handlePasswordChange}
+                                        placeholder="Password" required type="text" name="password"
+                                        id="signuppassword" />
+                                </div>
 
-                        <br></br>
-                        <button className="btn btn-primary" type="submit">Sign Up</button>
-                        <div className='tolgoin'>
-                            Already Have an Account?  <Link to='/login'>Sign In</Link> 
+                                <div className="form-floating mb-3" >
+                                    <input value={this.state.verify_password} onChange={this.handleVerify_PasswordChange}
+                                        placeholder="Verify Password" required type="text" name="verify-password"
+                                        id="verify-password" />
+                                </div>
+
+                                <br></br>
+                                <Link to="/puppy-love/"> <button type="submit" name='loginbutton'
+                                    className="btn btn-primary" form="login-form">Log In
+                                </button></Link>
+                                <div className='tolgoin'>
+                                    Already Have an Account?  <Link to='/login'>Sign In</Link>
+                                </div>
+
+                            </div>
                         </div>
-                    
                     </div>
                 </div>
-            </div>
-            </div>
             </div>
         )
     }
