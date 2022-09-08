@@ -6,6 +6,14 @@ from django.views.decorators.http import require_http_methods
 import json
 from django.views.generic.edit import CreateView
 from django.urls import reverse_lazy
+from rest_framework.response import Response
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
+from rest_framework_simplejwt.views import TokenObtainPairView
+from rest_framework.permissions import IsAuthenticated
+
+# from .serializers import NoteSerializer
+
 
 
 @csrf_exempt
@@ -116,3 +124,40 @@ class AWSPhotoCreateView(CreateView):
         photos = AWSPhoto.objects.all()
         context["Photos"] = photos
         return context
+
+
+class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
+    @classmethod
+    def get_token(cls, user):
+        token = super().get_token(user)
+
+        # Add custom claims
+        token['username'] = user.username
+        # ...
+
+        return token
+
+
+class MyTokenObtainPairView(TokenObtainPairView):
+    serializer_class = MyTokenObtainPairSerializer
+
+
+@csrf_exempt
+@api_view(['GET'])
+def getRoutes(request):
+    routes = [
+        'api/api2/token',
+        '/api/api2/token/refresh',
+        
+    ]
+
+    return Response(routes)
+
+
+# @api_view(['GET'])
+# @permission_classes([IsAuthenticated])
+# def getNotes(request):
+#     user = request.user
+#     notes = user.note_set.all()
+#     serializer = NoteSerializer(notes, many=True)
+#     return Response(serializer.data)

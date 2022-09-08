@@ -1,9 +1,19 @@
+# September 7, 2022
+Today I worked on:
+
+# September 6, 2022
+Today I worked on:
+
+* Front-End/Back-End connections
+
+    Norton and I started to work on debugging the owner information page today, however we got stuck for a while on an error with his package-lock.json file. We ended up needing to delete his package-lock file, delete the node_modules folder, and run npm install again. Otherwise, I got the pipeline merge errors fixed for the main branch so everyone was able to pull my deployable product from the weekend. 
+
 # September 2, 2022
 Today I worked on:
 
 * Deployment!
 
-    Today the team pushed all recent changed to the main branch and tested out the CI pipeline - all code is up to date, passing unit tests and lint tests. 
+    Today the team pushed all recent changed to the main branch and tested out the CI pipeline - all code is up to date, passing unit tests and lint tests. I worked on getting the project fully deployed. I ran into some minor errors while building but was able to get the project fully deployed on heroku today and visit the public url page! 
 
 # September 1, 2022
 Today I worked on:

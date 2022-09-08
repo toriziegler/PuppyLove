@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
 class OwnerInfo extends React.Component {
     constructor(props) {
         super(props)
@@ -104,6 +103,12 @@ class OwnerInfo extends React.Component {
                                             id="name" />
                                     </div>
 
+                                    <div className="form-floating mb-3">
+                                        <input onChange={this.handleEmailChange} value={this.state.email}
+                                            placeholder="Email" required type="email" name="email"
+                                            id="uemail" />
+                                    </div>
+
                                     <div className="form-floating mb-3" >
                                         <input onChange={this.handlePhoneChange} value={this.state.phone}
                                             placeholder="PhoneNumber" required type="text" name="phone"
@@ -120,7 +125,7 @@ class OwnerInfo extends React.Component {
                                             <option value="">Choose Your State</option>
                                             {this.state.states.map((state) => {
                                                 return (
-                                                    <option key={state.id} value={state.id}>
+                                                    <option key={state.id} value={state.abbreviation}>
                                                         {state.name}
                                                     </option>
                                                 )
@@ -134,7 +139,7 @@ class OwnerInfo extends React.Component {
                         </div>
                     </div>
                 </div>
-            </div >
+            </div>
         )
     }
 }

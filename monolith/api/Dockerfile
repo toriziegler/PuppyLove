@@ -13,4 +13,4 @@ COPY common common
 COPY media media
 
 RUN pip install -r requirements.txt
-CMD python manage.py migrate && gunicorn django_project.wsgi --bind 0.0.0.0:$PORT --log-file -
+CMD python manage.py migrate && gunicorn puppylove.wsgi --bind 0.0.0.0:$PORT --log-file -

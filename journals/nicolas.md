@@ -24,3 +24,35 @@ I worked in typing the views, urls and fixing the models for the project. I work
 On this day I worked in:
 
 Today I worked with Taylor. We figure it out that it would be a better idea to have the owners(accounts) in its own microservice and connect them to the dogs by the polling system. It is still a headache and we are approaching the end of the day and we still have a lot of things to try it to work. Moving the models, views, urls, setting up [settings.py](http://settings.py) file, the docker images, the [dockerfile.dev](http://dockerfile.dev), the [poller.py](http://poller.py) file and the overall structure of how to move the microservice is still giving us issue. I worked as a driver today and working with Taylor makes it a lot easier to understand, he knows to explain almost all the questions that I have and is good at planning to get solutions. We are not still working on the microservice yet but trying to set it up, hopefully we can knock this out and focus to work on that on monday.
+
+## August 29, 2022
+we found an issue with our docker compose file so we all as group started debugging and eventually fixing it with the help of instructors.
+
+## August 30, 2022
+
+Today I started to work with Norton and Stephen  struggling with the authentication. We don't know what method to use to connect it to the backend. There's a bunch from what I read, but some of them are just outdated. Will have to figure out what to use in order to be able to connect accounts effectively to the owners.
+
+## August 31, 2022
+
+We worked today in mergin stuff to the main. I didn't actually have too much to push to main because I was working as a navigator last days, so I just was patiently waiting while trying to help somehow my partners. I figured out I needed to do something to start feeling myself more productive, so I went into another breakout room to start trying to figure out which method to use to work on the authentication backend and frontend. I found a youtube video which felt very easy to follow along and just started to type things on the files we already got in our project. It was somehow outdated, so it wasn't as easy as I thought in the first place so I will keep working on that tomorrow.
+
+## September 01, 2022
+
+So when I was trying to follow the tutorial I was watching on youtube, issues started to come through and it was very dificul to figure it out with all the other stuff we had previously pass to the react pages. Backend authentication was working nicely as it should, but couldn't figure out a way to connect it propertly to the frontend. So I decided to push my broken code to a branch, create a new branch and delete all the stuff and files in the frontend that I wouldn't have to use right now so I could only focus in the frontend. I'll have to keep working on this tomorrow
+
+## September 02, 2022
+
+Today I worked in trying to connect the auth backend to the frontend and the frontened auth itself. I got through a new step, was able to create a private route for my tokens succesfully, but for some reason my AuthContext.js wasn't fully working. It was giving me issues while trying to use the fetch method and while using "history" and "redirect". After doing some research in StackOverflow, I figure out on this things were outdated and quickly was able to fix all of that. Also, I had to install some nmp jwt-decode to the project, and I was trying to do it through the requirements.txt but after asking Neil, he told me that the Javascript libraries go in the package.json and the requirements is for Python. That's a new one. I fixed some issues but others kept popping up. I think I'll have to work on this on the weekend.
+
+## September 05, 2022
+
+Today is our day off, but I had to finish authentitication today. Not that I had to, but wanted to have something to show to my group tomorrow. And finally after all the struggle and things to change, I was able to have all the Authentitication stuff working, and being able to create content for each specific user. Such an amazing feeling. I pushed to my dev branch and will show to the rest of the group how it works.
+
+## September 06, 2022
+
+So today I showed my group how the auth stuff worked. I worked with Stephen on trying to connect the files I had in my own branch into the main and into the actual files we want to render in our frontend, because I just did basic ones to show if the frontend was polling propertly from the backend. We figured out that as I change a lot of files, the better way would be manually merging, so I deleted the whole project and pull from gitlab. It came with an issue that I didn't know how to fix. We were debugging it and couldn't find an answer until almost attendance when Andrew came out to solve my help ticket and helped me figure out I was missing the .env file that we weren't pushing to gitlab. We Will have to work in the manual merging tomorrow but at least I know another issue I could run while pulling from git.
+
+
+
+
+

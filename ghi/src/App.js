@@ -8,30 +8,31 @@ import LoginForm from './LoginForm';
 import SignUp from './SignUp';
 import OwnerInfo from './OwnerInfo';
 import DogInfo from './DogInfo';
+import UploadImageToS3WithNativeSdk from './UploadImageToS3';
+import PrivateRoute from './PrivateRoute'
+import { AuthProvider } from './AuthContext'
 
 function App(props) {
   return (
-    <BrowserRouter>
-      <Nav />
-      <Routes>
-        <Route path="/puppy-love/" element={<MainPage />} />
-      </Routes>
-      <Routes path="profile">
-        <Route path="profile" element={<Profile />} />
-      </Routes>
-      <Routes path="login">
-        <Route path="login" element={<LoginForm />} />
-      </Routes>
-      <Routes path="signup">
-        <Route path="signup" element={<SignUp />} />
-      </Routes>
-      <Routes path="doginfo">
-        <Route path="doginfo" element={<DogInfo />} />
-      </Routes>
-      <Routes path="ownerinfo">
-        <Route path="ownerinfo" element={<OwnerInfo />} />
-      </Routes>
-    </BrowserRouter>
+    <div className='App'>
+      <BrowserRouter>
+        <AuthProvider>
+          <Nav />
+          <Routes>
+            <Route exact path="/puppy-love/" element={<PrivateRoute />}>
+              <Route exact path="/puppy-love/" element={<MainPage />} />
+            </Route>
+            <Route path="profile" element={<Profile />} />
+            <Route path="signup" element={<SignUp />} />
+            <Route path="doginfo" element={<DogInfo />} />
+            <Route path="ownerinfo" element={<OwnerInfo />} />
+            <Route path="upload" element={<UploadImageToS3WithNativeSdk />} />
+            <Route path="/login" element={<LoginForm />} />
+          </Routes>
+        </AuthProvider>
+      </BrowserRouter>
+    </div>
   );
 }
+
 export default App;

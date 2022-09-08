@@ -1,6 +1,12 @@
 import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom'
 import React from 'react';
 import logo from "./assets/images/taylordrawing2.png"
+import { useContext } from 'react'
+import AuthContext from './AuthContext'
+
+
+
 
 const footerStyle = {
   backgroundColor: "",
@@ -35,12 +41,18 @@ function Footer({ children }) {
 
 
 function Nav() {
+  let { user, logoutUser } = useContext(AuthContext)
   return (
     <nav className="navbar navbar-expand-lg navbar-light">
+      <div>
+
+
+        {/* {user && <p>Hello {user.username}</p>} */}
+
+      </div>
       <div className="container-fluid">
-        <NavLink to="/" className='home-button' ><img className="logo"
-          src={logo} alt="" width="50px" height="50px" /></NavLink>
-        <NavLink className="navbar-brand" to="/">Puppy Love</NavLink>
+        <NavLink to="/puppy-love/" className='home-button' ><img className="logo" src={logo} alt="" width="80px" height="50px" /></NavLink>
+        <NavLink className="navbar-brand" to="/puppy-love/">Puppy Love</NavLink>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
           data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
           aria-expanded="false" aria-label="Toggle navigation">
@@ -60,13 +72,24 @@ function Nav() {
             <li className="nav-item">
               <NavLink className="nav-link" to="/ownerinfo">Owner Information</NavLink>
             </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/upload">Upload Photos</NavLink>
+            </li>
           </ul>
           <ul className="navbar-nav justify-content-right mb-2 mb-lg-0">
             <li className="nav-item">
-              <NavLink className="nav-link" to="/login">Log In</NavLink>
+              {user ? (
+                <p className="nav-link" onClick={logoutUser}>Logout</p>
+              ) : (
+                <Link className="nav-link" to="/login" >Log in</Link>
+              )}
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" to="/signup">Sign up</NavLink>
+              {user ? (
+                <p className="nav-link" onClick={logoutUser}></p>
+              ) : (
+                <Link className="nav-link" to="/signup" >Sign up</Link>
+              )}
             </li>
           </ul>
           <div>
