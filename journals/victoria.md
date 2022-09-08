@@ -1,9 +1,13 @@
 # September 7, 2022
 Today I worked on:
 
+<<<<<<< HEAD
 * DogInfo.js
 
     Norton and I started to work on the dog info file for react to make sure that the dog instances were being created. I noticed our form was not fully submitting because our back end view requires the dog instance be attached to an owner. To fix this problem I attached a drop down menu onto the dog info form to allow the user to assign an owner to the dog. However in the future we may want to get rid of this feature and automatically assign the new dog to the user signed in and only allow each user to create one owner instance for themselves.
+=======
+* Front-End/Back-End connections
+>>>>>>> victoria-branch
 
 # September 6, 2022
 Today I worked on:
