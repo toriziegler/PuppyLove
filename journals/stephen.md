@@ -34,3 +34,6 @@ I worked on connecting the back end to front end with Taylor
 
 # September 6
 Worked on merging log in with main with Nicolas
+
+# September 7
+Nicolas and I got authorization to work!!!!!

@@ -79,14 +79,14 @@ function Nav() {
           <ul className="navbar-nav justify-content-right mb-2 mb-lg-0">
             <li className="nav-item">
               {user ? (
-                <p className="nav-link" onClick={logoutUser}>Logout</p>
+                <p className="nav-link" onClick={logoutUser}></p>
               ) : (
                 <Link className="nav-link" to="/login" >Log in</Link>
               )}
             </li>
             <li className="nav-item">
               {user ? (
-                <p className="nav-link" onClick={logoutUser}></p>
+                <p className="nav-link" onClick={logoutUser}>Logout</p>
               ) : (
                 <Link className="nav-link" to="/signup" >Sign up</Link>
               )}
