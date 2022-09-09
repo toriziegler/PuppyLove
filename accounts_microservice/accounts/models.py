@@ -37,3 +37,15 @@ class AWSPhoto(models.Model):
 class Note(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     body = models.TextField()
+
+
+class OwnerTwo(models.Model):
+    name = models.CharField(max_length=200)
+    email = models.EmailField()
+    phone = models.PositiveSmallIntegerField(validators=[MaxValueValidator(9999999999)])
+    description = models.TextField(max_length=1000)
+    account_number = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    state = models.ForeignKey(State, related_name="+", on_delete=models.PROTECT)
+
+    def str(self):
+        return f"{self.name}"
