@@ -17,6 +17,7 @@ class Owner(models.Model):
     name = models.CharField(max_length=200)
     email = models.EmailField()
     phone = models.PositiveBigIntegerField()
+    image = models.FileField(upload_to='photos')
     description = models.TextField(max_length=1000)
     state = models.ForeignKey(
         State,

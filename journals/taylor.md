@@ -86,3 +86,9 @@ Today I was able to complete the react to s3 AWS photo bucket pipeline. I ran in
 
   - showing data in profiles: how will we get each USER's information to connect to their Owner profile and Dog profile? This is something we will need to plan out as a team
   - connecting pictures to profiles: Now that we can upload photos, how can we save each user's information to a unique bucket folder? This will allow users to only have access to their particular photos which would be the most useful for a real world type application. 
+
+  ## Sep 8, 2022
+
+  my internet cut out at 2PM so i had to take the passenger's seat today and helped stephen and Nicolas & Norton try to figure out the user authentication portion of the project. This is very important for us to get figured out because it is how we will connect all the information on the accounts. 
+
+  we will need this in order to 

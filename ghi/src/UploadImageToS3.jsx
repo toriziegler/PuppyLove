@@ -12,7 +12,7 @@ console.log("bucket:", BUCKET_NAME)
 const S3_BUCKET = BUCKET_NAME;
 const REGION = AWSREGION;
 
-
+// The access key ID is how we will access the photo from the bucket
 AWS.config.update({
     accessKeyId: KEY_ID,
     secretAccessKey: ACCESS_KEY

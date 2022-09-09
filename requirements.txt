@@ -87,7 +87,7 @@ PySocks==1.7.1
 pytest==7.1.0
 python-dateutil==2.8.2
 pytz==2022.1
-
+django-s3direct==2.0.3
  
 pyzmq==23.1.0
 qtconsole==5.3.1

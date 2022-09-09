@@ -29,7 +29,6 @@ def api_owners(request):
             state_id = content["state"]
             state = State.objects.get(abbreviation=state_id)
             content["state"] = state
-            print(state)
             owner = Owner.objects.create(**content)
             return JsonResponse(
                 owner,
