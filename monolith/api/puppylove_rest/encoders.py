@@ -12,3 +12,6 @@ class DogEncoder(ModelEncoder):
     model = Dog
     properties = ["name", "age", "breed", "description", "id", "owner"]
     encoders = {"owner": OwnerVOEncoder()}
+
+    def get_extra_data(self, o):
+        return {"image": o.id}
