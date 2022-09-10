@@ -1,37 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-// function ProfileColumn(props) {
-//     return (
-//         <div className="col">
-//             {props.list.map(data => {
-//                 const dog = data.dog;
-//                 return (
-//                     <div key={dog.id} className="card mb-3 shadow card text-white bg-dark">
-//                         <img src="https://puppy-love-assets.s3.amazonaws.com/media/Willie_image.webp" className="card-img-top" />
-//                         <div className="card-body">
-//                             <h5 className="card-title">{dog.name}</h5>
-//                             <h6 className="card-subtitle mb-2 text-muted">
-//                                 {dog.breed}
-//                             </h6>
-//                             <p className="card-text">
-//                                 {dog.description}
-//                             </p>
-//                         </div>
-//                         <ul className="list-group list-group-flush">
-//                             <li className="list-group-item">{dog.age}</li>
-//                             <li className="list-group-item">{dog.gender}</li>
-//                             <li className="list-group-item">{dog.size}</li>
-//                             <li className="list-group-item">{dog.owner.email}</li>
-//                             <li className="list-group-item">{dog.owner.phone}</li>
-//                         </ul>
-//                     </div>
-//                 );
-//             })}
-//         </div>
-//     );
-// }
-
 const linkStyle = {
     color: 'black',
     textDecoration: "none"
@@ -92,23 +61,23 @@ class Profile extends React.Component {
                         backgroundRepeat: "no-repeat"
                     }}
                 >
-                    <div className="mb-3">
-                        <select onChange={this.handleOwnerChange} value={this.state.owner} name="owner" required id="owner" className="form-select">
-                            <option value="">Which of your dogs would you like to see?</option>
-                            {this.state.owners.map(owner => {
-                                return (
-                                    <option key={owner.id} value={owner.id}>
-                                        {owner.name}
-                                    </option>
-                                )
-                            })}
-                        </select>
-                    </div>
                     <div>
                         <p><Link style={linkStyle} to="/ownerinfo" className="mainlink">
-                            <button type="button">Edit your information</button></Link>
-                            <Link style={linkStyle} to="/doginfo" className="mainlink">
-                                <button type="button">Edit your dog information</button></Link></p>
+                            <button type="button" className="btn btn-light">Edit your information</button></Link></p>
+                        <p><Link style={linkStyle} to="/doginfo" className="mainlink">
+                            <button ype="button" className="btn btn-light">Edit your dog information</button></Link></p>
+                        <div className="mb-3">
+                            <select onChange={this.handleOwnerChange} value={this.state.owner} name="owner" required id="owner" className="form-select">
+                                <option value="">Which of your dogs would you like to see?</option>
+                                {this.state.owners.map(owner => {
+                                    return (
+                                        <option key={owner.id} value={owner.id}>
+                                            {owner.name}
+                                        </option>
+                                    )
+                                })}
+                            </select>
+                        </div>
                         <div>
                             <img src="https://puppy-love-assets.s3.amazonaws.com/media/Willie_image.webp" alt="Willie Da Dog" height={200} width={200} />
                         </div>
@@ -139,11 +108,6 @@ class Profile extends React.Component {
                                         </tr>
                                     );
                                 })}
-                                {/* {this.state.dogs.map(dog => {
-                                    return (
-                                        <ProfileColumn key={dog.id} />
-                                    );
-                                })} */}
                             </tbody>
                         </table>
                         <h2>Pictures</h2>

@@ -13,10 +13,23 @@ class OwnerVO(models.Model):
 
 
 class Dog(models.Model):
+    GENDER_CHOICES = (
+        ('M', 'Male'),
+        ('F', 'Female'),
+    )
+    SIZE_CHOICES = (
+        ('Toy', '2-9 Pounds'),
+        ('Small', '7-35 Pounds'),
+        ('Medium', '35-65 Pounds'),
+        ('Large', '55-85 Pounds'),
+        ('Giant', '75-120+ Pounds'),
+    )
     name = models.CharField(max_length=200)
     age = models.SmallIntegerField(null=True, blank=True)
     breed = models.CharField(max_length=100, default="mix")
     description = models.TextField(max_length=1000, null=True, blank=True)
+    gender = models.CharField(max_length=1, choices=GENDER_CHOICES)
+    size = models.CharField(max_length=6, choices=SIZE_CHOICES)
     owner = models.ForeignKey(
         OwnerVO, related_name="owner", on_delete=models.CASCADE, null=False
     )
@@ -27,7 +40,7 @@ class Dog(models.Model):
 
 class AWSPhoto(models.Model):
     uploaded_at = models.DateTimeField(auto_now_add=True)
-    owner_id = models.ForeignKey(
-        OwnerVO, related_name="photo", on_delete=models.PROTECT
+    dog_id = models.ForeignKey(
+        Dog, related_name="dog", on_delete=models.CASCADE
     )
     upload = models.FileField()

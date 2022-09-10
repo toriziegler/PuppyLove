@@ -67,6 +67,12 @@ function Nav() {
               <NavLink className="nav-link" to="/profile">Profile</NavLink>
             </li>
             <li className="nav-item">
+              <NavLink className="nav-link" to="/profilecard">Profile Card</NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/listprofiles">Find a New Friend</NavLink>
+            </li>
+            <li className="nav-item">
               <NavLink className="nav-link" to="/doginfo">Dog Information</NavLink>
             </li>
             <li className="nav-item">

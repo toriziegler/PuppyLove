@@ -10,5 +10,14 @@ class OwnerVOEncoder(ModelEncoder):
 
 class DogEncoder(ModelEncoder):
     model = Dog
-    properties = ["name", "age", "breed", "description", "id", "owner"]
+    properties = [
+        "name",
+        "age",
+        "breed",
+        "description",
+        "id",
+        "owner",
+        "gender",
+        "size"
+    ]
     encoders = {"owner": OwnerVOEncoder()}

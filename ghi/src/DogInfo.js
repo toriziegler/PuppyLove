@@ -8,12 +8,16 @@ class DogInfo extends React.Component {
             name: '',
             age: '',
             breed: '',
+            size: [],
+            gender: [],
             description: '',
             owners: [],
         };
         this.handleNameChange = this.handleNameChange.bind(this);
         this.handleAgeChange = this.handleAgeChange.bind(this);
         this.handleBreedChange = this.handleBreedChange.bind(this);
+        this.handleSizeChange = this.handleSizeChange.bind(this);
+        this.handleGenderChange = this.handleGenderChange.bind(this);
         this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
         this.handleOwnerChange = this.handleOwnerChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -23,7 +27,6 @@ class DogInfo extends React.Component {
         event.preventDefault();
         const data = { ...this.state };
         delete data.owners
-        console.log("CHECKING DATAAAAA", data)
 
         const url = 'http://localhost:8080/api/dogs/'
         const fetchConfig = {
@@ -35,7 +38,6 @@ class DogInfo extends React.Component {
         };
 
         const response = await fetch(url, fetchConfig);
-        console.log("RESPONSEEEEEEE", response)
         if (response.ok) {
             this.setState({
                 name: '',
@@ -68,6 +70,14 @@ class DogInfo extends React.Component {
         const value = event.target.value;
         this.setState({ breed: value });
     }
+    handleSizeChange(event) {
+        const value = event.target.value;
+        this.setState({ size: value });
+    }
+    handleGenderChange(event) {
+        const value = event.target.value;
+        this.setState({ gender: value });
+    }
     handleDescriptionChange(event) {
         const value = event.target.value;
         this.setState({ description: value });
@@ -76,6 +86,7 @@ class DogInfo extends React.Component {
         const value = event.target.value;
         this.setState({ owner: value });
     }
+
 
     render() {
         return (
@@ -112,6 +123,30 @@ class DogInfo extends React.Component {
                                             placeholder="Breed" required type="text" name="breed"
                                             id="breed" />
                                     </div>
+                                    {/* <div className="mb-3">
+                                        <select onChange={this.handleSizeChange} value={this.state.size} required name="size" id="size" className="form-select">
+                                            <option value="">Choose Size</option>
+                                            {this.state.owners.map((owner) => {
+                                                return (
+                                                    <option key={owner.id} value={owner.id}>
+                                                        {owner.name}
+                                                    </option>
+                                                )
+                                            })}
+                                        </select>
+                                    </div>
+                                    <div className="mb-3">
+                                        <select onChange={this.handleGenderChange} value={this.state.gender} required name="gender" id="gender" className="form-select">
+                                            <option value="">Choose Gender</option>
+                                            {this.state.owners.map((owner) => {
+                                                return (
+                                                    <option key={owner.id} value={owner.id}>
+                                                        {owner.name}
+                                                    </option>
+                                                )
+                                            })}
+                                        </select>
+                                    </div> */}
                                     <div className="form-floating mb-3">
                                         <input onChange={this.handleDescriptionChange} value={this.state.description}
                                             placeholder="Description" required type="text" name="description"

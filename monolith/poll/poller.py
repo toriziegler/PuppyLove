@@ -17,6 +17,7 @@ def get_owners():
     content = json.loads(response.content)
     for owner in content["owners"]:
         OwnerVO.objects.update_or_create(
+            id=owner["id"],
             defaults={
                 "name": owner["name"],
                 "email": owner["email"],

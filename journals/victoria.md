@@ -1,13 +1,24 @@
+# September 9, 2022
+Today I worked on:
+
+* List All Dog Profiles Page
+
+    I was able to create a bootstrap card for each dog instance in my database, and created a function so that they are able to wrap in a clean way of three cards to a row. While working on creating new dog instances to make sure the data was being presented correctly, I realized the poller was only pulling one owner instance at a time to the ownervo. My admin page and insomnia were alternating between the two owner instances I had but only showing one at a time. I realized that the poller was not assigning a new id for each new owner instance coming in, so they were just repeatedly overriding each other. I fixed this by adding id=owner["id"] in the objects.update_or_create function. 
+
+# September 8, 2022
+Today I worked on:
+
+* Personal Profile Page
+
+    I decided to first try to get the profile page to have an owner drop down menu, then based on the owner you choose a list of their dogs would show. Once I got this fully functioning though I realized I would need to separate the dogs out in a more clear and personalized way so I decided to create bootstrap cards to show the data. However I had trouble conceptualizing how to do this with filtering the owners and decided tomorrow I will try first creating the list all profiles page for all dog bootstrap cards, then try implementing that working code into the personal profile page once authentication is figured out.
+
+
 # September 7, 2022
 Today I worked on:
 
-<<<<<<< HEAD
 * DogInfo.js
 
     Norton and I started to work on the dog info file for react to make sure that the dog instances were being created. I noticed our form was not fully submitting because our back end view requires the dog instance be attached to an owner. To fix this problem I attached a drop down menu onto the dog info form to allow the user to assign an owner to the dog. However in the future we may want to get rid of this feature and automatically assign the new dog to the user signed in and only allow each user to create one owner instance for themselves.
-=======
-* Front-End/Back-End connections
->>>>>>> victoria-branch
 
 # September 6, 2022
 Today I worked on:
