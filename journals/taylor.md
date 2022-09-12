@@ -91,4 +91,15 @@ Today I was able to complete the react to s3 AWS photo bucket pipeline. I ran in
 
   my internet cut out at 2PM so i had to take the passenger's seat today and helped stephen and Nicolas & Norton try to figure out the user authentication portion of the project. This is very important for us to get figured out because it is how we will connect all the information on the accounts. 
 
-  we will need this in order to 
+  ## sep 9, 2022
+
+  today, yet again, I was working on getting the pictures to fully function. We have nearly the whole portion of it working now but just need to connect it. 
+
+    - we can upload direct from React to s3 bucket
+    - we can upload from django admin - leaving id for image in the database
+
+    - now the question is how can we make this work where we can dynamically pull these photos in. 
+
+    - my thoughts on this: i should look into how i can do this using boto3 since that is what we are using to upload to s3 from django. Thank would make the upload from react seem kinda pointless for the moment. 
+
+    - !! look into how we can dynamically make folders in the bucket for each user. This would make it so we could do a componentDidMount and bring in all the photos that the user has. Then we would be able to filter on the page based on which one we should show. 
