@@ -1,5 +1,6 @@
 from django.contrib import admin
-from .models import Owner, State, Note
+from .models import Owner, State
+# from django.contrib.auth.admin import UserAdmin
 
 # Register your models here.
 
@@ -11,4 +12,7 @@ class OwnerAdmin(admin.ModelAdmin):
 class StateAdmin(admin.ModelAdmin):
     pass
 
-admin.site.register(Note)
+# admin.site.register(User, UserAdmin)
+
+
+# admin.site.register(Note)

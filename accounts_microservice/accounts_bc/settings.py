@@ -43,6 +43,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["localhost", "monolith", 'account-api']
 
+AUTH_USER_MODEL = 'accounts.User'
 
 # Application definition
 

@@ -15,10 +15,10 @@ from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework.permissions import IsAuthenticated
 from .models import AWSPhoto
-from .serializers import NoteSerializer, UserSerializer
+# from .serializers import NoteSerializer, UserSerializer
 from rest_framework.views import APIView
 from rest_framework import status
-from django.contrib.auth.models import User
+# from django.contrib.auth.models import User
 
 
 @csrf_exempt
@@ -116,23 +116,23 @@ def getRoutes(request):
     return Response(routes)
 
 
-@api_view(['GET'])
-@permission_classes([IsAuthenticated])
-def getNotes(request):
-    user = request.user
-    notes = user.note_set.all()
-    serializer = NoteSerializer(notes, many=True)
-    return Response(serializer.data)
+# @api_view(['GET'])
+# @permission_classes([IsAuthenticated])
+# def getNotes(request):
+#     user = request.user
+#     notes = user.note_set.all()
+#     serializer = NoteSerializer(notes, many=True)
+#     return Response(serializer.data)
 
 
-class UserCreate(APIView):
-    """ 
-    Creates the user. 
-    """
+# class UserCreate(APIView):
+#     """ 
+#     Creates the user. 
+#     """
 
-    def post(self, request, format='json'):
-        serializer = UserSerializer(data=request.data)
-        if serializer.is_valid():
-            user = serializer.save()
-            if user:
-                return Response(serializer.data, status=status.HTTP_201_CREATED)
+#     def post(self, request, format='json'):
+#         serializer = UserSerializer(data=request.data)
+#         if serializer.is_valid():
+#             user = serializer.save()
+#             if user:
+#                 return Response(serializer.data, status=status.HTTP_201_CREATED)

@@ -1,7 +1,7 @@
 from django.db import models
 from django.core.validators import MaxValueValidator
 import uuid
-from django.contrib.auth.models import User
+from django.contrib.auth.models import AbstractUser
 
 
 class State(models.Model):
@@ -34,6 +34,10 @@ class AWSPhoto(models.Model):
     upload = models.FileField()
 
 
-class Note(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
-    body = models.TextField()
+# class Note(models.Model):
+#     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+#     body = models.TextField()
+
+
+class User(AbstractUser):
+    pass
