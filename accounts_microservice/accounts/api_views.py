@@ -19,29 +19,30 @@ from .serializers import UserCreateSerializer, UserSerializer
 
 # from .serializers import NoteSerializer
 
+
 class RegisterView(APIView):
-  def post(self, request):
-    data = request.data
+    def post(self, request):
+        data = request.data
 
-    serializer = UserCreateSerializer(data=data)
+        serializer = UserCreateSerializer(data=data)
 
-    if not serializer.is_valid():
-      return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        if not serializer.is_valid():
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    user = serializer.create(serializer.validated_data)
-    user = UserSerializer(user)
+        user = serializer.create(serializer.validated_data)
+        user = UserSerializer(user)
 
-    return Response(user.data, status=status.HTTP_201_CREATED)
+        return Response(user.data, status=status.HTTP_201_CREATED)
 
 
 class RetrieveUserView(APIView):
-  permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.IsAuthenticated]
 
-  def get(self, request):
-    user = request.user
-    user = UserSerializer(user)
+    def get(self, request):
+        user = request.user
+        user = UserSerializer(user)
 
-    return Response(user.data, status=status.HTTP_200_OK)
+        return Response(user.data, status=status.HTTP_200_OK)
 
 
 def api_users(request):
@@ -159,32 +160,32 @@ class AWSPhotoCreateView(CreateView):
         return context
 
 
-class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
-    @classmethod
-    def get_token(cls, user):
-        token = super().get_token(user)
+# class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
+#     @classmethod
+#     def get_token(cls, user):
+#         token = super().get_token(user)
 
-        # Add custom claims
-        token['username'] = user.username
-        # ...
+#         # Add custom claims
+#         token['username'] = user.username
+#         # ...
 
-        return token
-
-
-class MyTokenObtainPairView(TokenObtainPairView):
-    serializer_class = MyTokenObtainPairSerializer
+#         return token
 
 
-@csrf_exempt
-@api_view(['GET'])
-def getRoutes(request):
-    routes = [
-        'api/api2/token',
-        '/api/api2/token/refresh',
+# class MyTokenObtainPairView(TokenObtainPairView):
+#     serializer_class = MyTokenObtainPairSerializer
 
-    ]
 
-    return Response(routes)
+# @csrf_exempt
+# @api_view(['GET'])
+# def getRoutes(request):
+#     routes = [
+#         'api/api2/token',
+#         '/api/api2/token/refresh',
+
+#     ]
+
+#     return Response(routes)
 
 
 # @api_view(['GET'])
