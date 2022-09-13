@@ -31,9 +31,9 @@ export const AuthProvider = ({ children }) => {
             setAuthTokens(data)
             setUser(jwt_decode(data.access))
             localStorage.setItem('authTokens', JSON.stringify(data))
-            navigate('/puppy-love')
+            navigate('/profile')
         } else {
-            alert('Something went wrong!')
+            alert('Invalid Username or Password')
         }
     }
 
