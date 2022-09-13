@@ -25,6 +25,7 @@ class OwnerInfo extends React.Component {
         const response = await fetch(URL);
         if (response.ok) {
             const data = await response.json();
+            console.log("DAAAATTAAAA", Array.isArray(data))
             this.setState({ states: data.states });
         }
     }

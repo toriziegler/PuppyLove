@@ -69,6 +69,7 @@ class DogInfo extends React.Component {
         const response = await fetch(URL);
         if (response.ok) {
             const data = await response.json();
+            console.log("DAAAATTAAAA", data)
             this.setState({ owners: data.owners });
         }
     }
@@ -173,7 +174,7 @@ class DogInfo extends React.Component {
                                     <div className="mb-3">
                                         <select onChange={this.handleOwnerChange} value={this.state.owner} required name="owner" id="owner" className="form-select">
                                             <option value="">Choose Dog's Owner</option>
-                                            {this.state.owners.map((owner) => {
+                                            {this.state.owners && this.state.owners.map((owner) => {
                                                 return (
                                                     <option key={owner.id} value={owner.id}>
                                                         {owner.name}
