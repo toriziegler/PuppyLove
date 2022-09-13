@@ -5,11 +5,15 @@ class SignUp extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            username: '',
+            email: '',
+            first_name: '',
+            last_name: '',
             password: '',
             verify_password: '',
         };
-        this.handleUsernameChange = this.handleUsernameChange.bind(this);
+        this.handleEmailChange = this.handleEmailChange.bind(this);
+        this.handleFirsNameChange = this.handleFirsNameChange.bind(this);
+        this.handleLastNameChange = this.handleLastNameChange.bind(this)
         this.handlePasswordChange = this.handlePasswordChange.bind(this);
         this.handleVerify_PasswordChange = this.handleVerify_PasswordChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -18,10 +22,10 @@ class SignUp extends React.Component {
     async handleSubmit(event) {
         event.preventDefault();
         const data = { ...this.state };
-        delete data.showPassword;
+        delete data.password;
         delete data.verify_password;
 
-        const url = `${process.env.REACT_APP_API_HOST}/api/accounts/`;
+        const url = 'http://localhost:8100/api/register';
         const fetchConfig = {
             method: "POST",
             body: JSON.stringify(data),
@@ -34,7 +38,9 @@ class SignUp extends React.Component {
         const response = await fetch(url, fetchConfig);
         if (response.ok) {
             this.setState({
-                username: '',
+                email: '',
+                first_name: '',
+                last_name: '',
                 password: '',
                 verify_password: '',
 
@@ -46,13 +52,23 @@ class SignUp extends React.Component {
 
     }
 
-    handleUsernameChange(event) {
+    handleEmailChange(event) {
         const value = event.target.value;
-        this.setState({ username: value });
+        this.setState({ email: value });
     }
     handlePasswordChange(event) {
         const value = event.target.value;
         this.setState({ password: value });
+
+    }
+    handleFirsNameChange(event) {
+        const value = event.target.value;
+        this.setState({ first_name: value });
+
+    }
+    handleLastNameChange(event) {
+        const value = event.target.value;
+        this.setState({ last_name: value });
 
     }
     handleVerify_PasswordChange(event) {
@@ -89,20 +105,30 @@ class SignUp extends React.Component {
                                 <hr />
 
                                 <div className="form-floating mb-3">
-                                    <input onChange={this.handleUsernameChange} value={this.state.username}
-                                        placeholder="Username" required type="text" name="username"
-                                        id="username" />
+                                    <input onChange={this.handleEmailChange} value={this.state.email}
+                                        placeholder="Email" required type="text" name="email"
+                                        id="email" />
                                 </div>
 
                                 <div className="form-floating mb-3" >
                                     <input value={this.state.password} onChange={this.handlePasswordChange}
-                                        placeholder="Password" required type="text" name="password"
+                                        placeholder="Password" required type="password" name="password"
                                         id="signuppassword" />
+                                </div>
+                                <div className="form-floating mb-3" >
+                                    <input value={this.state.first_name} onChange={this.handleFirsNameChange}
+                                        placeholder="first_name" required type="text" name="first_name"
+                                        id="first_name" />
+                                </div>
+                                <div className="form-floating mb-3" >
+                                    <input value={this.state.last_name} onChange={this.handleLastNameChange}
+                                        placeholder="last_name" required type="text" name="last_name"
+                                        id="last_name" />
                                 </div>
 
                                 <div className="form-floating mb-3" >
                                     <input value={this.state.verify_password} onChange={this.handleVerify_PasswordChange}
-                                        placeholder="Verify Password" required type="text" name="verify-password"
+                                        placeholder="Verify Password" required type="password" name="verify-password"
                                         id="verify-password" />
                                 </div>
 

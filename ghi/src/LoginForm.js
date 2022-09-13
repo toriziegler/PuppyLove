@@ -80,7 +80,7 @@ const LoginForm = () => {
                                 <h1>Login!</h1>
                                 <hr />
                                 <div className="form-floating mb-3">
-                                    <input type='text' id="username" name='username' placeholder='username' />
+                                    <input type='text' id="email" name='email' placeholder='email' />
 
                                 </div>
                                 <div className="form-floating mb-3" >
