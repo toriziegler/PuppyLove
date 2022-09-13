@@ -2,7 +2,7 @@ from django.db import models
 
 
 def user_directory_path(instance, filename):
-    return 'dog_{0}/{1}'.format(instance.name, filename)
+    return "dog_{0}/{1}".format(instance.name, filename)
 
 
 class OwnerVO(models.Model):

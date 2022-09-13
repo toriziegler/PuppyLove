@@ -2,7 +2,7 @@ from django.db import models
 
 
 def user_directory_path(instance, filename):
-    return 'user_{0}/{1}'.format(instance.name, filename)
+    return "user_{0}/{1}".format(instance.name, filename)
 
 
 class State(models.Model):
