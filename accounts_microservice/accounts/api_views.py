@@ -6,13 +6,12 @@ from django.views.decorators.http import require_http_methods
 import json
 from django.views.generic.edit import CreateView
 from django.urls import reverse_lazy
-
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import permissions, status
 from .serializers import UserCreateSerializer, UserSerializer
-# from rest_framework.decorators import api_view
-
+from rest_framework.decorators import api_view, permission_classes
 # from rest_framework.response import Response
 # from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 # from rest_framework_simplejwt.views import TokenObtainPairView
@@ -23,6 +22,7 @@ from .serializers import UserCreateSerializer, UserSerializer
 class RegisterView(APIView):
     def post(self, request):
         data = request.data
+<<<<<<< HEAD
 
         serializer = UserCreateSerializer(data=data)
 
@@ -32,6 +32,17 @@ class RegisterView(APIView):
         user = serializer.create(serializer.validated_data)
         user = UserSerializer(user)
 
+=======
+        
+        serializer = UserCreateSerializer(data=data)
+        
+        if not serializer.is_valid():
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+        user = serializer.create(serializer.validated_data)
+        user = UserSerializer(user)
+
+>>>>>>> 26548a7762ab6cbec2b11b5fd34230517cace0f4
         return Response(user.data, status=status.HTTP_201_CREATED)
 
 
@@ -48,6 +59,29 @@ class RetrieveUserView(APIView):
 def api_users(request):
     data = list(UserAccount.objects.values())
     return JsonResponse(data, safe=False)  # or JsonResponse({'data': data})
+
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def getNotes(request):
+    user = request.user
+    notes = user.note_set.all()
+    serializer = NoteSerializer(notes, many=True)
+    return Response(serializer.data)
+
+
+class UserCreate(APIView):
+    """ 
+    Creates the user. 
+    """
+
+    def post(self, request, format='json'):
+        serializer = UserSerializer(data=request.data)
+        if serializer.is_valid():
+            user = serializer.save()
+            if user:
+                return Response(serializer.data, status=status.HTTP_201_CREATED)
+
 
 
 @csrf_exempt
@@ -160,6 +194,7 @@ class AWSPhotoCreateView(CreateView):
         return context
 
 
+<<<<<<< HEAD
 # class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
 #     @classmethod
 #     def get_token(cls, user):
@@ -188,6 +223,8 @@ class AWSPhotoCreateView(CreateView):
 #     return Response(routes)
 
 
+=======
+>>>>>>> 26548a7762ab6cbec2b11b5fd34230517cace0f4
 # @api_view(['GET'])
 # @permission_classes([IsAuthenticated])
 # def getNotes(request):

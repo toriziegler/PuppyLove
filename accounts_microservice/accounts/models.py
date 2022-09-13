@@ -1,6 +1,15 @@
 from django.db import models
+<<<<<<< HEAD
 from django.core.validators import MaxValueValidator
 from django.contrib.auth.models import BaseUserManager, AbstractBaseUser, PermissionsMixin
+=======
+# from django.core.validators import MaxValueValidator
+# import uuid
+from django.contrib.auth.models import (
+  BaseUserManager,
+  AbstractBaseUser,
+  PermissionsMixin)
+>>>>>>> 26548a7762ab6cbec2b11b5fd34230517cace0f4
 
 
 # class User(AbstractBaseUser):
@@ -24,7 +33,19 @@ class UserAccountManager(BaseUserManager):
         user.set_password(password)
         user.save()
 
+<<<<<<< HEAD
         return user
+=======
+    return user
+
+  def create_superuser(self, first_name, last_name, email, password=None):
+    user = self.create_user(
+      first_name,
+      last_name,
+      email,
+      password=password,
+    )
+>>>>>>> 26548a7762ab6cbec2b11b5fd34230517cace0f4
 
     def create_superuser(self, first_name, last_name, email, password=None):
         user = self.create_user(
@@ -55,6 +76,11 @@ class UserAccount(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
         return self.email
+
+
+class Note(models.Model):
+    user = models.ForeignKey(UserAccount, on_delete=models.CASCADE, null=True)
+    body = models.TextField()
 
 
 class State(models.Model):
