@@ -48,17 +48,15 @@ ALLOWED_HOSTS = ["localhost", "monolith", "account-api"]
 
 INSTALLED_APPS = [
     "corsheaders",
+    "django.contrib.auth",
     "accounts.apps.AccountsConfig",
     "django.contrib.admin",
-    "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "storages",
     'rest_framework',
-    'rest_framework_simplejwt.token_blacklist',
-
 ]
 
 
