@@ -132,8 +132,9 @@ class OwnerInfo extends React.Component {
                                             })}
                                         </select>
                                     </div>
-                                    <Link to="/profile" className="mainlink"><button className="btn btn-primary"
-                                        type="submit">Submit</button></Link>
+                                    {/* <Link to="/profile" className="mainlink"> */}
+                                        <button className="btn btn-primary" type="submit">Submit</button>
+                                    {/* </Link> */}
                                 </form>
                             </div>
                         </div>

@@ -1,6 +1,11 @@
 # September 12, 2022
 Today I worked on:
 
+* Personal Profile Page
+* Updated DogInfo Page
+
+    I recreated our personal profile page to instead show cards now for each of the owner's dog instances. For the time being I have a dropdown menu at the top to choose the dog owner and see their dog profiles. Eventually I want to be able to auto-generate this based on authentication - each owner should be tied to a user. When that user is logged in, the personal profile page will show only their dogs. I also worked with Taylor on how to adjust the AWS S3 bucket path to have a unique name tied to the dog or owner so I am able to call to it in the front end react component. I started updated the doginfo.js file to match our updated dog model, some fields were missing including dropdown menus to choose gender and size of dog. 
+
 # September 9, 2022
 Today I worked on:
 

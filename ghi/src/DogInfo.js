@@ -9,8 +9,8 @@ class DogInfo extends React.Component {
             name: '',
             age: '',
             breed: '',
-            size: [],
-            gender: [],
+            sizes: [],
+            genders: [],
             description: '',
             owners: [],
             // image: '',
@@ -30,6 +30,9 @@ class DogInfo extends React.Component {
         event.preventDefault();
         const data = { ...this.state };
         delete data.owners
+        delete data.genders
+        delete data.sizes
+        console.log("DATAAA", data)
 
         const url = 'http://localhost:8080/api/dogs/'
         const fetchConfig = {
@@ -46,8 +49,8 @@ class DogInfo extends React.Component {
                 name: '',
                 age: '',
                 breed: '',
-                size: '',
-                gender: '',
+                sizes: '',
+                genders: '',
                 description: '',
                 owners: '',
                 // image: '',
@@ -136,37 +139,29 @@ class DogInfo extends React.Component {
                                     <div className="mb-3">
                                         <select onChange={this.handleSizeChange} value={this.state.size} required name="size" id="size" className="form-select">
                                             <option value="">Choose Size</option>
-                                            {this.state.dog.size.map((size) => {
-                                                return (
-                                                    <option key={size} value={size}>
-                                                        {size}
-                                                    </option>
-                                                )
-                                            })}
+                                            <option value="Toy">Toy</option>
+                                            <option value="Small">Small</option>
+                                            <option value="Medium">Medium</option>
+                                            <option value="Large">Large</option>
+                                            <option value="Giant">Giant</option>
                                         </select>
                                     </div>
-                                    {/* <div className="mb-3">
+                                    <div className="mb-3">
                                         <select onChange={this.handleGenderChange} value={this.state.gender} required name="gender" id="gender" className="form-select">
                                             <option value="">Choose Gender</option>
-                                            {this.state.owners.map((owner) => {
-                                                return (
-                                                    <option key={owner.id} value={owner.id}>
-                                                        {owner.name}
-                                                    </option>
-                                                )
-                                            })}
+                                            <option value="M">Male</option>
+                                            <option value="F">Female</option>
                                         </select>
-                                    </div> */}
+                                    </div>
                                     <div className="form-floating mb-3">
                                         <input onChange={this.handleDescriptionChange} value={this.state.description}
                                             placeholder="Description" required type="text" name="description"
                                             id="description" />
                                     </div>
-
                                     <div className="mb-3">
                                         <select onChange={this.handleOwnerChange} value={this.state.owner} required name="owner" id="owner" className="form-select">
                                             <option value="">Choose Dog's Owner</option>
-                                            {this.state.owners.map((owner) => {
+                                            {this.state.owners.map(owner => {
                                                 return (
                                                     <option key={owner.id} value={owner.id}>
                                                         {owner.name}
@@ -176,8 +171,9 @@ class DogInfo extends React.Component {
                                         </select>
                                     </div>
                                     <br></br>
-                                    <Link to="/profile" className="mainlink"><button className="btn btn-primary"
-                                        type="submit">Submit</button></Link>
+                                    {/* <Link to="/profile" className="mainlink"> */}
+                                        <button className="btn btn-primary" type="submit">Submit</button>
+                                    {/* </Link> */}
                                 </form>
                             </div>
                         </div>
