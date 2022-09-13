@@ -1,6 +1,10 @@
 from django.db import models
 
 
+def user_directory_path(instance, filename):
+    return 'user_{0}/{1}'.format(instance.name, filename)
+
+
 class State(models.Model):
     name = models.CharField(max_length=40)
     id = models.IntegerField(primary_key=True)
@@ -14,10 +18,14 @@ class State(models.Model):
 
 
 class Owner(models.Model):
+    # def save(self, *args, **kwargs):
+    #     if not self.pk:
+    #         self.image = models.FileField(upload_to=self.phone)
+    #     super().save(*args, **kwargs)
     name = models.CharField(max_length=200)
     email = models.EmailField()
-    phone = models.PositiveBigIntegerField()
-    image = models.FileField(upload_to='photos')
+    image = models.FileField(upload_to=user_directory_path)
+    phone = models.PositiveBigIntegerField(unique=True)
     description = models.TextField(max_length=1000)
     state = models.ForeignKey(
         State,

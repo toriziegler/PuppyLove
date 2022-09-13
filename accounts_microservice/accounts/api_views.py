@@ -2,6 +2,7 @@ from .models import AWSPhoto, Owner, State
 from .encoders import OwnerEncoder, StateEncoder
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
+from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_http_methods
 import json
 from django.views.generic.edit import CreateView
@@ -14,6 +15,7 @@ from rest_framework_simplejwt.views import TokenObtainPairView
 # from .serializers import NoteSerializer
 
 
+# @method_decorator(auth.jwt_login_required)
 @csrf_exempt
 @require_http_methods(["GET", "POST"])
 def api_owners(request):
