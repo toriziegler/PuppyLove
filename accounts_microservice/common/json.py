@@ -1,6 +1,35 @@
 from json import JSONEncoder
 from django.urls import NoReverseMatch
 from django.db.models import QuerySet
+from django.db import models
+
+from django.core import serializers
+from django.db import models
+
+# JSONSerializer = serializers.get_serializer("json")
+
+
+# class JSONWithURLSerializer(JSONSerializer):
+
+#     def handle_field(self, obj, field):
+#         value = field.value_from_object(obj)
+#         if isinstance(field, models.FileField) and hasattr('url', value):
+#             self._current[field.name] = value.url
+#         else:
+#             return super(JSONWithURLSerializer, self).handle_field(obj, field)
+
+
+# serializer = JSONWithURLSerializer()
+# serializer.serialize(queryset)
+# data = serializer.getvalue()
+
+
+class ImageEncoder(JSONEncoder):
+    def default(self, o):
+        if isinstance(o, models.FileField):
+            return o.name
+        else:
+            return super().default(o)
 
 
 class QuerySetEncoder(JSONEncoder):
@@ -11,7 +40,7 @@ class QuerySetEncoder(JSONEncoder):
             return super().default(o)
 
 
-class ModelEncoder(QuerySetEncoder, JSONEncoder):
+class ModelEncoder(ImageEncoder, QuerySetEncoder, JSONEncoder):
     encoders = {}
 
     def default(self, o):

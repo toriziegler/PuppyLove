@@ -1,6 +1,10 @@
 from django.db import models
 
 
+def user_directory_path(instance, filename):
+    return 'dog_{0}/{1}'.format(instance.name, filename)
+
+
 class OwnerVO(models.Model):
     state = models.CharField(max_length=2)
     name = models.CharField(max_length=200)
@@ -27,7 +31,7 @@ class Dog(models.Model):
     name = models.CharField(max_length=200)
     age = models.SmallIntegerField(null=True, blank=True)
     breed = models.CharField(max_length=100, default="mix")
-    image = models.FileField(upload_to="dogs", null=True, blank=True)
+    image = models.FileField(upload_to=user_directory_path)
     description = models.TextField(max_length=1000, null=True, blank=True)
     gender = models.CharField(max_length=1, choices=GENDER_CHOICES)
     size = models.CharField(max_length=6, choices=SIZE_CHOICES)
@@ -42,8 +46,8 @@ class Dog(models.Model):
 class AWSPhoto(models.Model):
     uploaded_at = models.DateTimeField(auto_now_add=True)
     dog_id = models.ForeignKey(
-        Dog,
-        related_name="dog",
+        OwnerVO,
+        related_name="photo",
         on_delete=models.CASCADE
     )
     upload = models.FileField()
