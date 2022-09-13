@@ -1,3 +1,50 @@
+# September 13, 2022
+
+What we today?
+
+- Met with team
+- Did our morning Scrum meeting
+- Nico, Taylor, Stephen and I spent the day to figure out how to connect the front end to the backend so we can have a working form for the login and sign up pages
+
+Potential blockers?
+
+1.
+
+# September 12, 2022
+
+What we today?
+
+- Met with team
+- Did our morning Scrum meeting
+- Nico and I spent the day trying to create a react form for the the sign up and login page. We split up and tried going about it two different ways. I tried to follow a guide I found online, and when it did not work I tried following a youtube video but ended up giving up it when when my docker containers began to fail due to whatever mistake i had made in the code, but could not find. Nico was able to make accounts possible through the back end and was able to show them on insomnia. Now he and I will try to connect it to the front end.
+
+Potential blockers?
+
+1.
+
+# September 9, 2022
+
+What we today?
+
+- Met with team
+- We spent some time as a group figuring out what else needs to be done. We help taylor find the las bug that was hindering the AWS from taking in pictures from users (or rather he found it within the first min of walking the rest of us through what he was doing, so we could help him find the bug). Nico and I stated working out the sign up form and how to connect it to the react page Stephen had put together. However we both stated encountering an issue where we could not add anything to our models page without the accounts docker container to crash. We eventually asked Daniel for help, and we were able to move on.
+
+Potential blockers?
+
+1.
+
+# September 7, 2022
+
+What we today?
+
+- Met with team
+- Did our morning Scrum meeting
+- worked with Nico and Stephen to get the Auth working
+
+Potential blockers?
+
+1.
+
 # September 6, 2022
 
 What we today?
