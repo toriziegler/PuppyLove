@@ -16,8 +16,8 @@ class TestOwners(TestCase):
         self.assertEquals(response.status_code, 200)
 
 
-class TestDogs(TestCase):
-    def test_post_dogs(self):
-        client = Client()
-        response = client.post(reverse("api_dogs"))
-        self.assertEquals(response.status_code, 200)
+# class TestDogs(TestCase):
+#     def test_post_dogs(self):
+#         client = Client()
+#         response = client.post(reverse("api_dogs"))
+#         self.assertEquals(response.status_code, 200)
