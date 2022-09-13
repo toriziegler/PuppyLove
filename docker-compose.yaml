@@ -1,8 +1,6 @@
 volumes:
     postgres-data:
         external: true
-    pg-admin:
-        external: true
 services:
     postgres:
         image: postgres:14-bullseye

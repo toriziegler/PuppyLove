@@ -18,10 +18,6 @@ class State(models.Model):
 
 
 class Owner(models.Model):
-    # def save(self, *args, **kwargs):
-    #     if not self.pk:
-    #         self.image = models.FileField(upload_to=self.phone)
-    #     super().save(*args, **kwargs)
     name = models.CharField(max_length=200)
     email = models.EmailField()
     image = models.FileField(upload_to=user_directory_path)
