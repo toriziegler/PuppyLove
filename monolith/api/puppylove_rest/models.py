@@ -2,10 +2,10 @@ from django.db import models
 
 
 class OwnerVO(models.Model):
-    state = models.CharField(max_length=2, unique=True)
+    state = models.CharField(max_length=2)
     name = models.CharField(max_length=200)
     email = models.EmailField()
-    phone = models.PositiveBigIntegerField()
+    phone = models.PositiveBigIntegerField(unique=True)
     description = models.TextField(max_length=1000)
 
     def __str__(self):

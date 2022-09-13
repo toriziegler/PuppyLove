@@ -1,3 +1,10 @@
+# September 13, 2022
+Today I worked on:
+
+* Form Submissions
+
+    I double checked the owner and dog info pages to make sure the were submitting information correctly now that the models had been updated. I fixed the forms to match the models but noticed they were not submitting correctly because there was a link added to the submit button to reroute to the profile page on submission. This was causing the page to not actually submit the information before rerouting.
+
 # September 12, 2022
 Today I worked on:
 

@@ -14,6 +14,7 @@ class DogInfo extends React.Component {
             description: '',
             owners: [],
             // image: '',
+            hasSignedUp: false,
         };
         this.handleNameChange = this.handleNameChange.bind(this);
         this.handleAgeChange = this.handleAgeChange.bind(this);
@@ -29,10 +30,10 @@ class DogInfo extends React.Component {
     async handleSubmit(event) {
         event.preventDefault();
         const data = { ...this.state };
-        delete data.owners
-        delete data.genders
-        delete data.sizes
-        console.log("DATAAA", data)
+        delete data.owners;
+        delete data.genders;
+        delete data.sizes;
+        delete data.hasSignedUp;
 
         const url = 'http://localhost:8080/api/dogs/'
         const fetchConfig = {
@@ -45,6 +46,10 @@ class DogInfo extends React.Component {
 
         const response = await fetch(url, fetchConfig);
         if (response.ok) {
+            let successTag = document.getElementById('success-message');
+            let formTag = document.getElementById('create-dog-form');
+            successTag.classList.remove('d-none');
+            formTag.classList.add('d-none');
             this.setState({
                 name: '',
                 age: '',
@@ -54,6 +59,7 @@ class DogInfo extends React.Component {
                 description: '',
                 owners: '',
                 // image: '',
+                hasSignedUp: true,
             });
         }
     }
@@ -102,6 +108,12 @@ class DogInfo extends React.Component {
 
 
     render() {
+        let messageClasses = 'alert alert-success d-none mb-0';
+        let formClasses = '';
+        if (this.state.hasSignedUp) {
+            messageClasses = 'alert alert-success mb-0';
+            formClasses = 'd-none';
+        }
         return (
             <div className="App">
                 <div
@@ -120,7 +132,7 @@ class DogInfo extends React.Component {
                             <div className="card-body">
                                 <h1>Dog Information</h1>
                                 <hr />
-                                <form onSubmit={this.handleSubmit} id="create-dog-form">
+                                <form className={formClasses} onSubmit={this.handleSubmit} id="create-dog-form">
                                     <div className="form-floating mb-3">
                                         <input onChange={this.handleNameChange} value={this.state.name}
                                             placeholder="Name" required type="text" name="name"
@@ -154,14 +166,14 @@ class DogInfo extends React.Component {
                                         </select>
                                     </div>
                                     <div className="form-floating mb-3">
-                                        <input onChange={this.handleDescriptionChange} value={this.state.description}
+                                        <textarea onChange={this.handleDescriptionChange} value={this.state.description}
                                             placeholder="Description" required type="text" name="description"
                                             id="description" />
                                     </div>
                                     <div className="mb-3">
                                         <select onChange={this.handleOwnerChange} value={this.state.owner} required name="owner" id="owner" className="form-select">
                                             <option value="">Choose Dog's Owner</option>
-                                            {this.state.owners.map(owner => {
+                                            {this.state.owners.map((owner) => {
                                                 return (
                                                     <option key={owner.id} value={owner.id}>
                                                         {owner.name}
@@ -171,10 +183,25 @@ class DogInfo extends React.Component {
                                         </select>
                                     </div>
                                     <br></br>
-                                    {/* <Link to="/profile" className="mainlink"> */}
-                                        <button className="btn btn-primary" type="submit">Submit</button>
-                                    {/* </Link> */}
+                                    <button className="btn btn-secondary" type="submit">Submit</button>
                                 </form>
+                                <div className={messageClasses} id="success-message">
+                                    Congratulations!
+                                    <br></br>
+                                    Your dog is all signed up.
+                                    <br></br>
+                                    View your dog's profile here:
+                                    <br></br>
+                                    <Link to="/profile" className="mainlink">
+                                        <button type="button" className="btn btn-secondary">View Profile</button>
+                                    </Link>
+                                    <br></br>
+                                    Or create another dog here:
+                                    <br></br>
+                                    <Link to="/doginfo" className="mainlink">
+                                        <button type="button" className="btn btn-secondary">Add Dog</button>
+                                    </Link>
+                                </div>
                             </div>
                         </div>
                     </div>
