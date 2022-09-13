@@ -19,17 +19,21 @@ Worked on making the SignUp Page and Login Page. Working on creating the messagi
 Worked with Norton on more react stuff.
 Creating sign up and log in pages
 
-# August 26
-stuff
-
-# August 27
-more stuff
-
-# August 28
-things
-
 # August 29
-Worked on debugging the yaml file with Taylor and Victoria.
+Today I worked on debugging the yaml file with Taylor and Victoria.
 
 # August 30
-Worked on debugging poller with Taylor and Victoria
+Today I worked on debugging poller with Taylor and Victoria
+
+# August 31
+I created owner and dog front pages, changed things on the other pages.
+Made the pages look nicer.
+
+# September 1
+I worked on connecting the back end to front end with Taylor
+
+# September 6
+Worked on merging log in with main with Nicolas
+
+# September 7
+Nicolas and I got authorization to work!!!!!

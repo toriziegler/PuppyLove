@@ -57,15 +57,27 @@ Today I was charged with completing the accounts microservice and fixing error i
 today we fixed issues with the poller but are still having issues with our backend server connecting to our django project. We spent most of the day researching how to connect postgres. This still does not seem to be working as the migrations are not happening. More will be needed on this tomorrow. 
 
 ## Aug 31, 2022
- able to set up database
- DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'accounts',
-        'USER': 'postgres',
-        'PASSWORD': 'test123',
-        'HOST': 'localhost',
-        'PORT': '5432',
-    }
-}
-then ran >>> python manage.py migrate --run-syncdb
+
+was able to connect to the postgres database by putting this command in the dockerfile.dev... ran >>> python manage.py migrate --run-syncdb
+
+## Sep 1, 2022
+
+Today was pretty good. Victoria was working on CI CD while Nico and Norton tried to tackle authentication using DjangoREST. Stephen and I started working on connecting the front end to the back-end. 
+
+We were able to set up the owner-information page to successfully submit new members to the backend. I was also able to fix the polling issue that we were having so we could make dog objects in the django admin using the ownerVO. I am feeling good going into friday that we will be able to finish our MVP in time. We are planning to meet for a few hours over the long weekend to get some more work done. 
+
+## Sep 2, 2022
+
+victoria was able to deploy our website! awesome news. Looks like we have to change the paths in settings for our default database location when we deploy. This change will only be made on our deployed branch. 
+
+I was able to help the team with a few errors today. 
+
+I have a feeling there will be more errors to come. I need to work on these parts moving forward. 
+      - fix the upload photo link on the front end.
+      
+## Sep 6, 2022 
+
+today i started working on the photo upload from react to S3 database. I was able to get past the issues I was having by making the .env variables start with REACT_APP_. 
+since i was not doing this before, the variables were all showing up as undefined. 
+
+## Sep 7, 2022

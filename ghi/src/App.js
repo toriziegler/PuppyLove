@@ -1,26 +1,37 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import React from 'react';
-import PrivateRoute from './utilis/PrivateRoute'
-import {AuthProvider} from './context/AuthContext'
-import HomePage from './pages/HomePage'
-import LoginPage from './pages/LoginPage'  
-import Header from './components/Header'
+import MainPage from './MainPage';
+import Nav from './Nav';
+import Profile from './Profile';
+import LoginForm from './LoginForm';
+import SignUp from './SignUp';
+import OwnerInfo from './OwnerInfo';
+import DogInfo from './DogInfo';
+import UploadImageToS3WithNativeSdk from './UploadImageToS3';
+import PrivateRoute from './PrivateRoute'
+import { AuthProvider } from './AuthContext'
 
 function App(props) {
   return (
     <div className='App'>
       <BrowserRouter>
         <AuthProvider>
-          <Header />
-            <Routes>
-              <Route exact path="/" element={<PrivateRoute />}>
-                <Route exact path="/" element={<HomePage />} />
-              </Route>
-              <Route path="/login/" element={<LoginPage />} />
-            </Routes>
+          <Nav />
+          <Routes>
+            <Route exact path="/puppy-love/" element={<PrivateRoute />}>
+              <Route exact path="/puppy-love/" element={<MainPage />} />
+            </Route>
+            <Route path="profile" element={<Profile />} />
+            <Route path="signup" element={<SignUp />} />
+            <Route path="doginfo" element={<DogInfo />} />
+            <Route path="ownerinfo" element={<OwnerInfo />} />
+            <Route path="upload" element={<UploadImageToS3WithNativeSdk />} />
+            <Route path="/login" element={<LoginForm />} />
+          </Routes>
         </AuthProvider>
       </BrowserRouter>
     </div>
   );
 }
+
 export default App;

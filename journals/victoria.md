@@ -1,10 +1,46 @@
+# September 7, 2022
+Today I worked on:
+
+<<<<<<< HEAD
+* DogInfo.js
+
+    Norton and I started to work on the dog info file for react to make sure that the dog instances were being created. I noticed our form was not fully submitting because our back end view requires the dog instance be attached to an owner. To fix this problem I attached a drop down menu onto the dog info form to allow the user to assign an owner to the dog. However in the future we may want to get rid of this feature and automatically assign the new dog to the user signed in and only allow each user to create one owner instance for themselves.
+=======
+* Front-End/Back-End connections
+>>>>>>> victoria-branch
+
+# September 6, 2022
+Today I worked on:
+
+* Front-End/Back-End connections
+
+    Norton and I started to work on debugging the owner information page today, however we got stuck for a while on an error with his package-lock.json file. We ended up needing to delete his package-lock file, delete the node_modules folder, and run npm install again. Otherwise, I got the pipeline merge errors fixed for the main branch so everyone was able to pull my deployable product from the weekend. 
+
+# September 2, 2022
+Today I worked on:
+
+* Deployment!
+
+    Today the team pushed all recent changed to the main branch and tested out the CI pipeline - all code is up to date, passing unit tests and lint tests. I worked on getting the project fully deployed. I ran into some minor errors while building but was able to get the project fully deployed on heroku today and visit the public url page! 
+
+# September 1, 2022
+Today I worked on:
+
+* .gitlab-ci.yml
+* flake8
+* pipeline failures
+
+    I was finally able to get my lint test to run! I ran flake8 and fixed all of the errors in both of our microservices and got the pipeline to run successfully! I then tried to get the monolith back end test running but ran into a few errors. First I needed to adjust our settings file aws keys to get methods because it was not pulling the information from .env. I saw this was a common error online and was able to resolve the issue by changing them from brackets with variable names to get methods so if the variables returned "None" it would not throw an error. I ran into another error that my database was improperly configured in my settings. I resolved this by setting the default as my postgres database and added dj_database_url.config(default='postgres://user:pass@localhost/dbname'). Another error occurred for an operational error - connection refused, I fixed the docker compose database url's for both of the microservices now that I have the Heroku postgres database set up. Tests passed for linting, accounts, and monolith microservice!
+
 # August 31, 2022
 Today I worked on:
 
 * .gitlab-ci.yml
 * Heroku deployment
+* Team merging
+* Admin CSS
 
-    I realized our gitlab was under my name only rather than the group name. I got the gitlab project transferred to our group pawfessional programmers so we could use the correct URL for deployment. I continued building the deployment portion of the ci file and Heroku. 
+    I realized our gitlab was under my name only rather than the group name. I got the gitlab project transferred to our group pawfessional programmers so we could use the correct URL for deployment. I continued building the deployment portion of the ci file and Heroku. We were able to resolve our merging issues as a group! Andrew assisted us in getting our admin css to reload the Django css by using the python manage.py collectstatic command within both microservice containers and adding a forward slash in the settings for the static url so it is "/static/". I created test folders for each microservice and a unit test for testing the monolith views.
 
 # August 30, 2022
 Today I worked on:

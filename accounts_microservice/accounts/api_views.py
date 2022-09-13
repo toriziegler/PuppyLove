@@ -159,32 +159,32 @@ class AWSPhotoCreateView(CreateView):
         return context
 
 
-# class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
-#     @classmethod
-#     def get_token(cls, user):
-#         token = super().get_token(user)
+class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
+    @classmethod
+    def get_token(cls, user):
+        token = super().get_token(user)
 
-#         # Add custom claims
-#         token['username'] = user.username
-#         # ...
+        # Add custom claims
+        token['username'] = user.username
+        # ...
 
-#         return token
-
-
-# class MyTokenObtainPairView(TokenObtainPairView):
-#     serializer_class = MyTokenObtainPairSerializer
+        return token
 
 
-# @csrf_exempt
-# @api_view(['GET'])
-# def getRoutes(request):
-#     routes = [
-#         'api/api2/token',
-#         '/api/api2/token/refresh',
+class MyTokenObtainPairView(TokenObtainPairView):
+    serializer_class = MyTokenObtainPairSerializer
 
-#     ]
 
-#     return Response(routes)
+@csrf_exempt
+@api_view(['GET'])
+def getRoutes(request):
+    routes = [
+        'api/api2/token',
+        '/api/api2/token/refresh',
+
+    ]
+
+    return Response(routes)
 
 
 # @api_view(['GET'])
