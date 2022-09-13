@@ -69,7 +69,6 @@ class DogInfo extends React.Component {
         const response = await fetch(URL);
         if (response.ok) {
             const data = await response.json();
-            console.log("DAAAATTAAAA", data)
             this.setState({ owners: data.owners });
         }
     }
@@ -125,7 +124,8 @@ class DogInfo extends React.Component {
                             "url(https://images.pexels.com/photos/776373/pexels-photo-776373.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1)",
                         backgroundPosition: "center",
                         backgroundSize: "cover",
-                        backgroundRepeat: "no-repeat"
+                        backgroundRepeat: "no-repeat",
+                        opacity: .9,
                     }}
                 >
                     <div className="doginfo" id="doginfo">

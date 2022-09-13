@@ -3,7 +3,7 @@ Today I worked on:
 
 * Form Submissions
 
-    I double checked the owner and dog info pages to make sure the were submitting information correctly now that the models had been updated. I fixed the forms to match the models but noticed they were not submitting correctly because there was a link added to the submit button to reroute to the profile page on submission. This was causing the page to not actually submit the information before rerouting.
+    I double checked the owner and dog info pages to make sure the were submitting information correctly now that the models had been updated. I fixed the forms to match the models but noticed they were not submitting correctly because there was a link added to the submit button to reroute to the profile page on submission. This was causing the page to not actually submit the information before rerouting. I then changed the forms so that upon submission they will reload to a page that has the form removed and a success message confirming their information was submitted and telling them what their next steps are. I ran into an error on the owner information page that said "this.state.owners.map() is not a function", I found on stackoverflow that I needed to add "this.state.owners && this.state.owners.map()" to make it work again. The form is now submitting without errors. I then adjusted the background images to not contrast so harshly on each of the pages by lowering the background opacity to 0.9. 
 
 # September 12, 2022
 Today I worked on:

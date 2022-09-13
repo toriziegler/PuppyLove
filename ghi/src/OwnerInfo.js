@@ -25,7 +25,6 @@ class OwnerInfo extends React.Component {
         const response = await fetch(URL);
         if (response.ok) {
             const data = await response.json();
-            console.log("DAAAATTAAAA", Array.isArray(data))
             this.setState({ states: data.states });
         }
     }
@@ -102,7 +101,8 @@ class OwnerInfo extends React.Component {
                             "url(https://i.pinimg.com/736x/9d/66/d8/9d66d8de7bcb8fe0da9961df50a95c71--first-kiss-rottweiler-love.jpg)",
                         backgroundPosition: "center",
                         backgroundSize: "cover",
-                        backgroundRepeat: "no-repeat"
+                        backgroundRepeat: "no-repeat",
+                        opacity: .9,
                     }}
                 >
                     <div className="signup" id="signuptop">
