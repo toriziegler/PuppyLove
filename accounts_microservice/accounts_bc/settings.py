@@ -30,12 +30,19 @@ AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID")
 AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY")
 AWS_STORAGE_BUCKET_NAME = os.environ.get("AWS_STORAGE_BUCKET_NAME")
 AWS_S3_CUSTOM_DOMAIN = os.environ.get("AWS_S3_CUSTOM_DOMAIN")
-AWS_LOCATION = os.environ.get("AWS_LOCATION")
-STATICFILES_STORAGE = os.environ.get("STATICFILES_STORAGE")
+AWS_LOCATION = 'us-west-1'
+# The full URL to the S3 endpoint. Leave blank to use the default region URL.
+AWS_S3_ENDPOINT_URL = "https://puppy-love-assets.s3.us-west-1.amazonaws.com"
 STATIC_URL = os.environ.get("STATIC_URL")
-DEFAULT_FILE_STORAGE = os.environ.get("DEFAULT_FILE_STORAGE")
+
+
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
 
 AWS_S3_OBJECT_PARAMETERS = {"CacheControl": os.environ.get("AWS_Cache")}
+
+AWS_S3_BUCKET_AUTH = False
+AWS_S3_MAX_AGE_SECONDS = 60 * 60 * 24 * 365  # 1 year.
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -46,6 +53,7 @@ ALLOWED_HOSTS = ["localhost", "monolith", "account-api"]
 # Application definition
 
 INSTALLED_APPS = [
+    'storages',
     "corsheaders",
     "accounts.apps.AccountsConfig",
     "django.contrib.admin",
@@ -54,16 +62,15 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "storages",
     'rest_framework',
     'rest_framework_simplejwt.token_blacklist',
 
 ]
 
 REST_FRAMEWORK = {
-    
+
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        
+
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     )
 }

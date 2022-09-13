@@ -14,3 +14,10 @@ class TestOwners(TestCase):
         client = Client()
         response = client.get(reverse("api_owners"))
         self.assertEquals(response.status_code, 200)
+
+
+# class TestOwners(TestCase):
+#     def test_post_owners(self):
+#         client = Client()
+#         response = client.post(reverse("api_owners"))
+#         self.assertEquals(response.status_code, 200)
