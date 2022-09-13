@@ -1,5 +1,5 @@
-from .models import AWSPhoto, Owner, State
-from .encoders import OwnerEncoder, StateEncoder
+from .models import AWSPhoto, Owner, State, UserModel
+from .encoders import OwnerEncoder, StateEncoder, ModelEncoder
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 from django.views.decorators.http import require_http_methods
@@ -12,6 +12,84 @@ from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
 
 # from .serializers import NoteSerializer
+
+class UserModelEncoder(ModelEncoder):
+    model = UserModel
+    properties = ["id", "username"]
+
+# function to call to sign in might want
+#  to add a way to direct the user to the home/
+@require_http_methods(["GET"])
+def api_user_token(request):
+    if "jwt_access_token" in request.COOKIES:
+        token = request.COOKIES["jwt_access_token"]
+        if token:
+            return JsonResponse({"token": token})
+    response = JsonResponse({"token": None})
+    return response
+
+
+def authenticate_user(request):
+    content = json.loads(request.body)
+    print(content)
+    username = content[0]
+    password = content[1]
+    user = authenticate(username=username, password=password)
+    try:
+        if user.is_active:
+            login(request, user)
+            response = JsonResponse({"Message": "User logged in"})
+            return response
+        elif user.is_disabled:
+            return
+    except UserModel.DoesNotExist:
+        response = JsonResponse({"Message": "Does not exist"})
+
+
+@require_http_methods("DELETE")
+def logout_view(request):
+    print("hello")
+    print(request)
+    if request.method == "DELETE":
+        logout(request)
+        response = JsonResponse({"Message": "user logged out"})
+        return response
+
+
+@require_http_methods("POST")
+def api_create_account(request):
+    if request.method == "POST":
+        content = json.loads(request.body)
+        try:
+            user = UserModel.objects.create(**content)
+        except UserModel.DoesNotExist:
+            return JsonResponse(
+                {"message": "Failed to create user"},
+                status=400)
+        return JsonResponse(user, encoder=UserModelEncoder, safe=False)
+
+
+@require_http_methods("POST")
+def api_user_account(request):
+    if request.method == "POST":
+        content = json.loads(request.body)
+        username = content["username"]
+        try:
+            user = UserModel.objects.get(username=username)
+            return JsonResponse(
+                user,
+                encoder=UserModelEncoder,
+                safe=False,
+            )
+        except UserModel.DoesNotExist:
+            response = JsonResponse({"message": "Username does not exist"})
+            response.status_code = 404
+            return response
+
+
+
+
+
 
 
 @csrf_exempt
@@ -159,3 +237,5 @@ def getRoutes(request):
 #     notes = user.note_set.all()
 #     serializer = NoteSerializer(notes, many=True)
 #     return Response(serializer.data)
+
+

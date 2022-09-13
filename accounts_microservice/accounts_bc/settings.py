@@ -42,6 +42,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["localhost", "monolith", "account-api"]
 
+AUTH_USER_MODEL = "accounts.UserModel"
 
 # Application definition
 
@@ -57,6 +58,7 @@ INSTALLED_APPS = [
     "storages",
     'rest_framework',
     'rest_framework_simplejwt.token_blacklist',
+    "djwto",
 
 ]
 
@@ -206,3 +208,12 @@ SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 # Static asset configuration
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 STATIC_ROOT = "staticfiles"
+
+
+# code for JWT
+DJWTO_MODE = "TWO-COOKIES"
+DJWTO_CSRF = False
+DJWTO_ACCESS_TOKEN_LIFETIME = timedelta(days=1)
+
+# Your DEBUG value MUST be False in production
+DJWTO_SAME_SITE = "LAX" if DEBUG else "NONE"

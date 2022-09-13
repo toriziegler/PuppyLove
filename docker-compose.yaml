@@ -33,7 +33,7 @@ services:
             STATICFILES_STORAGE: ${STATICFILES_STORAGE}
             STATIC_URL: ${STATIC_URL}
             DEFAULT_FILE_STORAGE: ${DEFAULT_FILE_STORAGE}
-            #DJWTO_SIGNING_KEY: ${DJWTO_SIGNING_KEY}
+            DJWTO_SIGNING_KEY: ${DJWTO_SIGNING_KEY}
             AWS_Cache: ${AWS_Cache}
         ports:
             - "8080:8000"

@@ -1,3 +1,26 @@
+# September 9, 2022
+
+What we today?
+
+- Met with team
+- We spent some time as a group figuring out what else needs to be done. We help taylor find the las bug that was hindering the AWS from taking in pictures from users (or rather he found it within the first min of walking the rest of us through what he was doing, so we could help him find the bug). Nico and I stated working out the sign up form and how to connect it to the react page Stephen had put together. However we both stated encountering an issue where we could not add anything to our models page without the accounts docker container to crash. We eventually asked Daniel for help, and we were able to move on.
+
+Potential blockers?
+
+1.
+
+# September 7, 2022
+
+What we today?
+
+- Met with team
+- Did our morning Scrum meeting
+- worked with Nico and Stepahn to get the Auth working
+
+Potential blockers?
+
+1.
+
 # September 6, 2022
 
 What we today?
