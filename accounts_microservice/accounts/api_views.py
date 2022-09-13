@@ -1,4 +1,4 @@
-from .models import AWSPhoto, Owner, State
+from .models import AWSPhoto, Owner, State, UserAccount
 from .encoders import OwnerEncoder, StateEncoder
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
@@ -42,6 +42,11 @@ class RetrieveUserView(APIView):
     user = UserSerializer(user)
 
     return Response(user.data, status=status.HTTP_200_OK)
+
+
+def api_users(request):
+    data = list(UserAccount.objects.values())
+    return JsonResponse(data, safe=False)  # or JsonResponse({'data': data})
 
 
 @csrf_exempt
