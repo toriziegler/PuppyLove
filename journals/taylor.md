@@ -103,3 +103,9 @@ Today I was able to complete the react to s3 AWS photo bucket pipeline. I ran in
     - my thoughts on this: i should look into how i can do this using boto3 since that is what we are using to upload to s3 from django. Thank would make the upload from react seem kinda pointless for the moment. 
 
     - !! look into how we can dynamically make folders in the bucket for each user. This would make it so we could do a componentDidMount and bring in all the photos that the user has. Then we would be able to filter on the page based on which one we should show. 
+
+## Sept 12, 2022
+
+  Today I was able, with Andrew and Victoria's help, set the foldername in S3 to be unique to each user. This allows for each user to only be able to access their own photos. Tomorrow, Victoria and I will begin to figure out how to pull these images down from S3 and into our profiles
+
+  I am going to being writing the unit tests for POSTs tonight as well
