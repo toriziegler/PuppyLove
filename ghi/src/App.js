@@ -11,7 +11,6 @@ import DogInfo from './DogInfo';
 import UploadImageToS3WithNativeSdk from './UploadImageToS3';
 import PrivateRoute from './PrivateRoute'
 import { AuthProvider } from './AuthContext'
-import ProfileCard from './ProfileCard';
 import ListProfiles from './ListProfiles';
 
 function App(props) {
@@ -25,7 +24,6 @@ function App(props) {
               <Route exact path="/puppy-love/" element={<MainPage />} />
             </Route>
             <Route path="profile" element={<Profile />} />
-            <Route path="profilecard" element={<ProfileCard />} />
             <Route path="listprofiles" element={<ListProfiles />} />
             <Route path="signup" element={<SignUp />} />
             <Route path="doginfo" element={<DogInfo />} />

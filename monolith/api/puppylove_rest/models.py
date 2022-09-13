@@ -19,14 +19,15 @@ class Dog(models.Model):
     )
     SIZE_CHOICES = (
         ('Toy', '2-9 Pounds'),
-        ('Small', '7-35 Pounds'),
-        ('Medium', '35-65 Pounds'),
-        ('Large', '55-85 Pounds'),
+        ('Small', '10-34 Pounds'),
+        ('Medium', '35-54 Pounds'),
+        ('Large', '55-74 Pounds'),
         ('Giant', '75-120+ Pounds'),
     )
     name = models.CharField(max_length=200)
     age = models.SmallIntegerField(null=True, blank=True)
     breed = models.CharField(max_length=100, default="mix")
+    image = models.FileField(upload_to='dogs', null=True, blank=True)
     description = models.TextField(max_length=1000, null=True, blank=True)
     gender = models.CharField(max_length=1, choices=GENDER_CHOICES)
     size = models.CharField(max_length=6, choices=SIZE_CHOICES)

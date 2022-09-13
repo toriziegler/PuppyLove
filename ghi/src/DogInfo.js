@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+// import UploadImageToS3WithNativeSdk from './UploadImageToS3';
 
 class DogInfo extends React.Component {
     constructor(props) {
@@ -12,6 +13,7 @@ class DogInfo extends React.Component {
             gender: [],
             description: '',
             owners: [],
+            // image: '',
         };
         this.handleNameChange = this.handleNameChange.bind(this);
         this.handleAgeChange = this.handleAgeChange.bind(this);
@@ -20,6 +22,7 @@ class DogInfo extends React.Component {
         this.handleGenderChange = this.handleGenderChange.bind(this);
         this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
         this.handleOwnerChange = this.handleOwnerChange.bind(this);
+        // this.handleImageChange = this.handleImageChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
@@ -43,8 +46,11 @@ class DogInfo extends React.Component {
                 name: '',
                 age: '',
                 breed: '',
+                size: '',
+                gender: '',
                 description: '',
                 owners: '',
+                // image: '',
             });
         }
     }
@@ -86,6 +92,10 @@ class DogInfo extends React.Component {
         const value = event.target.value;
         this.setState({ owner: value });
     }
+    // handleImageChange(event) {
+    //     const value = event.target.value;
+    //     this.setState({ image: value });
+    // }
 
 
     render() {
@@ -123,19 +133,19 @@ class DogInfo extends React.Component {
                                             placeholder="Breed" required type="text" name="breed"
                                             id="breed" />
                                     </div>
-                                    {/* <div className="mb-3">
+                                    <div className="mb-3">
                                         <select onChange={this.handleSizeChange} value={this.state.size} required name="size" id="size" className="form-select">
                                             <option value="">Choose Size</option>
-                                            {this.state.owners.map((owner) => {
+                                            {this.state.dog.size.map((size) => {
                                                 return (
-                                                    <option key={owner.id} value={owner.id}>
-                                                        {owner.name}
+                                                    <option key={size} value={size}>
+                                                        {size}
                                                     </option>
                                                 )
                                             })}
                                         </select>
                                     </div>
-                                    <div className="mb-3">
+                                    {/* <div className="mb-3">
                                         <select onChange={this.handleGenderChange} value={this.state.gender} required name="gender" id="gender" className="form-select">
                                             <option value="">Choose Gender</option>
                                             {this.state.owners.map((owner) => {

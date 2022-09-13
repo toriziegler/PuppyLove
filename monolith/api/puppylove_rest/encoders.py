@@ -21,3 +21,6 @@ class DogEncoder(ModelEncoder):
         "size"
     ]
     encoders = {"owner": OwnerVOEncoder()}
+
+    def get_extra_data(self, o):
+        return {"image": o.id}
