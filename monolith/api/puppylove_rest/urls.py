@@ -10,9 +10,11 @@ urlpatterns = [
     path(
         "dogs/<int:pk>/",
         api_show_delete_update_dog,
-        name="api_show_delete_update_dog"),
+        name="api_show_delete_update_dog"
+    ),
     path(
         "owners_dogs/<int:owner_id>/",
         api_owners_dogs,
-        name="api_owners_dogs"),
+        name="api_owners_dogs"
+    ),
 ]

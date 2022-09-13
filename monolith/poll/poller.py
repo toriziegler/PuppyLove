@@ -24,7 +24,7 @@ def get_owners():
                 "phone": owner["phone"],
                 "description": owner["description"],
                 "state": owner["state"],
-            }
+            },
         )
 
 

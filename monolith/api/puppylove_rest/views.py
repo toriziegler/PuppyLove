@@ -132,4 +132,3 @@ def api_owners_dogs(request, owner_id=None):
                 encoder=DogEncoder,
                 safe=False,
             )
-

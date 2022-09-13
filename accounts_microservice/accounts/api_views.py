@@ -130,7 +130,7 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
         token = super().get_token(user)
 
         # Add custom claims
-        token['username'] = user.username
+        token["username"] = user.username
         # ...
 
         return token
@@ -141,12 +141,11 @@ class MyTokenObtainPairView(TokenObtainPairView):
 
 
 @csrf_exempt
-@api_view(['GET'])
+@api_view(["GET"])
 def getRoutes(request):
     routes = [
-        'api/api2/token',
-        '/api/api2/token/refresh',
-
+        "api/api2/token",
+        "/api/api2/token/refresh",
     ]
 
     return Response(routes)

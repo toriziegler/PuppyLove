@@ -18,12 +18,12 @@ import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-AWS_LOCATION = 'us-west-1'
+AWS_LOCATION = "us-west-1"
 # The full URL to the S3 endpoint. Leave blank to use the default region URL.
 AWS_S3_ENDPOINT_URL = "https://puppy-love-assets.s3.us-west-1.amazonaws.com"
 
 
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
 
 # aws set-up
 STATICFILES_DIRS = [
