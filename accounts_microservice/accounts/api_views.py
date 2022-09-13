@@ -10,8 +10,9 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import permissions, status
-from .serializers import UserCreateSerializer, UserSerializer
+from .serializers import UserCreateSerializer, UserSerializer, NoteSerializer
 from rest_framework.decorators import api_view, permission_classes
+
 # from rest_framework.response import Response
 # from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 # from rest_framework_simplejwt.views import TokenObtainPairView
@@ -22,11 +23,13 @@ from rest_framework.decorators import api_view, permission_classes
 class RegisterView(APIView):
     def post(self, request):
         data = request.data
-        
+
         serializer = UserCreateSerializer(data=data)
-        
+
         if not serializer.is_valid():
-            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+            return Response(
+                serializer.errors, status=status.HTTP_400_BAD_REQUEST
+            )
 
         user = serializer.create(serializer.validated_data)
         user = UserSerializer(user)
@@ -49,7 +52,7 @@ def api_users(request):
     return JsonResponse(data, safe=False)  # or JsonResponse({'data': data})
 
 
-@api_view(['GET'])
+@api_view(["GET"])
 @permission_classes([IsAuthenticated])
 def getNotes(request):
     user = request.user
@@ -59,17 +62,18 @@ def getNotes(request):
 
 
 class UserCreate(APIView):
-    """ 
-    Creates the user. 
+    """
+    Creates the user.
     """
 
-    def post(self, request, format='json'):
+    def post(self, request, format="json"):
         serializer = UserSerializer(data=request.data)
         if serializer.is_valid():
             user = serializer.save()
             if user:
-                return Response(serializer.data, status=status.HTTP_201_CREATED)
-
+                return Response(
+                    serializer.data, status=status.HTTP_201_CREATED
+                )
 
 
 @csrf_exempt

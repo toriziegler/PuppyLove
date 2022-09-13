@@ -56,7 +56,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "storages",
-    'rest_framework',
+    "rest_framework",
 ]
 
 
@@ -168,14 +168,14 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 STATIC_ROOT = "staticfiles"
 
 REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework_simplejwt.authentication.JWTAuthentication",
     ]
 }
 
 
 SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=30),
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=30),
 }
 
-AUTH_USER_MODEL = 'accounts.UserAccount'
+AUTH_USER_MODEL = "accounts.UserAccount"
