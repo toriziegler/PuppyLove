@@ -1,13 +1,9 @@
 from django.db import models
-from django.contrib.auth.models import AbstractUser
-
-
-class User(AbstractUser):
-    pass
 
 
 def user_directory_path(instance, filename):
     return "user_{0}/{1}".format(instance.name, filename)
+
 
 # from django.core.validators import MaxValueValidator
 # import uuid
