@@ -1,4 +1,13 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
+
+
+class User(AbstractUser):
+    pass
+
+
+def user_directory_path(instance, filename):
+    return 'user_{0}/{1}'.format(instance.name, filename)
 
 # from django.core.validators import MaxValueValidator
 # import uuid
@@ -79,7 +88,8 @@ class State(models.Model):
 class Owner(models.Model):
     name = models.CharField(max_length=200)
     email = models.EmailField()
-    phone = models.PositiveBigIntegerField()
+    image = models.FileField(upload_to=user_directory_path)
+    phone = models.PositiveBigIntegerField(unique=True)
     description = models.TextField(max_length=1000)
     state = models.ForeignKey(
         State, related_name="+", on_delete=models.PROTECT)
