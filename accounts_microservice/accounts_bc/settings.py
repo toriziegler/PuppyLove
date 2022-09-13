@@ -54,7 +54,6 @@ ALLOWED_HOSTS = ["localhost", "monolith", "account-api"]
 # Application definition
 
 INSTALLED_APPS = [
-    'storages',
     "corsheaders",
     "django.contrib.auth",
     "accounts.apps.AccountsConfig",
