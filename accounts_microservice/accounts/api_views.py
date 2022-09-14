@@ -7,6 +7,7 @@ from django.views.decorators.http import require_http_methods
 import json
 from django.views.generic.edit import CreateView
 from django.urls import reverse_lazy
+from django.views.decorators.csrf import csrf_protect
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -17,6 +18,7 @@ from rest_framework.decorators import api_view, permission_classes
 # from rest_framework.response import Response
 # from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 # from rest_framework_simplejwt.views import TokenObtainPairView
+
 
 
 # from .serializers import NoteSerializer
@@ -79,8 +81,9 @@ class UserCreate(APIView):
                 )
 
 
-@csrf_exempt
+
 @require_http_methods(["GET", "POST"])
+@csrf_protect
 def api_owners(request):
     if request.method == "GET":
         owners = Owner.objects.all()
@@ -106,8 +109,9 @@ def api_owners(request):
             return response
 
 
-@csrf_exempt
+
 @require_http_methods(["GET", "PUT", "DELETE"])
+@csrf_protect
 def api_owner_show_update_delete(request, pk):
     if request.method == "GET":
         owner = Owner.objects.get(id=pk)
@@ -149,8 +153,9 @@ def api_owner_show_update_delete(request, pk):
             return response
 
 
-@csrf_exempt
+
 @require_http_methods(["GET", "POST"])
+@csrf_protect
 def api_states(request):
     if request.method == "GET":
         states = State.objects.all()
