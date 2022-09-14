@@ -10,6 +10,7 @@ class SignUp extends React.Component {
             last_name: '',
             password: '',
             verify_password: '',
+            hasSignedUp: false,
         };
         this.handleEmailChange = this.handleEmailChange.bind(this);
         this.handleFirsNameChange = this.handleFirsNameChange.bind(this);
@@ -24,6 +25,7 @@ class SignUp extends React.Component {
         const data = { ...this.state };
         delete data.password;
         delete data.verify_password;
+        delete data.hasSignedUp;
 
         const url = 'http://localhost:8100/api/register/';
         const fetchConfig = {
@@ -38,13 +40,17 @@ class SignUp extends React.Component {
         const response = await fetch(url, fetchConfig);
         console.log(response, 'response from create_user')
         if (response.ok) {
+            let successTag = document.getElementById('success-message');
+            let formTag = document.getElementById('create-dog-form');
+            successTag.classList.remove('d-none');
+            formTag.classList.add('d-none');
             this.setState({
                 email: '',
                 first_name: '',
                 last_name: '',
                 password: '',
                 verify_password: '',
-
+                hasSignedUp: true,
             });
         } else if (!response.ok) {
             const message = ` An error: ${response.status} - ${response.statusText}`;
@@ -80,12 +86,12 @@ class SignUp extends React.Component {
 
 
     render() {
-        // if (this.state.redirect){
-        //     return <Navigate to="/login"/>;
-        // }
-        // if (this.props.token) {
-        //     return <Navigate to="/profiles/myself" />;
-        // }
+        let messageClasses = 'alert alert-success d-none mb-0';
+        let formClasses = '';
+        if (this.state.hasSignedUp) {
+            messageClasses = 'alert alert-success mb-0';
+            formClasses = 'd-none';
+        }
         return (
             <div className="App">
                 <div
@@ -104,43 +110,50 @@ class SignUp extends React.Component {
                             <div className="card-body">
                                 <h1>Create an Account</h1>
                                 <hr />
-
-                                <div className="form-floating mb-3">
-                                    <input onChange={this.handleEmailChange} value={this.state.email}
-                                        placeholder="Email" required type="email" name="email"
-                                        id="email" />
+                                <form className={formClasses} onSubmit={this.handleSubmit} id="create-dog-form">
+                                    <div className="form-floating mb-3">
+                                        <input onChange={this.handleEmailChange} value={this.state.email}
+                                            placeholder="Email" required type="email" name="email"
+                                            id="email" />
+                                    </div>
+                                    <div className="form-floating mb-3" >
+                                        <input value={this.state.password} onChange={this.handlePasswordChange}
+                                            placeholder="Password" required type="password" name="password"
+                                            id="signuppassword" />
+                                    </div>
+                                    <div className="form-floating mb-3" >
+                                        <input value={this.state.verify_password} onChange={this.handleVerify_PasswordChange}
+                                            placeholder="Verify Password" required type="password" name="verify-password"
+                                            id="verify-password" />
+                                    </div>
+                                    <div className="form-floating mb-3" >
+                                        <input value={this.state.first_name} onChange={this.handleFirsNameChange}
+                                            placeholder="first_name" required type="text" name="first_name"
+                                            id="first_name" />
+                                    </div>
+                                    <div className="form-floating mb-3" >
+                                        <input value={this.state.last_name} onChange={this.handleLastNameChange}
+                                            placeholder="last_name" required type="text" name="last_name"
+                                            id="last_name" />
+                                    </div>
+                                    <br></br>
+                                    <button className="btn btn-secondary" type="submit">Submit</button>
+                                    <div className='tolgoin'>
+                                        Already Have an Account?  <Link to='/login'>Sign In</Link>
+                                    </div>
+                                </form>
+                                <div className={messageClasses} id="success-message">
+                                    Congratulations!
+                                    <br></br>
+                                    You have an account.
+                                    <br></br>
+                                    Please log in here:
+                                    <br></br>
+                                    <Link to="/login/" className="mainlink">
+                                        <button type="button" className="btn btn-secondary">Login</button>
+                                    </Link>
+                                    <br></br>
                                 </div>
-
-                                <div className="form-floating mb-3" >
-                                    <input value={this.state.password} onChange={this.handlePasswordChange}
-                                        placeholder="Password" required type="password" name="password"
-                                        id="signuppassword" />
-                                </div>
-                                <div className="form-floating mb-3" >
-                                    <input value={this.state.first_name} onChange={this.handleFirsNameChange}
-                                        placeholder="first_name" required type="text" name="first_name"
-                                        id="first_name" />
-                                </div>
-                                <div className="form-floating mb-3" >
-                                    <input value={this.state.last_name} onChange={this.handleLastNameChange}
-                                        placeholder="last_name" required type="text" name="last_name"
-                                        id="last_name" />
-                                </div>
-
-                                <div className="form-floating mb-3" >
-                                    <input value={this.state.verify_password} onChange={this.handleVerify_PasswordChange}
-                                        placeholder="Verify Password" required type="password" name="verify-password"
-                                        id="verify-password" />
-                                </div>
-
-                                <br></br>
-                                <Link to="/puppy-love/"> <button type="submit" name='loginbutton'
-                                    className="btn btn-primary" form="login-form">Log In
-                                </button></Link>
-                                <div className='tolgoin'>
-                                    Already Have an Account?  <Link to='/login'>Sign In</Link>
-                                </div>
-
                             </div>
                         </div>
                     </div>
