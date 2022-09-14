@@ -10,9 +10,6 @@ monolith/puppylove/keys.py
 *.so
 
 # migrations for every folder
-**/migrations/**
-!**/migrations
-!**/migrations/__init__.py 
 
 # Distribution / packaging
 .Python
