@@ -139,7 +139,7 @@ class OwnerInfo extends React.Component {
                                             })}
                                         </select>
                                     </div>
-                                    <button className="btn btn-secondary" type="submit">Submit</button>
+                                    <button className="btn btn-success" type="submit">Submit</button>
                                 </form>
                                 <div className={messageClasses} id="success-message">
                                     Congratulations!

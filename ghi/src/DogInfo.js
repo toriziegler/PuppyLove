@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-// import UploadImageToS3WithNativeSdk from './UploadImageToS3';
+import AWS from 'aws-sdk';
+import { useState } from 'react';
+
 
 class DogInfo extends React.Component {
     constructor(props) {
@@ -13,7 +15,7 @@ class DogInfo extends React.Component {
             genders: [],
             description: '',
             owners: [],
-            // image: '',
+            image: '',
             hasSignedUp: false,
         };
         this.handleNameChange = this.handleNameChange.bind(this);
@@ -23,7 +25,7 @@ class DogInfo extends React.Component {
         this.handleGenderChange = this.handleGenderChange.bind(this);
         this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
         this.handleOwnerChange = this.handleOwnerChange.bind(this);
-        // this.handleImageChange = this.handleImageChange.bind(this);
+        this.handleImageChange = this.handleImageChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
@@ -44,6 +46,10 @@ class DogInfo extends React.Component {
             },
         };
 
+        // function nameFile() {
+        //     return (`${data.name}/${data.owners}`)
+        // }
+
         const response = await fetch(url, fetchConfig);
         if (response.ok) {
             let successTag = document.getElementById('success-message');
@@ -58,7 +64,7 @@ class DogInfo extends React.Component {
                 genders: '',
                 description: '',
                 owners: '',
-                // image: '',
+                image: '',
                 hasSignedUp: true,
             });
         }
@@ -72,6 +78,7 @@ class DogInfo extends React.Component {
             this.setState({ owners: data.owners });
         }
     }
+
 
     handleNameChange(event) {
         const value = event.target.value;
@@ -101,10 +108,13 @@ class DogInfo extends React.Component {
         const value = event.target.value;
         this.setState({ owner: value });
     }
-    // handleImageChange(event) {
-    //     const value = event.target.value;
-    //     this.setState({ image: value });
-    // }
+    handleImageChange(event) {
+        const value = event.target.value;
+        this.setState({ image: value });
+    }
+
+
+
 
 
     render() {
@@ -114,6 +124,60 @@ class DogInfo extends React.Component {
             messageClasses = 'alert alert-success mb-0';
             formClasses = 'd-none';
         }
+
+        const BUCKET_NAME = process.env.REACT_APP_AWS_STORAGE_BUCKET_NAME;
+        const AWSREGION = process.env.REACT_APP_REGION;
+        const KEY_ID = process.env.REACT_APP_AWS_ACCESS_KEY_ID;
+        const ACCESS_KEY = process.env.REACT_APP_AWS_SECRET_ACCESS_KEY;
+        const S3_BUCKET = BUCKET_NAME;
+        const REGION = AWSREGION;
+
+        // The access key ID is how we will access the photo from the bucket
+        AWS.config.update({
+            accessKeyId: KEY_ID,
+            secretAccessKey: ACCESS_KEY
+        })
+
+        const myBucket = new AWS.S3({
+            params: { Bucket: S3_BUCKET },
+            region: REGION,
+        })
+
+        const UploadImageToS3WithNativeSdk = (props) => {
+            const [progress, setProgress] = useState(0);
+            const [selectedFile, setSelectedFile] = useState(null);
+
+            const handleFileInput = (e) => {
+                setSelectedFile(e.target.files[0]);
+            }
+
+            const uploadFile = (file) => {
+                console.log("SELECTEDFIILE", selectedFile)
+                const params = {
+                    ACL: 'public-read',
+                    Body: file,
+                    Bucket: S3_BUCKET,
+                    Key: `us-west-1/${props.owner}/${props.dog}`
+                };
+                myBucket.putObject(params)
+                    .on('httpUploadProgress', (evt) => {
+                        setProgress(Math.round((evt.loaded / evt.total) * 100))
+                    })
+                    .send((err) => {
+                        if (err) console.log(err)
+                    })
+                console.log("PROPSSS", props.owner, props.dog)
+            }
+
+
+            return <div>
+                <div>File Upload Progress is {progress}%</div>
+                <input type="file" onChange={handleFileInput} />
+                <br></br>
+                <button className="btn btn-success" onClick={() => uploadFile(selectedFile)}> Submit </button>
+            </div>
+        }
+
         return (
             <div className="App">
                 <div
@@ -183,8 +247,7 @@ class DogInfo extends React.Component {
                                             })}
                                         </select>
                                     </div>
-                                    <br></br>
-                                    <button className="btn btn-secondary" type="submit">Submit</button>
+                                    <UploadImageToS3WithNativeSdk owner={this.state.owner} dog={this.state.name} className="form-floating mb-3" onChange={this.handleImageChange} value={this.state.image} name="image" id="image"></UploadImageToS3WithNativeSdk>
                                 </form>
                                 <div className={messageClasses} id="success-message">
                                     Congratulations!

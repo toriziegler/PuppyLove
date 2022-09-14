@@ -1,3 +1,11 @@
+# September 14, 2022
+Today I worked on:
+
+* Authentication
+* AWS photos
+
+    I worked with Taylor, Stephen, and Nicolas to get the signup page functioning properly. I adjusted the page to handle submission and generate the success message I set up for dog info and owner info pages. 
+
 # September 13, 2022
 Today I worked on:
 

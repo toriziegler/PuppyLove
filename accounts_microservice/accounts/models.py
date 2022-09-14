@@ -1,5 +1,4 @@
 from django.db import models
-from django.contrib.auth.models import AbstractUser
 
 
 def user_directory_path(instance, filename):
@@ -85,7 +84,11 @@ class State(models.Model):
 class Owner(models.Model):
     name = models.CharField(max_length=200)
     email = models.EmailField()
-    image = models.FileField(upload_to=user_directory_path)
+    image = models.FileField(
+        null=True,
+        blank=True,
+        upload_to=user_directory_path
+    )
     phone = models.PositiveBigIntegerField(unique=True)
     description = models.TextField(max_length=1000)
     state = models.ForeignKey(
