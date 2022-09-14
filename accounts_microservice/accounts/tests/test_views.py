@@ -16,8 +16,9 @@ class TestOwners(TestCase):
         self.assertEquals(response.status_code, 200)
 
 
-# class TestOwners(TestCase):
+# class TestPostOwners(TestCase):
 #     def test_post_owners(self):
 #         client = Client()
-#         response = client.post(reverse("api_owners"))
+#         response = client.post(
+#             reverse("api_owners"), {'name': 'SecretAgent', 'email': 'secret@cia.com', 'image': 'None', 'phone': '1234567899', 'description': 'Secret', 'state': 'Ohio'})
 #         self.assertEquals(response.status_code, 200)
