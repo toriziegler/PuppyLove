@@ -48,8 +48,6 @@ const UploadImageToS3WithNativeSdk = () => {
             })
     }
 
-    // console.log(myBucket.getObject({ Key: `media/willie_logo.jpg` }))
-
     return <div>
         <div>File Upload Progress is {progress}%</div>
         <input type="file" onChange={handleFileInput} />
