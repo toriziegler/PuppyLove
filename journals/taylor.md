@@ -109,3 +109,10 @@ Today I was able to complete the react to s3 AWS photo bucket pipeline. I ran in
   Today I was able, with Andrew and Victoria's help, set the foldername in S3 to be unique to each user. This allows for each user to only be able to access their own photos. Tomorrow, Victoria and I will begin to figure out how to pull these images down from S3 and into our profiles
 
   I am going to being writing the unit tests for POSTs tonight as well
+
+## Sept 13, 2022
+
+  Today I worked with Nico, Stephen, and Norton to get our authentication up and working on the front end. There was an issue with migrations that was not letting us to proceed. The error we were getting was related to auth_user. We were able to fix the issue in the following way:
+    we adjusted the accounts_microservice/Dockerfile.dev CMD command to first include 'python manage.py migrate auth.' ensuring that this happened before any other migrations allowed us to correct the issue that the user models were facing in the backend. apparently the Django User model does not play well with postgres and it must be the first migration or it will not work correctly. 
+
+  Victoria got a lot done on connecting the front end and the back end today. I feel like I would like to be doing more of that type of work right now but the authorization if by far the most important, currently. I need to help the team get this done as fast as possible so that we have time to implement the user model in the front-end back-end connections. 

@@ -70,7 +70,8 @@ const LoginForm = () => {
                         "url(https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg)",
                     backgroundPosition: "center",
                     backgroundSize: "cover",
-                    backgroundRepeat: "no-repeat"
+                    backgroundRepeat: "no-repeat",
+                    opacity: .9,
                 }}
             >
                 <div className="card mx-auto" style={{ width: "18rem" }}>
@@ -80,7 +81,7 @@ const LoginForm = () => {
                                 <h1>Login!</h1>
                                 <hr />
                                 <div className="form-floating mb-3">
-                                    <input type='text' id="username" name='username' placeholder='username' />
+                                    <input type='text' id="email" name='email' placeholder='email' />
 
                                 </div>
                                 <div className="form-floating mb-3" >
@@ -97,7 +98,7 @@ const LoginForm = () => {
                                 <a href="https://www.youtube.com/watch?v=kdOPBP9vuZA">Forgot Password?</a>
 
                                 <p>
-                                    Don't have an Account?     &nbsp;&nbsp;&nbsp;&nbsp;    <Link to='/login/new'>Create Account</Link>
+                                    Don't have an Account?     &nbsp;&nbsp;&nbsp;&nbsp;    <Link to='/signup'>Create Account</Link>
                                 </p>
                             </form>
                         </div>
