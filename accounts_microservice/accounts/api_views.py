@@ -1,6 +1,5 @@
 from .models import AWSPhoto, Owner, State, UserAccount
 from .encoders import OwnerEncoder, StateEncoder
-from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 # from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_http_methods
@@ -18,9 +17,6 @@ from rest_framework.decorators import api_view, permission_classes
 # from rest_framework.response import Response
 # from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 # from rest_framework_simplejwt.views import TokenObtainPairView
-
-
-
 # from .serializers import NoteSerializer
 
 
@@ -81,7 +77,6 @@ class UserCreate(APIView):
                 )
 
 
-
 @require_http_methods(["GET", "POST"])
 @csrf_protect
 def api_owners(request):
@@ -107,7 +102,6 @@ def api_owners(request):
             response = JsonResponse({"message": "Could not create the Owner"})
             response.status_code = 400
             return response
-
 
 
 @require_http_methods(["GET", "PUT", "DELETE"])
@@ -151,7 +145,6 @@ def api_owner_show_update_delete(request, pk):
             response = JsonResponse({"message": "Does not exist"})
             response.status_code = 404
             return response
-
 
 
 @require_http_methods(["GET", "POST"])
