@@ -197,11 +197,11 @@ class DogInfo extends React.Component {
                                         <button type="button" className="btn btn-secondary">View Profile</button>
                                     </Link>
                                     <br></br>
-                                    Or create another dog here:
+                                    {/* Or create another dog here:
                                     <br></br>
                                     <Link to="/doginfo" className="mainlink">
                                         <button type="button" className="btn btn-secondary">Add Dog</button>
-                                    </Link>
+                                    </Link> */}
                                 </div>
                             </div>
                         </div>
