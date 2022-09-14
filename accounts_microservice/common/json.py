@@ -3,8 +3,7 @@ from django.urls import NoReverseMatch
 from django.db.models import QuerySet
 from django.db import models
 
-from django.core import serializers
-from django.db import models
+# from django.core import serializers
 
 # JSONSerializer = serializers.get_serializer("json")
 
@@ -16,7 +15,8 @@ from django.db import models
 #         if isinstance(field, models.FileField) and hasattr('url', value):
 #             self._current[field.name] = value.url
 #         else:
-#             return super(JSONWithURLSerializer, self).handle_field(obj, field)
+#             return super(
+#                 JSONWithURLSerializer, self).handle_field(obj, field)
 
 
 # serializer = JSONWithURLSerializer()
