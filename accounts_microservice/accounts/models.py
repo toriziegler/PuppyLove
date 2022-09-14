@@ -1,8 +1,5 @@
 from django.db import models
-<<<<<<< HEAD
 from django.contrib.auth.models import AbstractUser
-=======
->>>>>>> 0907adf78baf78b2ba7d294a9033afd0a958fae8
 
 
 def user_directory_path(instance, filename):
