@@ -11,6 +11,7 @@ from rest_framework.decorators import api_view
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
 
+
 # from .serializers import NoteSerializer
 
 
@@ -159,3 +160,5 @@ def getRoutes(request):
 #     notes = user.note_set.all()
 #     serializer = NoteSerializer(notes, many=True)
 #     return Response(serializer.data)
+
+# Create your views here.

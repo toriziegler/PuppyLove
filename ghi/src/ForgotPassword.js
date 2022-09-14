@@ -1,15 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-class SignUp extends React.Component {
+class ForgotPassword extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            username: '',
+            email: '',
+            oldpassword: '',
             password: '',
             verify_password: '',
         };
-        this.handleUsernameChange = this.handleUsernameChange.bind(this);
+        this.handleEmailChange = this.handleEmailChange.bind(this);
+        this.handleOldPasswordChange = this.handleOldPasswordChange.bind(this);
         this.handlePasswordChange = this.handlePasswordChange.bind(this);
         this.handleVerify_PasswordChange = this.handleVerify_PasswordChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -21,7 +23,7 @@ class SignUp extends React.Component {
         delete data.showPassword;
         delete data.verify_password;
 
-        const url = 'http://localhost:8100/api/owners/';
+        const url = 'http://localhost:8100/api/create_users/';
         const fetchConfig = {
             method: "POST",
             body: JSON.stringify(data),
@@ -33,16 +35,21 @@ class SignUp extends React.Component {
         const response = await fetch(url, fetchConfig);
         if (response.ok) {
             this.setState({
-                username: '',
+                email: '',
+                oldpassword: '',
                 password: '',
                 verify_password: '',
             });
         }
     }
 
-    handleUsernameChange(event) {
+    handleEmailChange(event) {
         const value = event.target.value;
-        this.setState({ username: value });
+        this.setState({ email: value });
+    }
+    handleOldPasswordChange(event) {
+        const value = event.target.value;
+        this.setState({ oldpassword: value });
     }
     handlePasswordChange(event) {
         const value = event.target.value;
@@ -64,22 +71,26 @@ class SignUp extends React.Component {
                     style={{
                         height: "100vh",
                         backgroundImage:
-                            "url(https://media.npr.org/assets/img/2021/08/06/dog-4415649-18eab39206426b985f7a5f69e3146a2cd1a56c0d-s800-c85.webp)",
+                            "url(https://images.pexels.com/photos/731022/pexels-photo-731022.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1)",
                         backgroundPosition: "center",
                         backgroundSize: "cover",
                         backgroundRepeat: "no-repeat"
                     }}
                 >
-                    <div className="signup" id="signuptop">
-                        <div className="card mx-auto" style={{ width: "18rem" }}>
-                            <div className="card-body">
-                                <h1>Create an Account</h1>
-                                <hr />
-
+                    <div className="card mx-auto" style={{ width: "18rem" }}>
+                        <div className="card-body">
+                            <h1>Reset your password</h1>
+                            <hr />
+                            <form onSubmit={this.handleSubmit} id="create-owner-form">
                                 <div className="form-floating mb-3">
-                                    <input onChange={this.handleUsernameChange} value={this.state.username}
-                                        placeholder="Username" required type="text" name="username"
-                                        id="username" />
+                                    <input onChange={this.handleEmailChange} value={this.state.email}
+                                        placeholder="Email" required type="email" name="email"
+                                        id="email" />
+                                </div>
+                                <div className="form-floating mb-3">
+                                    <input onChange={this.handleOldPasswordChange} value={this.state.oldpassword}
+                                        placeholder="Old Password" required type="password" name="password"
+                                        id="password" />
                                 </div>
 
                                 <div className="form-floating mb-3" >
@@ -95,14 +106,10 @@ class SignUp extends React.Component {
                                 </div>
 
                                 <br></br>
-                                <button type="submit" name='loginbutton'
-                                    className="btn btn-primary" form="login-form">Sign Up
+                                <button type="submit" name='newpassword'
+                                    className="btn btn-primary" form="newpassword-form">Confirm new password
                                 </button>
-                                <div className='tolgoin'>
-                                    Already Have an Account?  <Link to='/login'>Sign In</Link>
-                                </div>
-
-                            </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -112,5 +119,5 @@ class SignUp extends React.Component {
 }
 
 
-export default SignUp;
+export default ForgotPassword;
 

@@ -94,10 +94,10 @@ const LoginForm = () => {
 
                                     className="btn btn-primary" form="login-form">Log In
                                 </button>
-                                <a href="https://www.youtube.com/watch?v=kdOPBP9vuZA">Forgot Password?</a>
+                                <Link to="/forgotpassword">Forgot Password?</Link>
 
                                 <p>
-                                    Don't have an Account?     &nbsp;&nbsp;&nbsp;&nbsp;    <Link to='/login/new'>Create Account</Link>
+                                    Don't have an Account?     &nbsp;&nbsp;&nbsp;&nbsp;    <Link to='/login'>Create Account</Link>
                                 </p>
                             </form>
                         </div>
