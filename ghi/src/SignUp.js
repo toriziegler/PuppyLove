@@ -33,7 +33,6 @@ class SignUp extends React.Component {
             body: JSON.stringify(data),
             headers: {
                 'Content-Type': 'application/json',
-                credentials: "include",
             },
         };
         console.log(fetchConfig)
@@ -52,11 +51,7 @@ class SignUp extends React.Component {
                 verify_password: '',
                 hasSignedUp: true,
             });
-        } else if (!response.ok) {
-            const message = ` An error: ${response.status} - ${response.statusText}`;
-            throw new Error(message);
         }
-
     }
 
     handleEmailChange(event) {
@@ -165,3 +160,4 @@ class SignUp extends React.Component {
 
 
 export default SignUp;
+

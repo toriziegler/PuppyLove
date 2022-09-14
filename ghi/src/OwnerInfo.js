@@ -60,7 +60,6 @@ class OwnerInfo extends React.Component {
             });
         }
     }
-
     handleNameChange(event) {
         const value = event.target.value;
         this.setState({ name: value });
@@ -81,9 +80,6 @@ class OwnerInfo extends React.Component {
         const value = event.target.value;
         this.setState({ state: value });
     }
-
-
-
     render() {
         let messageClasses = 'alert alert-success d-none mb-0';
         let formClasses = '';
