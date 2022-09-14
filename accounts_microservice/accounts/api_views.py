@@ -24,14 +24,14 @@ from rest_framework.decorators import api_view, permission_classes
 class RegisterView(APIView):
     def post(self, request):
         data = request.data
-
+        print('register data:', data)
         serializer = UserCreateSerializer(data=data)
 
         if not serializer.is_valid():
             return Response(
                 serializer.errors, status=status.HTTP_400_BAD_REQUEST
             )
-
+        print('register user:', user)
         user = serializer.create(serializer.validated_data)
         user = UserSerializer(user)
 
@@ -50,6 +50,7 @@ class RetrieveUserView(APIView):
 
 def api_users(request):
     data = list(UserAccount.objects.values())
+    print('data: ', data)
     return JsonResponse(data, safe=False)  # or JsonResponse({'data': data})
 
 
@@ -71,6 +72,7 @@ class UserCreate(APIView):
         serializer = UserSerializer(data=request.data)
         if serializer.is_valid():
             user = serializer.save()
+            print('create: ', user)
             if user:
                 return Response(
                     serializer.data, status=status.HTTP_201_CREATED

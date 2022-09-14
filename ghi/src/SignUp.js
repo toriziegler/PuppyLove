@@ -25,7 +25,7 @@ class SignUp extends React.Component {
         delete data.password;
         delete data.verify_password;
 
-        const url = 'http://localhost:8100/api/register';
+        const url = 'http://localhost:8100/api/register/';
         const fetchConfig = {
             method: "POST",
             body: JSON.stringify(data),
@@ -34,8 +34,9 @@ class SignUp extends React.Component {
                 credentials: "include",
             },
         };
-
+        console.log(fetchConfig)
         const response = await fetch(url, fetchConfig);
+        console.log(response, 'response from create_user')
         if (response.ok) {
             this.setState({
                 email: '',
@@ -106,7 +107,7 @@ class SignUp extends React.Component {
 
                                 <div className="form-floating mb-3">
                                     <input onChange={this.handleEmailChange} value={this.state.email}
-                                        placeholder="Email" required type="text" name="email"
+                                        placeholder="Email" required type="email" name="email"
                                         id="email" />
                                 </div>
 
