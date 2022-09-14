@@ -116,3 +116,10 @@ Today I was able to complete the react to s3 AWS photo bucket pipeline. I ran in
     we adjusted the accounts_microservice/Dockerfile.dev CMD command to first include 'python manage.py migrate auth.' ensuring that this happened before any other migrations allowed us to correct the issue that the user models were facing in the backend. apparently the Django User model does not play well with postgres and it must be the first migration or it will not work correctly. 
 
   Victoria got a lot done on connecting the front end and the back end today. I feel like I would like to be doing more of that type of work right now but the authorization if by far the most important, currently. I need to help the team get this done as fast as possible so that we have time to implement the user model in the front-end back-end connections. 
+
+  -- after hours --
+  i was able to fix the issue i was having when trying to run tests for the accounts microservice using
+  python manage.py test accounts ... this was not working
+  error:    i was getting the auth-contrib error we were seeing before
+  solution:    i created a blank folder in the accounts file with __init__.py for migrations
+              i removed the migrate auth that we put in above from the Dockerfile.dev
