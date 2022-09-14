@@ -115,3 +115,20 @@ def api_owner_show_VO(request, pk):
             {"owner": owner},
             encoder=OwnerVOEncoder,
         )
+
+
+@require_http_methods(["GET"])
+def api_owners_dogs(request, owner_id=None):
+    if request.method == "GET":
+        if owner_id is None:
+            return JsonResponse(
+                {"message": "Invalid Owner ID"},
+                status=400,
+            )
+        else:
+            dogs = Dog.objects.filter(owner=owner_id)
+            return JsonResponse(
+                {"dogs": dogs},
+                encoder=DogEncoder,
+                safe=False,
+            )
