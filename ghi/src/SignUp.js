@@ -23,7 +23,7 @@ class SignUp extends React.Component {
     async handleSubmit(event) {
         event.preventDefault();
         const data = { ...this.state };
-        delete data.password;
+        console.log('submitdata', data)
         delete data.verify_password;
         delete data.hasSignedUp;
 
@@ -32,11 +32,12 @@ class SignUp extends React.Component {
             method: "POST",
             body: JSON.stringify(data),
             headers: {
-                'Content-Type': 'application/json',
                 credentials: "include",
+                'Content-Type': 'application/json',
             },
+
         };
-        console.log(fetchConfig)
+        console.log(fetchConfig, 'config: create user')
         const response = await fetch(url, fetchConfig);
         console.log(response, 'response from create_user')
         if (response.ok) {
