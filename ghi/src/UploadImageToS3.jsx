@@ -5,10 +5,6 @@ const BUCKET_NAME = process.env.REACT_APP_AWS_STORAGE_BUCKET_NAME;
 const AWSREGION = process.env.REACT_APP_REGION;
 const KEY_ID = process.env.REACT_APP_AWS_ACCESS_KEY_ID;
 const ACCESS_KEY = process.env.REACT_APP_AWS_SECRET_ACCESS_KEY;
-
-console.log(AWSREGION)
-console.log("bucket:", BUCKET_NAME)
-
 const S3_BUCKET = BUCKET_NAME;
 const REGION = AWSREGION;
 
@@ -51,7 +47,6 @@ const UploadImageToS3WithNativeSdk = () => {
     }
 
     // console.log(myBucket.getObject({ Key: `media/willie_logo.jpg` }))
-
     return <div>
         <div>File Upload Progress is {progress}%</div>
         <input type="file" onChange={handleFileInput} />

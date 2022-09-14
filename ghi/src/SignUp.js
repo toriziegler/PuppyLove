@@ -23,7 +23,6 @@ class SignUp extends React.Component {
     async handleSubmit(event) {
         event.preventDefault();
         const data = { ...this.state };
-        delete data.password;
         delete data.verify_password;
         delete data.hasSignedUp;
 
