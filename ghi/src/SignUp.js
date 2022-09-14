@@ -23,20 +23,23 @@ class SignUp extends React.Component {
     async handleSubmit(event) {
         event.preventDefault();
         const data = { ...this.state };
+        console.log('submitdata', data)
         delete data.verify_password;
         delete data.hasSignedUp;
 
-        const url = 'http://localhost:8100/api/register';
+        const url = 'http://localhost:8100/api/register/';
         const fetchConfig = {
             method: "POST",
             body: JSON.stringify(data),
             headers: {
-                'Content-Type': 'application/json',
                 credentials: "include",
+                'Content-Type': 'application/json',
             },
-        };
 
+        };
+        console.log(fetchConfig, 'config: create user')
         const response = await fetch(url, fetchConfig);
+        console.log(response, 'response from create_user')
         if (response.ok) {
             let successTag = document.getElementById('success-message');
             let formTag = document.getElementById('create-dog-form');
@@ -50,11 +53,7 @@ class SignUp extends React.Component {
                 verify_password: '',
                 hasSignedUp: true,
             });
-        } else if (!response.ok) {
-            const message = ` An error: ${response.status} - ${response.statusText}`;
-            throw new Error(message);
         }
-
     }
 
     handleEmailChange(event) {
@@ -163,3 +162,4 @@ class SignUp extends React.Component {
 
 
 export default SignUp;
+

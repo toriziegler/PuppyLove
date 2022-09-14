@@ -37,3 +37,15 @@ Worked on merging log in with main with Nicolas
 
 # September 7
 Nicolas and I got authorization to work!!!!!
+
+# September 8
+Continued working on getting registration to work with Nicolas and Norton.
+
+# September 9
+Continued working on getting registration to work with Nicolas and Norton.
+
+# September 12
+Continued working on getting registration to work with Nicolas and Norton.
+
+# September 13
+Continued working on getting registration to work with Nicolas and Norton.

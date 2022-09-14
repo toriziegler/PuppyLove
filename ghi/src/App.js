@@ -10,6 +10,7 @@ import DogInfo from './DogInfo';
 import UploadImageToS3WithNativeSdk from './UploadImageToS3';
 import PrivateRoute from './PrivateRoute'
 import { AuthProvider } from './AuthContext'
+import ForgotPassword from './ForgotPassword';
 import ListProfiles from './ListProfiles';
 
 function App(props) {
@@ -29,6 +30,7 @@ function App(props) {
             <Route path="ownerinfo" element={<OwnerInfo />} />
             <Route path="upload" element={<UploadImageToS3WithNativeSdk />} />
             <Route path="/login" element={<LoginForm />} />
+            <Route path="forgotpassword" element={<ForgotPassword />} />
           </Routes>
         </AuthProvider>
       </BrowserRouter>

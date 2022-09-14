@@ -34,7 +34,7 @@ const UploadImageToS3WithNativeSdk = () => {
             ACL: 'public-read',
             Body: file,
             Bucket: S3_BUCKET,
-            Key: `media/${file.name}`
+            Key: `/us-west-1/media/${file.name}`
         };
 
         myBucket.putObject(params)

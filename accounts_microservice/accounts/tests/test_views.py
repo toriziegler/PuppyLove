@@ -17,6 +17,12 @@ class TestOwners(TestCase):
         self.assertEquals(response.status_code, 200)
 
 
+<<<<<<< HEAD
+# class OwnerDelete(TestCase):
+#     def test_list_owners(self):
+#         client = Client()
+#         response = client.delete(reverse("api_owners"))
+=======
 class TestUsers(TestCase):
     def test_list_owners(self):
         client = Client()
@@ -36,4 +42,5 @@ class TestUsers(TestCase):
 #             description='Secret',
 #             state=State(name="Arizona")
 #         ))
+>>>>>>> main
 #         self.assertEquals(response.status_code, 200)
