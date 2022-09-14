@@ -112,7 +112,7 @@ class SignUp extends React.Component {
                                 <form className={formClasses} onSubmit={this.handleSubmit} id="create-dog-form">
                                     <div className="form-floating mb-3">
                                         <input onChange={this.handleEmailChange} value={this.state.email}
-                                            placeholder="Email" required type="text" name="email"
+                                            placeholder="Email" required type="email" name="email"
                                             id="email" />
                                     </div>
                                     <div className="form-floating mb-3" >
