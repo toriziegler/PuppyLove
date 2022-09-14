@@ -32,7 +32,6 @@ class RegisterView(APIView):
             return Response(
                 serializer.errors, status=status.HTTP_400_BAD_REQUEST
             )
-        print('register user:', user)
         user = serializer.create(serializer.validated_data)
         user = UserSerializer(user)
 
