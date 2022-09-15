@@ -38,8 +38,9 @@ function Footer({ children }) {
 
 function Nav() {
   const [token, SetToken, removeToken] = useCookies(['mytoken']) //token, SetToken,
-  const logoutBtn = () => { }
-  removeToken(['mytoken'])
+  const logoutBtn = () => {
+    removeToken(['mytoken'])
+  }
   return (
     <nav className="navbar navbar-expand-lg navbar-light">
       <div>
@@ -76,8 +77,10 @@ function Nav() {
             <li className="nav-item">
               <NavLink className="nav-link" to="/upload">Upload Photos</NavLink>
             </li>
+          </ul>
+          <ul className="navbar-nav justify-content-end mb-2 mb-lg-0">
             <li className="nav-item">
-              <a className="nav-link active" onClick={logoutBtn}>Log out</a>
+              <NavLink className="nav-link" to="/login" onClick={logoutBtn}>Log out</NavLink>
             </li>
           </ul>
           <div>

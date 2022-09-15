@@ -11,7 +11,7 @@ export default class APIService {
     }
 
     static InsertArticle(body, token) {
-        return fetch('http://localhost:8100/api/articles/', {
+        return fetch(`http://localhost:8100/api/articles/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -33,7 +33,7 @@ export default class APIService {
 
 
     static LoginUser(body) {
-        return fetch('http://localhost:8100/auth/', {
+        return fetch(`http://localhost:8100/auth/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -45,7 +45,7 @@ export default class APIService {
 
 
     static RegisterUser(body) {
-        return fetch('http://localhost:8100/api/users/', {
+        return fetch(`http://localhost:8100/api/users/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
