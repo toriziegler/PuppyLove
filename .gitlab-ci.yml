@@ -32,7 +32,6 @@ account-api-unit-test-job:
     - cd accounts_microservice
     - pip install -r requirements.txt
     - export DATABASE_URL="postgresql://$POSTGRES_USER:$POSTGRES_PASSWORD@postgres/$POSTGRES_DB"
-    - python manage.py loaddata data.json
     - python manage.py migrate
     - python manage.py test # Run the tests
 
