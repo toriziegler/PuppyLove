@@ -23,7 +23,7 @@ services:
             DATABASE_URL: postgres://monolith:password@postgres:5432/monolith
             WAIT_HOSTS: postgres:5432
             WAIT_TIMEOUT: 180
-            REACT_APP_MONOLITH_API: http://localhost:8080
+            REACT_APP_MONOLITH_API: $REACT_APP_MONOLITH_API
             AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
             AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
             AWS_STORAGE_BUCKET_NAME: ${AWS_STORAGE_BUCKET_NAME}
@@ -52,9 +52,8 @@ services:
             HOST_OS: win
             NODE_ENV: development
             HOST: "0.0.0.0"
-            REACT_APP_DJANGO_SERVICE: http://localhost:8000
-            REACT_APP_ACCOUNT_API: http://localhost:8100
-            REACT_APP_MONOLITH_API: http://localhost:8080
+            REACT_APP_ACCOUNT_API: $REACT_APP_ACCOUNT_API
+            REACT_APP_MONOLITH_API: $REACT_APP_MONOLITH_API
             REACT_APP_AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
             REACT_APP_AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
             REACT_APP_AWS_STORAGE_BUCKET_NAME: ${AWS_STORAGE_BUCKET_NAME}
@@ -79,7 +78,7 @@ services:
             DATABASE_URL: postgres://accounts:password@postgres:5432/accounts
             WAIT_HOSTS: postgres:5432
             WAIT_TIMEOUT: 240
-            REACT_APP_ACCOUNT_API: http://localhost:8100
+            REACT_APP_ACCOUNT_API: $REACT_APP_ACCOUNT_API
             AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
             AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
             AWS_STORAGE_BUCKET_NAME: ${AWS_STORAGE_BUCKET_NAME}

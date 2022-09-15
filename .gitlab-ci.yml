@@ -68,7 +68,7 @@ monolith-api-back-end-build-job:
   rules:
       - if: $CI_COMMIT_BRANCH == "deploy"
   stage: build
-  image: docker:20.10.16
+  image: docker:20.10.16e
   services:
     - docker:20.10.16-dind
   script:
@@ -124,8 +124,8 @@ deploy-monolith-api-image-job:
     - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY
     - docker login --username=_ --password=$HEROKU_API_KEY registry.heroku.com
     - docker pull ${CI_REGISTRY_IMAGE}/monolith_api:latest
-    - docker tag ${CI_REGISTRY_IMAGE}/monolith_api:latest registry.heroku.com/$REACT_APP_MONOLITH_API/web:latest
-    - docker push registry.heroku.com/$REACT_APP_MONOLITH_API/web:latest
+    - docker tag ${CI_REGISTRY_IMAGE}/monolith_api:latest registry.heroku.com/$HEROKU_MONOLITH_API/web:latest
+    - docker push registry.heroku.com/$HEROKU_MONOLITH_API/web:latest
 
 deploy-account-api-image-job:
   rules:
@@ -140,8 +140,8 @@ deploy-account-api-image-job:
     - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY
     - docker login --username=_ --password=$HEROKU_API_KEY registry.heroku.com
     - docker pull ${CI_REGISTRY_IMAGE}/account_api:latest
-    - docker tag ${CI_REGISTRY_IMAGE}/account_api:latest registry.heroku.com/$REACT_APP_ACCOUNT_API/web:latest
-    - docker push registry.heroku.com/$REACT_APP_ACCOUNT_API/web:latest
+    - docker tag ${CI_REGISTRY_IMAGE}/account_api:latest registry.heroku.com/$HEROKU_ACCOUNT_API/web:latest
+    - docker push registry.heroku.com/$HEROKU_ACCOUNT_API/web:latest
 
 deploy-monolith-poller-image-job:
   rules:
@@ -156,8 +156,8 @@ deploy-monolith-poller-image-job:
     - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY
     - docker login --username=_ --password=$HEROKU_API_KEY registry.heroku.com
     - docker pull ${CI_REGISTRY_IMAGE}/monolith_poller:latest
-    - docker tag ${CI_REGISTRY_IMAGE}/monolith_poller:latest registry.heroku.com/$REACT_APP_MONOLITH_POLLER/worker:latest
-    - docker push registry.heroku.com/$REACT_APP_MONOLITH_POLLER/worker:latest
+    - docker tag ${CI_REGISTRY_IMAGE}/monolith_poller:latest registry.heroku.com/$HEROKU_MONOLITH_POLLER/worker:latest
+    - docker push registry.heroku.com/$HEROKU_MONOLITH_POLLER/worker:latest
 
 # RELEASE
 
@@ -172,7 +172,7 @@ release-monolith-api-image-job:
     - apk add curl bash
     - curl https://cli-assets.heroku.com/install.sh | sh
   script:
-    - heroku container:release web --app $REACT_APP_MONOLITH_API
+    - heroku container:release web --app $HEROKU_MONOLITH_API
 
 release-account-api-image-job:
   stage: deploy
@@ -185,7 +185,7 @@ release-account-api-image-job:
     - apk add curl bash
     - curl https://cli-assets.heroku.com/install.sh | sh
   script:
-    - heroku container:release web --app $REACT_APP_ACCOUNT_API
+    - heroku container:release web --app $HEROKU_ACCOUNT_API
 
 release-monolith-poller-image-job:
   stage: deploy
@@ -198,7 +198,7 @@ release-monolith-poller-image-job:
     - apk add curl bash
     - curl https://cli-assets.heroku.com/install.sh | sh
   script:
-    - heroku container:release worker --app $REACT_APP_MONOLITH_POLLER
+    - heroku container:release worker --app $HEROKU_MONOLITH_POLLER
 
 pages:
   stage: deploy
