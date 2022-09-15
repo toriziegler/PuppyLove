@@ -1,4 +1,4 @@
-export default class APISerive {
+export default class APIService {
     static UpdateArticle(article_id, body, token) {
         return fetch(`http://localhost:8100/api/articles/${article_id}/`, {
             method: 'PUT',
@@ -11,7 +11,7 @@ export default class APISerive {
     }
 
     static InsertArticle(body, token) {
-        return fetch(`http://localhost:8100/api/articles/`, {
+        return fetch('http://localhost:8100/api/articles/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -33,7 +33,7 @@ export default class APISerive {
 
 
     static LoginUser(body) {
-        return fetch(`http://localhost:8100/auth/`, {
+        return fetch('http://localhost:8100/auth/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -45,7 +45,7 @@ export default class APISerive {
 
 
     static RegisterUser(body) {
-        return fetch(`http://localhost:8100/api/api/users/`, {
+        return fetch('http://localhost:8100/api/users/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

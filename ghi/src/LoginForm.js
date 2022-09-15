@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom'
 import { useCookies } from 'react-cookie'
 import APIService from './APIService'
-import { useContext } from 'react';
+// import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 
 function LoginForm() {
@@ -21,10 +21,10 @@ function LoginForm() {
         if (String(user_token) === 'undefined') {
             navigate('/')
         } else {
-            navigate('/articles')
+            navigate('/puppy-love/')
         }
 
-    }, [token])
+    }, [navigate, token])
 
     const loginBtn = () => {
         if (username.trim().length !== 0 && password.trim().length) {
