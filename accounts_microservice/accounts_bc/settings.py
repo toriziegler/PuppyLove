@@ -64,6 +64,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "storages",
     "rest_framework",
+    'rest_framework.authtoken',
 ]
 
 REST_FRAMEWORK = {
@@ -126,14 +127,16 @@ CSRF_TRUSTED_ORIGINS = [
     "http://localhost:8100",
 ]
 
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
-    "http://localhost:3001",
-    "http://localhost:8000",
-    "http://localhost:8001",
-    "http://localhost:8080",
-    "http://localhost:8100",
-]
+# CORS_ALLOWED_ORIGINS = [
+#     "http://localhost:3000",
+#     "http://localhost:3001",
+#     "http://localhost:8000",
+#     "http://localhost:8001",
+#     "http://localhost:8080",
+#     "http://localhost:8100",
+# ]
+
+CORS_ORIGIN_ALLOW_ALL = True
 
 CORS_ALLOW_CREDENTIALS = True
 
@@ -222,6 +225,7 @@ REST_FRAMEWORK = {
 
 SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME": timedelta(minutes=30),
+    "REFRESH_TOKEN_LIFETIME": timedelta(minutes=240),
 }
 
-AUTH_USER_MODEL = "accounts.UserAccount"
+# AUTH_USER_MODEL = "accounts.UserAccount"
