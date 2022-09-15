@@ -5,12 +5,10 @@ const BUCKET_NAME = process.env.REACT_APP_AWS_STORAGE_BUCKET_NAME;
 const AWSREGION = process.env.REACT_APP_REGION;
 const KEY_ID = process.env.REACT_APP_AWS_ACCESS_KEY_ID;
 const ACCESS_KEY = process.env.REACT_APP_AWS_SECRET_ACCESS_KEY;
-
-
 const S3_BUCKET = BUCKET_NAME;
 const REGION = AWSREGION;
 
-
+// The access key ID is how we will access the photo from the bucket
 AWS.config.update({
     accessKeyId: KEY_ID,
     secretAccessKey: ACCESS_KEY
@@ -36,7 +34,7 @@ const UploadImageToS3WithNativeSdk = () => {
             ACL: 'public-read',
             Body: file,
             Bucket: S3_BUCKET,
-            Key: file.name
+            Key: `/us-west-1/media/${file.name}`
         };
 
         myBucket.putObject(params)
@@ -48,9 +46,9 @@ const UploadImageToS3WithNativeSdk = () => {
             })
     }
 
-
+    // console.log(myBucket.getObject({ Key: `media/willie_logo.jpg` }))
     return <div>
-        <div>Native SDK File Upload Progress is {progress}%</div>
+        <div>File Upload Progress is {progress}%</div>
         <input type="file" onChange={handleFileInput} />
         <button onClick={() => uploadFile(selectedFile)}> Upload to S3</button>
     </div>

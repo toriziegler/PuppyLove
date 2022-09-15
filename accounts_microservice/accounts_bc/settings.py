@@ -30,12 +30,19 @@ AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID")
 AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY")
 AWS_STORAGE_BUCKET_NAME = os.environ.get("AWS_STORAGE_BUCKET_NAME")
 AWS_S3_CUSTOM_DOMAIN = os.environ.get("AWS_S3_CUSTOM_DOMAIN")
-AWS_LOCATION = os.environ.get("AWS_LOCATION")
-STATICFILES_STORAGE = os.environ.get("STATICFILES_STORAGE")
+AWS_LOCATION = "us-west-1"
+# The full URL to the S3 endpoint. Leave blank to use the default region URL.
+AWS_S3_ENDPOINT_URL = "https://puppy-love-assets.s3.us-west-1.amazonaws.com"
 STATIC_URL = os.environ.get("STATIC_URL")
-DEFAULT_FILE_STORAGE = os.environ.get("DEFAULT_FILE_STORAGE")
+
+
+DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
+
 
 AWS_S3_OBJECT_PARAMETERS = {"CacheControl": os.environ.get("AWS_Cache")}
+
+AWS_S3_BUCKET_AUTH = False
+AWS_S3_MAX_AGE_SECONDS = 60 * 60 * 24 * 365  # 1 year.
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -56,9 +63,9 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "storages",
-    'rest_framework',
+    "rest_framework",
+    'rest_framework.authtoken',
 ]
-
 
 MIDDLEWARE = [
     "corsheaders.middleware.CorsMiddleware",
@@ -80,14 +87,16 @@ CSRF_TRUSTED_ORIGINS = [
     "http://localhost:8100",
 ]
 
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
-    "http://localhost:3001",
-    "http://localhost:8000",
-    "http://localhost:8001",
-    "http://localhost:8080",
-    "http://localhost:8100",
-]
+# CORS_ALLOWED_ORIGINS = [
+#     "http://localhost:3000",
+#     "http://localhost:3001",
+#     "http://localhost:8000",
+#     "http://localhost:8001",
+#     "http://localhost:8080",
+#     "http://localhost:8100",
+# ]
+
+CORS_ORIGIN_ALLOW_ALL = True
 
 CORS_ALLOW_CREDENTIALS = True
 
@@ -168,14 +177,15 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 STATIC_ROOT = "staticfiles"
 
 REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework_simplejwt.authentication.JWTAuthentication",
     ]
 }
 
 
 SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=30),
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=30),
+    "REFRESH_TOKEN_LIFETIME": timedelta(minutes=240),
 }
 
-AUTH_USER_MODEL = 'accounts.UserAccount'
+# AUTH_USER_MODEL = "accounts.UserAccount"

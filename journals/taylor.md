@@ -81,3 +81,45 @@ today i started working on the photo upload from react to S3 database. I was abl
 since i was not doing this before, the variables were all showing up as undefined. 
 
 ## Sep 7, 2022
+
+Today I was able to complete the react to s3 AWS photo bucket pipeline. I ran into a few errors along the way but was able to get it working following the amazon docs @ https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/http-400-bad-request.html. Now that We are able to upload photos and authorization is set up, we have two main issues ahead of us. 
+
+  - showing data in profiles: how will we get each USER's information to connect to their Owner profile and Dog profile? This is something we will need to plan out as a team
+  - connecting pictures to profiles: Now that we can upload photos, how can we save each user's information to a unique bucket folder? This will allow users to only have access to their particular photos which would be the most useful for a real world type application. 
+
+  ## Sep 8, 2022
+
+  my internet cut out at 2PM so i had to take the passenger's seat today and helped stephen and Nicolas & Norton try to figure out the user authentication portion of the project. This is very important for us to get figured out because it is how we will connect all the information on the accounts. 
+
+  ## sep 9, 2022
+
+  today, yet again, I was working on getting the pictures to fully function. We have nearly the whole portion of it working now but just need to connect it. 
+
+    - we can upload direct from React to s3 bucket
+    - we can upload from django admin - leaving id for image in the database
+
+    - now the question is how can we make this work where we can dynamically pull these photos in. 
+
+    - my thoughts on this: i should look into how i can do this using boto3 since that is what we are using to upload to s3 from django. Thank would make the upload from react seem kinda pointless for the moment. 
+
+    - !! look into how we can dynamically make folders in the bucket for each user. This would make it so we could do a componentDidMount and bring in all the photos that the user has. Then we would be able to filter on the page based on which one we should show. 
+
+## Sept 12, 2022
+
+  Today I was able, with Andrew and Victoria's help, set the foldername in S3 to be unique to each user. This allows for each user to only be able to access their own photos. Tomorrow, Victoria and I will begin to figure out how to pull these images down from S3 and into our profiles
+
+  I am going to being writing the unit tests for POSTs tonight as well
+
+## Sept 13, 2022
+
+  Today I worked with Nico, Stephen, and Norton to get our authentication up and working on the front end. There was an issue with migrations that was not letting us to proceed. The error we were getting was related to auth_user. We were able to fix the issue in the following way:
+    we adjusted the accounts_microservice/Dockerfile.dev CMD command to first include 'python manage.py migrate auth.' ensuring that this happened before any other migrations allowed us to correct the issue that the user models were facing in the backend. apparently the Django User model does not play well with postgres and it must be the first migration or it will not work correctly. 
+
+  Victoria got a lot done on connecting the front end and the back end today. I feel like I would like to be doing more of that type of work right now but the authorization if by far the most important, currently. I need to help the team get this done as fast as possible so that we have time to implement the user model in the front-end back-end connections. 
+
+  -- after hours --
+  i was able to fix the issue i was having when trying to run tests for the accounts microservice using
+  python manage.py test accounts ... this was not working
+  error:    i was getting the auth-contrib error we were seeing before
+  solution:    i created a blank folder in the accounts file with __init__.py for migrations
+              i removed the migrate auth that we put in above from the Dockerfile.dev

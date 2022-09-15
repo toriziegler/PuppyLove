@@ -10,6 +10,7 @@ class OwnerInfo extends React.Component {
             description: '',
             state: '',
             states: [],
+            hasSignedUp: false,
         };
         this.handleNameChange = this.handleNameChange.bind(this);
         this.handleEmailChange = this.handleEmailChange.bind(this);
@@ -27,11 +28,12 @@ class OwnerInfo extends React.Component {
             this.setState({ states: data.states });
         }
     }
+
     async handleSubmit(event) {
         event.preventDefault();
         const data = { ...this.state };
-        delete data.states
-        console.log(data)
+        delete data.states;
+        delete data.hasSignedUp;
 
         const url = 'http://localhost:8100/api/owners/';
         const fetchConfig = {
@@ -44,16 +46,20 @@ class OwnerInfo extends React.Component {
 
         const response = await fetch(url, fetchConfig);
         if (response.ok) {
+            let successTag = document.getElementById('success-message');
+            let formTag = document.getElementById('create-owner-form');
+            successTag.classList.remove('d-none');
+            formTag.classList.add('d-none');
             this.setState({
                 name: '',
                 email: '',
                 phone: '',
                 description: '',
                 state: '',
+                hasSignedUp: true,
             });
         }
     }
-
     handleNameChange(event) {
         const value = event.target.value;
         this.setState({ name: value });
@@ -74,10 +80,13 @@ class OwnerInfo extends React.Component {
         const value = event.target.value;
         this.setState({ state: value });
     }
-
-
-
     render() {
+        let messageClasses = 'alert alert-success d-none mb-0';
+        let formClasses = '';
+        if (this.state.hasSignedUp) {
+            messageClasses = 'alert alert-success mb-0';
+            formClasses = 'd-none';
+        }
         return (
             <div className="App">
                 <div
@@ -88,7 +97,8 @@ class OwnerInfo extends React.Component {
                             "url(https://i.pinimg.com/736x/9d/66/d8/9d66d8de7bcb8fe0da9961df50a95c71--first-kiss-rottweiler-love.jpg)",
                         backgroundPosition: "center",
                         backgroundSize: "cover",
-                        backgroundRepeat: "no-repeat"
+                        backgroundRepeat: "no-repeat",
+                        opacity: .9,
                     }}
                 >
                     <div className="signup" id="signuptop">
@@ -96,27 +106,24 @@ class OwnerInfo extends React.Component {
                             <div className="card-body">
                                 <h1>Owner Information</h1>
                                 <hr />
-                                <form onSubmit={this.handleSubmit} id="create-owner-form">
+                                <form className={formClasses} onSubmit={this.handleSubmit} id="create-owner-form">
                                     <div className="form-floating mb-3">
                                         <input onChange={this.handleNameChange} value={this.state.name}
                                             placeholder="Name" required type="text" name="name"
                                             id="name" />
                                     </div>
-
                                     <div className="form-floating mb-3">
                                         <input onChange={this.handleEmailChange} value={this.state.email}
                                             placeholder="Email" required type="email" name="email"
-                                            id="uemail" />
+                                            id="email" />
                                     </div>
-
                                     <div className="form-floating mb-3" >
                                         <input onChange={this.handlePhoneChange} value={this.state.phone}
                                             placeholder="PhoneNumber" required type="text" name="phone"
                                             id="phone" />
                                     </div>
-
                                     <div className="form-floating mb-3" >
-                                        <input onChange={this.handleDescriptionChange} value={this.state.description}
+                                        <textarea onChange={this.handleDescriptionChange} value={this.state.description}
                                             placeholder="Description" required type="text" name="description"
                                             id="description" />
                                     </div>
@@ -132,9 +139,19 @@ class OwnerInfo extends React.Component {
                                             })}
                                         </select>
                                     </div>
-                                    <Link to="/profile" className="mainlink"><button className="btn btn-primary"
-                                        type="submit">Submit</button></Link>
+                                    <button className="btn btn-success" type="submit">Submit</button>
                                 </form>
+                                <div className={messageClasses} id="success-message">
+                                    Congratulations!
+                                    <br></br>
+                                    You're all signed up.
+                                    <br></br>
+                                    Add your dog here:
+                                    <br></br>
+                                    <Link to="/doginfo" className="mainlink">
+                                        <button type="button" className="btn btn-secondary">Dog Info</button>
+                                    </Link>
+                                </div>
                             </div>
                         </div>
                     </div>
