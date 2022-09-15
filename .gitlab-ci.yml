@@ -68,7 +68,7 @@ monolith-api-back-end-build-job:
   rules:
       - if: $CI_COMMIT_BRANCH == "deploy"
   stage: build
-  image: docker:20.10.16e
+  image: docker:20.10.16
   services:
     - docker:20.10.16-dind
   script:
