@@ -49,8 +49,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["localhost", "monolith", "account-api"]
 
-# AUTH_USER_MODEL = 'accounts.User'
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -71,7 +69,6 @@ MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
-    # 'django.middleware.csrf.CsrfViewMiddleware',
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
@@ -172,16 +169,3 @@ SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 # Static asset configuration
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 STATIC_ROOT = "staticfiles"
-
-REST_FRAMEWORK = {
-    "DEFAULT_AUTHENTICATION_CLASSES": [
-        "rest_framework_simplejwt.authentication.JWTAuthentication",
-    ]
-}
-
-
-SIMPLE_JWT = {
-    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=30),
-}
-
-AUTH_USER_MODEL = "accounts.UserAccount"
