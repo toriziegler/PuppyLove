@@ -46,9 +46,6 @@ class DogInfo extends React.Component {
             },
         };
 
-        // function nameFile() {
-        //     return (`${data.name}/${data.owners}`)
-        // }
 
         const response = await fetch(url, fetchConfig);
         if (response.ok) {
@@ -114,9 +111,6 @@ class DogInfo extends React.Component {
     }
 
 
-
-
-
     render() {
         let messageClasses = 'alert alert-success d-none mb-0';
         let formClasses = '';
@@ -152,7 +146,6 @@ class DogInfo extends React.Component {
             }
 
             const uploadFile = (file) => {
-                console.log("SELECTEDFIILE", selectedFile)
                 const params = {
                     ACL: 'public-read',
                     Body: file,
@@ -166,7 +159,6 @@ class DogInfo extends React.Component {
                     .send((err) => {
                         if (err) console.log(err)
                     })
-                console.log("PROPSSS", props.owner, props.dog)
             }
 
 
@@ -260,11 +252,6 @@ class DogInfo extends React.Component {
                                         <button type="button" className="btn btn-secondary">View Profile</button>
                                     </Link>
                                     <br></br>
-                                    {/* Or create another dog here:
-                                    <br></br>
-                                    <Link to="/doginfo" className="mainlink">
-                                        <button type="button" className="btn btn-secondary">Add Dog</button>
-                                    </Link> */}
                                 </div>
                             </div>
                         </div>
