@@ -1,3 +1,9 @@
+from rest_framework import viewsets
+from .serializers import ArticleSerializer, UserSerializer
+from .models import Article
+from django.contrib.auth.models import User
+from rest_framework.authentication import TokenAuthentication
+
 from .models import AWSPhoto, Owner, State
 from .encoders import OwnerEncoder, StateEncoder
 from django.http import JsonResponse
@@ -195,7 +201,6 @@ class AWSPhotoCreateView(CreateView):
         return context
 
 
-<< << << < HEAD
 # class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
 #     @classmethod
 #     def get_token(cls, user):
@@ -224,8 +229,6 @@ class AWSPhotoCreateView(CreateView):
 #     return Response(routes)
 
 
-== == == =
->>>>>> > 26548a7762ab6cbec2b11b5fd34230517cace0f4
 # @api_view(['GET'])
 # @permission_classes([IsAuthenticated])
 # def getNotes(request):
@@ -237,13 +240,6 @@ class AWSPhotoCreateView(CreateView):
 # Create your views here.
 
 # from rest_framework import serializers
-from rest_framework import viewsets
-from .serializers import ArticleSerializer, UserSerializer
-from .models import Article
-from django.contrib.auth.models import User
-
-from rest_framework.authentication import TokenAuthentication
-from rest_framework.permissions import IsAuthenticated
 
 
 class UserViewSet(viewsets.ModelViewSet):

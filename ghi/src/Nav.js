@@ -1,9 +1,9 @@
 import { NavLink } from 'react-router-dom';
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 import React from 'react';
 import logo from "./assets/images/taylordrawing2.png"
-import { useContext } from 'react'
-import AuthContext from './AuthContext'
+// import { useContext } from 'react'
+// import AuthContext from './AuthContext'
 
 
 
@@ -41,7 +41,7 @@ function Footer({ children }) {
 
 
 function Nav() {
-  let { user, logoutUser } = useContext(AuthContext)
+  // let { user, logoutUser } = useContext(AuthContext)
   return (
     <nav className="navbar navbar-expand-lg navbar-light">
       <div>
@@ -79,7 +79,7 @@ function Nav() {
               <NavLink className="nav-link" to="/upload">Upload Photos</NavLink>
             </li>
           </ul>
-          <ul className="navbar-nav justify-content-right mb-2 mb-lg-0">
+          {/*  <ul className="navbar-nav justify-content-right mb-2 mb-lg-0">
             <li className="nav-item">
               {user ? (
                 <p className="nav-link" onClick={logoutUser}></p>
@@ -93,8 +93,8 @@ function Nav() {
               ) : (
                 <Link className="nav-link" to="/signup" >Sign up</Link>
               )}
-            </li>
-          </ul>
+            </li> 
+        </ul> */}
           <div>
             <Footer>
               <span>© Copyright 2022 Puppy Love, LLC. All Rights Reserved</span>
@@ -102,7 +102,7 @@ function Nav() {
           </div>
         </div>
       </div>
-    </nav>
+    </nav >
   )
 }
 
