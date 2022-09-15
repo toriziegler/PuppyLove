@@ -107,7 +107,7 @@ class ForgotPassword extends React.Component {
 
                                 <br></br>
                                 <button type="submit" name='newpassword'
-                                    className="btn btn-primary" form="newpassword-form">Confirm new password
+                                    className="btn btn-success" form="newpassword-form">Confirm new password
                                 </button>
                             </form>
                         </div>

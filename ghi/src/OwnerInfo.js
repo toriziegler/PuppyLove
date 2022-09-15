@@ -139,7 +139,7 @@ class OwnerInfo extends React.Component {
                                             })}
                                         </select>
                                     </div>
-                                    <button className="btn btn-secondary" type="submit">Submit</button>
+                                    <button className="btn btn-success" type="submit">Submit</button>
                                 </form>
                                 <div className={messageClasses} id="success-message">
                                     Congratulations!
@@ -149,7 +149,7 @@ class OwnerInfo extends React.Component {
                                     Add your dog here:
                                     <br></br>
                                     <Link to="/doginfo" className="mainlink">
-                                        <button type="button" className="btn btn-secondary">Dog Info</button>
+                                        <button type="button" className="btn btn-success">Dog Info</button>
                                     </Link>
                                 </div>
                             </div>

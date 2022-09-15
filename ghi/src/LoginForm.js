@@ -1,8 +1,8 @@
-import React from 'react';
-import { useContext } from 'react';
-import { Navigate } from 'react-router-dom';
-import AuthContext from './AuthContext'
-import { Link } from 'react-router-dom';
+// import React from 'react';
+// import { useContext } from 'react';
+// import { Navigate } from 'react-router-dom';
+// import AuthContext from './AuthContext'
+// import { Link } from 'react-router-dom';
 
 
 // const LoginForm = () => {
@@ -58,55 +58,55 @@ import { Link } from 'react-router-dom';
 //     return this.state.password.length >= 8 &&
 //            this.state.username
 // }
-const LoginForm = () => {
-    let { loginUser } = useContext(AuthContext)
-    return (
-        <div className="App">
-            <div
-                className="container-fluid d-flex align-items-center"
-                style={{
-                    height: "100vh",
-                    backgroundImage:
-                        "url(https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg)",
-                    backgroundPosition: "center",
-                    backgroundSize: "cover",
-                    backgroundRepeat: "no-repeat",
-                    opacity: .9,
-                }}
-            >
-                <div className="card mx-auto" style={{ width: "18rem" }}>
-                    <div className="card" id="wrap" >
-                        <div className="shadow p-4 mt-4" id="box" >
-                            <form onSubmit={loginUser} id="login-form" >
-                                <h1>Login!</h1>
-                                <hr />
-                                <div className="form-floating mb-3">
-                                    <input type='text' id="email" name='email' placeholder='email' />
+// const LoginForm = () => {
+//     let { loginUser } = useContext(AuthContext)
+//     return (
+//         <div className="App">
+//             <div
+//                 className="container-fluid d-flex align-items-center"
+//                 style={{
+//                     height: "100vh",
+//                     backgroundImage:
+//                         "url(https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg)",
+//                     backgroundPosition: "center",
+//                     backgroundSize: "cover",
+//                     backgroundRepeat: "no-repeat",
+//                     opacity: .9,
+//                 }}
+//             >
+//                 <div className="card mx-auto" style={{ width: "18rem" }}>
+//                     <div className="card" id="wrap" >
+//                         <div className="shadow p-4 mt-4" id="box" >
+//                             <form onSubmit={loginUser} id="login-form" >
+//                                 <h1>Login!</h1>
+//                                 <hr />
+//                                 <div className="form-floating mb-3">
+//                                     <input type='text' id="email" name='email' placeholder='email' />
 
-                                </div>
-                                <div className="form-floating mb-3" >
-                                    <input type="password" id="password" name='password' placeholder='●●●●●●●●' />
+//                                 </div>
+//                                 <div className="form-floating mb-3" >
+//                                     <input type="password" id="password" name='password' placeholder='●●●●●●●●' />
 
-                                </div>
-                                <hr />
+//                                 </div>
+//                                 <hr />
 
-                                <button
-                                    type="submit" name='loginbutton'
+//                                 <button
+//                                     type="submit" name='loginbutton'
 
-                                    className="btn btn-primary" form="login-form">Log In
-                                </button>
-                                <Link to="/forgotpassword">Forgot Password?</Link>
+//                                     className="btn btn-success" form="login-form">Log In
+//                                 </button>
+//                                 <Link to="/forgotpassword">Forgot Password?</Link>
 
-                                <p>
-                                    Don't have an Account?     &nbsp;&nbsp;&nbsp;&nbsp;    <Link to='/signup'>Create Account</Link>
-                                </p>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div >
+//                                 <p>
+//                                     Don't have an Account?     &nbsp;&nbsp;&nbsp;&nbsp;    <Link to='/signup'>Create Account</Link>
+//                                 </p>
+//                             </form>
+//                         </div>
+//                     </div>
+//                 </div>
+//             </div>
+//         </div >
 
-    )
-}
-export default LoginForm;
+//     )
+// }
+//     export default LoginForm;
