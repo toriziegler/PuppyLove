@@ -53,16 +53,16 @@ function Nav() {
               <NavLink className="nav-link active" aria-current="page" to="/puppy-love/">Home</NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" to="/listprofiles">Find a New Friend</NavLink>
+              <NavLink className="nav-link" to="/listprofiles/">Find a New Friend</NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" to="/profile">Profile</NavLink>
+              <NavLink className="nav-link" to="/profile/">Profile</NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" to="/doginfo">Dog Information</NavLink>
+              <NavLink className="nav-link" to="/doginfo/">Dog Information</NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" to="/ownerinfo">Owner Information</NavLink>
+              <NavLink className="nav-link" to="/ownerinfo/">Owner Information</NavLink>
             </li>
           </ul>
           <div>

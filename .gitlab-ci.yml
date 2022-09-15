@@ -13,6 +13,7 @@ variables:
   POSTGRES_HOST_AUTH_METHOD: trust
   DATABASE_URL: postgresql://postgres:test@postgres:5432/postgres
   DJWTO_SIGNING_KEY: f0faec83aca44b61ca155686bb2bb6a1f56420c84d04abe1dd3637649195123f
+  CORS_HOST: https://pawfessional-programmers.gitlab.io
 
 # TESTING
 monolith-api-unit-test-job:
