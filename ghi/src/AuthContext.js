@@ -21,7 +21,7 @@ export const AuthProvider = ({ children }) => {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ 'email': e.target.email.value, 'password': e.target.password.value })
+            body: JSON.stringify({ 'username': e.target.username.value, 'password': e.target.password.value })
         })
         let data = await response.json()
         console.log('data: ', data)
@@ -31,9 +31,9 @@ export const AuthProvider = ({ children }) => {
             setAuthTokens(data)
             setUser(jwt_decode(data.access))
             localStorage.setItem('authTokens', JSON.stringify(data))
-            navigate('/puppy-love')
+            navigate('/profile')
         } else {
-            alert('Something went wrong!')
+            alert('Invalid Username or Password')
         }
     }
 
