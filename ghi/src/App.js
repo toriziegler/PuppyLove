@@ -82,26 +82,29 @@ const logoutBtn = () => {
 }
  
 
+import ForgotPassword from './ForgotPassword';
+import ListProfiles from './ListProfiles';
 
   return (
-    <div className="App">
-
-   <NavBar />
-   <br />
-
-   <div className="row">
-     <div className="col">
-       <button className="btn btn-primary" onClick={articleForm}>Create Post</button>
-
-     </div>
-
-   </div>
-
-
-
-    <ArticleList articles={articles} editBtn ={editBtn}  deleteBtn ={deleteBtn}/>
-    <Form  article = {editArticle} updatedInformation= {updatedInformation} insertedInformation= {insertedInformation}/>
-  
+    <div className='App'>
+      <BrowserRouter>
+        <AuthProvider>
+          <Nav />
+          <Routes>
+            <Route exact path="/puppy-love/" element={<PrivateRoute />}>
+              <Route exact path="/puppy-love/" element={<MainPage />} />
+            </Route>
+            <Route path="profile" element={<Profile />} />
+            <Route path="listprofiles" element={<ListProfiles />} />
+            <Route path="signup" element={<SignUp />} />
+            <Route path="doginfo" element={<DogInfo />} />
+            <Route path="ownerinfo" element={<OwnerInfo />} />
+            <Route path="upload" element={<UploadImageToS3WithNativeSdk />} />
+            <Route path="/login" element={<LoginForm />} />
+            <Route path="forgotpassword" element={<ForgotPassword />} />
+          </Routes>
+        </AuthProvider>
+      </BrowserRouter>
     </div>
   );
 }

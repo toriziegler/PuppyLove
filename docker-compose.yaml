@@ -31,7 +31,7 @@ services:
             STATICFILES_STORAGE: ${STATICFILES_STORAGE}
             STATIC_URL: ${STATIC_URL}
             DEFAULT_FILE_STORAGE: ${DEFAULT_FILE_STORAGE}
-            #DJWTO_SIGNING_KEY: ${DJWTO_SIGNING_KEY}
+            DJWTO_SIGNING_KEY: ${DJWTO_SIGNING_KEY}
             AWS_Cache: ${AWS_Cache}
         ports:
             - "8080:8000"
@@ -61,6 +61,7 @@ services:
             STATIC_URL: ${STATIC_URL}
             DEFAULT_FILE_STORAGE: ${DEFAULT_FILE_STORAGE}
             AWS_Cache: ${AWS_Cache}
+            DJWTO_SIGNING_KEY: ${DJWTO_SIGNING_KEY}
     account-api:
         build:
             context: ./accounts_microservice
@@ -84,6 +85,7 @@ services:
             STATIC_URL: ${STATIC_URL}
             DEFAULT_FILE_STORAGE: ${DEFAULT_FILE_STORAGE}
             AWS_Cache: ${AWS_Cache}
+            DJWTO_SIGNING_KEY: ${DJWTO_SIGNING_KEY}
     puppylove-poller:
         build:
             context: ./monolith/poll
@@ -108,3 +110,4 @@ services:
             STATIC_URL: ${STATIC_URL}
             DEFAULT_FILE_STORAGE: ${DEFAULT_FILE_STORAGE}
             AWS_Cache: ${AWS_Cache}
+            DJWTO_SIGNING_KEY: ${DJWTO_SIGNING_KEY}

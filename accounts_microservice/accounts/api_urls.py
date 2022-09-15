@@ -27,8 +27,16 @@ from rest_framework.routers import DefaultRouter
 
 router = DefaultRouter()
 
-router.register('articles', ArticleViewSet, basename='artilces')
-router.register('users', UserViewSet)
+from .api_views import (
+    api_owners,
+    api_states,
+    AWSPhotoCreateView,
+    RegisterView,
+    RetrieveUserView,
+    UserCreate,
+    api_users,
+    getNotes,
+)
 
 
 urlpatterns = [
