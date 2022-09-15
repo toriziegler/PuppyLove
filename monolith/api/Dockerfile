@@ -10,7 +10,6 @@ COPY manage.py manage.py
 COPY puppylove puppylove
 COPY puppylove_rest puppylove_rest
 COPY common common
-COPY media media
 
 RUN pip install -r requirements.txt
 CMD python manage.py migrate && gunicorn puppylove.wsgi --bind 0.0.0.0:$PORT --log-file -
