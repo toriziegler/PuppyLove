@@ -22,7 +22,7 @@ monolith-api-unit-test-job:
   script:
     - cd monolith/api
     - pip install -r requirements.txt
-    - export DATABASE_URL="postgresql://$POSTGRES_USER:$POSTGRES_PASSWORD@postgres/$POSTGRES_DB"
+    - export DATABASE_URL="postgres://hmbnonsudemscc:2283ee865127612e91f4bf91bf34ba7b23e08f577aaf054d535e3f42e61ed25c@ec2-52-204-157-26.compute-1.amazonaws.com:5432/d6uscrpjj5gkdl"
     - python manage.py migrate
     - python manage.py test  # Run the tests
 
@@ -32,7 +32,7 @@ account-api-unit-test-job:
   script:
     - cd accounts_microservice
     - pip install -r requirements.txt
-    - export DATABASE_URL="postgresql://$POSTGRES_USER:$POSTGRES_PASSWORD@postgres/$POSTGRES_DB"
+    - export DATABASE_URL="postgres://bfjssqkyxccfcn:3495d0b976bf489ffe002c0b3928c3782ed975bee94b10300993561df216c026@ec2-3-219-52-220.compute-1.amazonaws.com:5432/dc37l3e1vdaf52"
     - python manage.py migrate
     - python manage.py test # Run the tests
 
