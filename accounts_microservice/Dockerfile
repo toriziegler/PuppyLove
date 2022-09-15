@@ -14,4 +14,4 @@ COPY common common
 
 RUN pip install -r requirements.txt
 # CMD python manage.py makemigrations && python manage.py migrate && python manage.py loaddata data.json && gunicorn accounts_bc.wsgi --bind 0.0.0.0:$PORT --log-file -
-CMD python manage.py makemigrations && python manage.py migrate && python manage.py loaddata data.json && python manage.py runserver $PORT
+CMD python manage.py makemigrations && python manage.py migrate && python manage.py loaddata data.json && python manage.py runserver "0.0.0.0:$PORT"
