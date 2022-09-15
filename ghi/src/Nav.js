@@ -1,11 +1,6 @@
 import { NavLink } from 'react-router-dom';
-import { Link } from 'react-router-dom'
 import React from 'react';
 import logo from "./assets/images/taylordrawing2.png"
-import { useContext } from 'react'
-import AuthContext from './AuthContext'
-
-
 
 
 const footerStyle = {
@@ -39,16 +34,10 @@ function Footer({ children }) {
 }
 
 
-
 function Nav() {
-  let { user, logoutUser } = useContext(AuthContext)
   return (
     <nav className="navbar navbar-expand-lg navbar-light">
       <div>
-
-
-        {/* {user && <p>Hello {user.username}</p>} */}
-
       </div>
       <div className="container-fluid">
         <NavLink to="/puppy-love/" className='home-button' ><img className="logo" src={logo} alt="" width="80px" height="50px" /></NavLink>
@@ -64,35 +53,16 @@ function Nav() {
               <NavLink className="nav-link active" aria-current="page" to="/puppy-love/">Home</NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" to="/profile">Profile</NavLink>
+              <NavLink className="nav-link" to="/listprofiles">Find a New Friend</NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" to="/listprofiles">Find a New Friend</NavLink>
+              <NavLink className="nav-link" to="/profile">Profile</NavLink>
             </li>
             <li className="nav-item">
               <NavLink className="nav-link" to="/doginfo">Dog Information</NavLink>
             </li>
             <li className="nav-item">
               <NavLink className="nav-link" to="/ownerinfo">Owner Information</NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/upload">Upload Photos</NavLink>
-            </li>
-          </ul>
-          <ul className="navbar-nav justify-content-right mb-2 mb-lg-0">
-            <li className="nav-item">
-              {user ? (
-                <p className="nav-link" onClick={logoutUser}></p>
-              ) : (
-                <Link className="nav-link" to="/login" >Log in</Link>
-              )}
-            </li>
-            <li className="nav-item">
-              {user ? (
-                <p className="nav-link" onClick={logoutUser}>Logout</p>
-              ) : (
-                <Link className="nav-link" to="/signup" >Sign up</Link>
-              )}
             </li>
           </ul>
           <div>
@@ -107,4 +77,3 @@ function Nav() {
 }
 
 export default Nav;
-
