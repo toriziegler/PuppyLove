@@ -91,9 +91,8 @@ class TestDependencies(TestCase):
     def test_Flake8_install(self):
         try:
             import flake8
-        except ModuleNotFoundError: 
+        except ModuleNotFoundError:
             self.fail("Flake8 is not installed")
-
 
 
 class UpdateOwner(TestCase):
@@ -120,6 +119,5 @@ class UpdateOwner(TestCase):
 
 class add(TestCase):
     def add_num(self):
-        num=1+1
-        self.asserte(num,2)
-    
+        num = 1 + 1
+        self.asserte(num, 2)

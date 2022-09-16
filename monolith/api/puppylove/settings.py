@@ -25,10 +25,10 @@ AWS_S3_ENDPOINT_URL = "https://puppy-love-assets.s3.us-west-1.amazonaws.com"
 
 DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
 
-# aws set-up
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "media/store"),
-]
+# # aws set-up
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, "media/store/"),
+# ]
 
 AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID")
 AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY")
@@ -52,7 +52,14 @@ SECRET_KEY = "django-insecure-ffoy=fz6$mb=a*!vtyltvzsw-3q0!=0*yw!y4tkzk1n+zue+)=
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["localhost", "puppylove", "account-api"]
+ALLOWED_HOSTS = [
+    "localhost",
+    "puppylove",
+    "account-api",
+    "puppylove-account-api.herokuapp.com",
+    "puppylove-monolith-api.herokuapp.com",
+    "puppylove-monolith-poller.herokuapp.com"
+]
 
 
 # Application definition
@@ -87,6 +94,7 @@ CSRF_TRUSTED_ORIGINS = [
     "http://localhost:8001",
     "http://localhost:8000",
     "http://localhost:8100",
+    "https://pawfessional-programmers.gitlab.io",
 ]
 
 CORS_ALLOWED_ORIGINS = [
@@ -96,6 +104,7 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:8001",
     "http://localhost:8080",
     "http://localhost:8100",
+    "https://pawfessional-programmers.gitlab.io",
 ]
 
 CORS_ALLOW_CREDENTIALS = True
