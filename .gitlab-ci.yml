@@ -108,7 +108,7 @@ monolith-poller-back-end-build-job:
     - docker:20.10.16-dind
   script:
     - cd monolith
-    - docker build -t ${CI_REGISTRY_IMAGE}/monolith_poller:latest Dockerfile.poller.  
+    - docker build -t ${CI_REGISTRY_IMAGE}/monolith_poller:latest Dockerfile.poller .  
     - docker tag ${CI_REGISTRY_IMAGE}/monolith_poller:latest ${CI_REGISTRY_IMAGE}/monolith_poller:$CI_JOB_ID  
     - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY 
     - docker push ${CI_REGISTRY_IMAGE}/monolith_poller:$CI_JOB_ID
