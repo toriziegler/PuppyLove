@@ -3,6 +3,8 @@ Today I worked on:
 
 * Deployment
 
+    I worked on getting our code fully deployed on heroku. We want into CORS issue and were not able to pull any data into the website. Andrew and I fixed this by adding the deployment public url to cors allowed origins in both microservice settings.py. We also added all of the heroku domains for each of the apps and pollers 
+
 # September 14, 2022
 Today I worked on:
 

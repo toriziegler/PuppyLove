@@ -51,12 +51,16 @@ class ProfileCard extends React.Component {
     }
 
     async profileColumns() {
-        const dogsResponse = await fetch(`${process.env.REACT_APP_MONOLITH_API}/api/owners_dogs/${this.state.owner}/`);
+        const ownersDogsHost = `${process.env.REACT_APP_MONOLITH_API}`
+        // const ownersDogsHost = 'http://localhost:8080'
+        const dogsResponse = await fetch(ownersDogsHost + `/api/owners_dogs/${this.state.owner}/`);
         if (dogsResponse.ok) {
             const dogsData = await dogsResponse.json();
             const requests = [];
             for (let dog of dogsData.dogs) {
-                const specificDogUrl = `${process.env.REACT_APP_MONOLITH_API}/api/dogs/${dog.id}/`;
+                const dogsHost = `${process.env.REACT_APP_MONOLITH_API}`
+                // const dogsHost = 'http://localhost:8080'
+                const specificDogUrl = dogsHost + `/api/dogs/${dog.id}/`;
                 requests.push(fetch(specificDogUrl));
             }
             const responses = await Promise.all(requests);
@@ -79,7 +83,9 @@ class ProfileCard extends React.Component {
     }
 
     async componentDidMount() {
-        const ownerResponse = await fetch(`${process.env.REACT_APP_MONOLITH_API}/api/ownerVOs/`);
+        const ownersHost = `${process.env.REACT_APP_MONOLITH_API}`
+        // const ownersHost = 'http://localhost:8080'
+        const ownerResponse = await fetch(ownersHost + `/api/ownerVOs/`);
         try {
             if (ownerResponse.ok) {
                 const ownerData = await ownerResponse.json();
