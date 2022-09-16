@@ -18,6 +18,7 @@ class State(models.Model):
 
 
 class Owner(models.Model):
+    id = models.PositiveIntegerField(primary_key=True)
     name = models.CharField(max_length=200)
     email = models.EmailField()
     phone = models.PositiveBigIntegerField(unique=True)
