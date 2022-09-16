@@ -3,17 +3,14 @@
 
 # Create New Account
 * **Method**: `POST`
-* **Path**: /api/account
+* **Path**: /api/users/
 
 Input:
 
 ```json
 {
-  "name": string,
-  "age": number,
-  "zip": number,
-  "owner_name": string,
-  "picture_url": string "optional"
+  "username": string,
+  "password": string,
 }
 ```
 
@@ -21,102 +18,8 @@ Output:
 
 ```json
 {
-  "id": number,
-  "name": string,
-  "age": number,
-  "zip": number,
-  "owner_name": string,
-  "picture_url": string "optional"
-}
-```
-
-# Get All Account 
-* **Method**: `GET`
-* **Path**: /api/account/ 
-
-Input:
-
-```json
-{
-  "name": string,
-  "age": number,
-  "zip": number,
-  "owner_name": string,
-  "picture_url": string "optional"
-}
-```
-
-Output:
-
-```json
-{
-  "id": number,
-  "name": string,
-  "age": number,
-  "zip": number,
-  "owner_name": string,
-  "picture_url": string "optional"
-}
-```
- *the above retreives all accounts*
-
-# Get Single Account
- * **Method**: `GET`
-* **Path**: /api/account/<int:pk>
-
-Input:
-
-```json
-{
-  "name": string,
-  "age": number,
-  "zip": number,
-  "owner_name": string,
-  "picture_url": string "optional"
-}
-```
-
-Output:
-
-```json
-{
-  "id": number,
-  "name": string,
-  "age": number,
-  "zip": number,
-  "owner_name": string,
-  "picture_url": string "optional"
-}
-```
- *the above retreives a specific account* 
-
-## Update Account
-
-* **Method**: `PUT`
-* **Path**: /api/account/<int:pk>
-
-Input:
-
-```json
-{
-  "name": string,
-  "age": number,
-  "zip": number,
-  "owner_name": string,
-  "picture_url": string "optional"
-}
-```
-
-Output:
-
-```json
-{
-  "id": number,
-  "name": string,
-  "age": number,
-  "zip": number,
-  "owner_name": string,
-  "picture_url": string "optional"
+  "username": string,
+  "password": string,
 }
 ```
 
@@ -124,7 +27,77 @@ Output:
 from the user via a form on the landing page. this information is sent to the database and given a new database_id.
 
 
-## Create new Message
+# Get All Account 
+* **Method**: `GET`
+* **Path**: /api/users/
+
+Input:
+
+```json
+{
+  "username": string,
+  "password": string,
+}
+```
+
+Output:
+
+```json
+{
+  "username": string,
+  "password": string,
+}
+```
+ *the above retreives all accounts*
+
+# Get Single Account
+ * **Method**: `GET`
+* **Path**: /api/current/<int:pk>
+
+Input:
+
+```json
+{
+  "username": string,
+  "password": string,
+}
+```
+
+Output:
+
+```json
+{
+  "username": string,
+  "password": string,
+}
+```
+ *the above retreives a specific account* 
+
+## Update Account
+
+* **Method**: `PUT`
+* **Path**: /api/current/<int:pk>
+
+Input:
+
+```json
+{
+  "username": string,
+  "password": string,
+}
+```
+
+Output:
+
+```json
+{
+  "username": string,
+  "password": string,
+}
+```
+
+
+## Create new Message - NOT IMPLEMENTED YET
 
 * **Method**: `POST`
 * **Path**: /api/<int:pk>/message/<int:pk>
@@ -147,7 +120,8 @@ Output:
   "body": string
 }
 ```
-## Get a Message
+
+## Get a Message - NOT IMPLEMENTED YET
 
 * **Method**: `get` 
 * **Path**: /api/<int:pk>/message/<int:pk>
@@ -171,7 +145,7 @@ Output:
 }
 ```
 
-## Get all Messages
+## Get all Messages - NOT IMPLEMENTED YET
 
 * **Method**: `get` 
 * **Path**: /api/<int:pk>/message/
@@ -194,4 +168,74 @@ Output:
 }
 ```
 
-* **Messages**  the primary form of communication
+* **Messages**  will be the primary form of communication
+
+
+## Create New Owner
+
+* **Method**: `POST`
+* **Path**: /owners/
+
+
+Input:
+
+```json
+{
+  "body": string
+}
+```
+
+Output:
+
+```json
+{
+  "id": number,
+  "body": string
+}
+```
+
+
+* **Method**: `POST`
+* **Path**: /states/
+
+
+Input:
+
+```json
+{
+  "name": string,
+  "id": integer PK,
+  "abbreviation": string
+}
+```
+
+Output:
+
+```json
+{
+  "name": string,
+  "id": integer PK,
+  "abbreviation": string
+}
+```
+
+* **Method**: `POST`
+* **Path**: /api/dogs/
+
+
+Input:
+
+```json
+{
+  "body": string
+}
+```
+
+Output:
+
+```json
+{
+  "id": number,
+  "body": string
+}
+```
