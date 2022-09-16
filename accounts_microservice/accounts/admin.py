@@ -12,7 +12,6 @@ class OwnerAdmin(admin.ModelAdmin):
 @admin.register(State)
 class StateAdmin(admin.ModelAdmin):
     pass
-<<<<<<< HEAD
 
 
 @admin.register(Article)
