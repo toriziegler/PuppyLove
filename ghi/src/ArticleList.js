@@ -1,5 +1,5 @@
 import React from 'react'
-import APISerive from './APIService'
+import APIService from './APIService'
 import { useCookies } from 'react-cookie';
 
 
@@ -14,7 +14,7 @@ function ArticleList(props) {
 
 
     const deleteBtn = (article) => {
-        APISerive.DeleteArticle(article.id, token['mytoken'])
+        APIService.DeleteArticle(article.id, token['mytoken'])
             .then(() => props.deleteBtn(article))
             .catch(error => console.log(error))
     }

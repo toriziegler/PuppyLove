@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import APISerive from './APIService'
+import APIService from './APIService'
 import { useCookies } from 'react-cookie';
 
 
@@ -16,7 +16,7 @@ function Form(props) {
 
 
     const updateArticle = () => {
-        APISerive.UpdateArticle(props.article.id, { title, description }, token['mytoken'])
+        APIService.UpdateArticle(props.article.id, { title, description }, token['mytoken'])
             .then(resp => props.updatedInformation(resp))
         setTitle('')
         setDescription('')
@@ -24,7 +24,7 @@ function Form(props) {
 
 
     const insertArticle = () => {
-        APISerive.InsertArticle({ title, description }, token['mytoken'])
+        APIService.InsertArticle({ title, description }, token['mytoken'])
             .then(resp => props.insertedInformation(resp))
         setTitle('')
         setDescription('')

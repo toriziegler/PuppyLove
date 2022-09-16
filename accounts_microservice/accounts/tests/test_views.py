@@ -1,5 +1,5 @@
-from django.test import TestCase, Client, SimpleTestCase
-from django.urls import reverse, resolve
+from django.test import TestCase, Client
+from django.urls import reverse
 from accounts.models import Owner, State
 
 
@@ -17,18 +17,11 @@ class TestOwners(TestCase):
         self.assertEquals(response.status_code, 200)
 
 
-class TestOwnerDelete(TestCase):
-    def test_list_owners(self):
-        client = Client()
-        response = client.delete(reverse("api_owners"))
-        self.assertEquals(response.status_code, 200)
-
-
-class TestUsers(TestCase):
-    def test_list_owners(self):
-        client = Client()
-        response = client.get(reverse("api_users"))
-        self.assertEquals(response.status_code, 200)
+# class TestUsers(TestCase):
+#     def test_list_owners(self):
+#         client = Client()
+#         response = client.get(reverse("api_users"))
+#         self.assertEquals(response.status_code, 200)
 
 # class TestPostOwners(TestCase):
 #     def test_post_owners(self):
@@ -44,3 +37,23 @@ class TestUsers(TestCase):
 #             state=State(name="Arizona")
 #         ))
 #         self.assertEquals(response.status_code, 200)
+
+class TestPostDogs(TestCase):
+    def setUp(self):
+        st = State.objects.create(
+            name='Alfie',
+            id=55,
+            abbreviation='TX',
+        )
+        Owner.objects.create(
+            name='Annie',
+            email='annie@alfie.com',
+            image='None',
+            phone='1234567899',
+            description='grumpydog',
+            state=st
+        )
+
+    def test_owner_create(self):
+        coolGuy = Owner.objects.get(description='grumpydog')
+        self.assertEquals(coolGuy.name, 'Annie')

@@ -51,12 +51,12 @@ class ProfileCard extends React.Component {
     }
 
     async profileColumns() {
-        const dogsResponse = await fetch(`http://localhost:8080/api/owners_dogs/${this.state.owner}/`);
+        const dogsResponse = await fetch(`http://localhost:8080/owners_dogs/${this.state.owner}/`);
         if (dogsResponse.ok) {
             const dogsData = await dogsResponse.json();
             const requests = [];
             for (let dog of dogsData.dogs) {
-                const specificDogUrl = `http://localhost:8080/api/dogs/${dog.id}/`;
+                const specificDogUrl = `http://localhost:8080/dogs/${dog.id}/`;
                 requests.push(fetch(specificDogUrl));
             }
             const responses = await Promise.all(requests);

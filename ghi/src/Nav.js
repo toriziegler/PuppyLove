@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-// import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import React from 'react';
 import logo from "./assets/images/taylordrawing2.png"
 // import { useContext } from 'react'
@@ -77,37 +77,12 @@ function Nav() {
             <li className="nav-item">
               <NavLink className="nav-link" to="/ownerinfo">Owner Information</NavLink>
             </li>
+          </ul>
+          <ul className="navbar-nav justify-content-right mb-2 mb-lg-0">
             <li className="nav-item">
-              <NavLink className="nav-link" to="/upload">Upload Photos</NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/login">Log in</NavLink>
+              <Link className="nav-link" to="/login" onClick={logoutBtn}>Log in/Log out</Link>
             </li>
           </ul>
-          <div className="collapse navbar-collapse" id="navbarNav">
-            <ul className="navbar-nav">
-              <li className="nav-item">
-                <a className="nav-link active" onClick={logoutBtn}>Log out</a>
-              </li>
-            </ul>
-          </div>
-
-          {/* <ul className="navbar-nav justify-content-right mb-2 mb-lg-0">
-            <li className="nav-item">
-              {user ? (
-                <p className="nav-link" onClick={logoutUser}></p>
-              ) : (
-                <Link className="nav-link" to="/login" >Log in</Link>
-              )}
-            </li>
-            <li className="nav-item">
-              {user ? (
-                <p className="nav-link" onClick={logoutUser}>Logout</p>
-              ) : (
-                <Link className="nav-link" to="/signup" >Sign up</Link>
-              )}
-            </li>
-          </ul> */}
           <div>
             <Footer>
               <span>© Copyright 2022 Puppy Love, LLC. All Rights Reserved</span>

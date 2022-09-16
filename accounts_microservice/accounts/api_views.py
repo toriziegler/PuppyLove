@@ -1,32 +1,21 @@
-from .models import AWSPhoto, Owner, State
+from .models import AWSPhoto, Owner, State, Article
 from .encoders import OwnerEncoder, StateEncoder
-from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
+from django.shortcuts import render
+from django.views.decorators.csrf import requires_csrf_token, csrf_exempt
 # from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_http_methods
 import json
 from django.views.generic.edit import CreateView
 from django.urls import reverse_lazy
-from rest_framework.permissions import IsAuthenticated
-from rest_framework.views import APIView
-from rest_framework.response import Response
-from rest_framework import permissions, status
-from .serializers import UserSerializer
-from rest_framework.decorators import api_view, permission_classes
+from django.views.decorators.csrf import csrf_protect
+from .serializers import ArticleSerializer, UserSerializer
 from rest_framework import viewsets
-from .serializers import ArticleSerializer
-from .models import Article
 from django.contrib.auth.models import User
-
 from rest_framework.authentication import TokenAuthentication
+from rest_framework.permissions import IsAuthenticated
 
 
-# from rest_framework.response import Response
-# from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
-# from rest_framework_simplejwt.views import TokenObtainPairView
-
-
-# from .serializers import NoteSerializer
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
