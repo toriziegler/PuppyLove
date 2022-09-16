@@ -82,6 +82,6 @@ So today I spent almost all day with the group trying to connect the stuff I wor
 
 ## September 16, 2022
 
-Today I started the day working again on Unit Tests and I was able to create a unit test for getting the users and creating them.
+Today I started the day working again on Unit Tests and I was able to create a unit test for getting the users and creating them. It is working, I spent the day trying to implement private routes for the pages in our project but I wasn't able. Sad because the group decided to not use authentication in case it gave issues once deployed, as we suffer to be able to deploy our page without it, now adding it could potentially break it. No regrets, but whatever. I spent the rest of the day with the group implementing merges to main and preparing ourselves for the due time.
 
 
