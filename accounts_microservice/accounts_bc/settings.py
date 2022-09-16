@@ -47,7 +47,14 @@ AWS_S3_MAX_AGE_SECONDS = 60 * 60 * 24 * 365  # 1 year.
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["localhost", "monolith", "account-api", "puppylove-accounts-api.herokuapp.com"]
+ALLOWED_HOSTS = [
+    "localhost",
+    "monolith",
+    "account-api",
+    "puppylove-accounts-api.herokuapp.com",
+    "puppylove-monolith-api.herokuapp.com",
+    "puppylove-monolith-poller.herokuapp.com"
+]
 
 # Application definition
 

@@ -52,8 +52,14 @@ SECRET_KEY = "django-insecure-ffoy=fz6$mb=a*!vtyltvzsw-3q0!=0*yw!y4tkzk1n+zue+)=
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["localhost", "puppylove", "account-api",
-                 "puppylove-monolith-api.herokuapp.com", "puppylove-monolith-poller.herokuapp.com"]
+ALLOWED_HOSTS = [
+    "localhost",
+    "puppylove",
+    "account-api",
+    "puppylove-account-api.herokuapp.com",
+    "puppylove-monolith-api.herokuapp.com",
+    "puppylove-monolith-poller.herokuapp.com"
+]
 
 
 # Application definition
