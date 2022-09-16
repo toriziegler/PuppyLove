@@ -13,7 +13,7 @@ class MainPage extends React.Component {
           style={{
             height: "100vh",
             backgroundImage:
-              "url(https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg)",
+              "url(https://images.pexels.com/photos/2607544/pexels-photo-2607544.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1)",
             backgroundPosition: "center",
             backgroundSize: "cover",
             backgroundRepeat: "no-repeat"
@@ -26,7 +26,7 @@ class MainPage extends React.Component {
                 <h6>This social network is for dog owners who are seeking compatible playmates for their dogs. In this post-pandemic world where we are all a little more
                   remote and further disconnected, we are trying to connect our furry friends and their owners.</h6>
                 <p className="card-text">Sign your pup up today!</p>
-                <Link to="/ownerinfo" className="mainlink"><button type="button" className="btn btn-primary">Sign Up</button></Link>
+                <Link to="/ownerinfo" className="mainlink"><button type="button" className="btn btn-success">Sign Up</button></Link>
               </div>
             </div>
           </div>
