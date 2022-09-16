@@ -408,6 +408,17 @@
         }
     },
     {
+        "model": "accounts.owner",
+        "pk": 1,
+        "fields": {
+            "name": "Victoria",
+            "email": "victoria@email.com",
+            "phone": 1234567890,
+            "description": "Dog mom",
+            "state": 1
+        }
+    },
+    {
         "model": "auth.permission",
         "fields": {
             "name": "Can add state",
