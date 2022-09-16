@@ -27,8 +27,8 @@ class ArticleViewSet(viewsets.ModelViewSet):
     authentication_classes = (TokenAuthentication,)
 
 
-@csrf_exempt
 @require_http_methods(["GET", "POST"])
+@csrf_protect
 def api_owners(request):
     if request.method == "GET":
         owners = Owner.objects.all()
@@ -54,8 +54,8 @@ def api_owners(request):
             return response
 
 
-@csrf_exempt
 @require_http_methods(["GET", "PUT", "DELETE"])
+@csrf_protect
 def api_owner_show_update_delete(request, pk):
     if request.method == "GET":
         owner = Owner.objects.get(id=pk)
@@ -97,8 +97,8 @@ def api_owner_show_update_delete(request, pk):
             return response
 
 
-@csrf_exempt
 @require_http_methods(["GET", "POST"])
+@csrf_protect
 def api_states(request):
     if request.method == "GET":
         states = State.objects.all()

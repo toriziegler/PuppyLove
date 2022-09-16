@@ -57,3 +57,24 @@ class TestPostDogs(TestCase):
     def test_owner_create(self):
         coolGuy = Owner.objects.get(description='grumpydog')
         self.assertEquals(coolGuy.name, 'Annie')
+
+
+class TestPostOwners(TestCase):
+    def setUp(self):
+        st = State.objects.create(
+            name='TheSouth',
+            id=55,
+            abbreviation='TS',
+        )
+        Owner.objects.create(
+            name='SecretAgent',
+            email='secret@cia.com',
+            image='None',
+            phone='1234567899',
+            description='Secret',
+            state=st
+        )
+
+    def test_owner_create(self):
+        coolGuy = Owner.objects.get(description='Secret')
+        self.assertEquals(coolGuy.name, 'SecretAgent')

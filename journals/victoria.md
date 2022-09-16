@@ -1,3 +1,11 @@
+# September 14, 2022
+Today I worked on:
+
+* Authentication
+* AWS photos
+
+    I worked with Taylor, Stephen, and Nicolas to get the signup page functioning properly. I adjusted the page to handle submission and generate the success message I set up for dog info and owner info pages. Taylor and I got the photos to Taylor had first created a file called "UploadImageToS3.jsx" that had the entire function and return jsx format for submitting photos to AWS and pulling them back down. We pulled the contents of this file and imported them into our DogInfo.js file so that we could submit photos to AWS when creating a dog instance, and simultaneously assign the key to that specific dog instance and owner being created. We got help from Andy when it came to tying in the props and figuring out how to dynamically create the key within while the instance was still being created. 
+
 # September 13, 2022
 Today I worked on:
 

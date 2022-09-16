@@ -123,3 +123,22 @@ Today I was able to complete the react to s3 AWS photo bucket pipeline. I ran in
   error:    i was getting the auth-contrib error we were seeing before
   solution:    i created a blank folder in the accounts file with __init__.py for migrations
               i removed the migrate auth that we put in above from the Dockerfile.dev
+
+## Sept 14, 2022
+
+  Today Victoria and I focused on getting the pictures to load in our JS file for the dog profile creation. We were able to use some of what we learned from the backend fixing and use that for the front end JSX file. We moved the needed upload pieces from the upload image file and moved it into the dog_info js that victoria had started.
+
+  The main issue for us was understanding how we could get the front end to upload to the same file and the backend uploads to in S3 AWS.
+
+    we were able to do this by passing in the owner and dog ID as props to the Upload file function within our code. 
+
+  We also made some progress on the authentication end that we have been working on for a while. Stephen was able to signup on the front end but is not being provided any token information that we will need to use the front end. 
+
+
+  ## Sept 15, 2022
+
+  We got Authentication working!!! i also had to rewrite a new unit test because we did away with the old user model when we were rewriting 
+
+  today, we are trying to deploy our project again. we were cut short last night because heroku was having internal problems. we were not able to build deployed containers. It seems to be working this morning so we are going back after it. 
+
+  We need to finish our Authentication stuff today and make it work for us. 

@@ -23,20 +23,23 @@ class SignUp extends React.Component {
     async handleSubmit(event) {
         event.preventDefault();
         const data = { ...this.state };
-        delete data.password;
+        console.log('submitdata', data)
         delete data.verify_password;
         delete data.hasSignedUp;
 
-        const url = 'http://localhost:8100/api/register';
+        const url = 'http://localhost:8100/api/register/';
         const fetchConfig = {
             method: "POST",
             body: JSON.stringify(data),
             headers: {
+                credentials: "include",
                 'Content-Type': 'application/json',
             },
-        };
 
+        };
+        console.log(fetchConfig, 'config: create user')
         const response = await fetch(url, fetchConfig);
+        console.log(response, 'response from create_user')
         if (response.ok) {
             let successTag = document.getElementById('success-message');
             let formTag = document.getElementById('create-dog-form');
