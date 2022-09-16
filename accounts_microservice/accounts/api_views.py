@@ -12,7 +12,6 @@ from .serializers import ArticleSerializer, UserSerializer
 from rest_framework import viewsets
 from django.contrib.auth.models import User
 from rest_framework.authentication import TokenAuthentication
-from rest_framework.permissions import IsAuthenticated
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -24,8 +23,7 @@ class ArticleViewSet(viewsets.ModelViewSet):
     queryset = Article.objects.all()
     serializer_class = ArticleSerializer
     authentication_classes = (TokenAuthentication,)
-
-    return Response(user.data, status=status.HTTP_201_CREATED)
+\
 
 
 @requires_csrf_token
@@ -137,53 +135,3 @@ class AWSPhotoCreateView(CreateView):
         return context
 
 
-# class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
-#     @classmethod
-#     def get_token(cls, user):
-#         token = super().get_token(user)
-
-#         # Add custom claims
-#         token['username'] = user.username
-#         # ...
-
-#         return token
-
-
-# class MyTokenObtainPairView(TokenObtainPairView):
-#     serializer_class = MyTokenObtainPairSerializer
-
-
-# @csrf_exempt
-# @api_view(['GET'])
-# def getRoutes(request):
-#     routes = [
-#         'api/api2/token',
-#         '/api/api2/token/refresh',
-
-#     ]
-
-#     return Response(routes)
-
-
-# @api_view(['GET'])
-# @permission_classes([IsAuthenticated])
-# def getNotes(request):
-#     user = request.user
-#     notes = user.note_set.all()
-#     serializer = NoteSerializer(notes, many=True)
-#     return Response(serializer.data)
-
-# Create your views here.
-
-# from rest_framework import serializers
-
-
-class UserViewSet(viewsets.ModelViewSet):
-    queryset = User.objects.all()
-    serializer_class = UserSerializer
-
-
-class ArticleViewSet(viewsets.ModelViewSet):
-    queryset = Article.objects.all()
-    serializer_class = ArticleSerializer
-    authentication_classes = (TokenAuthentication,)

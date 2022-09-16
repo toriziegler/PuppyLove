@@ -1,11 +1,9 @@
-import ForgotPassword from './ForgotPassword';
 import ListProfiles from './ListProfiles';
 import './App.css';
-import ArticleList from './components/ArticleList';
 import { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
-import NavBar from './components/NavBar';
-import Form from './components/Form';
+import NavBar from './NavBar';
+import Form from './Form';
 import { useCookies } from 'react-cookie'
 import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom';
 import React from 'react';
@@ -20,14 +18,8 @@ import UploadImageToS3WithNativeSdk from './UploadImageToS3';
 // import PrivateRoute from './PrivateRoute'
 // import { AuthProvider } from './AuthContext'
 import ForgotPassword from './ForgotPassword';
-import ListProfiles from './ListProfiles';
 import ArticleList from './ArticlesList';
-import { useState, useEffect } from 'react';
-import 'bootstrap/dist/css/bootstrap.css';
-import NavBar from './NavBar';
-import Form from './Form';
-import { useNavigate } from 'react-router-dom'
-import { useCookies } from 'react-cookie'
+
 
 function App(props) {
   const [articles, setArticles] = useState([])

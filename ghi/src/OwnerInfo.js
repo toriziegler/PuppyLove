@@ -104,7 +104,7 @@ class OwnerInfo extends React.Component {
                     <div className="signup" id="signuptop">
                         <div className="card mx-auto" style={{ width: "18rem" }}>
                             <div className="card-body">
-                                <h1>Owner Information</h1>
+                                <h1> Owner Information </h1>
                                 <hr />
                                 <form className={formClasses} onSubmit={this.handleSubmit} id="create-owner-form">
                                     <div className="form-floating mb-3">
