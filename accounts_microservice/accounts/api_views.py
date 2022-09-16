@@ -1,12 +1,12 @@
-from .models import AWSPhoto, Owner, State
+from .models import Owner, State
 from .encoders import OwnerEncoder, StateEncoder
 from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_http_methods
 import json
-from django.views.generic.edit import CreateView
-from django.urls import reverse_lazy
 
 
+@csrf_exempt
 @require_http_methods(["GET", "POST"])
 def api_owners(request):
     if request.method == "GET":
@@ -33,6 +33,7 @@ def api_owners(request):
             return response
 
 
+@csrf_exempt
 @require_http_methods(["GET", "PUT", "DELETE"])
 def api_owner_show_update_delete(request, pk):
     if request.method == "GET":
@@ -75,6 +76,7 @@ def api_owner_show_update_delete(request, pk):
             return response
 
 
+@csrf_exempt
 @require_http_methods(["GET", "POST"])
 def api_states(request):
     if request.method == "GET":
@@ -96,18 +98,3 @@ def api_states(request):
             response = JsonResponse({"message": "Could not create the State"})
             response.status_code = 400
             return response
-
-
-class AWSPhotoCreateView(CreateView):
-    model = AWSPhoto
-    template_name = "photos/upload.html"
-    fields = [
-        "upload",
-    ]
-    success_url = reverse_lazy("index")
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        photos = AWSPhoto.objects.all()
-        context["Photos"] = photos
-        return context

@@ -1,5 +1,6 @@
 from .models import Dog, AWSPhoto, OwnerVO
 from .encoders import DogEncoder, OwnerVOEncoder
+from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 from django.views.decorators.http import require_http_methods
 import json
@@ -7,6 +8,7 @@ from django.views.generic.edit import CreateView
 from django.urls import reverse_lazy
 
 
+@csrf_exempt
 @require_http_methods(["GET", "POST"])
 def api_dogs(request):
     if request.method == "GET":
@@ -48,6 +50,7 @@ class AWSPhotoCreateView(CreateView):
         return context
 
 
+@csrf_exempt
 @require_http_methods(["DELETE", "GET", "PUT"])
 def api_show_delete_update_dog(request, pk):
     if request.method == "GET":
@@ -92,6 +95,7 @@ def api_show_delete_update_dog(request, pk):
             return response
 
 
+@csrf_exempt
 @require_http_methods("GET")
 def api_ownerVOs(request):
     if request.method == "GET":
@@ -102,6 +106,7 @@ def api_ownerVOs(request):
         )
 
 
+@csrf_exempt
 @require_http_methods("GET")
 def api_owner_show_VO(request, pk):
     if request.method == "GET":
