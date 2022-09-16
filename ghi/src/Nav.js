@@ -35,7 +35,6 @@ function Footer({ children }) {
 }
 
 
-
 function Nav() {
   const [token, SetToken, removeToken] = useCookies(['mytoken']) //token, SetToken,
   const logoutBtn = () => {
@@ -44,10 +43,6 @@ function Nav() {
   return (
     <nav className="navbar navbar-expand-lg navbar-light">
       <div>
-
-
-        {/* {user && <p>Hello {user.username}</p>} */}
-
       </div>
       <div className="container-fluid">
         <NavLink to="/puppy-love/" className='home-button' ><img className="logo" src={logo} alt="" width="80px" height="50px" /></NavLink>
@@ -63,19 +58,16 @@ function Nav() {
               <NavLink className="nav-link active" aria-current="page" to="/puppy-love/">Home</NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" to="/profile">Profile</NavLink>
+              <NavLink className="nav-link" to="/listprofiles/">Find a New Friend</NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" to="/listprofiles">Find a New Friend</NavLink>
+              <NavLink className="nav-link" to="/profile/">Profile</NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" to="/doginfo">Dog Information</NavLink>
+              <NavLink className="nav-link" to="/doginfo/">Dog Information</NavLink>
             </li>
             <li className="nav-item">
               <NavLink className="nav-link" to="/ownerinfo">Owner Information</NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/upload">Upload Photos</NavLink>
             </li>
           </ul>
           <ul className="navbar-nav justify-content-end mb-2 mb-lg-0">
@@ -96,4 +88,3 @@ function Nav() {
 
 
 export default Nav;
-

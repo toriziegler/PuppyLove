@@ -23,10 +23,10 @@ class TestOwners(TestCase):
 #         response = client.delete(reverse("api_owners"))
 
 
-class TestPhotos(TestCase):
-    def test_get_photo(self):
+class TestUsers(TestCase):
+    def test_list_owners(self):
         client = Client()
-        response = client.get(reverse("photo_form"))
+        response = client.get(reverse("api_users"))
         self.assertEquals(response.status_code, 200)
 
 # class TestPostOwners(TestCase):

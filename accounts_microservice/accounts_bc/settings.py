@@ -47,9 +47,14 @@ AWS_S3_MAX_AGE_SECONDS = 60 * 60 * 24 * 365  # 1 year.
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["localhost", "monolith", "account-api"]
-
-# AUTH_USER_MODEL = 'accounts.User'
+ALLOWED_HOSTS = [
+    "localhost",
+    "monolith",
+    "account-api",
+    "puppylove-accounts-api.herokuapp.com",
+    "puppylove-monolith-api.herokuapp.com",
+    "puppylove-monolith-poller.herokuapp.com"
+]
 
 # Application definition
 
@@ -112,7 +117,6 @@ MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
-    # 'django.middleware.csrf.CsrfViewMiddleware',
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
@@ -125,18 +129,18 @@ CSRF_TRUSTED_ORIGINS = [
     "http://localhost:8001",
     "http://localhost:8000",
     "http://localhost:8100",
+    "https://pawfessional-programmers.gitlab.io",
 ]
 
-# CORS_ALLOWED_ORIGINS = [
-#     "http://localhost:3000",
-#     "http://localhost:3001",
-#     "http://localhost:8000",
-#     "http://localhost:8001",
-#     "http://localhost:8080",
-#     "http://localhost:8100",
-# ]
-
-CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+    "http://localhost:3001",
+    "http://localhost:8000",
+    "http://localhost:8001",
+    "http://localhost:8080",
+    "http://localhost:8100",
+    "https://pawfessional-programmers.gitlab.io",
+]
 
 CORS_ALLOW_CREDENTIALS = True
 
@@ -215,6 +219,7 @@ SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 # Static asset configuration
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 STATIC_ROOT = "staticfiles"
+<<<<<<< HEAD
 
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": [

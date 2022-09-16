@@ -51,12 +51,12 @@ class ProfileCard extends React.Component {
     }
 
     async profileColumns() {
-        const dogsResponse = await fetch(`http://localhost:8080/api/owners_dogs/${this.state.owner}/`);
+        const dogsResponse = await fetch(`${process.env.REACT_APP_MONOLITH_API}/api/owners_dogs/${this.state.owner}/`);
         if (dogsResponse.ok) {
             const dogsData = await dogsResponse.json();
             const requests = [];
             for (let dog of dogsData.dogs) {
-                const specificDogUrl = `http://localhost:8080/api/dogs/${dog.id}/`;
+                const specificDogUrl = `${process.env.REACT_APP_MONOLITH_API}/api/dogs/${dog.id}/`;
                 requests.push(fetch(specificDogUrl));
             }
             const responses = await Promise.all(requests);
@@ -79,7 +79,7 @@ class ProfileCard extends React.Component {
     }
 
     async componentDidMount() {
-        const ownerResponse = await fetch('http://localhost:8080/api/ownerVOs/');
+        const ownerResponse = await fetch(`${process.env.REACT_APP_MONOLITH_API}/api/ownerVOs/`);
         try {
             if (ownerResponse.ok) {
                 const ownerData = await ownerResponse.json();
