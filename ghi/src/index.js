@@ -20,7 +20,7 @@ root.render(
   </React.StrictMode>
 );
 
-function Router() {
+function Router(props) {
   return (
     <BrowserRouter>
       <Nav />

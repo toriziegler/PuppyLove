@@ -21,7 +21,7 @@ class OwnerInfo extends React.Component {
     }
 
     async componentDidMount() {
-        const URL = 'http://localhost:8100/api/states/'
+        const URL = 'http://localhost:8100/states/'
         const response = await fetch(URL);
         if (response.ok) {
             const data = await response.json();
@@ -35,7 +35,7 @@ class OwnerInfo extends React.Component {
         delete data.states;
         delete data.hasSignedUp;
 
-        const url = 'http://localhost:8100/api/owners/';
+        const url = 'http://localhost:8100/owners/';
         const fetchConfig = {
             method: "POST",
             body: JSON.stringify(data),
