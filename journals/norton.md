@@ -1,3 +1,16 @@
+# September 15, 2022
+
+What we today?
+
+- Met with team
+- Did our morning Scrum meeting
+- We spent the last couple of days. Victoria got the project deployed, and Nico stayed up all night to get the Auth working.
+- We are now just fixing up the final touches, and unit testing. We had Heroku scare last night, but turns out it was actually Heroku's fault and not ours.
+
+Potential blockers?
+
+1. Unit testing, and integrating all our microservices to work while deployed
+
 # September 13, 2022
 
 What we today?
