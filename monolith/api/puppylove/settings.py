@@ -52,7 +52,8 @@ SECRET_KEY = "django-insecure-ffoy=fz6$mb=a*!vtyltvzsw-3q0!=0*yw!y4tkzk1n+zue+)=
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["localhost", "puppylove", "account-api", "puppylove-monolith-api.herokuapp.com", "puppylove-monolith-poller.herokuapp.com"]
+ALLOWED_HOSTS = ["localhost", "puppylove", "account-api",
+                 "puppylove-monolith-api.herokuapp.com", "puppylove-monolith-poller.herokuapp.com"]
 
 
 # Application definition
@@ -87,6 +88,7 @@ CSRF_TRUSTED_ORIGINS = [
     "http://localhost:8001",
     "http://localhost:8000",
     "http://localhost:8100",
+    "https://pawfessional-programmers.gitlab.io",
 ]
 
 CORS_ALLOWED_ORIGINS = [
@@ -96,6 +98,7 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:8001",
     "http://localhost:8080",
     "http://localhost:8100",
+    "https://pawfessional-programmers.gitlab.io",
 ]
 
 CORS_ALLOW_CREDENTIALS = True
