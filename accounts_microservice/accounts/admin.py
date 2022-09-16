@@ -14,15 +14,6 @@ class StateAdmin(admin.ModelAdmin):
     pass
 
 
-# admin.site.register(UserAccountManager, UserAdmin)
-
-
-# admin.site.register(Note)
-
-
-# admin.site.register(UserAccount)
-
-
 @admin.register(Article)
 class ArticleModel(admin.ModelAdmin):
     list_filter = ('title', 'description')

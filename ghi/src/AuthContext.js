@@ -21,7 +21,7 @@
 //             headers: {
 //                 'Content-Type': 'application/json'
 //             },
-//             body: JSON.stringify({ 'username': e.target.username.value, 'password': e.target.password.value })
+//             body: JSON.stringify({ 'email': e.target.email.value, 'password': e.target.password.value })
 //         })
 //         let data = await response.json()
 //         console.log('data: ', data)
@@ -31,9 +31,9 @@
 //             setAuthTokens(data)
 //             setUser(jwt_decode(data.access))
 //             localStorage.setItem('authTokens', JSON.stringify(data))
-//             navigate('/profile')
+//             navigate('/puppy-love')
 //         } else {
-//             alert('Invalid Username or Password')
+//             alert('Something went wrong!')
 //         }
 //     }
 

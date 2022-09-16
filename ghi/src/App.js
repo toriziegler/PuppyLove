@@ -12,17 +12,24 @@ import React from 'react';
 import MainPage from './MainPage';
 import Nav from './Nav';
 import Profile from './Profile';
-// import LoginForm from './LoginForm';
+import Login from './Login';
 import SignUp from './SignUp';
 import OwnerInfo from './OwnerInfo';
 import DogInfo from './DogInfo';
 import UploadImageToS3WithNativeSdk from './UploadImageToS3';
 // import PrivateRoute from './PrivateRoute'
 // import { AuthProvider } from './AuthContext'
+import ForgotPassword from './ForgotPassword';
+import ListProfiles from './ListProfiles';
+import ArticleList from './ArticlesList';
+import { useState, useEffect } from 'react';
+import 'bootstrap/dist/css/bootstrap.css';
+import NavBar from './NavBar';
+import Form from './Form';
+import { useNavigate } from 'react-router-dom'
+import { useCookies } from 'react-cookie'
 
-
-
-function App() {
+function App(props) {
   const [articles, setArticles] = useState([])
   const [editArticle, setEditArticle] = useState('')
   const [token, setToken, removeToken] = useCookies(['mytoken'])
@@ -34,7 +41,7 @@ function App() {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': 'f1c6cb57eee49d346e888ceb36b5278da607facd'
+        'Authorization': '66fc618e59bb087207582520492082f02e41895b'
       }
     })
       .then(resp => resp.json())
@@ -83,9 +90,9 @@ function App() {
     var user_token = token['mytoken']
     console.log('User token is', user_token)
     if (String(user_token) === 'undefined') {
-      navigate('/')
+      navigate('/puppy-love/')
     } else {
-      navigate('/puppy-love')
+      navigate('/puppy-love/')
     }
   }, [token])
 
@@ -94,30 +101,5 @@ function App() {
     removeToken(['mytoken'])
 
   }
-
-
-
-  return (
-    <div className='App'>
-      <BrowserRouter>
-        {/* <AuthProvider> */}
-        <Nav />
-        <Routes>
-          {/* <Route exact path="/puppy-love/" element={<PrivateRoute />}> */}
-          <Route exact path="/puppy-love/" element={<MainPage />} />
-          {/* </Route> */}
-          <Route path="profile" element={<Profile />} />
-          <Route path="listprofiles" element={<ListProfiles />} />
-          <Route path="signup" element={<SignUp />} />
-          <Route path="doginfo" element={<DogInfo />} />
-          <Route path="ownerinfo" element={<OwnerInfo />} />
-          <Route path="upload" element={<UploadImageToS3WithNativeSdk />} />
-          {/* <Route path="/login" element={<LoginForm />} /> */}
-          <Route path="forgotpassword" element={<ForgotPassword />} />
-        </Routes>
-        {/* </AuthProvider> */}
-      </BrowserRouter>
-    </div>
-  );
 }
 export default App;

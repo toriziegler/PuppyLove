@@ -1,11 +1,7 @@
 import { NavLink } from 'react-router-dom';
-// import { Link } from 'react-router-dom'
 import React from 'react';
 import logo from "./assets/images/taylordrawing2.png"
-// import { useContext } from 'react'
-// import AuthContext from './AuthContext'
-
-
+import { useCookies } from 'react-cookie';
 
 
 const footerStyle = {
@@ -41,7 +37,10 @@ function Footer({ children }) {
 
 
 function Nav() {
-  // let { user, logoutUser } = useContext(AuthContext)
+  const [token, SetToken, removeToken] = useCookies(['mytoken']) //token, SetToken,
+  const logoutBtn = () => {
+    removeToken(['mytoken'])
+  }
   return (
     <nav className="navbar navbar-expand-lg navbar-light">
       <div>
@@ -79,22 +78,11 @@ function Nav() {
               <NavLink className="nav-link" to="/upload">Upload Photos</NavLink>
             </li>
           </ul>
-          {/*  <ul className="navbar-nav justify-content-right mb-2 mb-lg-0">
+          <ul className="navbar-nav justify-content-end mb-2 mb-lg-0">
             <li className="nav-item">
-              {user ? (
-                <p className="nav-link" onClick={logoutUser}></p>
-              ) : (
-                <Link className="nav-link" to="/login" >Log in</Link>
-              )}
+              <NavLink className="nav-link" to="/login" onClick={logoutBtn}>Log out</NavLink>
             </li>
-            <li className="nav-item">
-              {user ? (
-                <p className="nav-link" onClick={logoutUser}>Logout</p>
-              ) : (
-                <Link className="nav-link" to="/signup" >Sign up</Link>
-              )}
-            </li> 
-        </ul> */}
+          </ul>
           <div>
             <Footer>
               <span>© Copyright 2022 Puppy Love, LLC. All Rights Reserved</span>
@@ -105,6 +93,7 @@ function Nav() {
     </nav >
   )
 }
+
 
 export default Nav;
 
