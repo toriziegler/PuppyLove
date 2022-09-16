@@ -5,11 +5,9 @@ from django.views.decorators.http import require_http_methods
 import json
 from django.views.generic.edit import CreateView
 from django.urls import reverse_lazy
-from django.views.decorators.csrf import csrf_protect
 
 
 @require_http_methods(["GET", "POST"])
-@csrf_protect
 def api_owners(request):
     if request.method == "GET":
         owners = Owner.objects.all()
@@ -36,7 +34,6 @@ def api_owners(request):
 
 
 @require_http_methods(["GET", "PUT", "DELETE"])
-@csrf_protect
 def api_owner_show_update_delete(request, pk):
     if request.method == "GET":
         owner = Owner.objects.get(id=pk)
@@ -79,7 +76,6 @@ def api_owner_show_update_delete(request, pk):
 
 
 @require_http_methods(["GET", "POST"])
-@csrf_protect
 def api_states(request):
     if request.method == "GET":
         states = State.objects.all()
