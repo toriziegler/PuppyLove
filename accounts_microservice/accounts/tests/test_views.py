@@ -17,27 +17,6 @@ class TestOwners(TestCase):
         self.assertEquals(response.status_code, 200)
 
 
-# class TestUsers(TestCase):
-#     def test_list_owners(self):
-#         client = Client()
-#         response = client.get(reverse("api_users"))
-#         self.assertEquals(response.status_code, 200)
-
-# class TestPostOwners(TestCase):
-#     def test_post_owners(self):
-
-#         client = Client()
-#         response = client.post(reverse("api_owners"),
-#                                testOwner=Owner(
-#             name='SecretAgent',
-#             email='secret@cia.com',
-#             image='None',
-#             phone='1234567899',
-#             description='Secret',
-#             state=State(name="Arizona")
-#         ))
-#         self.assertEquals(response.status_code, 200)
-
 class TestPostDogs(TestCase):
     def setUp(self):
         st = State.objects.create(
@@ -106,3 +85,41 @@ class TestPostOwners(TestCase):
 #         assert response.status_code == 200
 
 # --------------------------------------------------------- #
+
+
+class TestDependencies(TestCase):
+    def test_Flake8_install(self):
+        try:
+            import flake8
+        except ModuleNotFoundError: 
+            self.fail("Flake8 is not installed")
+
+
+
+class UpdateOwner(TestCase):
+    def setUp(self):
+        st = State.objects.create(
+            name='Alfie',
+            id=55,
+            abbreviation='TX',
+        )
+        Owner.objects.create(
+            name='Ann',
+            email='ann@alfie.com',
+            image='None',
+            phone='1234567877',
+            description='gumpdog',
+            state=st
+        )
+
+    def test_update_owner(self):
+        """ Test UpdateForm with valid data """
+        person = Owner.objects.filter(name='Ann').update(name="Jim")
+        self.assertEquals(person, 1)
+
+
+class add(TestCase):
+    def add_num(self):
+        num=1+1
+        self.asserte(num,2)
+    
