@@ -27,7 +27,7 @@ class ArticleViewSet(viewsets.ModelViewSet):
     authentication_classes = (TokenAuthentication,)
 
 
-@csrf_exempt
+@requires_csrf_token
 @require_http_methods(["GET", "POST"])
 def api_owners(request):
     if request.method == "GET":
@@ -54,7 +54,7 @@ def api_owners(request):
             return response
 
 
-@csrf_exempt
+@requires_csrf_token
 @require_http_methods(["GET", "PUT", "DELETE"])
 def api_owner_show_update_delete(request, pk):
     if request.method == "GET":
@@ -97,7 +97,7 @@ def api_owner_show_update_delete(request, pk):
             return response
 
 
-@csrf_exempt
+@requires_csrf_token
 @require_http_methods(["GET", "POST"])
 def api_states(request):
     if request.method == "GET":
