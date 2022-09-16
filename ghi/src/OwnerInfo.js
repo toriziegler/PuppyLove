@@ -42,6 +42,7 @@ class OwnerInfo extends React.Component {
             headers: {
                 'Content-Type': 'application/json',
             },
+            credentials: 'include'
         };
 
         const response = await fetch(url, fetchConfig);
