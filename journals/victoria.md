@@ -1,3 +1,8 @@
+# September 15, 2022
+Today I worked on:
+
+* Deployment
+
 # September 14, 2022
 Today I worked on:
 
