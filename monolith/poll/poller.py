@@ -5,7 +5,7 @@ import time
 import json
 import requests
 
-sys.path.append("")
+sys.path.append("../api")
 # host = 'http://accounts-api:8000'
 # host = 'https://puppylove-accounts-api.herokuapp.com'
 host = os.environ.get('REACT_APP_ACCOUNT_API', 'MISCONFIGURED!')
