@@ -40,7 +40,9 @@ class ListProfiles extends React.Component {
     }
 
     async componentDidMount() {
-        const url = 'http://localhost:8080/api/dogs/';
+        const dogsHost = `${process.env.REACT_APP_MONOLITH_API}`
+        // const dogsHost = 'http://localhost:8080'
+        const url = dogsHost + `/api/dogs/`;
 
         try {
             const response = await fetch(url);
@@ -48,7 +50,9 @@ class ListProfiles extends React.Component {
                 const data = await response.json();
                 const requests = [];
                 for (let dog of data.dogs) {
-                    const detailUrl = `http://localhost:8080/api/dogs/${dog.id}/`;
+                    const dogHost = `${process.env.REACT_APP_MONOLITH_API}`
+                    // const dogHost = 'http://localhost:8080'
+                    const detailUrl = dogHost + `/api/dogs/${dog.id}/`;
                     requests.push(fetch(detailUrl));
                 }
                 const responses = await Promise.all(requests);

@@ -7,9 +7,6 @@ import Login from './Login';
 import SignUp from './SignUp';
 import OwnerInfo from './OwnerInfo';
 import DogInfo from './DogInfo';
-import UploadImageToS3WithNativeSdk from './UploadImageToS3';
-// import PrivateRoute from './PrivateRoute'
-// import { AuthProvider } from './AuthContext'
 import ForgotPassword from './ForgotPassword';
 import ListProfiles from './ListProfiles';
 import ArticleList from './ArticlesList';

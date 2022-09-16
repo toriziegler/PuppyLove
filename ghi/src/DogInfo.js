@@ -37,13 +37,16 @@ class DogInfo extends React.Component {
         delete data.sizes;
         delete data.hasSignedUp;
 
-        const url = 'http://localhost:8080/api/dogs/'
+        const dogHost = `${process.env.REACT_APP_MONOLITH_API}`
+        // const dogHost = 'http://localhost:8080'
+        const url = dogHost + `/api/dogs/`
         const fetchConfig = {
             method: "POST",
             body: JSON.stringify(data),
             headers: {
                 'Content-Type': 'application/json',
             },
+            credentials: 'include'
         };
 
 
@@ -68,7 +71,9 @@ class DogInfo extends React.Component {
     }
 
     async componentDidMount() {
-        const URL = 'http://localhost:8080/api/ownerVOs/'
+        const ownerHost = `${process.env.REACT_APP_MONOLITH_API}`
+        // const ownerHost = 'http://localhost:8080'
+        const URL = ownerHost + `/api/ownerVOs/`
         const response = await fetch(URL);
         if (response.ok) {
             const data = await response.json();
@@ -126,7 +131,6 @@ class DogInfo extends React.Component {
         const S3_BUCKET = BUCKET_NAME;
         const REGION = AWSREGION;
 
-        // The access key ID is how we will access the photo from the bucket
         AWS.config.update({
             accessKeyId: KEY_ID,
             secretAccessKey: ACCESS_KEY
@@ -150,7 +154,7 @@ class DogInfo extends React.Component {
                     ACL: 'public-read',
                     Body: file,
                     Bucket: S3_BUCKET,
-                    Key: `us-west-1/${props.owner}/${props.dog}`
+                    Key: `us-west - 1 / ${props.owner} /${props.dog}`
                 };
                 myBucket.putObject(params)
                     .on('httpUploadProgress', (evt) => {
