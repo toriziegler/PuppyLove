@@ -13,7 +13,8 @@ from puppylove_rest.models import OwnerVO
 
 
 def get_owners():
-    response = requests.get("http://account-api:8000/api/owners/")
+    response = requests.get(
+        "https://puppylove-monolith-poller.herokuapp.com/api/owners/")
     content = json.loads(response.content)
     for owner in content["owners"]:
         OwnerVO.objects.update_or_create(
