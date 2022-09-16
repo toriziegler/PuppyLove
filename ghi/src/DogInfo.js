@@ -37,7 +37,9 @@ class DogInfo extends React.Component {
         delete data.sizes;
         delete data.hasSignedUp;
 
-        const url = `${process.env.REACT_APP_MONOLITH_API}/api/dogs/`
+        const dogHost = `${process.env.REACT_APP_MONOLITH_API}`
+        // const dogHost = 'http://localhost:8080'
+        const url = dogHost + `/api/dogs/`
         const fetchConfig = {
             method: "POST",
             body: JSON.stringify(data),
@@ -69,7 +71,9 @@ class DogInfo extends React.Component {
     }
 
     async componentDidMount() {
-        const URL = `${process.env.REACT_APP_MONOLITH_API}/api/ownerVOs/`
+        const ownerHost = `${process.env.REACT_APP_MONOLITH_API}`
+        // const ownerHost = 'http://localhost:8080'
+        const URL = ownerHost + `/api/ownerVOs/`
         const response = await fetch(URL);
         if (response.ok) {
             const data = await response.json();
