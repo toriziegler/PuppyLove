@@ -17,18 +17,6 @@ class TestOwners(TestCase):
         self.assertEquals(response.status_code, 200)
 
 
-# class OwnerDelete(TestCase):
-#     def test_list_owners(self):
-#         client = Client()
-#         response = client.delete(reverse("api_owners"))
-
-
-# class TestUsers(TestCase):
-#     def test_list_owners(self):
-#         client = Client()
-#         response = client.get(reverse("api_users"))
-#         self.assertEquals(response.status_code, 200)
-
 # class TestPostOwners(TestCase):
 #     def test_post_owners(self):
 

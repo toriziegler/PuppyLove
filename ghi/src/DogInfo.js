@@ -37,8 +37,8 @@ class DogInfo extends React.Component {
         delete data.sizes;
         delete data.hasSignedUp;
 
-        const dogHost = `${process.env.REACT_APP_MONOLITH_API}`
-        // const dogHost = 'http://localhost:8080'
+        //const dogHost = `${process.env.REACT_APP_MONOLITH_API}` 
+        const dogHost = 'http://localhost:8080'
         const url = dogHost + `/api/dogs/`
         const fetchConfig = {
             method: "POST",
@@ -71,8 +71,8 @@ class DogInfo extends React.Component {
     }
 
     async componentDidMount() {
-        const ownerHost = `${process.env.REACT_APP_MONOLITH_API}`
-        // const ownerHost = 'http://localhost:8080'
+        //const ownerHost = `${process.env.REACT_APP_MONOLITH_API}`
+        const ownerHost = 'http://localhost:8080'
         const URL = ownerHost + `/api/ownerVOs/`
         const response = await fetch(URL);
         if (response.ok) {
@@ -154,7 +154,7 @@ class DogInfo extends React.Component {
                     ACL: 'public-read',
                     Body: file,
                     Bucket: S3_BUCKET,
-                    Key: `us-west - 1 / ${props.owner} /${props.dog}`
+                    Key: `us-west-1/${props.owner}/${props.dog}`
                 };
                 myBucket.putObject(params)
                     .on('httpUploadProgress', (evt) => {

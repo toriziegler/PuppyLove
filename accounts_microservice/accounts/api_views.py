@@ -1,3 +1,4 @@
+
 from .models import Owner, State, Article
 from .encoders import OwnerEncoder, StateEncoder
 from django.http import JsonResponse
@@ -6,6 +7,7 @@ from django.views.decorators.http import require_http_methods
 import json
 from .serializers import ArticleSerializer, UserSerializer
 from rest_framework import viewsets
+from rest_framework.response import Response
 from django.contrib.auth.models import User
 from rest_framework.authentication import TokenAuthentication
 
@@ -19,6 +21,12 @@ class ArticleViewSet(viewsets.ModelViewSet):
     queryset = Article.objects.all()
     serializer_class = ArticleSerializer
     authentication_classes = (TokenAuthentication,)
+
+
+@require_http_methods(["GET"])
+def current_user(request):
+    serializer = UserSerializer(request.user)
+    return Response(serializer.data)
 
 
 @csrf_exempt
