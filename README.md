@@ -1,3 +1,7 @@
+# Status
+Main branch is NOT deployed with authentication - Authentication is in the works and available via main branch and viewable with localhost. 
+Deploy branch has our fully deployed product.
+
 # Puppy Love
 
 - Nicolas Asparria
@@ -22,12 +26,8 @@ This social network is for dog owners who are seeking compatible playmates for t
 # Features and Functionality
 
 - Minimum Viable Product:
-  - Users can sign up as an owner
-  - Users can sign up their dog
-  - Personal Profile: users can view their dogs profiles on a personal page
-  - Find a Friend Page: users can view all dog profiles on the web site and view contact information to make new friends
+  - Profile - submission of breed documentation and photos to pet profiles
   - Login / Logout / Signup
-
 - Stretch Goals: ordered by highest priority
   - Networking - contact information / direct messaging functionality
   - Search Specifications (breed, size, state)
@@ -38,3 +38,6 @@ This social network is for dog owners who are seeking compatible playmates for t
   - Find shelters in your area to rescue a new furry friend
   - Videochat
   - Groomers
+
+# Public URL
+https://pawfessional-programmers.gitlab.io/puppy-love
