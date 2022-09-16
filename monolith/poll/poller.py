@@ -8,7 +8,7 @@ import requests
 sys.path.append("../api")
 # host = 'http://account-api:8000'
 # host = 'https://puppylove-accounts-api.herokuapp.com'
-host = os.environ.get('REACT_APP_ACCOUNT_API', 'MISCONFIGURED!')
+host = os.environ.get("REACT_APP_ACCOUNT_API", "MISCONFIGURED!")
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "puppylove.settings")
 django.setup()
 
@@ -16,7 +16,7 @@ from puppylove_rest.models import OwnerVO
 
 
 def get_owners():
-    url = host + '/owners/'
+    url = host + "/owners/"
     response = requests.get(url)
     content = json.loads(response.content)
     for owner in content["owners"]:

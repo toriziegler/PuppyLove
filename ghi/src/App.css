@@ -5,7 +5,6 @@
 
 .post_line {
   overflow: visible;
-  /* For IE */
   padding: 0;
   border: none;
   border-top: medium double white;

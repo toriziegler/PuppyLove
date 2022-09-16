@@ -34,25 +34,13 @@ function Footer({ children }) {
   );
 }
 
-// function CheckUser(token) {
-//   //const statesHost = `${process.env.REACT_APP_ACCOUNT_API}`
-//   const Host = 'http://localhost:8100'
-//   const URL = Host + '/api/current/';
-//   const response = await fetch(URL);
-//   if (response.ok) {
-//     const data = await response.json();
-//     console.log(data)
-//   }
-// }
 
 function Nav() {
-  // let { user, logoutUser } = useContext(AuthContext)
   const [token, SetToken, removeToken] = useCookies(['mytoken'])
-
   const logoutBtn = () => {
     removeToken(['mytoken'])
-
   }
+
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light">
@@ -81,12 +69,12 @@ function Nav() {
               <NavLink className="nav-link" to="/doginfo/">Dog Information</NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" to="/ownerinfo">Owner Information</NavLink>
+              <NavLink className="nav-link" to="/ownerinfo/">Owner Information</NavLink>
             </li>
           </ul>
           <ul className="navbar-nav justify-content-end mb-2 mb-lg-0">
             <li className="nav-item">
-              <NavLink className="nav-link" to="/login" onClick={logoutBtn}>Log out</NavLink>
+              <NavLink className="nav-link" to="/login/" onClick={logoutBtn}>Log out</NavLink>
             </li>
           </ul>
           <div>

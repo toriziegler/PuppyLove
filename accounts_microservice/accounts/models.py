@@ -31,7 +31,10 @@ class Owner(models.Model):
     phone = models.PositiveBigIntegerField(unique=True)
     description = models.TextField(max_length=1000)
     state = models.ForeignKey(
-        State, related_name="+", on_delete=models.PROTECT)
+        State,
+        related_name="+",
+        on_delete=models.PROTECT
+    )
 
     def __str__(self):
         return f"{self.name}"

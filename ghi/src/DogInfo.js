@@ -36,7 +36,6 @@ class DogInfo extends React.Component {
         delete data.genders;
         delete data.sizes;
         delete data.hasSignedUp;
-
         //const dogHost = `${process.env.REACT_APP_MONOLITH_API}` 
         const dogHost = 'http://localhost:8080'
         const url = dogHost + `/api/dogs/`
@@ -48,8 +47,6 @@ class DogInfo extends React.Component {
             },
             credentials: 'include'
         };
-
-
         const response = await fetch(url, fetchConfig);
         if (response.ok) {
             let successTag = document.getElementById('success-message');
@@ -80,7 +77,6 @@ class DogInfo extends React.Component {
             this.setState({ owners: data.owners });
         }
     }
-
 
     handleNameChange(event) {
         const value = event.target.value;
@@ -123,32 +119,26 @@ class DogInfo extends React.Component {
             messageClasses = 'alert alert-success mb-0';
             formClasses = 'd-none';
         }
-
         const BUCKET_NAME = process.env.REACT_APP_AWS_STORAGE_BUCKET_NAME;
         const AWSREGION = process.env.REACT_APP_REGION;
         const KEY_ID = process.env.REACT_APP_AWS_ACCESS_KEY_ID;
         const ACCESS_KEY = process.env.REACT_APP_AWS_SECRET_ACCESS_KEY;
         const S3_BUCKET = BUCKET_NAME;
         const REGION = AWSREGION;
-
         AWS.config.update({
             accessKeyId: KEY_ID,
             secretAccessKey: ACCESS_KEY
         })
-
         const myBucket = new AWS.S3({
             params: { Bucket: S3_BUCKET },
             region: REGION,
         })
-
         const UploadImageToS3WithNativeSdk = (props) => {
             const [progress, setProgress] = useState(0);
             const [selectedFile, setSelectedFile] = useState(null);
-
             const handleFileInput = (e) => {
                 setSelectedFile(e.target.files[0]);
             }
-
             const uploadFile = (file) => {
                 const params = {
                     ACL: 'public-read',
@@ -164,8 +154,6 @@ class DogInfo extends React.Component {
                         if (err) console.log(err)
                     })
             }
-
-
             return <div>
                 <div>File Upload Progress is {progress}%</div>
                 <input type="file" onChange={handleFileInput} />

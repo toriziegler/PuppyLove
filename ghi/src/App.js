@@ -1,12 +1,10 @@
 import './App.css';
-import ArticleList from './ArticleList';
 import { useState, useEffect } from 'react'
 import 'bootstrap/dist/css/bootstrap.css';
-import Form from './Form';
 import { useNavigate } from 'react-router-dom'
 import { useCookies } from 'react-cookie'
 
-function App(props) {
+function App() {
   const [articles, setArticles] = useState([])
   const [editArticle, setEditArticle] = useState('')
   const [token, setToken, removeToken] = useCookies(['mytoken'])

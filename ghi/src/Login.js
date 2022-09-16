@@ -10,8 +10,6 @@ function Login() {
     const [token, setToken] = useCookies(['mytoken'])
     let navigate = useNavigate()
     const [isLogin, setLogin] = useState(true)
-
-
     useEffect(() => {
         var user_token = token['mytoken']
         console.log('Login User token is', user_token)
@@ -22,9 +20,7 @@ function Login() {
         } else {
             navigate('/articles')
         }
-
     }, [navigate, token])
-
     const loginBtn = () => {
         if (username.trim().length !== 0 && password.trim().length) {
             console.log('Username And Password Are Set')
@@ -36,8 +32,6 @@ function Login() {
             navigate('/')
         }
     }
-
-
     const RegisterBtn = () => {
         if (username.trim().length !== 0 && password.trim().length !== 0) {
             console.log('Username and password are set');
@@ -47,9 +41,9 @@ function Login() {
         } else {
             navigate('/')
             console.log('Username and password are not set');
-
         }
     }
+
 
     return (
         <div className="App">
@@ -95,7 +89,6 @@ function Login() {
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>

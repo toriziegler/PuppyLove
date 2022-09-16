@@ -5,11 +5,9 @@ import { useCookies } from 'react-cookie';
 
 function ArticleList(props) {
     const [token] = useCookies(['mytoken'])
-
     const editBtn = (article) => {
         props.editBtn(article)
     }
-
     const deleteBtn = (article) => {
         APIService.DeleteArticle(article.id, token['mytoken'])
             .then(() => props.deleteBtn(article))
@@ -23,7 +21,6 @@ function ArticleList(props) {
                     <div key={article.id}>
                         <h1>{article.title}</h1>
                         <p>{article.description}</p>
-
                         <div className="row">
                             <div className="col-md-1">
                                 <button className="btn btn-primary" onClick={() => editBtn(article)}>Update</button>

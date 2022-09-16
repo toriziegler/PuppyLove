@@ -7,7 +7,7 @@ function ProfileColumn(props) {
                 const dog = data;
                 return (
                     <div key={dog.id} className="card mb-3 shadow card text-white bg-dark">
-                        <img src="https://puppy-love-assets.s3.amazonaws.com/us-west-1/dogs/Willie_logo_2.jpg" alt="hi" className="card-img-top" />
+                        <img src={`https://puppy-love-assets.s3.amazonaws.com/us-west-1/${dog.owner.id}/${dog.name}`} alt="hi" className="card-img-top" />
                         <div className="card-body">
                             <h5 className="card-title">{dog.name}</h5>
                             <h6 className="card-subtitle mb-2 text-muted">
@@ -42,7 +42,6 @@ class ProfileCard extends React.Component {
         this.handleOwnerChange = this.handleOwnerChange.bind(this);
         this.profileColumns = this.profileColumns.bind(this);
     }
-
 
     async handleOwnerChange(event) {
         const value = event.target.value;

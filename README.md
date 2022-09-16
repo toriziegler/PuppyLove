@@ -22,8 +22,12 @@ This social network is for dog owners who are seeking compatible playmates for t
 # Features and Functionality
 
 - Minimum Viable Product:
-  - Profile - submission of breed documentation and photos to pet profiles
+  - Users can sign up as an owner
+  - Users can sign up their dog
+  - Personal Profile: users can view their dogs profiles on a personal page
+  - Find a Friend Page: users can view all dog profiles on the web site and view contact information to make new friends
   - Login / Logout / Signup
+
 - Stretch Goals: ordered by highest priority
   - Networking - contact information / direct messaging functionality
   - Search Specifications (breed, size, state)

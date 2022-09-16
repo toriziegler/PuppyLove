@@ -21,16 +21,17 @@ class ForgotPassword extends React.Component {
         const data = { ...this.state };
         delete data.showPassword;
         delete data.verify_password;
-
-        const url = 'http://localhost:8100/api/create_users/';
+        //const statesHost = `${process.env.REACT_APP_ACCOUNT_API}`
+        const usersHost = 'http://localhost:8100'
+        const url = usersHost + '/api/create_users/';
         const fetchConfig = {
             method: "POST",
             body: JSON.stringify(data),
             headers: {
                 'Content-Type': 'application/json',
             },
+            credentials: 'include'
         };
-
         const response = await fetch(url, fetchConfig);
         if (response.ok) {
             this.setState({
@@ -59,7 +60,6 @@ class ForgotPassword extends React.Component {
         const value = event.target.value;
         this.setState({ verify_password: value });
     }
-
 
 
     render() {
@@ -91,19 +91,16 @@ class ForgotPassword extends React.Component {
                                         placeholder="Old Password" required type="password" name="password"
                                         id="password" />
                                 </div>
-
                                 <div className="form-floating mb-3" >
                                     <input value={this.state.password} onChange={this.handlePasswordChange}
                                         placeholder="Password" required type="password" name="password"
                                         id="signuppassword" />
                                 </div>
-
                                 <div className="form-floating mb-3" >
                                     <input value={this.state.verify_password} onChange={this.handleVerify_PasswordChange}
                                         placeholder="Verify Password" required type="password" name="verify-password"
                                         id="verify-password" />
                                 </div>
-
                                 <br></br>
                                 <button type="submit" name='newpassword'
                                     className="btn btn-success" form="newpassword-form">Confirm new password

@@ -1,4 +1,3 @@
-
 from .models import Owner, State, Article
 from .encoders import OwnerEncoder, StateEncoder
 from django.http import JsonResponse
@@ -7,14 +6,8 @@ from django.views.decorators.http import require_http_methods
 import json
 from .serializers import ArticleSerializer, UserSerializer
 from rest_framework import viewsets
-from rest_framework.response import Response
 from django.contrib.auth.models import User
 from rest_framework.authentication import TokenAuthentication
-
-
-class UserViewSet(viewsets.ModelViewSet):
-    queryset = User.objects.all()
-    serializer_class = UserSerializer
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -33,11 +26,9 @@ class CurrentUserSet(viewsets.ModelViewSet):
     serializer_class = UserSerializer
 
     def get_object(self):
-        pk = self.kwargs.get('pk')
-
+        pk = self.kwargs.get("pk")
         if pk == "current":
             return self.request.user
-
         return super().get_object()
 
 
@@ -89,11 +80,10 @@ def api_owner_show_update_delete(request, pk):
         except Owner.DoesNotExist:
             return JsonResponse({"message": "This owner does not exist"})
 
-    else:  # PUT
+    else:
         try:
             content = json.loads(request.body)
             owner = Owner.objects.get(id=pk)
-
             props = ["name", "email", "phone", "description", "state"]
             for prop in props:
                 if prop in content:
@@ -104,7 +94,6 @@ def api_owner_show_update_delete(request, pk):
                 encoder=OwnerEncoder,
                 safe=False,
             )
-
         except Owner.DoesNotExist:
             response = JsonResponse({"message": "Does not exist"})
             response.status_code = 404
