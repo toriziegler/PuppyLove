@@ -249,7 +249,7 @@ class DogInfo extends React.Component {
                                     View your dog's profile here:
                                     <br></br>
                                     <Link to="/profile" className="mainlink">
-                                        <button type="button" className="btn btn-secondary">View Profile</button>
+                                        <button type="button" className="btn btn-success">View Profile</button>
                                     </Link>
                                     <br></br>
                                 </div>

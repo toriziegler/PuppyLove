@@ -1,6 +1,6 @@
 from django.test import TestCase, Client
 from django.urls import reverse
-# from accounts.models import Owner, State
+from accounts.models import Owner, State
 
 
 class TestStates(TestCase):
@@ -17,17 +17,11 @@ class TestOwners(TestCase):
         self.assertEquals(response.status_code, 200)
 
 
-# class OwnerDelete(TestCase):
+# class TestUsers(TestCase):
 #     def test_list_owners(self):
 #         client = Client()
-#         response = client.delete(reverse("api_owners"))
-
-
-class TestUsers(TestCase):
-    def test_list_owners(self):
-        client = Client()
-        response = client.get(reverse("api_users"))
-        self.assertEquals(response.status_code, 200)
+#         response = client.get(reverse("api_users"))
+#         self.assertEquals(response.status_code, 200)
 
 # class TestPostOwners(TestCase):
 #     def test_post_owners(self):
@@ -44,4 +38,43 @@ class TestUsers(TestCase):
 #         ))
 #         self.assertEquals(response.status_code, 200)
 
+class TestPostDogs(TestCase):
+    def setUp(self):
+        st = State.objects.create(
+            name='Alfie',
+            id=55,
+            abbreviation='TX',
+        )
+        Owner.objects.create(
+            name='Annie',
+            email='annie@alfie.com',
+            image='None',
+            phone='1234567899',
+            description='grumpydog',
+            state=st
+        )
 
+    def test_owner_create(self):
+        coolGuy = Owner.objects.get(description='grumpydog')
+        self.assertEquals(coolGuy.name, 'Annie')
+
+
+class TestPostOwners(TestCase):
+    def setUp(self):
+        st = State.objects.create(
+            name='TheSouth',
+            id=55,
+            abbreviation='TS',
+        )
+        Owner.objects.create(
+            name='SecretAgent',
+            email='secret@cia.com',
+            image='None',
+            phone='1234567899',
+            description='Secret',
+            state=st
+        )
+
+    def test_owner_create(self):
+        coolGuy = Owner.objects.get(description='Secret')
+        self.assertEquals(coolGuy.name, 'SecretAgent')

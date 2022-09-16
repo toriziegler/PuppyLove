@@ -2,3 +2,13 @@
   font-family: sans-serif;
   text-align: center;
 }
+
+.post_line {
+  overflow: visible;
+  /* For IE */
+  padding: 0;
+  border: none;
+  border-top: medium double white;
+  color: white;
+  text-align: center;
+}

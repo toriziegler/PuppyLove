@@ -2,11 +2,9 @@ import { NavLink } from 'react-router-dom';
 import { Link } from 'react-router-dom'
 import React from 'react';
 import logo from "./assets/images/taylordrawing2.png"
-import { useContext } from 'react'
-import AuthContext from './AuthContext'
-
-
-
+// import { useContext } from 'react'
+// import AuthContext from './AuthContext'
+import { useCookies } from 'react-cookie';
 
 const footerStyle = {
   backgroundColor: "",
@@ -41,7 +39,14 @@ function Footer({ children }) {
 
 
 function Nav() {
-  let { user, logoutUser } = useContext(AuthContext)
+  // let { user, logoutUser } = useContext(AuthContext)
+  const [token, SetToken, removeToken] = useCookies(['mytoken'])
+
+  const logoutBtn = () => {
+    removeToken(['mytoken'])
+
+  }
+
   return (
     <nav className="navbar navbar-expand-lg navbar-light">
       <div>
@@ -67,32 +72,15 @@ function Nav() {
               <NavLink className="nav-link" to="/profile">Profile</NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" to="/listprofiles">Find a New Friend</NavLink>
-            </li>
-            <li className="nav-item">
               <NavLink className="nav-link" to="/doginfo">Dog Information</NavLink>
             </li>
             <li className="nav-item">
               <NavLink className="nav-link" to="/ownerinfo">Owner Information</NavLink>
             </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/upload">Upload Photos</NavLink>
-            </li>
           </ul>
           <ul className="navbar-nav justify-content-right mb-2 mb-lg-0">
             <li className="nav-item">
-              {user ? (
-                <p className="nav-link" onClick={logoutUser}></p>
-              ) : (
-                <Link className="nav-link" to="/login" >Log in</Link>
-              )}
-            </li>
-            <li className="nav-item">
-              {user ? (
-                <p className="nav-link" onClick={logoutUser}>Logout</p>
-              ) : (
-                <Link className="nav-link" to="/signup" >Sign up</Link>
-              )}
+              <Link className="nav-link" to="/login" onClick={logoutBtn}>Log in/Log out</Link>
             </li>
           </ul>
           <div>

@@ -7,7 +7,7 @@ function ProfileColumn(props) {
                 const dog = data;
                 return (
                     <div key={dog.id} className="card mb-3 shadow card text-white bg-dark">
-                        <img src={`https://puppy-love-assets.s3.amazonaws.com/us-west-1/${dog.owner.id}/${dog.name}`} className="card-img-top" alt='dog' />
+                        <img src="https://puppy-love-assets.s3.amazonaws.com/us-west-1/dogs/Willie_logo_2.jpg" alt="hi" className="card-img-top" />
                         <div className="card-body">
                             <h5 className="card-title">{dog.name}</h5>
                             <h6 className="card-subtitle mb-2 text-muted">
@@ -51,12 +51,12 @@ class ProfileCard extends React.Component {
     }
 
     async profileColumns() {
-        const dogsResponse = await fetch(`http://localhost:8080/api/owners_dogs/${this.state.owner}/`);
+        const dogsResponse = await fetch(`http://localhost:8080/owners_dogs/${this.state.owner}/`);
         if (dogsResponse.ok) {
             const dogsData = await dogsResponse.json();
             const requests = [];
             for (let dog of dogsData.dogs) {
-                const specificDogUrl = `http://localhost:8080/api/dogs/${dog.id}/`;
+                const specificDogUrl = `http://localhost:8080/dogs/${dog.id}/`;
                 requests.push(fetch(specificDogUrl));
             }
             const responses = await Promise.all(requests);

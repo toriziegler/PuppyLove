@@ -1,64 +1,57 @@
-import React from 'react';
-import { useContext } from 'react';
-import AuthContext from './AuthContext'
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom'
+import { useCookies } from 'react-cookie'
+import APIService from './APIService'
+// import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 
-
-// const LoginForm = () => {
-//     let { loginUser } = useContext(AuthContext)
-//     return (
-//         <div>
-//             <form onSubmit={loginUser}>
-//                 <input type="text" name="username" placeholder="Enter Username" />
-//                 <input type="password" name="password" placeholder="Enter Password" />
-//                 <input type="submit" />
-//             </form>
-//         </div>
-//     )
-// }
+function LoginForm() {
+    const [username, setUsername] = useState('')
+    const [password, setPassword] = useState('')
+    const [token, setToken] = useCookies(['mytoken'])
+    let navigate = useNavigate()
+    const [isLogin, setLogin] = useState(true)
 
 
-// class LoginForm extends React.Component {
-//     constructor(props) {
-//         super(props);
-//         this.state = {
-//             username: "",
-//             password: "",
-//         };
+    useEffect(() => {
+        var user_token = token['mytoken']
+        console.log('Login User token is', user_token)
+        console.log('Data type', typeof (token['mytoken']))
 
-//         // this.handleSubmit = this.handleSubmit.bind(this);
-//         this.handleChangeUserName = this.handleChangeUserName.bind(this);
-//         this.handleChangePassword = this.handleChangePassword.bind(this);
-//     }
+        if (String(user_token) === 'undefined') {
+            navigate('/')
+        } else {
+            navigate('/puppy-love/')
+        }
+
+    }, [navigate, token])
+
+    const loginBtn = () => {
+        if (username.trim().length !== 0 && password.trim().length) {
+            console.log('Username And Password Are Set')
+            APIService.LoginUser({ username, password })
+                .then(resp => setToken('mytoken', resp.token))
+                .catch(error => console.log(error))
+        } else {
+            console.log('Username And Password Are Not Set')
+            navigate('/')
+        }
+    }
 
 
-//     handleChangeUserName(event) {
-//         const value = event.target.value;
-//         this.setState({ username: value });
-//     }
+    const RegisterBtn = () => {
+        if (username.trim().length !== 0 && password.trim().length !== 0) {
+            console.log('Username and password are set');
+            APIService.RegisterUser({ username, password })
+                .then(() => loginBtn())
+                .catch(error => console(error))
+        } else {
+            navigate('/')
+            console.log('Username and password are not set');
 
-//     handleChangePassword(event) {
-//         const value = event.target.value;
-//         this.setState({ password: value });
-//     }
+        }
+    };
 
-
-// handleSubmit = async (e) => {
-//     e.preventDefault()
-//     const error = await this.props.login(this.state.username, this.state.password);
-//     this.setState({ error: error })
-//     this.setState({
-//         username: '',
-//         password: '',
-//     });
-// }
-
-// validForm() {
-//     return this.state.password.length >= 8 &&
-//            this.state.username
-// }
-const LoginForm = () => {
-    let { loginUser } = useContext(AuthContext)
     return (
         <div className="App">
             <div
@@ -76,29 +69,33 @@ const LoginForm = () => {
                 <div className="card mx-auto" style={{ width: "18rem" }}>
                     <div className="card" id="wrap" >
                         <div className="shadow p-4 mt-4" id="box" >
-                            <form onSubmit={loginUser} id="login-form" >
-                                <h1>Login!</h1>
-                                <hr />
-                                <div className="form-floating mb-3">
-                                    <input type='text' id="email" name='email' placeholder='email' />
+                            <form id="login-form" > {/*//on submit */}
 
+                                <div className="form-group"></div>
+                                {isLogin ? <h3>Please Login Here</h3> : <h3>Please Register Here</h3>}
+                                <div className="form-group">
+                                    <label htmlFor="username">Username</label>
+                                    <input type="text" value={username} className="form-control" placeholder="Enter Username" onChange={e => setUsername(e.target.value)} />
                                 </div>
-                                <div className="form-floating mb-3" >
-                                    <input type="password" id="password" name='password' placeholder='●●●●●●●●' />
-
+                                <div className="form-group">
+                                    <label htmlFor="password">Password</label>
+                                    <input type="password" value={password} className="form-control" placeholder="Enter Password" onChange={e => setPassword(e.target.value)} />
+                                </div>
+                                <div>
+                                    {isLogin ?
+                                        <div>
+                                            <button onClick={loginBtn} className="btn btn-primary">Login</button>
+                                            <p>If You Don't Have Account, Please</p><button onClick={() => setLogin(false)} className="btn btn-primary">Register</button></div>
+                                        :
+                                        <div>
+                                            <button onClick={RegisterBtn} className="btn btn-primary">Register</button>
+                                            <p>If You Have Account, Please <button className="btn btn-primary" onClick={() => setLogin(true)}>Login</button></p></div>
+                                    }
+                                </div>
+                                <div >
                                 </div>
                                 <hr />
-
-                                <button
-                                    type="submit" name='loginbutton'
-
-                                    className="btn btn-primary" form="login-form">Log In
-                                </button>
                                 <Link to="/forgotpassword">Forgot Password?</Link>
-
-                                <p>
-                                    Don't have an Account?     &nbsp;&nbsp;&nbsp;&nbsp;    <Link to='/signup'>Create Account</Link>
-                                </p>
                             </form>
                         </div>
                     </div>
