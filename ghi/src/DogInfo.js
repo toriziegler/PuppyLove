@@ -154,7 +154,7 @@ class DogInfo extends React.Component {
                     ACL: 'public-read',
                     Body: file,
                     Bucket: S3_BUCKET,
-                    Key: `us-west - 1 / ${props.owner} /${props.dog}`
+                    Key: `us-west-1/${props.owner}/${props.dog}`
                 };
                 myBucket.putObject(params)
                     .on('httpUploadProgress', (evt) => {
