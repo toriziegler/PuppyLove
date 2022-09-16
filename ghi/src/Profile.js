@@ -102,28 +102,42 @@ class ProfileCard extends React.Component {
     render() {
         return (
             <>
-                <div className="container">
-                    <h2>Your Pup Profiles</h2>
-                    <div className="mb-3">
-                        <select onChange={this.handleOwnerChange} value={this.state.owner} name="owner" required id="owner" className="form-select">
-                            <option value="">Which of your dogs would you like to see?</option>
-                            {this.state.owners.map(owner => {
-                                return (
-                                    <option key={owner.id} value={owner.id}>
-                                        {owner.name}
-                                    </option>
-                                )
-                            })}
-                        </select>
+                <div className="App">
+                    <div
+                        className="container-fluid d-flex align-items-center"
+                        style={{
+                            height: "100vh",
+                            backgroundImage:
+                                "url(https://images.pexels.com/photos/2607544/pexels-photo-2607544.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1)",
+                            backgroundPosition: "center",
+                            backgroundSize: "cover",
+                            backgroundRepeat: "no-repeat"
+                        }}
+                    >
+                        <div className="container">
+                            <h2>Your Pup Profiles</h2>
+                            <div className="mb-3">
+                                <select onChange={this.handleOwnerChange} value={this.state.owner} name="owner" required id="owner" className="form-select">
+                                    <option value="">Which of your dogs would you like to see?</option>
+                                    {this.state.owners.map(owner => {
+                                        return (
+                                            <option key={owner.id} value={owner.id}>
+                                                {owner.name}
+                                            </option>
+                                        )
+                                    })}
+                                </select>
+                            </div>
+                            <div className="row">
+                                {this.state.profileColumns.map((profileList, index) => {
+                                    return (
+                                        <ProfileColumn key={index} list={profileList} />
+                                    );
+                                })}
+                            </div>
+                        </div>
                     </div>
-                    <div className="row">
-                        {this.state.profileColumns.map((profileList, index) => {
-                            return (
-                                <ProfileColumn key={index} list={profileList} />
-                            );
-                        })}
-                    </div>
-                </div>
+                </div >
             </>
         );
     }

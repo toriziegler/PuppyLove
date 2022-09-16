@@ -3,7 +3,7 @@ Today I worked on:
 
 * Deployment
 
-    Heroku has been fixed and is now created the owner instance with an id in the postgres database. Our accounts microservice was working fully in the morning and we are trying to get the monolith service to work, but the poller is currently down. I fixed the url variables throughout the project to have localhost portions commented out but available for us, and the REACT_APPs uncommented so it is ready for deployment. 
+    Heroku has been fixed and is now created the owner instance with an id in the postgres database. Our accounts microservice was working fully in the morning and we are trying to get the monolith service to work, but the poller is currently down. I fixed the url variables throughout the project to have localhost portions commented out but available for us, and the REACT_APPs uncommented so it is ready for deployment. We added all of the variables to our heroku and gitlab. OUR PRODUCT IS DEPLOYED! We do not have authentication added in so that is now a stretch goal. All of our pages are fully functional in our deployed product.
 
 # September 15, 2022
 Today I worked on:
