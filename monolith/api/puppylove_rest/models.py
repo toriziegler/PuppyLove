@@ -7,7 +7,6 @@ def user_directory_path(instance, filename):
 
 
 class OwnerVO(models.Model):
-    id = models.PositiveIntegerField(primary_key=True)
     state = models.CharField(max_length=2)
     name = models.CharField(max_length=200)
     email = models.EmailField()
@@ -30,7 +29,6 @@ class Dog(models.Model):
         ("Large", "55-74 Pounds"),
         ("Giant", "75-120+ Pounds"),
     )
-    id = models.PositiveIntegerField(primary_key=True)
     name = models.CharField(max_length=200)
     age = models.SmallIntegerField(null=True, blank=True)
     breed = models.CharField(max_length=100, default="mix")
