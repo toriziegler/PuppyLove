@@ -46,17 +46,14 @@ function Footer({ children }) {
 // }
 
 function Nav() {
-  const [token, SetToken, removeToken] = useCookies(['mytoken']) //token, SetToken,
+  // let { user, logoutUser } = useContext(AuthContext)
+  const [token, SetToken, removeToken] = useCookies(['mytoken'])
+
   const logoutBtn = () => {
     removeToken(['mytoken'])
+
   }
-  // let messageClasses = 'alert alert-success d-none mb-0';
-  // let formClasses = '';
-  // if (this.state.hasSignedUp) {
-  //   messageClasses = 'alert alert-success mb-0';
-  //   formClasses = 'd-none';
-  // }
-  // <form className={formClasses}
+
   return (
     <nav className="navbar navbar-expand-lg navbar-light">
       <div>

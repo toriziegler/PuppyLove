@@ -135,7 +135,7 @@ class SignUp extends React.Component {
                                             id="last_name" />
                                     </div>
                                     <br></br>
-                                    <button className="btn btn-secondary" type="submit">Submit</button>
+                                    <button className="btn btn-success" type="submit">Submit</button>
                                     <div className='tolgoin'>
                                         Already Have an Account?  <Link to='/login'>Sign In</Link>
                                     </div>
@@ -148,7 +148,7 @@ class SignUp extends React.Component {
                                     Please log in here:
                                     <br></br>
                                     <Link to="/login/" className="mainlink">
-                                        <button type="button" className="btn btn-secondary">Login</button>
+                                        <button type="button" className="btn btn-success">Login</button>
                                     </Link>
                                     <br></br>
                                 </div>

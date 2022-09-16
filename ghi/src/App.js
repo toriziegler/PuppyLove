@@ -1,18 +1,7 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import React from 'react';
-import MainPage from './MainPage';
-import Nav from './Nav';
-import Profile from './Profile';
-import Login from './Login';
-import SignUp from './SignUp';
-import OwnerInfo from './OwnerInfo';
-import DogInfo from './DogInfo';
-import ForgotPassword from './ForgotPassword';
-import ListProfiles from './ListProfiles';
-import ArticleList from './ArticlesList';
-import { useState, useEffect } from 'react';
+import './App.css';
+import ArticleList from './ArticleList';
+import { useState, useEffect } from 'react'
 import 'bootstrap/dist/css/bootstrap.css';
-import NavBar from './NavBar';
 import Form from './Form';
 import { useNavigate } from 'react-router-dom'
 import { useCookies } from 'react-cookie'
@@ -73,14 +62,13 @@ function App(props) {
     setArticles(new_article)
   }
 
-
   useEffect(() => {
     var user_token = token['mytoken']
     console.log('User token is', user_token)
     if (String(user_token) === 'undefined') {
       navigate('/puppy-love/')
     } else {
-      navigate('/puppy-love/')
+      navigate('/ownerinfo')
     }
   }, [token])
 

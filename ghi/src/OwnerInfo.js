@@ -154,7 +154,7 @@ class OwnerInfo extends React.Component {
                                     Add your dog here:
                                     <br></br>
                                     <Link to="/doginfo" className="mainlink">
-                                        <button type="button" className="btn btn-secondary">Dog Info</button>
+                                        <button type="button" className="btn btn-success">Dog Info</button>
                                     </Link>
                                 </div>
                             </div>

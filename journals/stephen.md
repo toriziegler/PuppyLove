@@ -49,3 +49,15 @@ Continued working on getting registration to work with Nicolas and Norton.
 
 # September 13
 Continued working on getting registration to work with Nicolas and Norton.
+
+# September 14
+Created a Forgot Password page, changed some css.
+Continuing working on getting registration to work with everyone.
+
+# September 15
+Registration works now!!!!!!!!!!!!!
+Updated other pages to look nicer.
+
+# September 16
+Cleaning up authorization, making sure links are blocked if not logged in
+writing unit test

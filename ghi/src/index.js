@@ -20,7 +20,7 @@ root.render(
   </React.StrictMode>
 );
 
-function Router(props) {
+function Router() {
   return (
     <BrowserRouter>
       <Nav />
@@ -33,7 +33,6 @@ function Router(props) {
         <Route path="signup" element={<SignUp />} />
         <Route path="doginfo" element={<DogInfo />} />
         <Route path="ownerinfo" element={<OwnerInfo />} />
-        <Route path="upload" element={<UploadImageToS3WithNativeSdk />} />
         <Route path="login" element={<Login />} />
         <Route path="forgotpassword" element={<ForgotPassword />} />
       </Routes>

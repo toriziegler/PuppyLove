@@ -52,7 +52,36 @@ Today is our day off, but I had to finish authentitication today. Not that I had
 
 So today I showed my group how the auth stuff worked. I worked with Stephen on trying to connect the files I had in my own branch into the main and into the actual files we want to render in our frontend, because I just did basic ones to show if the frontend was polling propertly from the backend. We figured out that as I change a lot of files, the better way would be manually merging, so I deleted the whole project and pull from gitlab. It came with an issue that I didn't know how to fix. We were debugging it and couldn't find an answer until almost attendance when Andrew came out to solve my help ticket and helped me figure out I was missing the .env file that we weren't pushing to gitlab. We Will have to work in the manual merging tomorrow but at least I know another issue I could run while pulling from git.
 
+## September 07, 2022
 
+Today I spent almost all day working with stephen to be able to merge our auth stuff into main. The thing is that login/logout was working propertly, but wasn't giving the correct token so. And I figure out today that eventually we would want to sign up too, so I'll have to take a look on fixing the login to grab the tokens and eventually figure a way with this jwt to work.
 
+## September 08, 2022
+
+So we figure out that the login was working propertly and started working in the signup backend with Norton. We ran into a bunch of docker crashes but eventually talking with Daniel he made me figure out a way to be able to manage the Django User model. A quick fix was made into our settings and we were set to mess with things around. We help taylor find the las bug that was hindering the AWS from taking in pictures from users (or rather he found it within the first min of walking the rest of us through what he was doing, so we could help him find the bug).
+
+## September 09, 2022
+
+Now today we were trying to implement the sign up backend into the frontend but it wasn't working. There was an issue about auth=group does not exist. After some research, we eventually figure out it was a migrations problems and this is because as we are now using docker and postgres, they ran automatically the migrations once the container is up. The container was always going out getting break because it wasn't catching the migrations for the new user. We will have to spend time figuring out this tomorrow.
+
+## September 12, 2022
+
+So today finally find out that the auth migrations (the migrations for the user model) weren't coming through because Daniel told me they have to be part of the first migrations. So with Andy's help, we made it to go through the Dockerfile auth as the first migration and it fixed. Now we could manage the user as we wanted. Finishing the day, we are able to login/logout, signing up from the backend and Django rest frameworks but still, not figuring out the frontend. I have to spend more time into that. 
+
+## September 13, 2022
+
+Today I spent almost all day doing research on how to implement the sign up into our project. unfortunately, the tutorial I was following was outdated and it wasn't rendering as supossed in the frontend. I'm wondering if I have to change to not use DRF (Django RestFrameworks) and start using something else. I took a look with the group to work using the authentitication cookbook but there wasn't a clear path there. So nevermind, I hope I get it to work this days because the due date is coming and I think this is a clear blocker for the MVP.
+
+## September 14, 2022
+
+So I try every way possible to don't delete the code I had for login/logout and signining up because it was working, but eventually I realized that it would take me a lot of time that we didn't have to be able to figure things out. I spent today almost all day doing research and helping my peers with other things of the project, but when the afternoon came I started again working in authentitication in another branch. I started almost from the scratch following a youtube tutorial that again, was using DRF. From what I read, this is pretty straight forward way to get the tokens. So I stayed all night working on this without literally sleeping and it worked! it worked without using our files, but still, it worked with docker so implementing it to the project shouldn't be that much of an issue. We are now using the Django standard User Model without making any changes to it. Using DefaultRouter from DRF that basically work as FastAPIs but from Django. It is amazing we should learn more about it. You do a simple view where you pass your variables, put it in the URLS and in the DRF you can manage your database to be able to create, get, put and delete your objects. I was impressed. Now, we can login/logout, signup and being redirect to the page! I want to show this to the group, finally I got this to work, now is time to implement it to our project!
+
+## September 15, 2022
+
+So today I spent almost all day with the group trying to connect the stuff I worked in about Authentitication with our real project. Of course, merging issues happened. We then decided to start manually merging and after a couple of ours, authentication is now working in some of our dev branch! Tomorrow we will have to focus on bringing it to the main branch as it is fully connected to one of our branches. Now, we will have to figure out a way that it only renders for people logged in. I wanted to end the day with making some unit tests but I spent almost an hour trying to create them for users and dogs and I wasn't able for some reason it isn't getting the IDs of the objects. I'll have to try again tomorrow.
+
+## September 16, 2022
+
+Today I started the day working again on Unit Tests and I was able to create a unit test for getting the users and creating them.
 
 
