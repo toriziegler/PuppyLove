@@ -6,17 +6,17 @@ from .api_views import (
     api_states,
     ArticleViewSet,
     UserViewSet,
-    current_user,
+    CurrentUserSet,
 )
 
 router = DefaultRouter()
 
 router.register('articles', ArticleViewSet, basename='articles')
 router.register('users', UserViewSet, basename='users')
+router.register('current', CurrentUserSet, basename='current')
 
 
 urlpatterns = [
-    path('current/', current_user, name='current'),
     path("owners/", api_owners, name="api_owners"),
     path("states/", api_states, name="api_states"),
     path('api/', include(router.urls)),
