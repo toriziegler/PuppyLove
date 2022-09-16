@@ -1,3 +1,7 @@
+# Status
+Main branch is NOT deployed with authentication - Authentication is in the works and available via main branch and viewable with localhost. 
+Deploy branch has our fully deployed product.
+
 # Puppy Love
 
 - Nicolas Asparria
@@ -34,3 +38,6 @@ This social network is for dog owners who are seeking compatible playmates for t
   - Find shelters in your area to rescue a new furry friend
   - Videochat
   - Groomers
+
+# Public URL
+https://pawfessional-programmers.gitlab.io/puppy-love
