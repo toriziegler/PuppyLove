@@ -21,9 +21,9 @@ class OwnerInfo extends React.Component {
     }
 
     async componentDidMount() {
-        const statesHost = `${process.env.REACT_APP_ACCOUNT_API}`
-        // const statesHost = 'http://localhost:8100'
-        const URL = statesHost + `/api/states/`;
+        //const statesHost = `${process.env.REACT_APP_ACCOUNT_API}`
+        const statesHost = 'http://localhost:8100'
+        const URL = statesHost + '/states/';
         const response = await fetch(URL);
         if (response.ok) {
             const data = await response.json();
@@ -36,10 +36,9 @@ class OwnerInfo extends React.Component {
         const data = { ...this.state };
         delete data.states;
         delete data.hasSignedUp;
-
-        const ownersHost = `${process.env.REACT_APP_ACCOUNT_API}`
-        // const ownersHost = 'http://localhost:8100'
-        const url = ownersHost + `/api/owners/`;
+        //const ownersHost = `${process.env.REACT_APP_ACCOUNT_API}`
+        const ownersHost = 'http://localhost:8100'
+        const url = ownersHost + `/owners/`;
         const fetchConfig = {
             method: "POST",
             body: JSON.stringify(data),
@@ -48,7 +47,6 @@ class OwnerInfo extends React.Component {
             },
             credentials: 'include'
         };
-
         const response = await fetch(url, fetchConfig);
         if (response.ok) {
             let successTag = document.getElementById('success-message');
@@ -65,6 +63,7 @@ class OwnerInfo extends React.Component {
             });
         }
     }
+
     handleNameChange(event) {
         const value = event.target.value;
         this.setState({ name: value });
@@ -85,6 +84,8 @@ class OwnerInfo extends React.Component {
         const value = event.target.value;
         this.setState({ state: value });
     }
+
+
     render() {
         let messageClasses = 'alert alert-success d-none mb-0';
         let formClasses = '';
@@ -153,8 +154,8 @@ class OwnerInfo extends React.Component {
                                     <br></br>
                                     Add your dog here:
                                     <br></br>
-                                    <Link to="/doginfo" className="mainlink">
-                                        <button type="button" className="btn btn-secondary">Dog Info</button>
+                                    <Link to="/doginfo/" className="mainlink">
+                                        <button type="button" className="btn btn-success">Dog Info</button>
                                     </Link>
                                 </div>
                             </div>

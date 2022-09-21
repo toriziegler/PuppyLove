@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 function ProfileColumn(props) {
     return (
         <div className="col">
@@ -7,7 +8,7 @@ function ProfileColumn(props) {
                 const dog = data;
                 return (
                     <div key={dog.id} className="card mb-3 shadow card text-white bg-dark">
-                        <img src={`https://puppy-love-assets.s3.amazonaws.com/us-west-1/${dog.owner.id}/${dog.name}`} className="card-img-top" alt='dog' />
+                        <img src={`https://puppy-love-assets.s3.amazonaws.com/us-west-1/${dog.owner.id}/${dog.name}`} alt="" className="card-img-top" />
                         <div className="card-body">
                             <h5 className="card-title">{dog.name}</h5>
                             <h6 className="card-subtitle mb-2 text-muted">
@@ -40,18 +41,17 @@ class ListProfiles extends React.Component {
     }
 
     async componentDidMount() {
-        const dogsHost = `${process.env.REACT_APP_MONOLITH_API}`
-        // const dogsHost = 'http://localhost:8080'
+        //const dogsHost = `${process.env.REACT_APP_MONOLITH_API}`
+        const dogsHost = 'http://localhost:8080'
         const url = dogsHost + `/api/dogs/`;
-
         try {
             const response = await fetch(url);
             if (response.ok) {
                 const data = await response.json();
                 const requests = [];
                 for (let dog of data.dogs) {
-                    const dogHost = `${process.env.REACT_APP_MONOLITH_API}`
-                    // const dogHost = 'http://localhost:8080'
+                    //const dogHost = `${process.env.REACT_APP_MONOLITH_API}`
+                    const dogHost = 'http://localhost:8080'
                     const detailUrl = dogHost + `/api/dogs/${dog.id}/`;
                     requests.push(fetch(detailUrl));
                 }

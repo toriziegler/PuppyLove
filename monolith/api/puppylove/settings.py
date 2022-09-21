@@ -58,7 +58,7 @@ ALLOWED_HOSTS = [
     "account-api",
     "puppylove-account-api.herokuapp.com",
     "puppylove-monolith-api.herokuapp.com",
-    "puppylove-monolith-poller.herokuapp.com"
+    "puppylove-monolith-poller.herokuapp.com",
 ]
 
 
@@ -136,7 +136,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'puppylove.wsgi.application'
+WSGI_APPLICATION = "puppylove.wsgi.application"
 
 
 # Database

@@ -5,6 +5,14 @@ def user_directory_path(instance, filename):
     return "user_{0}/{1}".format(instance.name, filename)
 
 
+class Article(models.Model):
+    title = models.CharField(max_length=100)
+    description = models.TextField()
+
+    def __str__(self):
+        return self.title
+
+
 class State(models.Model):
     name = models.CharField(max_length=40)
     id = models.IntegerField(primary_key=True)
@@ -23,7 +31,10 @@ class Owner(models.Model):
     phone = models.PositiveBigIntegerField(unique=True)
     description = models.TextField(max_length=1000)
     state = models.ForeignKey(
-        State, related_name="+", on_delete=models.PROTECT)
+        State,
+        related_name="+",
+        on_delete=models.PROTECT
+    )
 
     def __str__(self):
         return f"{self.name}"

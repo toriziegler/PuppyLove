@@ -7,7 +7,7 @@ function ProfileColumn(props) {
                 const dog = data;
                 return (
                     <div key={dog.id} className="card mb-3 shadow card text-white bg-dark">
-                        <img src={`https://puppy-love-assets.s3.amazonaws.com/us-west-1/${dog.owner.id}/${dog.name}`} className="card-img-top" alt='dog' />
+                        <img src={`https://puppy-love-assets.s3.amazonaws.com/us-west-1/${dog.owner.id}/${dog.name}`} alt="hi" className="card-img-top" />
                         <div className="card-body">
                             <h5 className="card-title">{dog.name}</h5>
                             <h6 className="card-subtitle mb-2 text-muted">
@@ -43,7 +43,6 @@ class ProfileCard extends React.Component {
         this.profileColumns = this.profileColumns.bind(this);
     }
 
-
     async handleOwnerChange(event) {
         const value = event.target.value;
         await this.setState({ owner: value })
@@ -51,15 +50,15 @@ class ProfileCard extends React.Component {
     }
 
     async profileColumns() {
-        const ownersDogsHost = `${process.env.REACT_APP_MONOLITH_API}`
-        // const ownersDogsHost = 'http://localhost:8080'
+        //const ownersDogsHost = `${process.env.REACT_APP_MONOLITH_API}`
+        const ownersDogsHost = 'http://localhost:8080'
         const dogsResponse = await fetch(ownersDogsHost + `/api/owners_dogs/${this.state.owner}/`);
         if (dogsResponse.ok) {
             const dogsData = await dogsResponse.json();
             const requests = [];
             for (let dog of dogsData.dogs) {
-                const dogsHost = `${process.env.REACT_APP_MONOLITH_API}`
-                // const dogsHost = 'http://localhost:8080'
+                //const dogsHost = `${process.env.REACT_APP_MONOLITH_API}`
+                const dogsHost = 'http://localhost:8080'
                 const specificDogUrl = dogsHost + `/api/dogs/${dog.id}/`;
                 requests.push(fetch(specificDogUrl));
             }
@@ -83,8 +82,8 @@ class ProfileCard extends React.Component {
     }
 
     async componentDidMount() {
-        const ownersHost = `${process.env.REACT_APP_MONOLITH_API}`
-        // const ownersHost = 'http://localhost:8080'
+        //const ownersHost = `${process.env.REACT_APP_MONOLITH_API}`
+        const ownersHost = 'http://localhost:8080'
         const ownerResponse = await fetch(ownersHost + `/api/ownerVOs/`);
         try {
             if (ownerResponse.ok) {

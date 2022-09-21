@@ -26,7 +26,6 @@ Output:
 * **Creating a new account** gathers all required date
 from the user via a form on the landing page. this information is sent to the database and given a new database_id.
 
-
 # Get All Account 
 * **Method**: `GET`
 * **Path**: /api/users/
@@ -48,7 +47,7 @@ Output:
   "password": string,
 }
 ```
- *the above retreives all accounts*
+ *the above retrieves all accounts*
 
 # Get Single Account
  * **Method**: `GET`
@@ -97,7 +96,7 @@ Output:
 ```
 
 
-## Create new Message - NOT IMPLEMENTED YET
+## Create new Message - NOT YET IMPLEMENTED
 
 * **Method**: `POST`
 * **Path**: /api/<int:pk>/message/<int:pk>
@@ -120,8 +119,7 @@ Output:
   "body": string
 }
 ```
-
-## Get a Message - NOT IMPLEMENTED YET
+## Get a Message - NOT YET IMPLEMENTED
 
 * **Method**: `get` 
 * **Path**: /api/<int:pk>/message/<int:pk>
@@ -145,7 +143,7 @@ Output:
 }
 ```
 
-## Get all Messages - NOT IMPLEMENTED YET
+## Get all Messages - NOT YET IMPLEMENTED
 
 * **Method**: `get` 
 * **Path**: /api/<int:pk>/message/
@@ -168,20 +166,23 @@ Output:
 }
 ```
 
-* **Messages**  will be the primary form of communication
+* **Messages**  the primary form of communication
 
 
-## Create New Owner
 
+# Create New Owner
 * **Method**: `POST`
 * **Path**: /owners/
 
-
 Input:
 
 ```json
 {
-  "body": string
+  "name": string,
+  "email": string,
+  "phone": integer,
+  "description": string,
+  "state": foreign key to state model,
 }
 ```
 
@@ -189,23 +190,138 @@ Output:
 
 ```json
 {
-  "id": number,
-  "body": string
+  "name": string,
+  "email": string,
+  "phone": integer,
+  "description": string,
+  "state": foreign key to state model,
 }
 ```
 
 
-* **Method**: `POST`
+# Get All Owners
+* **Method**: `GET`
+* **Path**: /owners/
+
+Input:
+
+```json
+{
+  "name": string,
+  "email": string,
+  "phone": integer,
+  "description": string,
+  "state": foreign key to state model,
+}
+```
+
+Output:
+
+```json
+{
+  "name": string,
+  "email": string,
+  "phone": integer,
+  "description": string,
+  "state": foreign key to state model,
+}
+```
+
+# Update Owner
+* **Method**: `PUT`
+* **Path**: /owners/<int:pk>
+
+Input:
+
+```json
+{
+  "name": string,
+  "email": string,
+  "phone": integer,
+  "description": string,
+  "state": foreign key to state model,
+}
+```
+
+Output:
+
+```json
+{
+  "name": string,
+  "email": string,
+  "phone": integer,
+  "description": string,
+  "state": foreign key to state model,
+}
+```
+
+# Get Specific Owner
+* **Method**: `PUT`
+* **Path**: /owners/<int:pk>
+
+Input:
+
+```json
+{
+  "name": string,
+  "email": string,
+  "phone": integer,
+  "description": string,
+  "state": foreign key to state model,
+}
+```
+
+Output:
+
+```json
+{
+  "name": string,
+  "email": string,
+  "phone": integer,
+  "description": string,
+  "state": foreign key to state model,
+}
+```
+
+# Delete Specific Owner
+* **Method**: `DELETE`
+* **Path**: /owners/<int:pk>
+
+Input:
+
+```json
+{
+  "name": string,
+  "email": string,
+  "phone": integer,
+  "description": string,
+  "state": foreign key to state model,
+}
+```
+
+Output:
+
+```json
+{
+  "name": string,
+  "email": string,
+  "phone": integer,
+  "description": string,
+  "state": foreign key to state model,
+}
+```
+
+# Get Specific State
+* **Method**: `GET`
 * **Path**: /states/
 
-
 Input:
 
 ```json
 {
   "name": string,
-  "id": integer PK,
-  "abbreviation": string
+  "id": integer,
+  "abbreviation": string,
 }
 ```
 
@@ -214,20 +330,27 @@ Output:
 ```json
 {
   "name": string,
-  "id": integer PK,
-  "abbreviation": string
+  "id": integer,
+  "abbreviation": string,
 }
 ```
 
+# Create Dog
 * **Method**: `POST`
 * **Path**: /api/dogs/
 
-
 Input:
 
 ```json
 {
-  "body": string
+  "name": string,
+  "age": integer,
+  "breed": string,
+  "image": file,
+  "description": string,
+  "gender": string,
+  "size": string,
+  "owner": foreign key to ownerVO model,
 }
 ```
 
@@ -235,7 +358,149 @@ Output:
 
 ```json
 {
-  "id": number,
-  "body": string
+  "name": string,
+  "age": integer,
+  "breed": string,
+  "image": file,
+  "description": string,
+  "gender": string,
+  "size": string,
+  "owner": foreign key to ownerVO model,
+}
+```
+
+# Get All Dogs
+* **Method**: `GET`
+* **Path**: /api/dogs/
+
+Input:
+
+```json
+{
+  "name": string,
+  "age": integer,
+  "breed": string,
+  "image": file,
+  "description": string,
+  "gender": string,
+  "size": string,
+  "owner": foreign key to ownerVO model,
+}
+```
+
+Output:
+
+```json
+{
+  "name": string,
+  "age": integer,
+  "breed": string,
+  "image": file,
+  "description": string,
+  "gender": string,
+  "size": string,
+  "owner": foreign key to ownerVO model,
+}
+```
+
+# Update Dog
+* **Method**: `PUT`
+* **Path**: /api/dogs/<int:pk>/
+
+Input:
+
+```json
+{
+  "name": string,
+  "age": integer,
+  "breed": string,
+  "image": file,
+  "description": string,
+  "gender": string,
+  "size": string,
+  "owner": foreign key to ownerVO model,
+}
+```
+
+Output:
+
+```json
+{
+  "name": string,
+  "age": integer,
+  "breed": string,
+  "image": file,
+  "description": string,
+  "gender": string,
+  "size": string,
+  "owner": foreign key to ownerVO model,
+}
+```
+
+# Delete Dog
+* **Method**: `DELETE`
+* **Path**: /api/dogs/<int:pk>/
+
+Input:
+
+```json
+{
+  "name": string,
+  "age": integer,
+  "breed": string,
+  "image": file,
+  "description": string,
+  "gender": string,
+  "size": string,
+  "owner": foreign key to ownerVO model,
+}
+```
+
+Output:
+
+```json
+{
+  "name": string,
+  "age": integer,
+  "breed": string,
+  "image": file,
+  "description": string,
+  "gender": string,
+  "size": string,
+  "owner": foreign key to ownerVO model,
+}
+```
+
+# Get Specific Dog
+* **Method**: `GET`
+* **Path**: /api/dogs/<int:pk>/
+
+Input:
+
+```json
+{
+  "name": string,
+  "age": integer,
+  "breed": string,
+  "image": file,
+  "description": string,
+  "gender": string,
+  "size": string,
+  "owner": foreign key to ownerVO model,
+}
+```
+
+Output:
+
+```json
+{
+  "name": string,
+  "age": integer,
+  "breed": string,
+  "image": file,
+  "description": string,
+  "gender": string,
+  "size": string,
+  "owner": foreign key to ownerVO model,
 }
 ```

@@ -1,6 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import React from 'react';
-import logo from "./assets/images/taylordrawing2.png"
+import logo from "./assets/images/taylordrawing2.png";
+import { useCookies } from 'react-cookie';
 
 
 const footerStyle = {
@@ -35,6 +36,12 @@ function Footer({ children }) {
 
 
 function Nav() {
+  const [token, SetToken, removeToken] = useCookies(['mytoken'])
+  const logoutBtn = () => {
+    removeToken(['mytoken'])
+  }
+
+
   return (
     <nav className="navbar navbar-expand-lg navbar-light">
       <div>
@@ -65,6 +72,11 @@ function Nav() {
               <NavLink className="nav-link" to="/ownerinfo/">Owner Information</NavLink>
             </li>
           </ul>
+          <ul className="navbar-nav justify-content-end mb-2 mb-lg-0">
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/login/" onClick={logoutBtn}>Log out</NavLink>
+            </li>
+          </ul>
           <div>
             <Footer>
               <span>© Copyright 2022 Puppy Love, LLC. All Rights Reserved</span>
@@ -75,5 +87,6 @@ function Nav() {
     </nav>
   )
 }
+
 
 export default Nav;
