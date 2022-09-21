@@ -15,6 +15,7 @@ class DogInfo extends React.Component {
             genders: [],
             description: '',
             owners: [],
+            owner: '',
             image: '',
             hasSignedUp: false,
         };
@@ -63,7 +64,7 @@ class DogInfo extends React.Component {
                 sizes: '',
                 genders: '',
                 description: '',
-                owners: '',
+                owner: '',
                 image: '',
                 hasSignedUp: true,
             });
