@@ -36,8 +36,6 @@ class DogInfo extends React.Component {
         delete data.genders;
         delete data.sizes;
         delete data.hasSignedUp;
-        console.log("DATA TO SUBMIT", data)
-
         const dogHost = `${process.env.REACT_APP_MONOLITH_API}`
         // const dogHost = 'http://localhost:8080'
         const url = dogHost + `/api/dogs/`
@@ -49,10 +47,7 @@ class DogInfo extends React.Component {
             },
             credentials: 'include'
         };
-
-
         const response = await fetch(url, fetchConfig);
-        console.log("SUBMIT RESPONSE", response)
         if (response.ok) {
             let successTag = document.getElementById('success-message');
             let formTag = document.getElementById('create-dog-form');
@@ -75,17 +70,13 @@ class DogInfo extends React.Component {
     async componentDidMount() {
         const ownerHost = `${process.env.REACT_APP_MONOLITH_API}`
         // const ownerHost = 'http://localhost:8080'
-        const URL = ownerHost + `/api/ownerVOs/`;
+        const URL = ownerHost + `/api/ownerVOs/`
         const response = await fetch(URL);
-        console.log("COMPONENT RESPONSE", response)
         if (response.ok) {
             const data = await response.json();
-            console.log("COMPONENT DATA", data)
             this.setState({ owners: data.owners });
-            console.log("COMPONENT OWNERS DATA", owners)
         }
     }
-
 
     handleNameChange(event) {
         const value = event.target.value;
@@ -128,32 +119,26 @@ class DogInfo extends React.Component {
             messageClasses = 'alert alert-success mb-0';
             formClasses = 'd-none';
         }
-
         const BUCKET_NAME = process.env.REACT_APP_AWS_STORAGE_BUCKET_NAME;
         const AWSREGION = process.env.REACT_APP_REGION;
         const KEY_ID = process.env.REACT_APP_AWS_ACCESS_KEY_ID;
         const ACCESS_KEY = process.env.REACT_APP_AWS_SECRET_ACCESS_KEY;
         const S3_BUCKET = BUCKET_NAME;
         const REGION = AWSREGION;
-
         AWS.config.update({
             accessKeyId: KEY_ID,
             secretAccessKey: ACCESS_KEY
         })
-
         const myBucket = new AWS.S3({
             params: { Bucket: S3_BUCKET },
             region: REGION,
         })
-
         const UploadImageToS3WithNativeSdk = (props) => {
             const [progress, setProgress] = useState(0);
             const [selectedFile, setSelectedFile] = useState(null);
-
             const handleFileInput = (e) => {
                 setSelectedFile(e.target.files[0]);
             }
-
             const uploadFile = (file) => {
                 const params = {
                     ACL: 'public-read',
@@ -169,7 +154,6 @@ class DogInfo extends React.Component {
                         if (err) console.log(err)
                     })
             }
-
             return <div>
                 <div>File Upload Progress is {progress}%</div>
                 <input type="file" onChange={handleFileInput} />
@@ -257,7 +241,7 @@ class DogInfo extends React.Component {
                                     View your dog's profile here:
                                     <br></br>
                                     <Link to="/profile" className="mainlink">
-                                        <button type="button" className="btn btn-secondary">View Profile</button>
+                                        <button type="button" className="btn btn-success">View Profile</button>
                                     </Link>
                                     <br></br>
                                 </div>
