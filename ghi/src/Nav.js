@@ -36,7 +36,7 @@ function Footer({ children }) {
 
 
 function Nav() {
-  const [token, SetToken, removeToken] = useCookies(['mytoken'])
+  const [removeToken] = useCookies(['mytoken'])
   const logoutBtn = () => {
     removeToken(['mytoken'])
   }
