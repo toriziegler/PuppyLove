@@ -37,6 +37,7 @@ class DogInfo extends React.Component {
         delete data.genders;
         delete data.sizes;
         delete data.hasSignedUp;
+        console.log("DATA TO SUBMIT", data)
 
         const dogHost = `${process.env.REACT_APP_MONOLITH_API}`
         // const dogHost = 'http://localhost:8080'
@@ -52,6 +53,7 @@ class DogInfo extends React.Component {
 
 
         const response = await fetch(url, fetchConfig);
+        console.log("SUBMIT RESPONSE", response)
         if (response.ok) {
             let successTag = document.getElementById('success-message');
             let formTag = document.getElementById('create-dog-form');
@@ -76,9 +78,12 @@ class DogInfo extends React.Component {
         // const ownerHost = 'http://localhost:8080'
         const URL = ownerHost + `/api/ownerVOs/`;
         const response = await fetch(URL);
+        console.log("COMPONENT RESPONSE", response)
         if (response.ok) {
             const data = await response.json();
+            console.log("COMPONENT DATA", data)
             this.setState({ owners: data.owners });
+            console.log("COMPONENT OWNERS DATA", owners)
         }
     }
 
