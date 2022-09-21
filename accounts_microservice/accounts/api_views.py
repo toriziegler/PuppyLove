@@ -1,19 +1,13 @@
-from .models import AWSPhoto, Owner, State, Article
+from .models import Owner, State, Article
 from .encoders import OwnerEncoder, StateEncoder
 from django.http import JsonResponse
-from django.shortcuts import render
-from django.views.decorators.csrf import requires_csrf_token, csrf_exempt
-# from django.contrib.auth.decorators import login_required
+from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_http_methods
 import json
-from django.views.generic.edit import CreateView
-from django.urls import reverse_lazy
-from django.views.decorators.csrf import csrf_protect
 from .serializers import ArticleSerializer, UserSerializer
 from rest_framework import viewsets
 from django.contrib.auth.models import User
 from rest_framework.authentication import TokenAuthentication
-from rest_framework.permissions import IsAuthenticated
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -25,6 +19,17 @@ class ArticleViewSet(viewsets.ModelViewSet):
     queryset = Article.objects.all()
     serializer_class = ArticleSerializer
     authentication_classes = (TokenAuthentication,)
+
+
+class CurrentUserSet(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+    def get_object(self):
+        pk = self.kwargs.get("pk")
+        if pk == "current":
+            return self.request.user
+        return super().get_object()
 
 
 @csrf_exempt
@@ -75,11 +80,10 @@ def api_owner_show_update_delete(request, pk):
         except Owner.DoesNotExist:
             return JsonResponse({"message": "This owner does not exist"})
 
-    else:  # PUT
+    else:
         try:
             content = json.loads(request.body)
             owner = Owner.objects.get(id=pk)
-
             props = ["name", "email", "phone", "description", "state"]
             for prop in props:
                 if prop in content:
@@ -90,7 +94,6 @@ def api_owner_show_update_delete(request, pk):
                 encoder=OwnerEncoder,
                 safe=False,
             )
-
         except Owner.DoesNotExist:
             response = JsonResponse({"message": "Does not exist"})
             response.status_code = 404
@@ -119,29 +122,3 @@ def api_states(request):
             response = JsonResponse({"message": "Could not create the State"})
             response.status_code = 400
             return response
-
-
-class AWSPhotoCreateView(CreateView):
-    model = AWSPhoto
-    template_name = "photos/upload.html"
-    fields = [
-        "upload",
-    ]
-    success_url = reverse_lazy("index")
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        photos = AWSPhoto.objects.all()
-        context["Photos"] = photos
-        return context
-
-
-# @api_view(['GET'])
-# @permission_classes([IsAuthenticated])
-# def getNotes(request):
-#     user = request.user
-#     notes = user.note_set.all()
-#     serializer = NoteSerializer(notes, many=True)
-#     return Response(serializer.data)
-
-# Create your views here.

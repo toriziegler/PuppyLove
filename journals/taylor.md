@@ -133,3 +133,12 @@ Today I was able to complete the react to s3 AWS photo bucket pipeline. I ran in
     we were able to do this by passing in the owner and dog ID as props to the Upload file function within our code. 
 
   We also made some progress on the authentication end that we have been working on for a while. Stephen was able to signup on the front end but is not being provided any token information that we will need to use the front end. 
+
+
+  ## Sept 15, 2022
+
+  We got Authentication working!!! i also had to rewrite a new unit test because we did away with the old user model when we were rewriting 
+
+  today, we are trying to deploy our project again. we were cut short last night because heroku was having internal problems. we were not able to build deployed containers. It seems to be working this morning so we are going back after it. 
+
+  We need to finish our Authentication stuff today and make it work for us. 

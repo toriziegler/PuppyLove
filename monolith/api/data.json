@@ -1,0 +1,16 @@
+[
+    {
+        "model": "puppylove_rest.dog",
+        "pk": 1,
+        "fields": {
+            "name": "Ludo",
+            "age": 2,
+            "breed": "Australian Cattle Dog",
+            "image": "https://puppy-love-assets.s3.amazonaws.com/media/Ludo.jpeg",
+            "description": "Loves to play fetch! Looking for a best bud to run on the beach with.",
+            "gender": "M",
+            "size": "Large",
+            "owner": 1
+        }
+    }
+]

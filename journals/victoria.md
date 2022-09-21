@@ -1,3 +1,17 @@
+# September 16, 2022
+Today I worked on:
+
+* Deployment
+
+    Heroku has been fixed and is now created the owner instance with an id in the postgres database. Our accounts microservice was working fully in the morning and we are trying to get the monolith service to work, but the poller is currently down. I fixed the url variables throughout the project to have localhost portions commented out but available for us, and the REACT_APPs uncommented so it is ready for deployment. We added all of the variables to our heroku and gitlab. OUR PRODUCT IS DEPLOYED! We do not have authentication added in so that is now a stretch goal. All of our pages are fully functional in our deployed product.
+
+# September 15, 2022
+Today I worked on:
+
+* Deployment
+
+    I worked on getting our code fully deployed on heroku. We ran into CORS issue and were not able to pull any data into the website. Andrew and I fixed this by adding the deployment public url to cors allowed origins in both microservice settings.py. We also added all of the heroku domains for each of the apps and pollers and integrated those into the front end urls. Heroku crashed around 9pm and was failing all deploy jobs, giving an error that the login was not working and the postgres data base was not configuring correctly. 
+
 # September 14, 2022
 Today I worked on:
 

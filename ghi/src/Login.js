@@ -10,8 +10,6 @@ function Login() {
     const [token, setToken] = useCookies(['mytoken'])
     let navigate = useNavigate()
     const [isLogin, setLogin] = useState(true)
-
-
     useEffect(() => {
         var user_token = token['mytoken']
         console.log('Login User token is', user_token)
@@ -22,9 +20,7 @@ function Login() {
         } else {
             navigate('/articles')
         }
-
     }, [navigate, token])
-
     const loginBtn = () => {
         if (username.trim().length !== 0 && password.trim().length) {
             console.log('Username And Password Are Set')
@@ -36,8 +32,6 @@ function Login() {
             navigate('/')
         }
     }
-
-
     const RegisterBtn = () => {
         if (username.trim().length !== 0 && password.trim().length !== 0) {
             console.log('Username and password are set');
@@ -47,21 +41,8 @@ function Login() {
         } else {
             navigate('/')
             console.log('Username and password are not set');
-
         }
     }
-
-
-    const loginStyle = {
-        backgroundImage: `url(${process.env.PUBLIC_URL + "img/1.png"})`,
-        backgroundRepeat: 'no-repeat',
-        backgroundSize: 'cover',
-        'minHeight': '100%',
-        height: '77vh',
-        backgroundPosition: ' center',
-        margin: 0,
-
-    };
 
 
     return (
@@ -94,18 +75,20 @@ function Login() {
                             <div>
                                 {isLogin ?
                                     <div>
-                                        <button onClick={loginBtn} className="btn btn-primary">Login</button>
-                                        <br></br>
-                                        <p>If You Don't Have Account, Please Register</p><button onClick={() => setLogin(false)} className="btn btn-primary">Register</button></div>
+                                        <button onClick={loginBtn} className="btn btn-success">Login</button>
+                                        <br>
+                                        </br>
+                                        <br>
+                                        </br>
+                                        <p>If You Don't Have Account, Please Register</p><button onClick={() => setLogin(false)} className="btn btn-success">Register</button></div>
                                     :
                                     <div>
-                                        <button onClick={RegisterBtn} className="btn btn-primary">Register</button>
-                                        <p>If You Have Account, Please <button className="btn btn-primary" onClick={() => setLogin(true)}>Login</button></p></div>
+                                        <button onClick={RegisterBtn} className="btn btn-success">Register</button>
+                                        <p>If You Have Account, Please <button className="btn btn-success" onClick={() => setLogin(true)}>Login</button></p></div>
                                 }
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>

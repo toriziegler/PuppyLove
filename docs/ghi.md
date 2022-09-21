@@ -13,6 +13,7 @@ The personal profile page for each individual user available to view by other us
 
 ![profile](wireframes/profile.png)
 
+
 ## Message Page
 
 The direct messaging and matches page is used for the Web Site users to view what profile's they have matched with and their history of messages. Users can view the matches' profile upon message expansion.

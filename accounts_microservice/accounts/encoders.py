@@ -13,7 +13,7 @@ class OwnerEncoder(ModelEncoder):
     ]
 
     def get_extra_data(self, o):
-        return {"state": o.state.abbreviation, "image": o.id}
+        return {"state": o.state.abbreviation}
 
 
 class StateEncoder(ModelEncoder):

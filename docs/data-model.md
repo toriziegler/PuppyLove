@@ -5,21 +5,22 @@
 
 | Property | Type | Unique | Optional |
 |-|-|-|-|
-| Dog's name | string | no | no |
-| Age | integer | no | no |
+| Name | string | no | no |
+| Age | integer | no | yes |
 | Breed | string | no | no |
-| picture_url | string | no | yes |
+| Image | string | no | yes |
 | Description | string | no | yes |
-| Documentation | string | no | yes |
+| Gender | string | no | no |
+| Size | string | no | no |
 | Owner | integer | no | no |
 
 ## Dog's Owner
 
 | Property | Type | Unique | Optional |
 |-|-|-|-|
-| name | string | no | no |
-| email | string | yes | yes |
+| Name | string | no | no |
+| Email | string | yes | yes |
 | Phone | string | yes | yes |
-| state | string | no | no |
+| State | string | no | no |
 | Description | string | no | yes |
 

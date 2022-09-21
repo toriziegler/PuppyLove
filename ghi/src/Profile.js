@@ -7,7 +7,7 @@ function ProfileColumn(props) {
                 const dog = data;
                 return (
                     <div key={dog.id} className="card mb-3 shadow card text-white bg-dark">
-                        <img src={`https://puppy-love-assets.s3.amazonaws.com/us-west-1/${dog.owner.id}/${dog.name}`} className="card-img-top" alt='dog' />
+                        <img src={`https://puppy-love-assets.s3.amazonaws.com/us-west-1/${dog.owner.id}/${dog.name}`} alt="hi" className="card-img-top" />
                         <div className="card-body">
                             <h5 className="card-title">{dog.name}</h5>
                             <h6 className="card-subtitle mb-2 text-muted">
@@ -43,7 +43,6 @@ class ProfileCard extends React.Component {
         this.profileColumns = this.profileColumns.bind(this);
     }
 
-
     async handleOwnerChange(event) {
         const value = event.target.value;
         await this.setState({ owner: value })
@@ -51,12 +50,16 @@ class ProfileCard extends React.Component {
     }
 
     async profileColumns() {
-        const dogsResponse = await fetch(`http://localhost:8080/api/owners_dogs/${this.state.owner}/`);
+        //const ownersDogsHost = `${process.env.REACT_APP_MONOLITH_API}`
+        const ownersDogsHost = 'http://localhost:8080'
+        const dogsResponse = await fetch(ownersDogsHost + `/api/owners_dogs/${this.state.owner}/`);
         if (dogsResponse.ok) {
             const dogsData = await dogsResponse.json();
             const requests = [];
             for (let dog of dogsData.dogs) {
-                const specificDogUrl = `http://localhost:8080/api/dogs/${dog.id}/`;
+                //const dogsHost = `${process.env.REACT_APP_MONOLITH_API}`
+                const dogsHost = 'http://localhost:8080'
+                const specificDogUrl = dogsHost + `/api/dogs/${dog.id}/`;
                 requests.push(fetch(specificDogUrl));
             }
             const responses = await Promise.all(requests);
@@ -79,7 +82,9 @@ class ProfileCard extends React.Component {
     }
 
     async componentDidMount() {
-        const ownerResponse = await fetch('http://localhost:8080/api/ownerVOs/');
+        //const ownersHost = `${process.env.REACT_APP_MONOLITH_API}`
+        const ownersHost = 'http://localhost:8080'
+        const ownerResponse = await fetch(ownersHost + `/api/ownerVOs/`);
         try {
             if (ownerResponse.ok) {
                 const ownerData = await ownerResponse.json();
@@ -96,28 +101,42 @@ class ProfileCard extends React.Component {
     render() {
         return (
             <>
-                <div className="container">
-                    <h2>Your Pup Profiles</h2>
-                    <div className="mb-3">
-                        <select onChange={this.handleOwnerChange} value={this.state.owner} name="owner" required id="owner" className="form-select">
-                            <option value="">Which of your dogs would you like to see?</option>
-                            {this.state.owners.map(owner => {
-                                return (
-                                    <option key={owner.id} value={owner.id}>
-                                        {owner.name}
-                                    </option>
-                                )
-                            })}
-                        </select>
+                <div className="App">
+                    <div
+                        className="container-fluid d-flex align-items-center"
+                        style={{
+                            height: "100vh",
+                            backgroundImage:
+                                "url(https://images.pexels.com/photos/2607544/pexels-photo-2607544.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1)",
+                            backgroundPosition: "center",
+                            backgroundSize: "cover",
+                            backgroundRepeat: "no-repeat"
+                        }}
+                    >
+                        <div className="container">
+                            <h2>Your Pup Profiles</h2>
+                            <div className="mb-3">
+                                <select onChange={this.handleOwnerChange} value={this.state.owner} name="owner" required id="owner" className="form-select">
+                                    <option value="">Which of your dogs would you like to see?</option>
+                                    {this.state.owners.map(owner => {
+                                        return (
+                                            <option key={owner.id} value={owner.id}>
+                                                {owner.name}
+                                            </option>
+                                        )
+                                    })}
+                                </select>
+                            </div>
+                            <div className="row">
+                                {this.state.profileColumns.map((profileList, index) => {
+                                    return (
+                                        <ProfileColumn key={index} list={profileList} />
+                                    );
+                                })}
+                            </div>
+                        </div>
                     </div>
-                    <div className="row">
-                        {this.state.profileColumns.map((profileList, index) => {
-                            return (
-                                <ProfileColumn key={index} list={profileList} />
-                            );
-                        })}
-                    </div>
-                </div>
+                </div >
             </>
         );
     }
