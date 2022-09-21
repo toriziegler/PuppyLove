@@ -73,7 +73,7 @@ class DogInfo extends React.Component {
     async componentDidMount() {
         const ownerHost = `${process.env.REACT_APP_MONOLITH_API}`
         // const ownerHost = 'http://localhost:8080'
-        const URL = ownerHost + `/api/ownerVOs/`
+        const URL = ownerHost + `/api/ownerVOs/`;
         const response = await fetch(URL);
         if (response.ok) {
             const data = await response.json();
@@ -164,7 +164,6 @@ class DogInfo extends React.Component {
                         if (err) console.log(err)
                     })
             }
-
 
             return <div>
                 <div>File Upload Progress is {progress}%</div>
